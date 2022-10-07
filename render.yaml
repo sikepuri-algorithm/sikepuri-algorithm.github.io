@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: sikepuri-of-algorithm
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
