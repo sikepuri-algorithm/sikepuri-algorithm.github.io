@@ -6,6 +6,8 @@ import OpenInColab from "@site/src/components/OpenInColab/OpenInColab";
 
 # Python の基礎
 
+## Hello World
+
 はじめてのプログラムを書いてみましょう。
 
 プログラミングの世界では、まず `Hello World!` と表示させるのが慣例になっています。以下のコードを実行してみましょう。
@@ -14,6 +16,77 @@ import OpenInColab from "@site/src/components/OpenInColab/OpenInColab";
 print("Hello World!")
 ```
 
-<OpenInColab path="/docs/python/python/hello-world.ipynb" />
+<OpenInColab path="/docs/python/basic/_samples/hello-world.ipynb" />
 
 `print` は画面に表示させる命令です。`"` で括った文字列が表示されます。
+
+## コメント
+
+`#` から文末まではコメントとして扱われます。
+プログラムの説明や一時的にあるコードを実行しないようにするときに使われます。
+
+```python
+# この部分はコメントです。
+print("Hello World!")
+```
+
+<OpenInColab path="/docs/python/basic/_samples/comment.ipynb" />
+
+## 式
+
+Python で計算をしてみましょう。
+
+```python
+1+1
+```
+
+<OpenInColab path="/docs/python/basic/_samples/sum.ipynb" />
+
+Python では様々な計算ができます。
+
+| 演算子 | 説明   | 例       |
+| ------ | ------ | -------- |
+| `+`    | 足す   | 1+1=2    |
+| `-`    | 引く   | 2-1=1    |
+| `*`    | 掛ける | 2\*2=4   |
+| `/`    | 割る   | 4/2=2    |
+| `**`   | べき乗 | 2\*\*3=8 |
+| `//`   | 商     | 5/2=2    |
+| `%`    | 余り   | 5/2=1    |
+
+`(`、`)` を用いて、複雑な計算もできます。
+黄金比 $\frac{1+\sqrt{5}}{2}$ を計算してみましょう。
+
+```python
+(1+5**0.5)/2
+```
+
+<OpenInColab path="/docs/python/basic/_samples/golden-ratio.ipynb" />
+
+## 変数
+
+先程のようにして、10℃ での音速を求めてみましょう。
+
+$$
+V=331.5+0.6t
+$$
+
+```python
+331.5+0.6*10
+```
+
+<OpenInColab path="/docs/python/basic/_samples/sound-velocity.ipynb" />
+
+一応できましたが、 $t$ を変えようとすると、これぐらいならすぐできますがいちいちプログラムを全て読み直さないといけません。
+
+しかし、Python では変数が使えます。変数を使うと、より簡単に記述できます。
+
+```python
+t=10
+331.5+0.6*t
+```
+
+<OpenInColab path="/docs/python/basic/_samples/sound-velocity2.ipynb" />
+
+:::tip 定数
+Python では定数は使えません。慣習的に定数は大文字のみの変数として表すようです。
