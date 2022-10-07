@@ -2,6 +2,6 @@
 sidebar_position: 1
 ---
 
-# Title
+# 計算
 
 contents
