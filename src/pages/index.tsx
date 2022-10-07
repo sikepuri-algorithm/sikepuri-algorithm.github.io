@@ -32,7 +32,7 @@ export default function Home(): JSX.Element {
     >
       <HomepageHeader />
       <main>
-        <p>こちらは、2022年度アルゴリズム入門のシケプリです。</p>
+        <p>これは、2022年度アルゴリズム入門のシケプリです。</p>
       </main>
     </Layout>
   );
