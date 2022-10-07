@@ -13,6 +13,7 @@ export default function OpenInColab({ path }) {
           <img
             src="https://colab.research.google.com/assets/colab-badge.svg"
             alt="Open In Colab"
+            width="150"
           />
         </a>
       </div>
