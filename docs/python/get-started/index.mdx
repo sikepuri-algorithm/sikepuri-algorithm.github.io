@@ -4,7 +4,7 @@ sidebar_position: 1
 
 import OpenInColab from "@site/src/components/OpenInColab/OpenInColab";
 
-# Python の基礎
+# はじめての Python
 
 ## Hello World
 
@@ -64,31 +64,3 @@ Python では様々な計算ができます。
 ```
 
 <OpenInColab path="/docs/python/basic/_samples/golden-ratio.ipynb" />
-
-## 変数
-
-先程のようにして、10℃ での音速を求めてみましょう。
-
-$$
-V=331.5+0.6t
-$$
-
-```python
-331.5+0.6*10
-```
-
-<OpenInColab path="/docs/python/basic/_samples/sound-velocity.ipynb" />
-
-一応できましたが、 $t$ を変えようとすると、（これぐらいならすぐできますが）いちいちプログラムを全て読み直さないといけません。
-
-しかし、Python では変数が使えます。変数を使うと、より簡単に記述できます。
-
-```python
-t=10
-331.5+0.6*t
-```
-
-<OpenInColab path="/docs/python/basic/_samples/sound-velocity2.ipynb" />
-
-:::tip 定数（他の言語の学習者へ）
-Python では定数は使えないようです。慣習的に定数は大文字のみの変数として表すようです。
