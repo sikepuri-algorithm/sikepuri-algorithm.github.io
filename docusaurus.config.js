@@ -11,8 +11,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "アルゴリズム入門",
   // tagline: '',
-  url: "https://chvmvd.github.io",
-  baseUrl: "/sikepuri-of-algorithm/",
+  url: "https://chvmvd.github.io/sikepuri-of-algorithm/",
+  baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   // favicon: 'img/favicon.ico',
