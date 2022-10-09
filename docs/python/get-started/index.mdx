@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-import OpenInColab from "@site/src/components/OpenInColab/OpenInColab";
+import ViewSource from "@site/src/components/ViewSource/ViewSource";
 
 # はじめての Python
 
@@ -12,11 +12,7 @@ import OpenInColab from "@site/src/components/OpenInColab/OpenInColab";
 
 プログラミングの世界では、まず `Hello World!` と表示させるのが慣例になっています。以下のコードを実行してみましょう。
 
-```python
-print("Hello World!")
-```
-
-<OpenInColab path="./_samples/hello-world.ipynb" />
+<ViewSource path="_samples/hello-world.ipynb" />
 
 `Hello World!` と表示されましたか。
 
@@ -27,33 +23,20 @@ print("Hello World!")
 `#` から文末まではコメントとして扱われます。
 プログラムの説明や一時的にあるコードを実行しないようにするときに使われます。
 
-```python
-# この部分はコメントです。
-print("Hello World!") # この部分もコメントです。
-```
-
-<OpenInColab path="./_samples/comment.ipynb" />
+<ViewSource path="_samples/comment.ipynb" />
 
 ## 算術演算子
 
 Python で計算をしてみましょう。次のように書くと、演算をすることができます。
 
-```python
-1+1
-```
-
-<OpenInColab path="./_samples/sum.ipynb" />
+<ViewSource path="_samples/sum.ipynb" />
 
 :::info
 上のプログラムは、次のようにしても実行できます。それぞれには、少し違いがあるようですが気にしなくて大丈夫でしょう。
 
 Google Colaboratory 以外で実行するときなど上のようなプログラムでうまく動かないときは、下のように書いてみてください。
 
-```python
-print(1+1)
-```
-
-<OpenInColab path="./_samples/sum2.ipynb" />
+<ViewSource path="_samples/sum2.ipynb" />
 :::
 
 Python では様々な計算ができます。
@@ -71,8 +54,4 @@ Python では様々な計算ができます。
 `(`、`)` を用いて、複雑な計算もできます。
 黄金比 $\frac{1+\sqrt{5}}{2}$ を計算してみましょう。
 
-```python
-(1+5**0.5)/2
-```
-
-<OpenInColab path="./_samples/golden-ratio.ipynb" />
+<ViewSource path="_samples/golden-ratio.ipynb" />

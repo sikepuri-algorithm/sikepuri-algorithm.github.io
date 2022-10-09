@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-import OpenInColab from "@site/src/components/OpenInColab/OpenInColab";
+import ViewSource from "@site/src/components/ViewSource/ViewSource";
 
 # 変数
 
@@ -12,22 +12,13 @@ $$
 V=331.5+0.6t
 $$
 
-```python
-331.5+0.6*10
-```
-
-<OpenInColab path="./_samples/sound-velocity.ipynb" />
+<ViewSource path="_samples/sound-velocity.ipynb" />
 
 一応できましたが、 $t$ を変えようとすると、（これぐらいならすぐできますが）いちいちプログラムを全て読み直さないといけません。
 
 しかし、Python では変数が使えます。変数を使うと、より簡単に記述できます。
 
-```python
-t=10
-331.5+0.6*t
-```
-
-<OpenInColab path="./_samples/sound-velocity2.ipynb" />
+<ViewSource path="_samples/sound-velocity2.ipynb" />
 
 :::tip 定数（他の言語の学習者へ）
 Python では定数は使えないようです。慣習的に定数は大文字のみの変数として表すようです。
