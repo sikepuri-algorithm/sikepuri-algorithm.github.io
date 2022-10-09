@@ -3,7 +3,7 @@ import CodeBlock from "@theme/CodeBlock";
 import usePathname from "../usePathname";
 import OpenInColab from "../OpenInColab/OpenInColab";
 
-export default function ViewSource({ path }) {
+export default function ViewSource({ path, nooutput = false }) {
   const pathname = usePathname();
   const [sources, setSources] = useState<string[]>([]);
   const [outputs, setOutputs] = useState<string[]>([]);
@@ -40,7 +40,9 @@ export default function ViewSource({ path }) {
       {sources.map((source, i) => (
         <React.Fragment key={i}>
           <CodeBlock language="python">{source}</CodeBlock>
-          <CodeBlock language="plaintext">{outputs[i]}</CodeBlock>
+          {!nooutput && (
+            <CodeBlock language="plaintext">{outputs[i]}</CodeBlock>
+          )}
         </React.Fragment>
       ))}
       <OpenInColab path={path} />
