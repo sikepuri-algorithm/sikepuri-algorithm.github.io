@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "mkdir dist && npm run replace && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -13,7 +13,9 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "replace": "find docs -name '*.ipynb' | sed 's/.ipynb//g' | xargs -I{} cp {}.ipynb dist/",
+    "watch": "watch -n 1 npm run replace"
   },
   "dependencies": {
     "@docusaurus/core": "2.1.0",
