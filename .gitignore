@@ -1,3 +1,5 @@
+/docs/**/*.json
+
 # Dependencies
 /node_modules
 
