@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "@docusaurus/router";
 import CodeBlock from "@theme/CodeBlock";
+import usePathname from "../usePathname";
 import OpenInColab from "../OpenInColab/OpenInColab";
 
 export default function ViewSource({ path }) {
-  const pathname = useLocation().pathname.slice(22);
+  const pathname = usePathname();
   const [sources, setSources] = useState<string[]>([]);
   const [outputs, setOutputs] = useState<string[]>([]);
   useEffect(() => {

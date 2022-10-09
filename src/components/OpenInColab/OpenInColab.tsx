@@ -1,9 +1,9 @@
 import React from "react";
-import { useLocation } from "@docusaurus/router";
+import usePathname from "../usePathname";
 import styles from "./styles.module.css";
 
 export default function OpenInColab({ path }) {
-  const pathname = useLocation().pathname.slice(22);
+  const pathname = usePathname();
   return (
     <>
       <div className={styles.root}>
