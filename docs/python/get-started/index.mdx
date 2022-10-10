@@ -18,44 +18,18 @@ import ViewSource from "@site/src/components/ViewSource/ViewSource";
 
 `print` は画面に文字列を表示させる命令です。`"` で括った文字列が表示されます。
 
+### 問題
+
+`Hello from Python!` と出力するようなプログラムを書いてみましょう。
+
+<details>
+  <summary>解答</summary>
+  <ViewSource path="_samples/hello-from-python.ipynb" />
+</details>
+
 ## コメント
 
 `#` から文末まではコメントとして扱われます。
 プログラムの説明や一時的にあるコードを実行しないようにするときに使われます。
 
 <ViewSource path="_samples/comment.ipynb" />
-
-## 算術演算子
-
-Python で計算をしてみましょう。次のように書くと、演算をすることができます。
-
-<ViewSource path="_samples/sum.ipynb" />
-
-:::info
-上のプログラムは、次のようにしても実行できます。それぞれには、少し違いがあるようですが気にしなくて大丈夫でしょう。
-
-Google Colaboratory 以外で実行するときなど上のようなプログラムでうまく動かないときは、下のように書いてみてください。
-
-<ViewSource path="_samples/sum2.ipynb" />
-:::
-
-Python では様々な計算ができます。
-
-| 演算子 | 説明   | 例                                             |
-| ------ | ------ | ---------------------------------------------- |
-| `+`    | 足す   | <ViewSource path="_samples/sum.ipynb" />       |
-| `-`    | 引く   | <ViewSource path="_samples/sub.ipynb" />       |
-| `*`    | 掛ける | <ViewSource path="_samples/multi.ipynb" />     |
-| `/`    | 割る   | <ViewSource path="_samples/div.ipynb" />       |
-| `**`   | べき乗 | <ViewSource path="_samples/exp.ipynb" />       |
-| `//`   | 商     | <ViewSource path="_samples/quotient.ipynb" />  |
-| `%`    | 余り   | <ViewSource path="_samples/remainder.ipynb" /> |
-
-括弧`(`、`)` を用いて、複雑な計算もできます。
-黄金比 $\frac{1+\sqrt{5}}{2}$ を計算してみましょう。
-
-<ViewSource path="_samples/golden-ratio.ipynb" />
-
-:::note
-平方根は 0.5 乗とします。
-:::
