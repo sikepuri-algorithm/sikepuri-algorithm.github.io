@@ -6,7 +6,7 @@ import ViewSource from "@site/src/components/ViewSource/ViewSource";
 
 # 変数
 
-先程のようにして、10℃ での音速を求めてみましょう。
+前項のようにして、10℃ での音速を求めてみましょう。
 
 $$
 V=331.5+0.6t
@@ -19,6 +19,13 @@ $$
 しかし、Python では変数が使えます。変数を使うと、より簡単に記述できます。
 
 <ViewSource path="_samples/sound-velocity2.ipynb" />
+
+:::note
+Python では、数学とは違い `=` は代入という意味です。
+そのため、次のようなプログラムを実行すると 2 が出力されます。
+
+<ViewSource path="_samples/substitution.ipynb" />
+:::
 
 :::tip 定数（他の言語の学習者へ）
 Python では定数は使えないようです。慣習的に定数は大文字のみの変数として表すようです。
