@@ -2,6 +2,12 @@ import React from "react";
 import usePathname from "../usePathname";
 import styles from "./styles.module.css";
 
+/**
+ * OpenInColabへのリンクをつくるコンポーネント
+ * @param param0 現在ファイルからのipynbへの相対パス
+ * @returns OpenInColabへのリンク
+ */
+
 export default function OpenInColab({ path }) {
   const pathname = usePathname();
   return (
