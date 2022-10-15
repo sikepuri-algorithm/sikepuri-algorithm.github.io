@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import usePathname from "../usePathname";
 import styles from "./styles.module.css";
@@ -16,7 +17,7 @@ export default function OpenInColab({ path }) {
         <a
           href={`https://colab.research.google.com/github/chvmvd/sikepuri-of-algorithm/blob/main${pathname}${path}`}
           target="_blank"
-          rel="noopener"
+          rel="noreferrer"
         >
           <img
             src="https://colab.research.google.com/assets/colab-badge.svg"
