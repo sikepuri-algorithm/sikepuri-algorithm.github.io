@@ -32,6 +32,11 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.1.0",
     "@tsconfig/docusaurus": "^1.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.10",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "2.7.1",
@@ -53,6 +58,7 @@
     "node": ">=16.14"
   },
   "lint-staged": {
+    "**/*{ts,js,tsx,jsx}": "eslint --fix",
     "**/*": "prettier --write --ignore-unknown"
   }
 }
