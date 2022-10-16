@@ -25,6 +25,7 @@ npm start
 ```shell
 npm run build
 ```
+
 このコマンドは、`build` ディレクトリに静的コンテンツを出力します。
 
 ### その他
