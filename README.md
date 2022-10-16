@@ -1,31 +1,32 @@
-# Sikepuri of Introduction to Algorithms
+# アルゴリズム入門のシケプリです。
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+[Docusaurus](https://docusaurus.io/) を使って作っています。
 
-### Installation
+### 環境構築
 
 ```shell
 npm ci
 ```
 
-### Local Development
+### 開発
 
 ```shell
 npm run watch
 ```
 
-This command automatically converts `.ipynb` files to `.json` in order to read the content of it.
+このコマンドは、`ipynb` ファイルを読み取るために、自動的に `.ipynb` ファイルを `json` ファイルに変換します。
 
 ```shell
 npm start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
+### ビルド
 
 ```shell
 npm run build
 ```
+このコマンドは、`build` ディレクトリに静的コンテンツを出力します。
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+### その他
+
+間違いなどがありましたら、ssues や PR などで教えてください。
