@@ -15,7 +15,7 @@ export default function OpenInColab({ path }) {
     <>
       <div className={styles.root}>
         <a
-          href={`https://colab.research.google.com/github/chvmvd/sikepuri-of-algorithm/blob/main${pathname}${path}`}
+          href={`https://colab.research.google.com/github/sikepuri-algorithm/sikepuri-algorithm.github.io/blob/main${pathname}${path}`}
           target="_blank"
           rel="noreferrer"
         >

@@ -12,15 +12,15 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "アルゴリズム入門",
   // tagline: '',
-  url: "https://chvmvd.github.io",
-  baseUrl: "/algorithm/",
+  url: "https://sikepuri-algorithm.github.io",
+  baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   // favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "chvmvd", // Usually your GitHub org/user name.
+  organizationName: "sikepuri-algorithm", // Usually your GitHub org/user name.
   projectName: "sikepuri-of-algorithm", // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -40,7 +40,8 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/chvmvd/sikepuri-of-algorithm/tree/main",
+          editUrl:
+            "https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/tree/main",
           remarkPlugins: [math],
           rehypePlugins: [katex],
         },
@@ -86,7 +87,7 @@ const config = {
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: "https://github.com/chvmvd/sikepuri-of-algorithm",
+            href: "https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io",
             label: "GitHub",
             position: "right",
           },
@@ -121,7 +122,7 @@ const config = {
               // },
               {
                 label: "GitHub",
-                href: "https://github.com/chvmvd/sikepuri-of-algorithm",
+                href: "https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io",
               },
             ],
           },
