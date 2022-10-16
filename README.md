@@ -8,16 +8,6 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 npm ci
 ```
 
-```shell
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-```
-cargo install typos-cli
-```
-
-You don`t have to run these two commands if you won't commit the changes or you have already installed typos-cli.
-
 ### Local Development
 
 ```shell
