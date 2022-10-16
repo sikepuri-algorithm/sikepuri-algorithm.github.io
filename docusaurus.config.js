@@ -13,7 +13,7 @@ const config = {
   title: "アルゴリズム入門",
   // tagline: '',
   url: "https://chvmvd.github.io",
-  baseUrl: "/sikepuri-of-algorithm/",
+  baseUrl: "/algorithm/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   // favicon: 'img/favicon.ico',
