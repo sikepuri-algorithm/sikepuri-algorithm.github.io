@@ -9,9 +9,15 @@ import Answer from "@site/src/components/Answer";
 
 ## 式と演算子
 
-Python で計算をしてみましょう。次のように書くと、演算をすることができます。
+Python で計算をしてみましょう。次のように書くと、$1+1$ を Python で計算し、その結果を表示することができます。
 
 <ViewSource path="_samples/sum.ipynb" />
+
+:::tip
+Python では、演算子の前後の半角スペースは無視されます。そのため、読みやすくするために半角スペースを入れていますがなくても同じように動きます。
+
+ただし、全角スペースが入っているとエラーが出てしまうのでプログラムを書くときには絶対に全角スペースを入れないように気をつけましょう。
+:::
 
 :::info
 上のプログラムは、次のようにしても実行できます。それぞれには、少し違いがあるようですが気にしなくて大丈夫でしょう。
@@ -21,7 +27,7 @@ Google Colaboratory 以外で実行するときなど上のようなプログラ
 <ViewSource path="_samples/sum2.ipynb" />
 :::
 
-Python では様々な計算ができます。
+Python では足し算以外にも次のように様々な計算をすることができます。
 
 | 演算子 | 説明   | 例                                             |
 | ------ | ------ | ---------------------------------------------- |
@@ -31,20 +37,20 @@ Python では様々な計算ができます。
 | `/`    | 割る   | <ViewSource path="_samples/div.ipynb" />       |
 | `**`   | べき乗 | <ViewSource path="_samples/exp.ipynb" />       |
 | `//`   | 商     | <ViewSource path="_samples/quotient.ipynb" />  |
-| `%`    | 余り   | <ViewSource path="_samples/remainder.ipynb" /> |
+| `%`    | 剰余   | <ViewSource path="_samples/remainder.ipynb" /> |
 
-括弧`(`、`)` を用いて、複雑な計算もできます。
-黄金比 $\frac{1+\sqrt{5}}{2}$ を計算してみましょう。
+括弧`(`、`)` を用いることで、複雑な計算をすることもできます。
+黄金比を計算してみましょう。黄金比は、$\frac{1+\sqrt{5}}{2}$ で与えられます。
 
 <ViewSource path="_samples/golden-ratio.ipynb" />
 
 :::note
-平方根は 0.5 乗とします。
+平方根は 0.5 乗とすることで計算できます。
 :::
 
-### 問題
+### 練習問題
 
-球の体積（ $\frac{4}{3}\pi r^3$ ）を求めてみましょう。$\pi=3.14, r=2$ とします。
+球の体積を求めてみましょう。球の体積は $\frac{4}{3}\pi r^3$ で与えられ、$\pi=3.14, r=2$ とします。
 
 <Answer>
   <ViewSource path="_samples/cube.ipynb" />
