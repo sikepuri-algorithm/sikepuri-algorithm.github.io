@@ -1,4 +1,6 @@
-# アルゴリズム入門のシケプリ
+<div style="text-align:center"><img src="./static/img/logo-black.svg" alt="logo" height="200px" ></div>
+
+# Introduction to Algorithms
 
 これは、アルゴリズム入門のシケプリです。
 
