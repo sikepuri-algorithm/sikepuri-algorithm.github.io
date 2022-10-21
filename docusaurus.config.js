@@ -16,7 +16,7 @@ const config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  // favicon: 'img/favicon.ico',
+  favicon: "img/favicon.png",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -74,10 +74,10 @@ const config = {
     ({
       navbar: {
         title: "アルゴリズム入門",
-        // logo: {
-        //   alt: 'My Site Logo',
-        //   src: 'img/logo.svg',
-        // },
+        logo: {
+          alt: "My Site Logo",
+          src: "img/logo.png",
+        },
         items: [
           {
             type: "doc",
