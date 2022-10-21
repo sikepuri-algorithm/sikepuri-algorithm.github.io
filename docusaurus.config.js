@@ -10,13 +10,13 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "アルゴリズム入門",
+  title: "Introduction to Algorithms",
   // tagline: '',
   url: "https://sikepuri-algorithm.github.io",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.png",
+  favicon: "img/favicon.svg",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -73,17 +73,17 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "アルゴリズム入門",
+        title: "Introduction to Algorithms",
         logo: {
           alt: "My Site Logo",
-          src: "img/logo.png",
+          src: "img/logo.svg",
         },
         items: [
           {
             type: "doc",
             docId: "index",
             position: "left",
-            label: "ドキュメント",
+            label: "Doc",
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
