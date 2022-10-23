@@ -1,0 +1,93 @@
+---
+sidebar_position: 5
+---
+
+import ViewSource from "@site/src/components/ViewSource/ViewSource";
+import Answer from "@site/src/components/Answer";
+
+# 関数
+
+## 関数
+
+$f(x)=x^2$ としたときの、$f(2)+f(3)$ を求めてみましょう。
+
+<ViewSource path="_samples/x2.ipynb" />
+
+一応できましたが、このようにつくると関数値を求めるときに毎回 $f(x)$ の定義を見て書かなければなりません。今回のように、単純な関数では良いですがもっと複雑な関数では大変です。このようなときに、Pythonでは関数を使用できます。
+
+関数を用いると、次のように簡単にプログラムを書くことができます。
+
+<ViewSource path="_samples/x2_function.ipynb" />
+
+関数は、次のようにしてつくることができます。引数は「ひきすう」と読みます。
+
+```python
+def 関数名(引数):
+    return 戻り値
+```
+
+関数を使用するときは、次のようにするだけです。
+
+```python
+関数名(任意の引数)
+```
+
+:::caution
+Pythonでは、きちんとインデント（字下げ）をしないとエラーが発生してしまいます。
+例えば、先程のプログラムで `return` の前のインデントを忘れると、どこまでが関数の中身であるのかわからなくなり、次のようにエラーが発生してしまいます。
+
+<ViewSource path="_samples/indent.ipynb" />
+:::
+
+プログラムにおける関数は、数学における関数よりも多くのことができます。
+例えば、数学では戻り値は必要ですが、プログラムにおける関数には戻り値は必ずしも必要ありません。そのため、次のようなプログラムをつくることができます。
+
+<ViewSource path="_samples/hello.ipynb" />
+
+このようにプログラムにおいては、一連の処理を実行するときに関数を使うことができます。もちろん、引数を与えると引数に応じた処理をすることができます。
+
+<ViewSource path="_samples/introduce_self.ipynb" />
+
+:::note
+上のプログラムは、下と同じ意味です。下のプログラムでも問題ないのですが、少し格好悪いので、`f-string` を使ってしまいました。気にしないでください。
+
+`+` 記号を使うと、文字列をつなげることができます。
+
+<ViewSource path="_samples/introduce_self2.ipynb" />
+:::
+
+戻り値を使うと、次のようにも表現できます。
+
+<ViewSource path="_samples/introduce_self3.ipynb" />
+
+:::note
+先ほどと同様に `f-string` を使ってしまいました。`f-string` を使わないと、次のようになります。
+
+<ViewSource path="_samples/introduce_self4.ipynb" />
+:::
+
+### 練習問題1
+
+万有引力を求める関数を作って実際に計算してみましょう。
+
+$$
+F=G\frac{Mm}{r^2}
+$$
+
+$G=6.7\times 10^{-11}$、$r=2$、$M=60$、$m=20$ とします。
+
+<Answer>
+  <ViewSource path="_samples/gravitation.ipynb" />
+</Answer>
+
+### 練習問題2
+
+`私の名前は、東大太郎です。中国語選択です。` のように自分の名前と第２外国語を紹介する関数を作ってみましょう。
+
+<Answer>
+<ViewSource path="_samples/introduce_language.ipynb" />
+
+`f-string` を使わないと次のようになります。
+
+<ViewSource path="_samples/introduce_language2.ipynb" />
+</Answer>
