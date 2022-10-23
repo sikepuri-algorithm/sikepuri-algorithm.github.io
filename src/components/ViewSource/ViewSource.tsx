@@ -37,7 +37,9 @@ export default function ViewSource({ path, nooutput = false }) {
           .map((cell) =>
             cell.outputs.map((output) =>
               (output.text === undefined
-                ? output.data["text/plain"]
+                ? output.traceback === undefined
+                  ? output.data["text/plain"]
+                  : output.traceback
                 : output.text
               ).join("")
             )
