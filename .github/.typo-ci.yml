@@ -38,9 +38,15 @@ excluded_files:
 excluded_words:
   - typoci
   - OpenInColab
+  # Jupyter Notebook
   - ipynb
   - ipython
   - nbformat
+  # Pipfile.lock
+  - cfgv
+  - nodeenv
+  - platformdirs
+  - pyyaml
 
 # Would you like filenames to also be spellchecked?
 spellcheck_filenames: true
