@@ -25,23 +25,23 @@ export default function ViewSource({ path, nooutput = false }) {
       setSources(
         content.cells
           .filter((cell) => cell.cell_type === "code")
-          .map((cell) => cell.source.join(""))
+          .map((cell) => cell.source.join("")),
       );
       // outputを取り出す
       setOutputs(
         content.cells
           .filter((cell) => cell.cell_type === "code")
           .map((cell) =>
-            cell.outputs.length !== 0 ? cell : { outputs: [{ text: [""] }] }
+            cell.outputs.length !== 0 ? cell : { outputs: [{ text: [""] }] },
           )
           .map((cell) =>
             cell.outputs.map((output) =>
               (output.text === undefined
                 ? output.data["text/plain"]
                 : output.text
-              ).join("")
-            )
-          )
+              ).join(""),
+            ),
+          ),
       );
     }
     tmp();
