@@ -1,4 +1,6 @@
-<div style="text-align:center"><img src="./static/img/logo-black.svg" alt="logo" height="200px" ></div>
+<div style="text-align:center">
+<img src="./static/img/logo-black.svg" alt="logo" height="200px" >
+</div>
 
 # Introduction to Algorithms
 
@@ -6,13 +8,25 @@
 
 [Docusaurus](https://docusaurus.io/) を使って作っています。
 
-### 環境構築
+## 環境構築
 
 ```shell
 npm ci
 ```
 
-### 開発
+```shell
+pip install pipenv
+```
+
+```shell
+pipenv sync --dev
+```
+
+```shell
+pipenv run pre-commit install
+```
+
+## 開発
 
 ```shell
 npm run watch
@@ -24,7 +38,7 @@ npm run watch
 npm start
 ```
 
-### ビルド
+## ビルド
 
 ```shell
 npm run build
@@ -32,6 +46,6 @@ npm run build
 
 このコマンドは、`build` ディレクトリに静的コンテンツを出力します。
 
-### その他
+## その他
 
 間違いなどがありましたら、Issues や PR などで教えてください。
