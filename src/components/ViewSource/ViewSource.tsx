@@ -11,7 +11,7 @@ import OpenInColab from "../OpenInColab/OpenInColab";
  * @returns ソースコードと出力、OpenInColabへのリンク
  */
 
-export default function ViewSource({ path, nooutput = false }) {
+export default function ViewSource({ path }) {
   const pathname = usePathname();
   const [content, setContent] = useState();
   useEffect(() => {
