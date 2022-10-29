@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import usePathname from "../usePathname";
+import CodeBlock from "@theme/CodeBlock";
 import JupyterViewer from "react-jupyter-notebook";
 import OpenInColab from "../OpenInColab/OpenInColab";
+import "./styles.css";
 
 /**
  * ipynbファイルからソースコードと出力、OpenInColabへのリンクを生成
@@ -13,6 +15,7 @@ import OpenInColab from "../OpenInColab/OpenInColab";
 
 export default function ViewSource({ path }) {
   const pathname = usePathname();
+  const [sources, setSources] = useState<string[]>([]);
   const [content, setContent] = useState();
   useEffect(() => {
     async function tmp() {
@@ -20,14 +23,28 @@ export default function ViewSource({ path }) {
       const json = await import(
         `/docs/${pathname.slice(6)}${path.slice(0, -6)}.json`
       );
+      setSources(
+        json.cells
+          .filter((cell) => cell.cell_type === "code")
+          .map((cell) => cell.source.join(""))
+      );
       setContent(json);
     }
     tmp();
   }, []);
   return (
     <>
+      {sources.map((source, i) => (
+        <React.Fragment key={i}>
+          <CodeBlock language="python">{source}</CodeBlock>
+        </React.Fragment>
+      ))}
       {content !== undefined && (
-        <JupyterViewer rawIpynb={content} language="python" />
+        <JupyterViewer
+          rawIpynb={content}
+          language="python"
+          displaySource="hide"
+        />
       )}
       <OpenInColab path={path} />
     </>
