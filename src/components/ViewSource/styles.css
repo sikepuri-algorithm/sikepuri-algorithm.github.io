@@ -1,0 +1,15 @@
+.block-light {
+  display: none;
+}
+
+.block-hidden {
+  display: none;
+}
+
+.cell-header {
+  display: none;
+}
+
+.block-light-selected {
+  display: none;
+}
