@@ -1,0 +1,93 @@
+---
+sidebar_position: 8
+---
+
+import ViewSource from "@site/src/components/ViewSource/ViewSource";
+import Answer from "@site/src/components/Answer";
+
+# 配列
+
+## 配列
+
+5 人の生徒の数学の点数をそれぞれ 96 点、56 点、42 点、74 点、86 点とします。この平均点を求めるプログラムを書いてみましょう。
+
+<ViewSource path="_samples/average.ipynb" />
+
+一応、作ることができましたが生徒の数が増えてしまうと、大変です。前項の for 文を使うと簡単にできそうですが変数を for 文ではうまく扱えないので、繰り返し処理を用いて書くことができません。
+
+ここで、配列を使います。配列は、複数のデータを順番に並べたもので、大量のデータを扱うことができます。
+
+配列を用いると、先程のプログラムは、次のように書くことができます。
+
+<ViewSource path="_samples/average2.ipynb" />
+
+さらに、for 文を用いることができるようになり次のように簡単にかつ応用の利く形で書くことができます。
+
+<ViewSource path="_samples/average3.ipynb" />
+
+配列は、次のような構文で作ることができます。
+
+```python
+配列名 = [一つ目のデータ, 二つ目のデータ, 三つ目のデータ, … ,n つ目のデータ]
+```
+
+配列から、n 番目のデータを取り出すときは次のようにして取り出すことができます。ここで、n-1 となっているのは、配列の添字は **0 から始まっている**からです。
+
+```python
+配列名[n-1]
+```
+
+配列の長さは、次のようにして取得することができます。
+
+```python
+len(配列名)
+```
+
+### 問題
+
+先程の一人目の点数を 96 点から 37 点に書き換えてみましょう。
+
+<Answer>
+<ViewSource path="_samples/change.ipynb" />
+
+配列を出力してみると、確かに変更できたことが確認できます。
+
+<ViewSource path="_samples/change2.ipynb" />
+</Answer>
+
+配列の添字には、変数を使うこともできます。
+
+### 問題
+
+`i` 人目の点数を `laterScore` に書き換えるプログラムを作って、実際に `i` に 1、`laterScore` に 37 を入力して、先程と同じようになるか試してみましょう。
+
+<Answer>
+添字が **0 から始まっている**ことに気をつけましょう。
+
+<ViewSource path="_samples/change3.ipynb" />
+</Answer>
+
+### 練習問題 1
+
+生徒の英語の点数が書かれた配列を受け取って、その平均点を返す関数を作ってみましょう。
+実際に、点数をそれぞれ 26 点、78 点、83 点、20 点、10 点、11 点、22 点、16 点、41 点、95 点として計算してみましょう。
+
+<Answer>
+  <ViewSource path="_samples/average10.ipynb" />
+</Answer>
+
+### 練習問題 2
+
+今度は、分散を求めるプログラムを書いてみましょう。
+
+$n$ 個の観測データを $x_1,x_2,\cdots,x_n$ 、平均を $\bar{x}$ とすると、分散 $s$ は次のように与えられるとします。
+
+$$
+s=\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n}
+$$
+
+練習問題 1 と同じように具体的な値を入れて確かめてみましょう。
+
+<Answer>
+  <ViewSource path="_samples/variance.ipynb" />
+</Answer>
