@@ -13,7 +13,7 @@ import Answer from "@site/src/components/Answer";
 
 <ViewSource path="_samples/sum_1to10.ipynb" />
 
-これぐらいなら、簡単にかけます。
+これぐらいなら、簡単に書けます。
 
 では、1 から 20 までの和はどうでしょう。
 
@@ -31,9 +31,13 @@ import Answer from "@site/src/components/Answer";
 
 <ViewSource path="_samples/for_sum_1to100.ipynb" />
 
+for 文を用いると、このように簡単に書くことができます。また、問題が少し変わっても、すぐにそれに合わせたプログラムを作ることができ拡張性があります。例えば、1 から 1000 の和はこのプログラムの `101` を `1001` にするだけで簡単に作ることができます。
+
+<ViewSource path="_samples/for_sum_1to1000.ipynb" />
+
 :::info
 `sum += i` は、`sum = sum + i` と同じ意味です。累算代入演算子と呼ばれます。
-他にも、いろいろなものがあります。
+次のように、様々なものがあります。
 
 | 演算子 | 例       | 説明              |
 | ------ | -------- | ----------------- |
@@ -43,10 +47,6 @@ import Answer from "@site/src/components/Answer";
 | `/=`   | `a /= b` | `a = a / b`と同じ |
 
 :::
-
-このように簡単に書くことができます。また、問題が少し変わっても、すぐにそれに合わせたプログラムを作ることができ柔軟性があります。例えば、1 から 1000 の和はこのプログラムの `101` を `1001` にするだけで作ることができます。
-
-<ViewSource path="_samples/for_sum_1to1000.ipynb" />
 
 for 文の構文は次のようになっています。
 
@@ -59,9 +59,9 @@ for 文についてよりよく理解するため 1 から 10 までを出力す
 
 <ViewSource path="_samples/for_1to10.ipynb" />
 
-for 文の中の処理が繰り返し行われています。for 文に指定した変数（ここでは `i` ）に、1 回目の処理では 1 が、2 回目の処理では 2 が、…、10 回目の処理では 10 が入っています。つまり、数学的に書けば、`i` には、開始値を $a$ 、終端値を $b$ とすると $[a,b)$ となるような数が順番に入っていることになります。
+for 文の中の処理が繰り返し行われています。for 文に指定した変数（ここでは `i` ）に、1 回目の処理では 1 が、2 回目の処理では 2 が、…、10 回目の処理では 10 が入っています。つまり、数学的に書けば、`i` には、開始値を $a$ 、終端値を $b$ とすると $[a,b)$ となるような整数が順番に入っていることになります。
 
-for 文は変数を処理中で使わなくても、実行できます。
+for 文は同じ処理をただ繰り返したいときにも用いることができます。
 
 <ViewSource path="_samples/for_hello.ipynb" />
 
@@ -70,7 +70,7 @@ for 文は変数を処理中で使わなくても、実行できます。
 
 <ViewSource path="_samples/for_hello2.ipynb" />
 
-次のプログラムを見れば、分かるように `range` 関数に引数を一つだけ渡すと、`i` には $a$ をその引数とすると、 $[0, a)$ となるような数が順番に渡されます。
+次のプログラムを見れば分かるように、 `range` 関数に引数を一つだけ渡すと、`i` には $[0, a)$ （$a$ を引数とする）となるような整数が順番に渡されます。
 
 <ViewSource path="_samples/range.ipynb" />
 :::
@@ -92,7 +92,7 @@ while(条件):
 
 ### 練習問題 1
 
-1 から n までの和を求める関数を作って、実際に 10 の階乗を求めてみましょう。
+1 から n までの和を求める関数を作って、実際に 1 から 10 までの和を求めてみましょう。
 
 <Answer>
   <ViewSource path="_samples/upto.ipynb" />
@@ -105,7 +105,8 @@ $n$ の階乗を求める関数を作って、実際に 10 の階乗を求めて
 <Answer>
 <ViewSource path="_samples/factorial.ipynb" />
 
-ちなみに、`math` ライブラリに階乗を計算するプログラムが入っているようです。[公式ドキュメント](https://docs.python.org/ja/3/library/math.html#math.factorial)
+ちなみに、`math` ライブラリに階乗を計算するプログラムが入っているようです。[公式ドキュメントはこちら](https://docs.python.org/ja/3/library/math.html#math.factorial)
+
 これを使えば、次のようになります。
 
 <ViewSource path="_samples/factorial_lib.ipynb" />

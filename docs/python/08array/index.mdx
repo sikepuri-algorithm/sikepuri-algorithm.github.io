@@ -13,7 +13,7 @@ import Answer from "@site/src/components/Answer";
 
 <ViewSource path="_samples/average.ipynb" />
 
-一応、作ることができましたが生徒の数が増えてしまうと、大変です。前項の for 文を使うと簡単にできそうですが変数を for 文ではうまく扱えないので、繰り返し処理を用いて書くことができません。
+一応、作ることができましたが、生徒の数が増えてしまうと大変です。前項の for 文を使うと簡単にできそうですが変数を for 文ではうまく扱えないので、繰り返し処理を用いて書くことができません。
 
 ここで、配列を使います。配列は、複数のデータを順番に並べたもので、大量のデータを扱うことができます。
 
@@ -21,14 +21,16 @@ import Answer from "@site/src/components/Answer";
 
 <ViewSource path="_samples/average2.ipynb" />
 
-さらに、for 文を用いることができるようになり次のように簡単にかつ応用の利く形で書くことができます。
+さらに、for 文を用いることができるようになり、次のように簡単にかつ応用の利く形で書くことができます。
 
 <ViewSource path="_samples/average3.ipynb" />
+
+配列について、詳しく見ていきましょう。
 
 配列は、次のような構文で作ることができます。
 
 ```python
-配列名 = [一つ目のデータ, 二つ目のデータ, 三つ目のデータ, … ,n つ目のデータ]
+配列名 = [一つ目のデータ, 二つ目のデータ, 三つ目のデータ, … , nつ目のデータ]
 ```
 
 配列から、n 番目のデータを取り出すときは次のようにして取り出すことができます。ここで、n-1 となっているのは、配列の添字は **0 から始まっている**からです。
@@ -43,6 +45,8 @@ import Answer from "@site/src/components/Answer";
 len(配列名)
 ```
 
+次の問題を解いてみてください。
+
 ### 問題
 
 先程の一人目の点数を 96 点から 37 点に書き換えてみましょう。
@@ -55,13 +59,14 @@ len(配列名)
 <ViewSource path="_samples/change2.ipynb" />
 </Answer>
 
-配列の添字には、変数を使うこともできます。
+配列の添字には、変数を使うこともできます。これを用いて、さきほどの問題をさらに一般化した問題を解いてみましょう。
 
 ### 問題
 
 `i` 人目の点数を `laterScore` に書き換えるプログラムを作って、実際に `i` に 1、`laterScore` に 37 を入力して、先程と同じようになるか試してみましょう。
 
 <Answer>
+
 添字が **0 から始まっている**ことに気をつけましょう。
 
 <ViewSource path="_samples/change3.ipynb" />
@@ -89,5 +94,9 @@ $$
 練習問題 1 と同じように具体的な値を入れて確かめてみましょう。
 
 <Answer>
-  <ViewSource path="_samples/variance.ipynb" />
+<ViewSource path="_samples/variance.ipynb" />
+
+次のようにしても計算できますが（ `variance` 関数の中が少し変わっています。）、計算量が多くなってしまうので、上のようにした方が良いでしょう。
+
+<ViewSource path="_samples/variance2.ipynb" />
 </Answer>
