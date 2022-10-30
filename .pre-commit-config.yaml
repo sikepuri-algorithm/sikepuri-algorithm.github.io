@@ -43,12 +43,12 @@ repos:
     rev: 1.5.3
     hooks:
       - id: nbqa-check-ast
-      - id: nbqa-flake8
+      # - id: nbqa-flake8
       - id: nbqa-isort
       - id: nbqa-mypy
       # - id: nbqa-pylint
       - id: nbqa-pyupgrade
-      - id: nbqa-yapf
+      # - id: nbqa-yapf
       - id: nbqa-autopep8
       # - id: nbqa-pydocstyle
   - repo: https://github.com/pre-commit/pre-commit-hooks
