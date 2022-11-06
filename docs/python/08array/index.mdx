@@ -99,4 +99,11 @@ $$
 次のようにしても計算できますが（ `variance` 関数の中が少し変わっています。）、for 文の中が実行される度に `average` 関数が実行されて計算量が多くなってしまうので、上のようにした方が良いでしょう。
 
 <ViewSource path="_samples/variance2.ipynb" />
+
+実は、分散を計算するライブラリがあります。[statistics ライブラリの pvariance 関数](https://docs.python.org/ja/3/library/statistics.html#statistics.pvariance)を使う方法や[NumPy ライブラリの var 関数](https://numpy.org/doc/stable/reference/generated/numpy.var.html)があります。
+
+<ViewSource path="_samples/variance_statistics.ipynb" />
+
+<ViewSource path="_samples/variance_numpy.ipynb" />
+
 </Answer>
