@@ -15,7 +15,7 @@ import Answer from "@site/src/components/Answer";
 
 一応、作ることができましたが、生徒の数が増えてしまうと大変です。前項の for 文を使うと簡単にできそうですが変数を for 文ではうまく扱えないので、繰り返し処理を用いて書くことができません。
 
-ここで、配列を使います。配列は、複数のデータを順番に並べたもので、大量のデータを扱うことができます。
+ここで、配列を使います。配列は、複数のデータを順番に並べたもので、大量のデータを扱うことができます。数学におけるベクトルと同じようなものです。
 
 配列を用いると、先程のプログラムは、次のように書くことができます。
 
@@ -33,10 +33,10 @@ import Answer from "@site/src/components/Answer";
 配列名 = [一つ目のデータ, 二つ目のデータ, 三つ目のデータ, … , nつ目のデータ]
 ```
 
-配列から、n 番目のデータを取り出すときは次のようにして取り出すことができます。ここで、n-1 となっているのは、配列の添字は **0 から始まっている**からです。
+配列から、i 番目のデータを取り出すときは次のようにして取り出すことができます。ここで、i-1 となっているのは、配列の添字は **0 から始まっている**からです。
 
 ```python
-配列名[n-1]
+配列名[i-1]
 ```
 
 配列の長さは、次のようにして取得することができます。
@@ -73,7 +73,7 @@ len(配列名)
 </Answer>
 
 :::info
-実は for 文を書くときに出てきた range は、配列のようなものを作る関数です。ここで、配列のようなものと言ったのは厳密には配列ではないからですが、ひとまず配列と考えて問題ないでしょう。そのため、例えば `range(1, 11)` は `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]` を生成します。下のプログラムでは、range 関数の返り値を配列にしています。
+実は for 文を書くときに出てきた range は、配列のようなものを作る関数です。ここで、配列のようなものと言ったのは厳密には配列ではないからですが、ひとまず配列と考えて問題ないでしょう。そのため、例えば `range(1, 11)` は `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]` を生成します。list 関数は range 関数の返り値を配列にしています。
 
 <ViewSource path="_samples/range.ipynb" />
 
@@ -93,7 +93,7 @@ len(配列名)
 <Answer>
 <ViewSource path="_samples/average10.ipynb" />
 
-実は、平均点を求めるライブラリもあります。[statistics ライブラリの mean 関数](https://docs.python.org/ja/3/library/statistics.html#statistics.mean)や[numpy ライブラリの mean 関数](https://numpy.org/doc/stable/reference/generated/numpy.mean.html)があります。
+実は、平均点を求めるライブラリもあります。[statistics ライブラリの mean 関数](https://docs.python.org/ja/3/library/statistics.html#statistics.mean)や[NumPy ライブラリの mean 関数](https://numpy.org/doc/stable/reference/generated/numpy.mean.html)があります。
 
 <ViewSource path="_samples/average_statistics.ipynb" />
 
@@ -119,7 +119,7 @@ $$
 
 <ViewSource path="_samples/variance2.ipynb" />
 
-実は、分散を計算するライブラリがあります。[statistics ライブラリの pvariance 関数](https://docs.python.org/ja/3/library/statistics.html#statistics.pvariance)を使う方法や[NumPy ライブラリの var 関数](https://numpy.org/doc/stable/reference/generated/numpy.var.html)があります。
+実は、分散を計算するライブラリがあります。[statistics ライブラリの pvariance 関数](https://docs.python.org/ja/3/library/statistics.html#statistics.pvariance)や[NumPy ライブラリの var 関数](https://numpy.org/doc/stable/reference/generated/numpy.var.html)があります。
 
 <ViewSource path="_samples/variance_statistics.ipynb" />
 
