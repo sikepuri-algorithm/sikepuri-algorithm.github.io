@@ -1,0 +1,69 @@
+---
+sidebar_position: 2
+---
+
+import installWsl from "./install_wsl.mov";
+import installRemoteWSL from "./install_remote_wsl.mov";
+import startWsl from "./start_wsl.mov";
+import openFolder from "./open_folder.mov";
+import openTerminal from "./open_terminal.mov";
+
+# WSL のインストール（Windows のみ必要）
+
+macOS は、Linux という OS と源流を同じくするので、プログラミングの開発環境を整えるのは簡単です。
+
+しかし、多くの場合、プログラミングの開発環境を Windows にインストールするのはとても難しく大変です。そこで、プログラミング環境を簡単にインストールできる Linux という OS を Windows 上で動かす必要が出てきます。
+
+昔は、Windows 上に Linux の環境を作ることはとても難しかったのですが、最近 Microsoft が Windows 上で簡単に Linux 環境を構築できる WSL という機能を開発して非常に簡単になりました。
+
+## WSL のインストール方法
+
+詳しくは、下記の動画を参考にしてください。
+簡単な流れを説明します。
+
+- コマンドプロンプトを `管理者として実行` する。
+
+- コマンドプロンプト上で `wsl --install` を入力して `Enterキー` を押す。
+
+- 完了したら、コンピューターを再起動する。
+
+- しばらく待ってから、`username` と `password` を入力する。（これは、何でも構いません。）
+- もう一度 `password` を入力する。
+
+:::tip
+`new password` を求められたときに、入力しても画面上は何も変化しませんが正しく入力されています。そのまま入力して `Enterキー` を押してください。
+:::
+
+<video src={installWsl} controls width="800px" />
+
+## Remote WSL のインストール方法
+
+ここでは、VSCode で WSL 上のファイルに簡単にアクセスできる Remote WSL のインストール方法を紹介します。
+
+[VSCode をインストールの項](/docs/extras/1vscode/)を参考に Visual Studio Code をインストールしておいてください。
+
+下記の動画を参考に VSCode に Remote WSL をインストールしてください。
+
+VSCode で拡張機能を検索して、インストールします。
+
+<video src={installRemoteWSL} controls width="800px" />
+
+## VSCode での WSL の使い方
+
+起動は、次の動画のようにします。
+
+左下の緑のボタンを押して、`New WSL Window` をクリックすれば、WSL にアクセスすることができます。
+
+<video src={startWsl} controls width="800px" />
+
+次の動画のようにして、新しくプロジェクトフォルダを作成して、それを VSCode で開くことができます。
+
+エクスプローラーのアドレスバーに `¥¥wsl$` と入力すると、WSL 上のファイルを表示することができます。さらに、`Ubuntu`、`home`、`ユーザー名` の順にクリックしていくことでホームフォルダに移動することができます。
+
+その後、VSCode でそのフォルダを開きます。
+
+<video src={openFolder} controls width="800px" />
+
+ターミナルは、次の動画のようにして開くことができます。これで、Windows でも学校の macOS のようにコマンドを打つことができます。
+
+<video src={openTerminal} controls width="800px" />
