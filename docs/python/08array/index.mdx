@@ -72,6 +72,19 @@ len(配列名)
 <ViewSource path="_samples/change3.ipynb" />
 </Answer>
 
+:::info
+実は for 文を書くときに出てきた range は、配列のようなものを作る関数です。ここで、配列のようなものと言ったのは厳密には配列ではないからですが、ひとまず配列と考えて問題ないでしょう。そのため、例えば `range(1, 11)` は `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]` を生成します。下のプログラムでは、range 関数の返り値を配列にしています。
+
+<ViewSource path="_samples/range.ipynb" />
+
+前項の練習問題の解答で `sum(range(1, 11))` のような別解がありましたが、sum 関数は与えられた配列の和を求める関数なので、これは range 関数で 1 から 10 までの配列を作り、それの和を sum 関数で求めていたということです。
+
+<ViewSource path="_samples/sum.ipynb" />
+
+<ViewSource path="_samples/sum2.ipynb" />
+
+:::
+
 ### 練習問題 1
 
 生徒の英語の点数が書かれた配列を受け取って、その平均点を返す関数を作ってみましょう。
