@@ -72,13 +72,32 @@ len(配列名)
 <ViewSource path="_samples/change3.ipynb" />
 </Answer>
 
+:::info
+実は for 文を書くときに出てきた range は、配列のようなものを作る関数です。ここで、配列のようなものと言ったのは厳密には配列ではないからですが、ひとまず配列と考えて問題ないでしょう。そのため、例えば `range(1, 11)` は `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]` を生成します。下のプログラムでは、range 関数の返り値を配列にしています。
+
+<ViewSource path="_samples/range.ipynb" />
+
+前項の練習問題の解答で `sum(range(1, 11))` のような別解がありましたが、sum 関数は与えられた配列の和を求める関数なので、これは range 関数で 1 から 10 までの配列を作り、それの和を sum 関数で求めていたということです。
+
+<ViewSource path="_samples/sum.ipynb" />
+
+<ViewSource path="_samples/sum2.ipynb" />
+
+:::
+
 ### 練習問題 1
 
 生徒の英語の点数が書かれた配列を受け取って、その平均点を返す関数を作ってみましょう。
 実際に、点数をそれぞれ 26 点、78 点、83 点、20 点、10 点、11 点、22 点、16 点、41 点、95 点として計算してみましょう。
 
 <Answer>
-  <ViewSource path="_samples/average10.ipynb" />
+<ViewSource path="_samples/average10.ipynb" />
+
+実は、平均点を求めるライブラリもあります。[statistics ライブラリの mean 関数](https://docs.python.org/ja/3/library/statistics.html#statistics.mean)や[numpy ライブラリの mean 関数](https://numpy.org/doc/stable/reference/generated/numpy.mean.html)があります。
+
+<ViewSource path="_samples/average_statistics.ipynb" />
+
+<ViewSource path="_samples/average_numpy.ipynb" />
 </Answer>
 
 ### 練習問題 2
@@ -88,7 +107,7 @@ len(配列名)
 $n$ 個の観測データを $x_1,x_2,\cdots,x_n$ 、平均を $\bar{x}$ とすると、分散 $s^2$ は次のように与えられるとします。
 
 $$
-s^2=\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n}
+s^2=\frac{\sum\limits_{i=1}^n(x_i-\bar{x})^2}{n}
 $$
 
 練習問題 1 と同じように具体的な値を入れて確かめてみましょう。
@@ -99,4 +118,11 @@ $$
 次のようにしても計算できますが（ `variance` 関数の中が少し変わっています。）、for 文の中が実行される度に `average` 関数が実行されて計算量が多くなってしまうので、上のようにした方が良いでしょう。
 
 <ViewSource path="_samples/variance2.ipynb" />
+
+実は、分散を計算するライブラリがあります。[statistics ライブラリの pvariance 関数](https://docs.python.org/ja/3/library/statistics.html#statistics.pvariance)を使う方法や[NumPy ライブラリの var 関数](https://numpy.org/doc/stable/reference/generated/numpy.var.html)があります。
+
+<ViewSource path="_samples/variance_statistics.ipynb" />
+
+<ViewSource path="_samples/variance_numpy.ipynb" />
+
 </Answer>
