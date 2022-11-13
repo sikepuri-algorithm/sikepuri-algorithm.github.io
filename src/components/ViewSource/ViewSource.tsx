@@ -13,7 +13,13 @@ import "./styles.css";
  * @returns ソースコードと出力、OpenInColabへのリンク
  */
 
-export default function ViewSource({ path }) {
+export default function ViewSource({
+  path,
+  noOutput = false,
+}: {
+  path: string;
+  noOutput?: boolean;
+}) {
   const pathname = usePathname();
   const [sources, setSources] = useState<string[]>([]);
   const [content, setContent] = useState();
@@ -39,7 +45,7 @@ export default function ViewSource({ path }) {
           <CodeBlock language="python">{source}</CodeBlock>
         </React.Fragment>
       ))}
-      {content !== undefined && (
+      {content !== undefined && !noOutput && (
         <JupyterViewer
           rawIpynb={content}
           language="python"
