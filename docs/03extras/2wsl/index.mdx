@@ -10,11 +10,11 @@ import openTerminal from "./open_terminal.mov";
 
 # WSL のインストール（Windows のみ必要）
 
-macOS は、Linux という OS と源流を同じくするので、プログラミングの開発環境を整えるのは簡単です。
+macOS は、Linux という OS と源流を同じくするので、非常に簡単にプログラミングの開発環境を整えることができます。
 
-しかし、Windows は、多くの場合プログラミングの開発環境をインストールするのはとても難しく大変です。そこで、プログラミング環境を簡単にインストールできるように Linux という OS を Windows 上で動かす必要が出てきます。
+しかし、Windows では多くの場合プログラミングの開発環境を構築するのはとても難しく大変です。そこで、プログラミング環境を簡単に構築できるように Linux という OS を Windows 上で動かす必要が出てきます。
 
-昔は、Windows 上に Linux の環境を作ることはとても難しかったのですが、最近 Microsoft が Windows 上で簡単に Linux 環境を構築できる WSL(Windows Subsystem for Linux) という機能を開発して非常に簡単になりました。
+実は、昔は Windows 上に Linux 環境を構築するのはとても難しかったのですが、最近 Microsoft 社 が Windows 上に簡単に Linux 環境を構築できる WSL(Windows Subsystem for Linux) という機能を開発して非常に簡単になりました。
 
 ## WSL のインストール方法
 
@@ -28,6 +28,7 @@ macOS は、Linux という OS と源流を同じくするので、プログラ�
 - 完了したら、コンピューターを再起動します。
 
 - しばらく待ってから、`username` と `password` を入力します。（これは、何でも構いません。）
+
 - もう一度 `password` を入力します。
 
 :::tip
@@ -40,15 +41,15 @@ macOS は、Linux という OS と源流を同じくするので、プログラ�
 
 ここでは、VSCode で WSL 上のファイルに簡単にアクセスできる Remote WSL 拡張機能のインストール方法を紹介します。
 
-[VSCode をインストールの項](/docs/03extras/1vscode/)を参考に Visual Studio Code をインストールしておいてください。
+[Visual Studio Code をインストールの項](/docs/03extras/1vscode/)を参考に VS Code をインストールしておいてください。
 
 下記の動画を参考に VSCode に Remote WSL 拡張機能をインストールしてください。
 
-VSCode で拡張機能を検索して、インストールします。
+- VSCode で拡張機能を検索して、インストールします。
 
 <video src={installRemoteWsl} controls width="100%" />
 
-## VSCode での WSL の使い方
+## WSL の使い方
 
 起動は、次の動画のようにします。
 
@@ -64,6 +65,6 @@ VSCode で拡張機能を検索して、インストールします。
 
 <video src={openFolder} controls width="100%" />
 
-ターミナルは、次の動画のようにして開くことができます。これで、Windows でも学校の macOS のようにコマンドを打つことができます。
+ターミナルは、次の動画のようにして開くことができます。これで、Windows 上 でも学校の macOS のように Unix コマンドを使うことができるようになります。
 
 <video src={openTerminal} controls width="100%" />

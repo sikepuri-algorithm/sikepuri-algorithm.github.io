@@ -9,18 +9,20 @@ import typesetTex from "./typeset_tex.mp4";
 
 # $\LaTeX$ の導入
 
-なぜか周りに $\LaTeX$ を使っている人が多いので、インストール方法を解説しておきます。
+なぜか周りに $\LaTeX$ を使っている人が多いので、$\LaTeX$ 環境の構築方法を解説しておきます。
 
 ## TeXLive のインストール
 
-[VSCode をインストールの項](/docs/03extras/1vscode/)を参考に VSCode をインストールしておいてください。
+[Visual Studio Code をインストールの項](/docs/03extras/1vscode/)を参考に VSCode をインストールしておいてください。
 
 Windows を使っている場合は、[WSL をインストールの項](/docs/03extras/2wsl/)を参考に WSL もインストールしておいてください。
+
+VSCode で `samples` プロジェクトフォルダを開いている状態にしておいてください。
 
 <Tabs groupId="os">
   <TabItem value="win-and-ubuntu" label="Windows 及び Ubuntu">
 
-次の動画の通りにすれば、インストールできます。 VSCode から WSL 上のターミナルを開いている状態にしておいてください。
+次の動画の通りにすれば、インストールできます。
 
 - ターミナルで次のように入力します。
 
@@ -60,11 +62,9 @@ macOSを持っていないので、動画は撮れませんでした…。申し
 
 試してはいませんが、おそらく次のようにすれば、インストールできるはずです。
 
-1 時間ぐらいはかかるかと思います。
-
 - ターミナルを開きます。
 
-- 次のコマンドを順に実行します。
+- 次のコマンドを順に実行します。合計で 1 時間もすれば完了するはずです。
 
 ```shell
 brew update
@@ -89,10 +89,9 @@ sudo tlmgr paper a4
 
 次のようにして、$\LaTeX$ が動くことを確認しましょう。
 
-<video src={typesetTex} controls width="100%" />
+- `sample.tex` という名前のファイルを作ります。
 
-- `sample.tex` という名前のファイルを作る。
-- `sample.tex` の中に次のように記述する。
+- `sample.tex` の中に次のように記述します。
 
 ```tex
 \documentclass{jlreq}
@@ -104,22 +103,24 @@ sudo tlmgr paper a4
 \end{document}
 ```
 
-- ターミナル上で次のコマンドを実行する。
+- ターミナル上で次のコマンドを実行します。
 
 ```shell
 lualatex sample.tex
 ```
 
-- `sample.pdf` という名前のファイルができるので、それを開く。
+- `sample.pdf` という名前のファイルができるので、それを開きます。
+
+<video src={typesetTex} controls width="100%" />
 
 :::tip
-Mac を使っている場合は、バックスラッシュ（ `\` ）は、`Alt` を押しながら `¥` を押せば、打つことができます。
+Mac を使っている場合、バックスラッシュ（ `\` ）は、`Alt` を押しながら `¥` を押すことで、入力することができます。
 :::
 
 :::tip
-LuaLaTeX 以外も使うことができます。pLaTeX で jsarticle を使う例も載せておきます。
+$\text{Lua}\LaTeX$ 以外も使うことができます。$\text{p}\LaTeX$ で jsarticle を使う例も載せておきます。
 
-`sample.tex` の中は次のようにする。
+`sample.tex` の中は次のようにします。
 
 ```tex
 \documentclass{jsarticle}
@@ -131,7 +132,7 @@ LuaLaTeX 以外も使うことができます。pLaTeX で jsarticle を使う�
 \end{document}
 ```
 
-- ターミナル上で次のコマンドを順に実行する。
+- ターミナル上で次のコマンドを順に実行します。
 
 ```shell
 platex sample.tex
