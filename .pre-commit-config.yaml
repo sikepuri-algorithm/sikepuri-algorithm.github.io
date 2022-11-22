@@ -51,6 +51,7 @@ repos:
       - id: nbqa-pyupgrade
       # - id: nbqa-yapf
       - id: nbqa-autopep8
+        exclude: docs/01python/07for/_samples/sum_1to100.ipynb
       # - id: nbqa-pydocstyle
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
