@@ -58,6 +58,7 @@ repos:
       - id: check-json
       - id: pretty-format-json
         args: [--autofix]
+        exclude: ^(package.json|package-lock.json)$
       - id: check-merge-conflict
       - id: check-toml
       - id: check-xml
