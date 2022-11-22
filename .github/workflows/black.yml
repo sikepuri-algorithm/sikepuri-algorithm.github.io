@@ -13,4 +13,5 @@ jobs:
       - uses: actions/checkout@v2
       - uses: psf/black@stable
         with:
+          options: '--exclude="docs/01python/07for/_samples/sum_1to100.ipynb"'
           jupyter: true
