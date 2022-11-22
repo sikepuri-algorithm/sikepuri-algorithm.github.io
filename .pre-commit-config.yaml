@@ -1,8 +1,5 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
-exclude: (
-  static/img/
-  )
 repos:
   - repo: https://github.com/datarootsio/databooks
     rev: 1.2.3
