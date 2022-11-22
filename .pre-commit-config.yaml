@@ -2,7 +2,6 @@
 # See https://pre-commit.com/hooks.html for more hooks
 exclude: (
   static/img/
-  docs/05function/_samples/indent.ipynb
   )
 repos:
   - repo: https://github.com/datarootsio/databooks
@@ -44,6 +43,7 @@ repos:
     rev: 1.5.3
     hooks:
       - id: nbqa-check-ast
+        exclude: docs/01python/05function/_samples/indent.ipynb
       # - id: nbqa-flake8
       - id: nbqa-isort
       # - id: nbqa-mypy
