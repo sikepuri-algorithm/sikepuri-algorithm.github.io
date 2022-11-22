@@ -58,10 +58,10 @@ repos:
     hooks:
       - id: check-added-large-files
       - id: check-json
-        exclude: .eslintrc.json
+        exclude: .eslintrc.json|tsconfig.json
       - id: pretty-format-json
         args: [--autofix]
-        exclude: ^(package.json|package-lock.json|.eslintrc.json)$
+        exclude: ^(package.json|package-lock.json|.eslintrc.json|tsconfig.json)$
       - id: check-merge-conflict
       - id: check-toml
       - id: check-xml
