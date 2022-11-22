@@ -67,6 +67,7 @@ repos:
         args: [--allow-missing-credentials]
       - id: detect-private-key
       - id: end-of-file-fixer
+        exclude: \.svg$
       - id: no-commit-to-branch
         args: [--branch, main]
       - id: requirements-txt-fixer
