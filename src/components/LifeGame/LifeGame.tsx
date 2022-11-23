@@ -128,7 +128,7 @@ export function ShowCells({
                   setBoard(tmp);
                 }}
               />
-            )),
+            ))
           )}
         </g>
       </svg>
