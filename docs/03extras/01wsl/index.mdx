@@ -3,10 +3,6 @@ sidebar_position: 1
 ---
 
 import installWsl from "./install_wsl.mov";
-import installRemoteWsl from "./install_remote_wsl.mov";
-import startWsl from "./start_wsl.mov";
-import openFolder from "./open_folder.mov";
-import openTerminal from "./open_terminal.mov";
 
 # WSL のインストール（Windows のみ必要）
 
@@ -37,34 +33,4 @@ macOS は、Linux という OS と源流を同じくするので、非常に簡�
 
 <video src={installWsl} controls width="100%" />
 
-## Remote WSL のインストール方法
-
-ここでは、VSCode で WSL 上のファイルに簡単にアクセスできる Remote WSL 拡張機能のインストール方法を紹介します。
-
-[Visual Studio Code をインストールの項](/docs/03extras/1vscode/)を参考に VS Code をインストールしておいてください。
-
-下記の動画を参考に VSCode に Remote WSL 拡張機能をインストールしてください。
-
-- VSCode で拡張機能を検索して、インストールします。
-
-<video src={installRemoteWsl} controls width="100%" />
-
-## WSL の使い方
-
-起動は、次の動画のようにします。
-
-左下の緑のボタンを押して、`New WSL Window` をクリックすれば、WSL にアクセスすることができます。
-
-<video src={startWsl} controls width="100%" />
-
-次の動画のようにして、新しくプロジェクトフォルダを作成して、それを VSCode で開くことができます。
-
-エクスプローラーのアドレスバーに `¥¥wsl$` と入力すると、WSL 上のファイルを表示することができます。さらに、`Ubuntu`、`home`、`ユーザー名` の順にクリックしていくことでホームフォルダに移動することができます。
-
-その後、VSCode でそのフォルダを開きます。
-
-<video src={openFolder} controls width="100%" />
-
-ターミナルは、次の動画のようにして開くことができます。これで、Windows 上 でも学校の macOS のように Unix コマンドを使うことができるようになります。
-
-<video src={openTerminal} controls width="100%" />
+WSLの具体的な使い方に関しては、[Visual Studio Code をインストールの項](/docs/03extras/02vscode/)で述べます。
