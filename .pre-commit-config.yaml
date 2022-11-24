@@ -56,9 +56,8 @@ repos:
       - id: check-added-large-files
       - id: check-json
         exclude: .eslintrc.json|tsconfig.json
-      - id: pretty-format-json
-        args: [--autofix]
-        exclude: ^(package.json|package-lock.json|.eslintrc.json|tsconfig.json)$
+      # - id: pretty-format-json
+      #   args: [--autofix]
       - id: check-merge-conflict
       - id: check-toml
       - id: check-xml

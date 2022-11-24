@@ -1,0 +1,102 @@
+---
+sidebar_position: 3
+---
+
+import sighupGitHub from "./sighup_github.mp4";
+import setupGit from "./setup_git.mp4";
+import setupSshGithub from "./setup_ssh_github.mp4";
+import pushToGithub from "./push_to_github.mp4";
+
+# GitHub へ保存
+
+## GitHub のアカウントを作る
+
+GitHub はソースコードのホスティングサービスです。Git というバージョン管理ソフトウェアを用いて、ソースコードの管理や共有が簡単にできます。
+
+下の動画を参考にまずはアカウントを作成しましょう。
+
+<video src={sighupGitHub} controls width="100%" />
+
+## 初期設定
+
+まずは Git の初期設定をしましょう。
+
+- GitHub で `Settings`、`Emails`の順にクリックして、`Keep my email addresses private` の下に書いてあるダミーのメールアドレス（動画では、`118946511+sample-hovwec@users.noreply.github.com`）をコピーしてください。
+
+- 次のコマンドを順に実行してください。それぞれユーザー名の設定、メールアドレスの設定、デフォルトブランチの設定（これをやっておくと、後で混乱がなくなります。）になってます。
+
+  ```shell
+  git config --global user.name ユーザー名
+  ```
+
+  ```shell
+  git config --global user.email 先程確認したメールアドレス
+  ```
+
+  ```shell
+  git config --global init.defaultBranch main
+  ```
+
+<video src={setupGit} controls width="100%" />
+
+次に、GitHub に自分のパソコンの公開鍵を登録して、認証しましょう。
+
+- 次のコマンドを実行して公開鍵を作りましょう。
+
+  ```shell
+  cd ~
+  ```
+
+  ```shell
+  ssh-keygen -t ed25519
+  ```
+
+- 次のコマンドを実行して公開鍵を表示しましょう。
+
+  ```shell
+  cd ~/.ssh
+  ```
+
+  ```shell
+  cat id_ed25519.pub
+  ```
+
+- 公開鍵をコピーしましょう。（動画では、`ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFwrVCiY5VvBvo5VRDIzkFZa0eprytqHmoWBS2GBbGpT`）
+
+- GitHub で `Settings`、`SSH and GPG keys`、`SSH keys` の中の `New SSH key` をクリックして、`Title` に適当な名前、`Key` に先程コピーした公開鍵を入力して、`Add SSH key` をクリックすると GitHub に公開鍵が登録できます。
+
+<video src={setupSshGithub} controls width="100%" />
+
+## GitHub へ保存
+
+初期設定が終わったので、GitHub に保存しましょう。`Repositories`、`New`を押して、`Repository name` に好きな名前を入力し、`Private` を押して、`Create repository` を押してください。これで、リポジトリを作ることができます。※他の人に見られても良いのであれば、`Public` にしてください。
+
+作成が終わったら、`SSH` をクリックして、右側にある文字をコピーしましょう。※`SSH` をクリックし忘れないように気をつけてください。
+
+次に、作成した Docusaurus のプロジェクトフォルダを VSCode で開いてそこで、次のコマンドを実行してください。
+
+```shell
+git init
+```
+
+次に、次のコマンドを実行して、先程作ったリポジトリとパソコン上のリポジトリを紐付けてください。
+
+```shell
+git remote add origin 先程コピーした文字
+```
+
+次に、ステージングしましょう。これで、どのファイルを Git 上で管理するか決めることができます。`-A` はすべてを管理する命令です。`git add ファイル名` などのようにして個別にすることもできます。
+
+```shell
+git add -A
+```
+
+次に、コミットしましょう。ダブルクォーテーション（`"`）の中は好きなメッセージを入れることができます。
+
+```shell
+git commit -m "first commit"
+```
+
+最後に、ローカルのブランチをリモートリポジトリにプッシュしましょう。一回目だと、`Are you sure you want to continue connecting (yes/no/[fingerprint])?` と聞かれるので、`yes` と入力しましょう。これで、GitHub を開くと、ローカルのファイルが GitHub に保存されたことがわかります。
+
+<video src={pushToGithub} controls width="100%" />

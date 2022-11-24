@@ -1,0 +1,187 @@
+---
+sidebar_position: 2
+---
+
+import installDocusaurus from "./install_docusaurus.mp4";
+import editDocusaurus from "./edit_docusaurus.mp4";
+import LifeGame from "@site/src/components/LifeGame/LifeGame";
+
+# Docusaurus のインストール方法
+
+## Docusaurus のインストール方法
+
+ここでは、Docusaurus という静的サイトジェネレーターを使って実際にウェブサイトを作ってみます。Docusaurus は、さきほどインストールした npm を使うとコマンド一つで使うことができます。実は、npm を使えば、Docusaurus 以外にも様々なものをコマンド一つで簡単にインストールできます。下の動画を見ながら、インストールしてください。以下に概要を記しておきます。
+
+- まず、適当に `projects` ファルダを作成して、ターミナルを起動してください。
+
+- ここで、次のコマンドを実行すると、Docusaurus のプロジェクトを作成することができます。（`my-website` のところを任意の文字にすることでプロジェクト名を決めることができます。）
+
+```shell
+npx create-docusaurus@latest my-website classic
+```
+
+- `Ok to proceed? (y)` と聞かれるので、`y` と入力して `Enterキー` を押します。
+
+- 次のコマンドを順に実行します。すると、ブラウザが自動的に開き、デフォルトのウェブサイトが現れます。
+
+```shell
+cd my-website
+```
+
+```shell
+npm start
+```
+
+<video src={installDocusaurus} controls width="100%" />
+
+## Docusaurus の編集方法
+
+ここでは、Docusaurus を実際に編集してみます。
+
+- まず、ターミナル上で `Ctrlキー` と `C` を同時に押して、先程起動した Docusaurus のサーバーを終了してください。
+
+- 次に、先程作成した Docusaurus のプロジェクトを VSCode で開きます。
+
+- ターミナルを起動します。
+
+- もう一度次のコマンドを実行して、Docusaurus のサーバーを起動します。先程のようにブラウザが自動的に開きます。
+
+```shell
+npm start
+```
+
+- では、実際に編集してみましょう。今回は、チュートリアルのはじめのページを編集してみます。`docs` ファルダの中の `intro.md` というフォルダを開いて、上から 5 行目の `# Tutorial Intro` というところを `# Hello from Docusaurus` と書き換えてみましょう。（先頭に `#` と書いてあるのは、ここは見出しだという命令です。実は、Docusaurus は Markdown という非常に簡単な形式で書くことができます。）ブラウザを見ると、自動で編集した内容がプレビューされているはずです。
+
+<video src={editDocusaurus} controls width="100%" />
+
+:::info
+先程、Docusaurus は Markdown という形式で書くことができると書きました。ここで、Markdown 記法について少し紹介しておきます。詳しいことは、自分で調べてみてください。
+
+1. `#` と書くことで見出しを書くことができます。
+
+   ```markdown
+   # レベル 1 の見出し
+   ```
+
+   # レベル 1 の見出し
+
+2. `##` は `#` の一個下の見出しです。
+
+   ```markdown
+   ## レベル 2 の見出し
+   ```
+
+   ## レベル 2 の見出し
+
+3. `**` で強調することができます。
+
+   ```markdown
+   **強調**
+   ```
+
+   **強調**
+
+4. `>` とすることで引用することができます。
+
+   ```markdown
+   > hoge
+   ```
+
+   > hoge
+
+5. 箇条書きは次のようにして書けます。
+
+   ```markdown
+   - アイテム 1
+   - アイテム 2
+   - アイテム 3
+   ```
+
+   <ul style={{ listStyleType: "disc" }}>
+     <li>アイテム 1</li>
+     <li>アイテム 2</li>
+     <li>アイテム 3</li>
+   </ul>
+
+6. 番号付き箇条書きは次のようにして書けます。
+
+   ```markdown
+   1. アイテム 1
+   1. アイテム 2
+   1. アイテム 3
+   ```
+
+   <ol style={{ listStyleType: "decimal" }}>
+     <li>アイテム 1</li>
+     <li>アイテム 2</li>
+     <li>アイテム 3</li>
+   </ol>
+
+7. バッククォート（ `` ` `` ）で囲むことでインラインコードを表示することができます。
+
+   ```markdown
+   `コードテキスト`
+   ```
+
+   `コードテキスト`
+
+8. バッククォート 3 つで、コードブロックを表示することができます。
+
+   ````markdown
+   ```python
+   print("Hello World!")
+   ```
+   ````
+
+   ```python
+   print("Hello World!")
+   ```
+
+9. リンクは次のようにして表すことができます。
+
+   ```markdown
+   [Introduction to Algorithms](https://sikepuri-algorithm.github.io/)
+   ```
+
+   [Introduction to Algorithms](https://sikepuri-algorithm.github.io/)
+
+10. 画像は次のようにして表示することができます。もちろん相対パスも使えます。
+
+    ```markdown
+    ![Introduction to Algorithms](https://sikepuri-algorithm.github.io/img/logo.svg)
+    ```
+
+    <div style={{maxWidth:"200px"}}>
+
+    ![Introduction toAlgorithms](https://sikepuri-algorithm.github.io/img/logo.svg)
+
+    </div>
+
+11. 実は、Markdown の中には HTML も書くことができます。
+
+    ```markdown
+    <button type="button">ボタン</button>
+    ```
+
+    <button type="button">ボタン</button>
+
+:::
+
+:::info
+実は、Docusaurus は Markdown だけでなく MDX でも書くことができます。MDX は、Markdown の中で JSX 記法 を使えるものです。JSX 記法 は、JavaScript の中に HTML を書くことができるものですが、なかなか奥が深くここでは説明できないので、自分で調べてみてください。
+
+ちなみに、このシケプリではライフゲームのコンポーネントを作ったので、それを使うときはファイルの先頭で次のようにインポートしてから、次のように書くだけでライフゲームを表示できます w
+
+```markdown
+import LifeGame from "@site/src/components/LifeGame/LifeGame";
+```
+
+```mdx
+<LifeGame />
+```
+
+<div style={{ maxWidth: "200px" }}>
+  <LifeGame />
+</div>
+
+:::
