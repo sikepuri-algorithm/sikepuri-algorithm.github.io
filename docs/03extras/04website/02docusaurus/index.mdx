@@ -2,6 +2,7 @@
 sidebar_position: 2
 ---
 
+import BrowserWindow from "@site/src/components/BrowserWindow";
 import installDocusaurus from "./install_docusaurus.mp4";
 import editDocusaurus from "./edit_docusaurus.mp4";
 import LifeGame from "@site/src/components/LifeGame/LifeGame";
@@ -63,7 +64,11 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
    # レベル 1 の見出し
    ```
 
+   <BrowserWindow>
+
    # レベル 1 の見出し
+
+   </BrowserWindow>
 
 2. `##` は `#` の一個下の見出しです。
 
@@ -71,7 +76,11 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
    ## レベル 2 の見出し
    ```
 
+   <BrowserWindow>
+
    ## レベル 2 の見出し
+
+   </BrowserWindow>
 
 3. `**` で強調することができます。
 
@@ -79,15 +88,23 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
    **強調**
    ```
 
+   <BrowserWindow>
+
    **強調**
+
+   </BrowserWindow>
 
 4. `>` とすることで引用することができます。
 
    ```markdown
-   > hoge
+   > 引用
    ```
 
-   > hoge
+   <BrowserWindow>
+
+   > 引用
+
+   </BrowserWindow>
 
 5. 箇条書きは次のようにして書けます。
 
@@ -97,11 +114,15 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
    - アイテム 3
    ```
 
+   <BrowserWindow>
+
    <ul style={{ listStyleType: "disc" }}>
      <li>アイテム 1</li>
      <li>アイテム 2</li>
      <li>アイテム 3</li>
    </ul>
+
+   </BrowserWindow>
 
 6. 番号付き箇条書きは次のようにして書けます。
 
@@ -111,11 +132,15 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
    1. アイテム 3
    ```
 
+   <BrowserWindow>
+
    <ol style={{ listStyleType: "decimal" }}>
      <li>アイテム 1</li>
      <li>アイテム 2</li>
      <li>アイテム 3</li>
    </ol>
+
+   </BrowserWindow>
 
 7. バッククォート（ `` ` `` ）で囲むことでインラインコードを表示することができます。
 
@@ -123,7 +148,11 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
    `コードテキスト`
    ```
 
+   <BrowserWindow>
+
    `コードテキスト`
+
+   </BrowserWindow>
 
 8. バッククォート 3 つで、コードブロックを表示することができます。
 
@@ -133,9 +162,13 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
    ```
    ````
 
+   <BrowserWindow>
+
    ```python
    print("Hello World!")
    ```
+
+   </BrowserWindow>
 
 9. リンクは次のようにして表すことができます。
 
@@ -143,7 +176,11 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
    [Introduction to Algorithms](https://sikepuri-algorithm.github.io/)
    ```
 
+   <BrowserWindow>
+
    [Introduction to Algorithms](https://sikepuri-algorithm.github.io/)
+
+   </BrowserWindow>
 
 10. 画像は次のようにして表示することができます。もちろん相対パスも使えます。
 
@@ -151,11 +188,15 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
     ![Introduction to Algorithms](https://sikepuri-algorithm.github.io/img/logo.svg)
     ```
 
+   <BrowserWindow>
+
     <div style={{maxWidth:"200px"}}>
 
     ![Introduction toAlgorithms](https://sikepuri-algorithm.github.io/img/logo.svg)
 
     </div>
+
+   </BrowserWindow>
 
 11. 実は、Markdown の中には HTML も書くことができます。
 
@@ -163,7 +204,11 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
     <button type="button">ボタン</button>
     ```
 
+   <BrowserWindow>
+
     <button type="button">ボタン</button>
+
+   </BrowserWindow>
 
 :::
 
