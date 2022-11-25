@@ -61,7 +61,7 @@ GitHub はソースコードのホスティングサービスです。Git とい
   cat id_ed25519.pub
   ```
 
-- 公開鍵をコピーしましょう。（動画では、`ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFwrVCiY5VvBvo5VRDIzkFZa0eprytqHmoWBS2GBbGpT`）
+- 公開鍵をコピーしましょう。（動画では、`ssh-ed25519 AAAA...bGpT`）
 
 - GitHub で `Settings`、`SSH and GPG keys`、`SSH keys` の中の `New SSH key` をクリックして、`Title` に適当な名前、`Key` に先程コピーした公開鍵を入力して、`Add SSH key` をクリックすると GitHub に公開鍵が登録できます。
 
@@ -73,19 +73,19 @@ GitHub はソースコードのホスティングサービスです。Git とい
 
 作成が終わったら、`SSH` をクリックして、右側にある文字をコピーしましょう。※`SSH` をクリックし忘れないように気をつけてください。
 
-次に、作成した Docusaurus のプロジェクトフォルダを VSCode で開いてそこで、次のコマンドを実行してください。
+次に、作成した Docusaurus のプロジェクトフォルダを VSCode で開いてそこで、次のコマンドを実行してください。これは、リポジトリをローカル上に作成する命令です。
 
 ```shell
 git init
 ```
 
-次に、次のコマンドを実行して、先程作ったリポジトリとパソコン上のリポジトリを紐付けてください。
+次に、次のコマンドを実行して、先程作った GitHub 上で作ったリポジトリとローカル上のリポジトリを紐付けてください。
 
 ```shell
 git remote add origin 先程コピーした文字
 ```
 
-次に、ステージングしましょう。これで、どのファイルを Git 上で管理するか決めることができます。`-A` はすべてを管理する命令です。`git add ファイル名` などのようにして個別にすることもできます。
+次に、ステージングしましょう。これは、どのファイルを Git 上で管理するか決めることができるコマンドです。`-A` はすべてを管理する命令です。`git add ファイル名` などのようにして個別に Git の管理下に含めることもできます。
 
 ```shell
 git add -A
@@ -98,5 +98,7 @@ git commit -m "first commit"
 ```
 
 最後に、ローカルのブランチをリモートリポジトリにプッシュしましょう。一回目だと、`Are you sure you want to continue connecting (yes/no/[fingerprint])?` と聞かれるので、`yes` と入力しましょう。これで、GitHub を開くと、ローカルのファイルが GitHub に保存されたことがわかります。
+
+一般的な開発では、ステージングとコミットを繰り返して、時々プッシュしていくような流れになります。
 
 <video src={pushToGithub} controls width="100%" />
