@@ -1,0 +1,45 @@
+---
+sidebar_position: 7
+---
+
+import ViewSource from "@site/src/components/ViewSource/ViewSource";
+import Answer from "@site/src/components/Answer";
+
+# パッケージのインストール
+
+## pip
+
+前項で、Python では様々なライブラリを使用することができると書きました。一部のプリインストールされているライブラリは先程のようにただファイルの先頭で `import ライブラリ名` のように書くだけでライブラリを使用することができますが、多くのライブラリはこれだけでは使用することができません。
+
+Python では、パッケージのインストールを行うユーティリティとして、pip(Pip Installs Packages, Pip Installs Python) が使われます。
+
+## pip の使い方
+
+Google Colaboratory で pip を使ってパッケージをインストールするには、`!pip install ライブラリ名` のように書いてから、前項のように `import ライブラリ名` と書くことで任意のライブラリを使用することができます。
+
+例として、Python の代表的なデータ解析を支援するパッケージである `pandas` パッケージを使ってみましょう。
+
+次のようにすると、確かに `pandas` パッケージを使うことができたことが確認できます。`import pandas as pd` というのは、`pandas` パッケージを `pd` という名前でインポートするという意味です。
+
+<ViewSource path="_samples/pandas.ipynb" />
+
+:::info
+Google Colaboratory などの Jupyter Notebook を使った方法ではなく、直接 `.py` ファイルを使った方法の場合は、pip の使い方が異なります。
+
+ターミナルなどで次のコマンドを実行すると、パッケージをインストールできます。
+
+```shell
+pip install pandas
+```
+
+その後、次のようなコードを実行すると、パッケージを使用することができます。
+
+```python title=hello_pandas.py
+import pandas as pd
+
+
+s1 = pd.Series([0, 1, 2])
+print(s1)
+```
+
+:::
