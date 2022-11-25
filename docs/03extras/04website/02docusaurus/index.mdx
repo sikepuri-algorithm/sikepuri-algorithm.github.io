@@ -170,18 +170,20 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
 :::info
 実は、Docusaurus は Markdown だけでなく MDX でも書くことができます。MDX は、Markdown の中で JSX 記法 を使えるものです。JSX 記法 は、JavaScript の中に HTML を書くことができるものですが、JavaScript や HTML の知識が必要になるので、自分で調べてみてください。
 
+JavaScript を文書の中に書くことができるので、例えば次のような表現が可能です。
+
+```mdx live
+<>{2 * Math.PI}</>
+```
+
 ちなみに、このシケプリではライフゲームのコンポーネントを作ったので、それを使うときはファイルの先頭で次のようにインポートしてから、次のように書くだけでライフゲームを表示できます（笑）
 
 ```markdown
 import LifeGame from "@site/src/components/LifeGame/LifeGame";
 ```
 
-```mdx
+```mdx live
 <LifeGame />
 ```
-
-<div style={{ maxWidth: "200px" }}>
-  <LifeGame />
-</div>
 
 :::
