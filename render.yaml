@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: docusaurus-sample
+    env: static
+    rootDir: my-website
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    pullRequestPreviewsEnabled: true
