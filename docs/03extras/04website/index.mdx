@@ -3,6 +3,7 @@ sidebar_position: 4
 ---
 
 import DocCardList from "@theme/DocCardList";
+import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/InteractiveCodeEditor";
 
 # このシケプリの作られ方
 
@@ -12,6 +13,86 @@ Windows を使っている場合は、[WSL をインストールの項](/docs/03
 
 ここでは、このシケプリの作り方を紹介しておきます。
 
-次の手順に沿うことで、このシケプリと全く同じようなものを作成することができます。
+## HTML
+
+Web サイトは、HTML を用いて作るのが一般的です。以下に HTML を用いた `Hello World!` の例を載せます。
+
+<InteractiveCodeEditor
+  language="html"
+  defaultValue={`
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Hello World!</p>
+  </body>
+</html>
+`}
+/>
+
+さらに、見た目を整えることのできる CSS と動きを与えることのできる JavaScript を使うと次のような表現も可能です。
+
+<InteractiveCodeEditor
+  language="HTML-CSS-JavaScript"
+  defaultHTML={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div id="minus-button">-</div>
+      <div id="counter">0</div>
+      <div id="plus-button">+</div>
+    </div>
+  </body>
+  <script src="./script.js"></script>
+</html>\
+`}
+  defaultCSS={`\
+#container {
+  display: flex;
+}
+#plus-button,
+#minus-button,
+#counter {
+  height: 100px;
+  width: 150px;
+  font-size: 50px;
+  text-align: center;
+  line-height: 100px;
+  border: 2px solid #aaa;
+  margin: 0px 1px;
+}\
+`}
+  defaultJavaScript={`\
+let count = 0;
+const plusButton = document.getElementById("plus-button");
+const minusButton = document.getElementById("minus-button");
+const counter = document.getElementById("counter");
+plusButton.onclick = () => {
+    count++;
+    counter.textContent = count;
+};
+minusButton.onclick = () => {
+    count--;
+    counter.textContent = count;
+};\
+`}
+/>
+
+## このシケプリの作られ方
+
+先程のようにすれば作ることができますが、あまりにも大変なのでこのシケプリではより簡単に Web サイトを作れる Docusaurus を使いました。
+
+以降の手順に沿うことで、このシケプリと全く同じようなものを作成することができます。
 
 <DocCardList />
