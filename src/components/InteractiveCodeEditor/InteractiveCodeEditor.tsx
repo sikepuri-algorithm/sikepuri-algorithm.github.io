@@ -65,6 +65,7 @@ export default function InteractiveCodeEditor({
               width="100%"
               height="100%"
               srcDoc={language === "html" ? code : css + md.render(code)}
+              title="Live Code"
             ></iframe>
           </BrowserWindow>
         </div>
