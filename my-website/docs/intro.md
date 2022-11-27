@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Hello from Docusaurus
 
+$$
+a^2+b^2=c^2
+$$
+
 Let's discover **Docusaurus in less than 5 minutes**.
 
 ## Getting Started
