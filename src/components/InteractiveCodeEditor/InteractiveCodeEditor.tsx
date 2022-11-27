@@ -50,7 +50,7 @@ export default function InteractiveCodeEditor({
         <div className={styles.playgroundHeader}>ライブエディター</div>
         <div className={styles.playgroundEditor}>
           <Editor
-            height="20vh"
+            height="200px"
             defaultLanguage={language}
             defaultValue={defaultValue}
             onChange={(value) => {
@@ -60,7 +60,7 @@ export default function InteractiveCodeEditor({
         </div>
         <div className={styles.playgroundHeader}>結果</div>
         <div className={styles.playgroundPreview}>
-          <BrowserWindow>
+          <BrowserWindow minHeight={200}>
             <iframe
               width="100%"
               height="100%"
