@@ -84,24 +84,18 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
 
 <InteractiveCodeEditor
   language="markdown"
-  defaultValue={"
-- アイテム 1\n\
-- アイテム 2\n\
-- アイテム 3\
-"}
+  defaultValue={`- アイテム 1
+- アイテム 2
+- アイテム 3`}
 />
 
 6. 番号付き箇条書きは次のようにして書けます。
 
 <InteractiveCodeEditor
   language="markdown"
-  defaultValue={
-    "\
-1. アイテム 1\n\
-1. アイテム 2\n\
-1. アイテム 3\
-"
-  }
+  defaultValue={`1. アイテム 1
+1. アイテム 2
+1. アイテム 3`}
 />
 
 7. バッククォート（ `` ` `` ）で囲むことでインラインコードを表示することができます。
@@ -112,13 +106,9 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
 
 <InteractiveCodeEditor
   language="markdown"
-  defaultValue={
-    '\
-```python\n\
-print("Hello World!")\n\
-```\
-'
-  }
+  defaultValue={`\`\`\`python
+print("Hello World!")
+\`\`\``}
 />
 
 9. リンクは次のようにして表すことができます。
