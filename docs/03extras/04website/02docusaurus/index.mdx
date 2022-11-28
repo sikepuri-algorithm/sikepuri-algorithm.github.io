@@ -65,22 +65,22 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
      defaultValue={"# レベル 1 の見出し"}
    />
 
-2. `##` は `#` の一個下の見出しです。
+1. `##` は `#` の一個下の見出しです。
 
    <InteractiveCodeEditor
      language="markdown"
      defaultValue={"## レベル 2 の見出し"}
    />
 
-3. `**` で強調することができます。
+1. `**` で強調することができます。
 
    <InteractiveCodeEditor language="markdown" defaultValue={"**強調**"} />
 
-4. `>` とすることで引用することができます。
+1. `>` とすることで引用することができます。
 
    <InteractiveCodeEditor language="markdown" defaultValue={"> 引用"} />
 
-5. 箇条書きは次のようにして書けます。
+1. 箇条書きは次のようにして書けます。
 
 <InteractiveCodeEditor
   language="markdown"
@@ -91,7 +91,7 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
 `}
 />
 
-6. 番号付き箇条書きは次のようにして書けます。
+1. 番号付き箇条書きは次のようにして書けます。
 
 <InteractiveCodeEditor
   language="markdown"
@@ -102,11 +102,11 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
 `}
 />
 
-7. バッククォート（ `` ` `` ）で囲むことでインラインコードを表示することができます。
+1. バッククォート（ `` ` `` ）で囲むことでインラインコードを表示することができます。
 
 <InteractiveCodeEditor language="markdown" defaultValue={"`コードテキスト`"} />
 
-8. バッククォート 3 つで、コードブロックを表示することができます。
+1. バッククォート 3 つで、コードブロックを表示することができます。
 
 <InteractiveCodeEditor
   language="markdown"
@@ -117,7 +117,7 @@ print("Hello World!")
 `}
 />
 
-9. リンクは次のようにして表すことができます。
+1. リンクは次のようにして表すことができます。
 
 <InteractiveCodeEditor
   language="markdown"
@@ -126,7 +126,7 @@ print("Hello World!")
   }
 />
 
-10. 画像は次のようにして表示することができます。もちろん相対パスも使えます。
+1. 画像は次のようにして表示することができます。もちろん相対パスも使えます。
 
 <InteractiveCodeEditor
   language="markdown"
@@ -135,11 +135,26 @@ print("Hello World!")
   }
 />
 
-11. 実は、Markdown の中には HTML も書くことができます。
+1. 実は、Markdown の中には HTML も書くことができます。
 
 <InteractiveCodeEditor
   language="markdown"
   defaultValue={'<button type="button">ボタン</button>'}
+/>
+
+1. 多くの場合、数式を書くこともできます。
+
+<InteractiveCodeEditor
+  language="markdown"
+  defaultValue={`\
+$a^2 + b^2 = c^2$
+$$
+\\frac{\\pi}{2} =
+  \\left( \\int_{0}^{\\infty} \\frac{\\sin x}{\\sqrt{x}} dx \\right)^2 =
+  \\sum_{k=0}^{\\infty} \\frac{(2k)!}{2^{2k}(k!)^2} \\frac{1}{2k+1} =
+  \\prod_{k=1}^{\\infty} \\frac{4k^2}{4k^2 - 1}
+$$\
+  `}
 />
 
 :::
