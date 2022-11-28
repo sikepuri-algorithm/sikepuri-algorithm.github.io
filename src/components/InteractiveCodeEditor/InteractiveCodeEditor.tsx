@@ -68,7 +68,7 @@ export default function InteractiveCodeEditor({
                   defaultLanguage="html"
                   defaultValue={defaultHTML}
                   onChange={(value) => {
-                    setCode(value);
+                    setHTML(value);
                   }}
                 />
               </TabItem>
@@ -78,7 +78,7 @@ export default function InteractiveCodeEditor({
                   defaultLanguage="css"
                   defaultValue={defaultCSS}
                   onChange={(value) => {
-                    setCode(value);
+                    setCSS(value);
                   }}
                 />
               </TabItem>
@@ -88,7 +88,7 @@ export default function InteractiveCodeEditor({
                   defaultLanguage="javascript"
                   defaultValue={defaultJavaScript}
                   onChange={(value) => {
-                    setCode(value);
+                    setJS(value);
                   }}
                 />
               </TabItem>
