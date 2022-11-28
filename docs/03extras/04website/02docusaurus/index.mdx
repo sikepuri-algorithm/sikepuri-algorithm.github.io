@@ -58,89 +58,89 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
 :::info
 先程、Docusaurus は Markdown という形式で書くことができると書きました。ここで、Markdown 記法について少し紹介しておきます。より詳しいことは、自分で調べてみてください。
 
-1. `#` と書くことで見出しを書くことができます。
+1.  `#` と書くことで見出しを書くことができます。
 
-   <InteractiveCodeEditor
-     language="markdown"
-     defaultValue={"# レベル 1 の見出し"}
-   />
+    <InteractiveCodeEditor
+      language="markdown"
+      defaultValue={"# レベル 1 の見出し"}
+    />
 
-2. `##` は `#` の一個下の見出しです。
+1.  `##` は `#` の一個下の見出しです。
 
-   <InteractiveCodeEditor
-     language="markdown"
-     defaultValue={"## レベル 2 の見出し"}
-   />
+    <InteractiveCodeEditor
+      language="markdown"
+      defaultValue={"## レベル 2 の見出し"}
+    />
 
-3. `**` で強調することができます。
+1.  `**` で強調することができます。
 
-   <InteractiveCodeEditor language="markdown" defaultValue={"**強調**"} />
+    <InteractiveCodeEditor language="markdown" defaultValue={"**強調**"} />
 
-4. `>` とすることで引用することができます。
+1.  `>` とすることで引用することができます。
 
-   <InteractiveCodeEditor language="markdown" defaultValue={"> 引用"} />
+    <InteractiveCodeEditor language="markdown" defaultValue={"> 引用"} />
 
-5. 箇条書きは次のようにして書けます。
+1.  箇条書きは次のようにして書けます。
 
-<InteractiveCodeEditor
-  language="markdown"
-  defaultValue={`\
-- アイテム 1
-- アイテム 2
-- アイテム 3\
-`}
-/>
+    <InteractiveCodeEditor
+      language="markdown"
+      defaultValue={"- アイテム 1\n- アイテム 2\n- アイテム 3"}
+    />
 
-6. 番号付き箇条書きは次のようにして書けます。
+1.  番号付き箇条書きは次のようにして書けます。
 
-<InteractiveCodeEditor
-  language="markdown"
-  defaultValue={`\
-1. アイテム 1
-1. アイテム 2
-1. アイテム 3\
-`}
-/>
+    <InteractiveCodeEditor
+      language="markdown"
+      defaultValue={"1.  アイテム 1\n1.  アイテム 2\n1.  アイテム 3"}
+    />
 
-7. バッククォート（ `` ` `` ）で囲むことでインラインコードを表示することができます。
+1.  バッククォート（ `` ` `` ）で囲むことでインラインコードを表示することができます。
 
-<InteractiveCodeEditor language="markdown" defaultValue={"`コードテキスト`"} />
+    <InteractiveCodeEditor
+      language="markdown"
+      defaultValue={"`コードテキスト`"}
+    />
 
-8. バッククォート 3 つで、コードブロックを表示することができます。
+1.  バッククォート 3 つで、コードブロックを表示することができます。
 
-<InteractiveCodeEditor
-  language="markdown"
-  defaultValue={`\
-\`\`\`python
-print("Hello World!")
-\`\`\`\
-`}
-/>
+    <InteractiveCodeEditor
+      language="markdown"
+      defaultValue={'```python\nprint("Hello World!")\n```'}
+    />
 
-9. リンクは次のようにして表すことができます。
+1.  リンクは次のようにして表すことができます。
 
-<InteractiveCodeEditor
-  language="markdown"
-  defaultValue={
-    "[Introduction to Algorithms](https://sikepuri-algorithm.github.io/)"
-  }
-/>
+    <InteractiveCodeEditor
+      language="markdown"
+      defaultValue={
+        "[Introduction to Algorithms](https://sikepuri-algorithm.github.io/)"
+      }
+    />
 
-10. 画像は次のようにして表示することができます。もちろん相対パスも使えます。
+1.  画像は次のようにして表示することができます。もちろん相対パスも使えます。
 
-<InteractiveCodeEditor
-  language="markdown"
-  defaultValue={
-    "![Introduction to Algorithms](https://sikepuri-algorithm.github.io/img/favicon.ico)"
-  }
-/>
+    <InteractiveCodeEditor
+      language="markdown"
+      defaultValue={
+        "![Introduction to Algorithms](https://sikepuri-algorithm.github.io/img/favicon.ico)"
+      }
+    />
 
-11. 実は、Markdown の中には HTML も書くことができます。
+1.  実は、Markdown の中には HTML も書くことができます。
 
-<InteractiveCodeEditor
-  language="markdown"
-  defaultValue={'<button type="button">ボタン</button>'}
-/>
+    <InteractiveCodeEditor
+      language="markdown"
+      defaultValue={'<button type="button">ボタン</button>'}
+    />
+
+1.  多くの場合、数式を書くこともできます。
+
+    <InteractiveCodeEditor
+      language="markdown"
+      defaultValue={
+        "$a^2 + b^2 = c^2$\n$$\n\\frac{\\pi}{2} =\n \\left( \\int_{0}^{\\infty} \\frac{\\sin x}{\\sqrt{x}} dx \\right)^2 =\n \\sum_{k=0}^{\\infty} \\frac{(2k)!}{2^{2k}(k!)^2} \\frac{1}{2k+1} =\n \\prod_{k=1}^{\\infty} \\frac{4k^2}{4k^2 - 1}\n$$"
+      }
+    />
 
 :::
 
@@ -161,6 +161,201 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
 
 ```mdx live
 <LifeGame />
+```
+
+:::
+
+:::tip
+Docusaurus で数式を表示するには、以下のようにします。[Docusaurus の公式サイトの説明](https://docusaurus.io/docs/markdown-features/math-equations)を参考にしてください。
+
+1.  ターミナルで以下を実行して、プラグインをインストールします。
+
+    ```shell
+    npm install --save remark-math@3 rehype-katex@5 hast-util-is-element@1.1.0
+    ```
+
+1.  `docusaurus.config.js` の先頭に以下を追記します。これで、数式のプラグインがインポートできます。
+
+    ```javascript title="docusaurus.config.js"
+    const math = require("remark-math");
+    const katex = require("rehype-katex");
+    ```
+
+1.  `presets` オプションに以下を追記します。`docs` の中などに書くと良いでしょう。これで、`docs` の中でプラグインを使えます。
+
+    ```javascript title="docusaurus.config.js"
+    remarkPlugins: [math],
+    rehypePlugins: [katex],
+    ```
+
+1.  以下のようにスタイルシートの設定を追記します。
+
+    ```javascript title="docusaurus.config.js"
+    stylesheets: [
+      {
+        href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+        type: 'text/css',
+        integrity:
+          'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+        crossorigin: 'anonymous',
+      },
+    ],
+    ```
+
+以上のようにすると、次のようになります。よく分からなければ、以下を自分の `docusaurus.config.js` に貼り付けると良いでしょう。
+
+```javascript title="docusaurus.config.js"
+// @ts-check
+// Note: type annotations allow type checking and IDEs autocompletion
+
+// highlight-start
+const math = require("remark-math");
+const katex = require("rehype-katex");
+// highlight-end
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+
+/** @type {import('@docusaurus/types').Config} */
+const config = {
+  title: "My Site",
+  tagline: "Dinosaurs are cool",
+  url: "https://your-docusaurus-test-site.com",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
+
+  // GitHub pages deployment config.
+  // If you aren't using GitHub pages, you don't need these.
+  organizationName: "facebook", // Usually your GitHub org/user name.
+  projectName: "docusaurus", // Usually your repo name.
+
+  // Even if you don't use internalization, you can use this field to set useful
+  // metadata like html lang. For example, if your site is Chinese, you may want
+  // to replace "en" with "zh-Hans".
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en"],
+  },
+
+  presets: [
+    [
+      "classic",
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
+        docs: {
+          sidebarPath: require.resolve("./sidebars.js"),
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          // highlight-start
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
+          // highlight-end
+        },
+        blog: {
+          showReadingTime: true,
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+        },
+        theme: {
+          customCss: require.resolve("./src/css/custom.css"),
+        },
+      }),
+    ],
+  ],
+  // highlight-start
+  stylesheets: [
+    {
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+      type: "text/css",
+      integrity:
+        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+      crossorigin: "anonymous",
+    },
+  ],
+  // highlight-end
+
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      navbar: {
+        title: "My Site",
+        logo: {
+          alt: "My Site Logo",
+          src: "img/logo.svg",
+        },
+        items: [
+          {
+            type: "doc",
+            docId: "intro",
+            position: "left",
+            label: "Tutorial",
+          },
+          { to: "/blog", label: "Blog", position: "left" },
+          {
+            href: "https://github.com/facebook/docusaurus",
+            label: "GitHub",
+            position: "right",
+          },
+        ],
+      },
+      footer: {
+        style: "dark",
+        links: [
+          {
+            title: "Docs",
+            items: [
+              {
+                label: "Tutorial",
+                to: "/docs/intro",
+              },
+            ],
+          },
+          {
+            title: "Community",
+            items: [
+              {
+                label: "Stack Overflow",
+                href: "https://stackoverflow.com/questions/tagged/docusaurus",
+              },
+              {
+                label: "Discord",
+                href: "https://discordapp.com/invite/docusaurus",
+              },
+              {
+                label: "Twitter",
+                href: "https://twitter.com/docusaurus",
+              },
+            ],
+          },
+          {
+            title: "More",
+            items: [
+              {
+                label: "Blog",
+                to: "/blog",
+              },
+              {
+                label: "GitHub",
+                href: "https://github.com/facebook/docusaurus",
+              },
+            ],
+          },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      },
+      prism: {
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+      },
+    }),
+};
+
+module.exports = config;
 ```
 
 :::

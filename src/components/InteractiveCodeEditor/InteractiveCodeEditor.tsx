@@ -3,6 +3,7 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Editor from "@monaco-editor/react";
 import MarkdownIt from "markdown-it";
+import mk from "markdown-it-katex";
 import BrowserWindow from "@site/src/components/BrowserWindow";
 import styles from "./styles.module.css";
 
@@ -24,7 +25,8 @@ export default function InteractiveCodeEditor({
   const [css, setCSS] = useState<string>(defaultCSS);
   const [js, setJS] = useState<string>(defaultJavaScript);
   const md = new MarkdownIt({ html: true, linkify: true, typographer: true });
-  const markdownCSS = `
+  md.use(mk);
+  const markdownDefaultValue = `
 <style>
   blockquote {
     margin: 0;
@@ -54,6 +56,8 @@ export default function InteractiveCodeEditor({
     padding: 20px 5px;
   }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"/>
 `;
   return (
     <>
@@ -114,7 +118,7 @@ export default function InteractiveCodeEditor({
                 language === "html"
                   ? code
                   : language === "markdown"
-                  ? markdownCSS + md.render(code)
+                  ? markdownDefaultValue + md.render(code)
                   : `<style>${css}</style>${html}<script>${js}</script>`
               }
               title="Live Code"
