@@ -6,10 +6,28 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import installTexLive from "./install_texlive.mov";
 import typesetTex from "./typeset_tex.mp4";
+import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/InteractiveCodeEditor";
 
 # $\LaTeX$ の導入
 
 なぜか周りに $\LaTeX$ を使っている人が多いので、$\LaTeX$ 環境の構築方法を解説しておきます。
+
+## LaTeX のプレイグラウンド
+
+$\LaTeX$ のプレイグラウンドを作ってみました。機能には制限がありますが、雰囲気は味わえるかと思います。
+
+<InteractiveCodeEditor
+  language="latex"
+  defaultValue={`\
+\\documentclass{article}
+\\begin{document}
+  Hello World!
+  $$
+  a^2 + b^2 = c^2
+  $$
+\\end{document}\
+`}
+></InteractiveCodeEditor>
 
 ## TeXLive のインストール
 

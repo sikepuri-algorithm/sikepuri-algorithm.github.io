@@ -14,7 +14,7 @@ export default function InteractiveCodeEditor({
   defaultCSS,
   defaultJavaScript,
 }: {
-  language: "html" | "markdown" | "HTML-CSS-JavaScript";
+  language: "html" | "markdown" | "HTML-CSS-JavaScript" | "latex";
   defaultValue?: string;
   defaultHTML?: string;
   defaultCSS?: string;
@@ -59,6 +59,28 @@ export default function InteractiveCodeEditor({
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"/>
 `;
+
+  function latexRender(value: string) {
+    const header = `\
+    <!DOCTYPE html>
+    <html lang="ja">
+      <head>
+        <meta charset="UTF-8" />
+        <script type="module">
+          import { LaTeXJSComponent } from "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs";
+          customElements.define("latex-js", LaTeXJSComponent);
+        </script>
+      </head>
+      <body>
+        <latex-js baseURL="https://cdn.jsdelivr.net/npm/latex.js/dist/">\
+  `;
+    const footer = `\
+        </latex-js>
+      </body>
+    </html>\
+  `;
+    return header + value + footer;
+  }
   return (
     <>
       <div className={styles.playgroundContainer}>
@@ -119,6 +141,8 @@ export default function InteractiveCodeEditor({
                   ? code
                   : language === "markdown"
                   ? markdownDefaultValue + md.render(code)
+                  : language === "latex"
+                  ? latexRender(code)
                   : `<style>${css}</style>${html}<script>${js}</script>`
               }
               title="Live Code"
