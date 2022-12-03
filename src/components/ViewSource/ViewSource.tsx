@@ -1,10 +1,14 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
-import usePathname from "../usePathname";
 import CodeBlock from "@theme/CodeBlock";
 import JupyterViewer from "react-jupyter-notebook";
 import OpenInColab from "../OpenInColab/OpenInColab";
 import "./styles.css";
+
+function getSources(json) {
+  return json.cells
+    .filter((cell) => cell.cell_type === "code")
+    .map((cell) => cell.source.join(""));
+}
 
 /**
  * ipynbファイルからソースコードと出力、OpenInColabへのリンクを生成
@@ -20,23 +24,15 @@ export default function ViewSource({
   path: string;
   noOutput?: boolean;
 }) {
-  const pathname = usePathname();
   const [sources, setSources] = useState<string[]>([]);
   const [content, setContent] = useState();
   useEffect(() => {
-    async function tmp() {
-      // 該当のipynbファイルをjson形式でとってくる
-      const json = await import(
-        `/docs/${pathname.slice(6)}${path.slice(0, -6)}.json`
-      );
-      setSources(
-        json.cells
-          .filter((cell) => cell.cell_type === "code")
-          .map((cell) => cell.source.join(""))
-      );
-      setContent(json);
-    }
-    tmp();
+    fetch(path)
+      .then((response) => response.json())
+      .then((json) => {
+        setSources(getSources(json));
+        setContent(json);
+      });
   }, []);
   return (
     <>

@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<div style="text-align: center">
 <img src="./static/img/logo-black.svg" alt="logo" height="200px" >
 </div>
 
@@ -27,12 +27,6 @@ pipenv run pre-commit install
 ```
 
 ## 開発
-
-```shell
-npm run watch
-```
-
-このコマンドは、`ipynb` ファイルを読み取るために、自動的に `.ipynb` ファイルを `json` ファイルに変換します。
 
 ```shell
 npm start

@@ -88,7 +88,7 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
 
 早速、ライフゲームの Python でのプログラムを見てみましょう。この後、詳しく解説するので、分からなくても構いません。`Open in Colab` と書いてあるボタンを押してから実行して、実際に動く様子を確認してみてください。
 
-<ViewSource path="_samples/life_game.ipynb" noOutput />
+<ViewSource path="/life-game/life_game.ipynb" noOutput />
 
 それでは、実際に詳しく見ていきましょう。
 
@@ -108,17 +108,17 @@ board = [[1, 1, 0],
 
 関数の引数に `board`、`i`、`j` があるとしましょう。このとき、$i-1$ 行目から $i+1$ 行目でありかつ $j-1$ 列目から $j+1$ 列目であるセルの値の和から、$i$ 行 $j$ 列のセルの値（つまり自分の値）を引けばできそうです。次のようになると思えます。
 
-<ViewSource path="_samples/count_neighbors_draft.ipynb" />
+<ViewSource path="/life-game/count_neighbors_draft.ipynb" />
 
 しかし、実はこれではセルが端にある時にエラーが出てしまいます。そこで、セルが端にある時も考慮してプログラムを作ると、次のようになります。
 
-<ViewSource path="_samples/count_neighbors.ipynb" />
+<ViewSource path="/life-game/count_neighbors.ipynb" />
 
 <!-- 実は、あまりきれいではありませんが、もっと簡単な方法があります。次のようにしても同じことができます。 -->
 
 次に、次の世代においてあるセルが生きているかを確認する関数を作ってみましょう。先程、あるセルの周りに生きたセルが何個あるのかを求める関数を作ったので、それを使います。関数の引数は、先程のように `board`、`i`、`j` で良いでしょう。後は、ライフゲームの定義通りにプログラムを書いていけばよいでしょう。
 
-<ViewSource path="_samples/is_alive.ipynb" />
+<ViewSource path="/life-game/is_alive.ipynb" />
 
 次に、次の世代の盤面を計算する関数を考えます。
 引数は `board` として、次の世代の様子を格納する配列を作ってそこに結果を格納していきましょう。配列の作り方はいろいろありますが、ここでは大学が用意した ita ライブラリを使いましょう。ita ライブラリを使うには、プログラムの冒頭に次のように書いてライブラリをインポートする必要があります。
@@ -139,7 +139,7 @@ ita.array.make2d(行数,列数)
 
 これらを使ってあげると、次のようなプログラムになるはずです。
 
-<ViewSource path="_samples/next_generation.ipynb" noOutput />
+<ViewSource path="/life-game/next_generation.ipynb" noOutput />
 
 次の世代の盤面を計算することができたので、次は指定した世代までの盤面を計算する関数を作りましょう。
 
@@ -151,7 +151,7 @@ ita.array.make1d(要素数)
 
 これを用いて、引数を `board` と世代数 `n` にすると、次のようにプログラムを書けます。
 
-<ViewSource path="_samples/life_game_func.ipynb" noOutput />
+<ViewSource path="/life-game/life_game_func.ipynb" noOutput />
 
 後はこれをアニメーションにしてあげれば、完成です。
 
@@ -175,4 +175,4 @@ ita.plot.animation_show(三次元配列)
 
 今までのをすべて合わせると、次のようになって冒頭のプログラムができました。
 
-<ViewSource path="_samples/life_game.ipynb" noOutput />
+<ViewSource path="/life-game/life_game.ipynb" noOutput />

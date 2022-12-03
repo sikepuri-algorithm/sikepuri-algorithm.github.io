@@ -1,6 +1,3 @@
-/docs/**/*.json
-!_category_.json
-
 # Dependencies
 /node_modules
 
