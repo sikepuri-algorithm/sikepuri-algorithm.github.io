@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<div style="text-align: center">
 <img src="./static/img/logo-black.svg" alt="logo" height="200px" >
 </div>
 
