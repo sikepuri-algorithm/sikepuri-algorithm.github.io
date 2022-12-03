@@ -1,40 +1,76 @@
 import React, { useState, useEffect } from "react";
+import Convert from "ansi-to-html";
 import CodeBlock from "@theme/CodeBlock";
 import OpenInColab from "../OpenInColab/OpenInColab";
 import styles from "./styles.module.css";
 
+const convert = new Convert({ newline: true });
 type MarkdownCell = { cell_type: "markdown"; source: string };
-type CodeCell = { cell_type: "code"; source: string; outputs: string };
+type CodeCell = { cell_type: "code"; source: string; outputs: JSX.Element[] };
 type NotebookData = [...(MarkdownCell | CodeCell)[]];
 
-// \n => <br/>
-function getOutputs(outputs): string {
-  let html = "";
-  for (const output of outputs) {
+function toIframe(key, input, error = false) {
+  return (
+    <div
+      className={styles.iframeWrapper}
+      style={{ backgroundColor: error ? "red" : "#eee" }}
+      key={key}
+    >
+      <iframe width="100%" srcDoc={input} title="Code Output" />
+    </div>
+  );
+}
+
+function toHTML(type: "text" | "html" | "png" | "js", input) {
+  switch (type) {
+    case "text":
+      return convert.toHtml(input);
+    case "html":
+      return input;
+    case "png":
+      return `<img src="data:image/png;base64,${input}"></img>`;
+    case "js":
+      return `<script>${input}</script>`;
+  }
+}
+
+function getOutput(outputs): JSX.Element[] {
+  const result: JSX.Element[] = [];
+  outputs.forEach((output, i) => {
     switch (output.output_type) {
       case "stream":
-        html += output.text.join("");
+        result.push(toIframe(i, toHTML("text", output.text.join(""))));
         break;
-      case "execute_result":
+      case "execute_result": {
+        const item = [];
         if (output.data["text/plain"] != null)
-          html += output.data["text/plain"].join("");
-        if (output.data["text/html"]) html += output.data["text/html"].join("");
-        break;
-      case "error":
-        html += output.traceback.join("");
-        break;
-      case "display_data":
-        if (output.data["text/plain"] != null)
-          html += output.data["text/plain"].join("");
+          item.push(toHTML("text", output.data["text/plain"].join("")));
         if (output.data["text/html"] != null)
-          html += output.data["text/html"].join("");
-        if (output.data["application/javascript"] != null)
-          html += output.data["application/javascript"];
-        if (output.data["image/png"] != null) html += output.data["image/png"];
+          item.push(toHTML("html", output.data["text/html"].join("")));
+        result.push(toIframe(i, item.join("")));
         break;
+      }
+      case "error":
+        result.push(
+          toIframe(i, toHTML("text", output.traceback.join("")), true),
+        );
+        break;
+      case "display_data": {
+        const item = [];
+        if (output.data["text/plain"] != null)
+          item.push(toHTML("text", output.data["text/plain"].join("")));
+        if (output.data["text/html"] != null)
+          item.push(toHTML("html", output.data["text/html"].join("")));
+        if (output.data["application/javascript"] != null)
+          item.push(toHTML("js", output.data["application/javascript"]));
+        if (output.data["image/png"] != null)
+          item.push(toHTML("png", output.data["image/png"]));
+        result.push(toIframe(i, item.join("")));
+        break;
+      }
     }
-  }
-  return html;
+  });
+  return result;
 }
 
 function getNotebookData(notebook): NotebookData {
@@ -51,7 +87,7 @@ function getNotebookData(notebook): NotebookData {
         notebookData.push({
           cell_type: "code",
           source: cell.source.length === 0 ? null : cell.source.join(""),
-          outputs: cell.outputs.length === 0 ? null : getOutputs(cell.outputs),
+          outputs: cell.outputs.length === 0 ? null : getOutput(cell.outputs),
         });
         break;
     }
@@ -91,15 +127,7 @@ export default function ViewSource({
               {cell.source != null && (
                 <CodeBlock language="python">{cell.source}</CodeBlock>
               )}
-              {!noOutput && cell.outputs != null && (
-                <div className={styles.iframeWrapper}>
-                  <iframe
-                    width="100%"
-                    srcDoc={cell.outputs}
-                    title="Code Output"
-                  />
-                </div>
-              )}
+              {!noOutput && cell.outputs != null && cell.outputs}
             </>
           )}
         </React.Fragment>
