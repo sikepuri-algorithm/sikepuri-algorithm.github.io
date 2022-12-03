@@ -13,48 +13,48 @@ Python では、文字列や数字以外にも論理値という真か偽かを�
 
 下のプログラムでは、`True` と `False` を表示しています。`"True"`、`"False"` のようにダブルクォーテーション（ `"` ）がついていないことに気をつけましょう。
 
-<ViewSource path="_samples/true.ipynb" />
+<ViewSource path="/if/true.ipynb" />
 
-<ViewSource path="_samples/false.ipynb" />
+<ViewSource path="/if/false.ipynb" />
 
 ## 比較演算子
 
 Python では、次のように比較演算子を用いて真偽を判定することができます。次のプログラムでは、`age > 20` が偽なので、論理値である `False` が返されています。
 
-<ViewSource path="_samples/comparison_operator.ipynb" />
+<ViewSource path="/if/comparison_operator.ipynb" />
 
 他にも様々な比較演算子があります。
 
 | 比較演算子 | 説明       | 例                                             |
 | ---------- | ---------- | ---------------------------------------------- |
-| `==`       | 等しい     | <ViewSource path="_samples/eq.ipynb" />        |
-| `!=`       | 等しくない | <ViewSource path="_samples/neq.ipynb" />       |
-| `<`        | 小なり     | <ViewSource path="_samples/less_than.ipynb" /> |
-| `<=`       | 以下       | <ViewSource path="_samples/below.ipynb" />     |
-| `>`        | 大なり     | <ViewSource path="_samples/greater.ipynb" />   |
-| `>=`       | 以上       | <ViewSource path="_samples/over.ipynb" />      |
+| `==`       | 等しい     | <ViewSource path="/if/eq.ipynb" />        |
+| `!=`       | 等しくない | <ViewSource path="/if/neq.ipynb" />       |
+| `<`        | 小なり     | <ViewSource path="/if/less_than.ipynb" /> |
+| `<=`       | 以下       | <ViewSource path="/if/below.ipynb" />     |
+| `>`        | 大なり     | <ViewSource path="/if/greater.ipynb" />   |
+| `>=`       | 以上       | <ViewSource path="/if/over.ipynb" />      |
 
 実は、Python では数学のように複数の比較演算子を使った条件も書くことができます。他の多くのプログラミング言語はこのような表記はできません。
 
-<ViewSource path="_samples/comparison_operator2.ipynb" />
+<ViewSource path="/if/comparison_operator2.ipynb" />
 
 ## 論理演算子
 
 論理値に対して、論理演算子を使ってさらに複雑な計算をすることができます。
 
-<ViewSource path="_samples/logical_operator.ipynb" />
+<ViewSource path="/if/logical_operator.ipynb" />
 
 このプログラムは、`>=` 一つを使って書き換えた次と同じです。
 
-<ViewSource path="_samples/logical_operator2.ipynb" />
+<ViewSource path="/if/logical_operator2.ipynb" />
 
 他にも様々な論理演算子があります。
 
 | 論理演算子 | 説明   | 例                                       |
 | ---------- | ------ | ---------------------------------------- |
-| `not`      | 否定   | <ViewSource path="_samples/not.ipynb" /> |
-| `and`      | かつ   | <ViewSource path="_samples/and.ipynb" /> |
-| `or`       | または | <ViewSource path="_samples/or.ipynb" />  |
+| `not`      | 否定   | <ViewSource path="/if/not.ipynb" /> |
+| `and`      | かつ   | <ViewSource path="/if/and.ipynb" /> |
+| `or`       | または | <ViewSource path="/if/or.ipynb" />  |
 
 ## 条件分岐
 
@@ -62,7 +62,7 @@ Python では、次のように比較演算子を用いて真偽を判定する�
 
 年齢に応じて、飲酒可能な年齢かを判定するプログラムを作りましょう。しかし、今までに学習した内容ではこのようなプログラムを作ることはできそうにありません。このような処理をするために、if 文が使えます。飲酒可能な年齢かを判定するプログラムを見てみましょう。
 
-<ViewSource path="_samples/alcohol.ipynb" />
+<ViewSource path="/if/alcohol.ipynb" />
 
 if 文は、次のようにして作ることができます。
 条件式には、先程の比較演算子や論理演算子が使えます。
@@ -79,7 +79,7 @@ if 条件式:
 
 未成年か成人かを判定するプログラムを作ってみましょう。
 
-<ViewSource path="_samples/legal_age.ipynb" />
+<ViewSource path="/if/legal_age.ipynb" />
 
 if ~ else 文の構文は次のとおりです。
 
@@ -96,7 +96,7 @@ else:
 
 選挙権を判定するプログラムを作ってみましょう。
 
-<ViewSource path="_samples/the_right_to_vote.ipynb" />
+<ViewSource path="/if/the_right_to_vote.ipynb" />
 
 if ~ elif ~ else 文の構文は次のとおりです。
 
@@ -114,17 +114,17 @@ else:
 絶対値を求めるプログラムを作ってみましょう。
 
 <Answer>
-<ViewSource path="_samples/abs.ipynb" />
+<ViewSource path="/if/abs.ipynb" />
 
 別解
 
-<ViewSource path="_samples/abs2.ipynb" />
+<ViewSource path="/if/abs2.ipynb" />
 
 実は、組み込み関数で abs 関数があります。また、[math ライブラリの fabs 関数](https://docs.python.org/ja/3/library/math.html#math.fabs)もあります。
 
-<ViewSource path="_samples/abs_default.ipynb" />
+<ViewSource path="/if/abs_default.ipynb" />
 
-<ViewSource path="_samples/abs_math.ipynb" />
+<ViewSource path="/if/abs_math.ipynb" />
 
 </Answer>
 
@@ -134,5 +134,5 @@ else:
 与えられる配列を `[55, 32, 16, 51, 80, 19]` として実際に求めてみましょう。
 
 <Answer>
-  <ViewSource path="_samples/max.ipynb" />
+  <ViewSource path="/if/max.ipynb" />
 </Answer>
