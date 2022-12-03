@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import CodeBlock from "@theme/CodeBlock";
 import JupyterViewer from "react-jupyter-notebook";
