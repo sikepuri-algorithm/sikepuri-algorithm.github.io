@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import usePathname from "../usePathname";
 import styles from "./styles.module.css";
 
 /**
@@ -10,12 +9,11 @@ import styles from "./styles.module.css";
  */
 
 export default function OpenInColab({ path }) {
-  const pathname = usePathname();
   return (
     <>
       <div className={styles.root}>
         <a
-          href={`https://colab.research.google.com/github/sikepuri-algorithm/sikepuri-algorithm.github.io/blob/main${pathname}${path}`}
+          href={`https://colab.research.google.com/github/sikepuri-algorithm/sikepuri-algorithm.github.io/blob/main/static${path}`}
           target="_blank"
           rel="noreferrer"
         >
