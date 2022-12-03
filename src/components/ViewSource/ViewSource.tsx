@@ -1,13 +1,61 @@
 import React, { useState, useEffect } from "react";
 import CodeBlock from "@theme/CodeBlock";
-import JupyterViewer from "react-jupyter-notebook";
 import OpenInColab from "../OpenInColab/OpenInColab";
-import "./styles.css";
 
-function getSources(json) {
-  return json.cells
-    .filter((cell) => cell.cell_type === "code")
-    .map((cell) => cell.source.join(""));
+type MarkdownCell = { cell_type: "markdown"; source: string };
+type CodeCell = { cell_type: "code"; source: string; outputs: string };
+type NotebookData = [...(MarkdownCell | CodeCell)[]];
+
+// \n => <br/>
+function getOutputs(outputs): string {
+  let html = "";
+  for (const output of outputs) {
+    switch (output.output_type) {
+      case "stream":
+        html += output.text.join("");
+        break;
+      case "execute_result":
+        if (output.data["text/plain"] != null)
+          html += output.data["text/plain"].join("");
+        if (output.data["text/html"]) html += output.data["text/html"].join("");
+        break;
+      case "error":
+        html += output.traceback.join("");
+        break;
+      case "display_data":
+        if (output.data["text/plain"] != null)
+          html += output.data["text/plain"].join("");
+        if (output.data["text/html"] != null)
+          html += output.data["text/html"].join("");
+        if (output.data["application/javascript"] != null)
+          html += output.data["application/javascript"];
+        if (output.data["image/png"] != null) html += output.data["image/png"];
+        break;
+    }
+  }
+  return html;
+}
+
+function getNotebookData(notebook): NotebookData {
+  const notebookData: NotebookData = [];
+  for (const cell of notebook.cells) {
+    switch (cell.cell_type) {
+      case "markdown":
+        notebookData.push({
+          cell_type: "markdown",
+          source: cell.source.length === 0 ? null : cell.source.join(""),
+        });
+        break;
+      case "code":
+        notebookData.push({
+          cell_type: "code",
+          source: cell.source.length === 0 ? null : cell.source.join(""),
+          outputs: cell.outputs.length === 0 ? null : getOutputs(cell.outputs),
+        });
+        break;
+    }
+  }
+  return notebookData;
 }
 
 /**
@@ -24,30 +72,35 @@ export default function ViewSource({
   path: string;
   noOutput?: boolean;
 }) {
-  const [sources, setSources] = useState<string[]>([]);
-  const [content, setContent] = useState();
+  const [notebookData, setNotebookData] = useState<NotebookData>([]);
   useEffect(() => {
     fetch(path)
       .then((response) => response.json())
       .then((json) => {
-        setSources(getSources(json));
-        setContent(json);
+        setNotebookData(getNotebookData(json));
       });
   }, []);
   return (
     <>
-      {sources.map((source, i) => (
+      {notebookData.map((cell, i) => (
         <React.Fragment key={i}>
-          <CodeBlock language="python">{source}</CodeBlock>
+          {cell.cell_type === "markdown" && cell.source != null && cell.source}
+          {cell.cell_type === "code" && (
+            <>
+              {cell.source != null && (
+                <CodeBlock language="python">{cell.source}</CodeBlock>
+              )}
+              {!noOutput && cell.outputs != null && (
+                <iframe
+                  width="100%"
+                  srcDoc={cell.outputs}
+                  title="Code Output"
+                />
+              )}
+            </>
+          )}
         </React.Fragment>
       ))}
-      {content !== undefined && !noOutput && (
-        <JupyterViewer
-          rawIpynb={content}
-          language="python"
-          displaySource="hide"
-        />
-      )}
       <OpenInColab path={path} />
     </>
   );
