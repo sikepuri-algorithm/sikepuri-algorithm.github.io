@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import styles from "./styles.module.css";
 
@@ -8,7 +7,7 @@ import styles from "./styles.module.css";
  * @returns OpenInColabへのリンク
  */
 
-export default function OpenInColab({ path }) {
+export default function OpenInColab({ path }: { path: string }) {
   return (
     <>
       <div className={styles.root}>
