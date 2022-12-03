@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CodeBlock from "@theme/CodeBlock";
 import OpenInColab from "../OpenInColab/OpenInColab";
+import styles from "./styles.module.css";
 
 type MarkdownCell = { cell_type: "markdown"; source: string };
 type CodeCell = { cell_type: "code"; source: string; outputs: string };
@@ -91,11 +92,13 @@ export default function ViewSource({
                 <CodeBlock language="python">{cell.source}</CodeBlock>
               )}
               {!noOutput && cell.outputs != null && (
-                <iframe
-                  width="100%"
-                  srcDoc={cell.outputs}
-                  title="Code Output"
-                />
+                <div className={styles.iframeWrapper}>
+                  <iframe
+                    width="100%"
+                    srcDoc={cell.outputs}
+                    title="Code Output"
+                  />
+                </div>
               )}
             </>
           )}
