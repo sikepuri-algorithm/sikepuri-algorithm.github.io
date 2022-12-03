@@ -6,6 +6,12 @@ import JupyterViewer from "react-jupyter-notebook";
 import OpenInColab from "../OpenInColab/OpenInColab";
 import "./styles.css";
 
+function getSources(json) {
+  return json.cells
+    .filter((cell) => cell.cell_type === "code")
+    .map((cell) => cell.source.join(""));
+}
+
 /**
  * ipynbファイルからソースコードと出力、OpenInColabへのリンクを生成
  * @param param0 現在ファイルからのipynbへの相対パス
@@ -29,11 +35,7 @@ export default function ViewSource({
       const json = await import(
         `/docs/${pathname.slice(6)}${path.slice(0, -6)}.json`
       );
-      setSources(
-        json.cells
-          .filter((cell) => cell.cell_type === "code")
-          .map((cell) => cell.source.join(""))
-      );
+      setSources(getSources(json));
       setContent(json);
     }
     tmp();
