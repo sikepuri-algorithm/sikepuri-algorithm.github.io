@@ -28,7 +28,7 @@ export default function ViewSource({
   const [sources, setSources] = useState<string[]>([]);
   const [content, setContent] = useState();
   useEffect(() => {
-    fetch("/get-started/hello-world.ipynb")
+    fetch(path)
       .then((response) => response.json())
       .then((json) => {
         setSources(getSources(json));
