@@ -29,12 +29,6 @@ pipenv run pre-commit install
 ## 開発
 
 ```shell
-npm run watch
-```
-
-このコマンドは、`ipynb` ファイルを読み取るために、自動的に `.ipynb` ファイルを `json` ファイルに変換します。
-
-```shell
 npm start
 ```
 
