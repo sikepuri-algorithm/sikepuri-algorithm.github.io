@@ -15,13 +15,13 @@ $$
 V=331.5+0.6t
 $$
 
-<ViewSource path="_samples/sound-velocity.ipynb" />
+<ViewSource path="/variables/sound-velocity.ipynb" />
 
 一応できましたが、 $t$ を変えようとすると、（これぐらいならすぐできますが）いちいちプログラムを全て読み直さないといけません。
 
 しかし、Python では変数が使えます。変数は数値や文字列を入れられる箱のようなもので、任意の数値や文字列を格納することができます。そのため、変数を使うと、次のようにより簡単に記述できます。
 
-<ViewSource path="_samples/sound-velocity2.ipynb" />
+<ViewSource path="/variables/sound-velocity2.ipynb" />
 
 このようにすれば、例えば 10℃ ではなく 20℃ のときの音速を求めたくなったときに `t = 20` とするだけでよくなり、より簡単にプログラムを変更することができます。
 
@@ -29,7 +29,7 @@ $$
 Python では、数学とは違い `=` は右の結果を左の変数に代入するという意味です。
 そのため、次のようなプログラムを実行すると 2 が出力されます。
 
-<ViewSource path="_samples/substitution.ipynb" />
+<ViewSource path="/variables/substitution.ipynb" />
 :::
 
 :::note 命名規則
@@ -57,7 +57,7 @@ Python では定数は使えないようです。慣習的に定数は大文字�
 [式と演算子の項](/docs/01python/03expressions/#問題)の摂氏温度から華氏温度を求める練習問題を変数を使って解いてみましょう。
 
 <Answer>
-  <ViewSource path="_samples/fahrenheit.ipynb" />
+  <ViewSource path="/variables/fahrenheit.ipynb" />
 </Answer>
 
 ### 練習問題 2
@@ -75,5 +75,5 @@ y
 
 3 行目では、`x + y` の値が評価されてその結果が `y` に代入されます。そのため、$2+3=5$ が `y` に代入され `5` が出力されます。
 
-  <ViewSource path="_samples/substitution2.ipynb"/>
+  <ViewSource path="/variables/substitution2.ipynb"/>
 </Answer>
