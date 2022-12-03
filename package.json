@@ -24,6 +24,7 @@
     "@monaco-editor/react": "^4.4.6",
     "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.15",
+    "ansi-to-html": "^0.7.2",
     "clsx": "^1.2.1",
     "hast-util-is-element": "^1.1.0",
     "markdown-it": "^13.0.1",
