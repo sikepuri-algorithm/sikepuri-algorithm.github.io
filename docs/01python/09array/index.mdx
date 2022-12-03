@@ -11,7 +11,7 @@ import Answer from "@site/src/components/Answer";
 
 5 人の生徒の数学の点数をそれぞれ 96 点、56 点、42 点、74 点、86 点とします。この平均点を求めるプログラムを書いてみましょう。
 
-<ViewSource path="_samples/average.ipynb" />
+<ViewSource path="/array/average.ipynb" />
 
 一応、作ることができましたが、生徒の数が増えてしまうと大変です。前項の for 文を使うと簡単にできそうですが変数を for 文ではうまく扱えないので、繰り返し処理を用いて書くことができません。
 
@@ -19,11 +19,11 @@ import Answer from "@site/src/components/Answer";
 
 配列を用いると、先程のプログラムは、次のように書くことができます。
 
-<ViewSource path="_samples/average2.ipynb" />
+<ViewSource path="/array/average2.ipynb" />
 
 さらに、for 文を用いることができるようになり、次のように簡単にかつ応用の利く形で書くことができます。
 
-<ViewSource path="_samples/average3.ipynb" />
+<ViewSource path="/array/average3.ipynb" />
 
 配列について、詳しく見ていきましょう。
 
@@ -52,11 +52,11 @@ len(配列名)
 先程の一人目の点数を 96 点から 37 点に書き換えてみましょう。
 
 <Answer>
-<ViewSource path="_samples/change.ipynb" />
+<ViewSource path="/array/change.ipynb" />
 
 配列を出力してみると、確かに変更できたことが確認できます。
 
-<ViewSource path="_samples/change2.ipynb" />
+<ViewSource path="/array/change2.ipynb" />
 </Answer>
 
 配列の添字には、変数を使うこともできます。これを用いて、さきほどの問題をさらに一般化した問題を解いてみましょう。
@@ -69,19 +69,19 @@ len(配列名)
 
 添字が **0 から始まっている**ことに気をつけましょう。
 
-<ViewSource path="_samples/change3.ipynb" />
+<ViewSource path="/array/change3.ipynb" />
 </Answer>
 
 :::info
 実は for 文を書くときに出てきた range は、配列のようなものを作る関数です。ここで、配列のようなものと言ったのは厳密には配列ではないからですが、ひとまず配列と考えて問題ないでしょう。そのため、例えば `range(1, 11)` は `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]` を生成します。list 関数は range 関数の返り値を配列にしています。
 
-<ViewSource path="_samples/range.ipynb" />
+<ViewSource path="/array/range.ipynb" />
 
 前項の練習問題の解答で `sum(range(1, 11))` のような別解がありましたが、sum 関数は与えられた配列の和を求める関数なので、これは range 関数で 1 から 10 までの配列を作り、それの和を sum 関数で求めていたということです。
 
-<ViewSource path="_samples/sum.ipynb" />
+<ViewSource path="/array/sum.ipynb" />
 
-<ViewSource path="_samples/sum2.ipynb" />
+<ViewSource path="/array/sum2.ipynb" />
 
 :::
 
@@ -91,13 +91,13 @@ len(配列名)
 実際に、点数をそれぞれ 26 点、78 点、83 点、20 点、10 点、11 点、22 点、16 点、41 点、95 点として計算してみましょう。
 
 <Answer>
-<ViewSource path="_samples/average10.ipynb" />
+<ViewSource path="/array/average10.ipynb" />
 
 実は、平均点を求めるライブラリもあります。[statistics ライブラリの mean 関数](https://docs.python.org/ja/3/library/statistics.html#statistics.mean)や[NumPy ライブラリの mean 関数](https://numpy.org/doc/stable/reference/generated/numpy.mean.html)があります。
 
-<ViewSource path="_samples/average_statistics.ipynb" />
+<ViewSource path="/array/average_statistics.ipynb" />
 
-<ViewSource path="_samples/average_numpy.ipynb" />
+<ViewSource path="/array/average_numpy.ipynb" />
 </Answer>
 
 ### 練習問題 2
@@ -113,16 +113,16 @@ $$
 練習問題 1 と同じように具体的な値を入れて確かめてみましょう。
 
 <Answer>
-<ViewSource path="_samples/variance.ipynb" />
+<ViewSource path="/array/variance.ipynb" />
 
 次のようにしても計算できますが（ `variance` 関数の中が少し変わっています。）、for 文の中が実行される度に `average` 関数が実行されて計算量が多くなってしまうので、上のようにした方が良いでしょう。
 
-<ViewSource path="_samples/variance2.ipynb" />
+<ViewSource path="/array/variance2.ipynb" />
 
 実は、分散を計算するライブラリがあります。[statistics ライブラリの pvariance 関数](https://docs.python.org/ja/3/library/statistics.html#statistics.pvariance)や[NumPy ライブラリの var 関数](https://numpy.org/doc/stable/reference/generated/numpy.var.html)があります。
 
-<ViewSource path="_samples/variance_statistics.ipynb" />
+<ViewSource path="/array/variance_statistics.ipynb" />
 
-<ViewSource path="_samples/variance_numpy.ipynb" />
+<ViewSource path="/array/variance_numpy.ipynb" />
 
 </Answer>
