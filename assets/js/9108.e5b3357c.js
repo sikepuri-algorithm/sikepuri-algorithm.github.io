@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksikepuri_of_algorithm=self.webpackChunksikepuri_of_algorithm||[]).push([[9108],{79791:t=>{t.exports=JSON.parse('{"nbformat":4,"nbformat_minor":2,"metadata":{},"cells":[{"metadata":{},"source":["print(abs(-10))"],"cell_type":"code","outputs":[{"output_type":"stream","name":"stdout","text":["10\\n"]}],"execution_count":null}]}')}}]);
