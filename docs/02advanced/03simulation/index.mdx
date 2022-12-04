@@ -2,85 +2,12 @@
 sidebar_position: 3
 ---
 
-import ViewSource from "@site/src/components/ViewSource/ViewSource";
-import Answer from "@site/src/components/Answer";
+import DocCardList from "@theme/DocCardList";
 
 # 物体の運動のシミュレーション
 
 今回は、物体の運動をシミュレーションしてみましょう。
 
-## 等速直線運動
+はじめに簡単なシミュレーションをして、その後複雑なシミュレーションを行いましょう。
 
-まずは、比較的簡単な等速直線運動から考えていきましょう。
-
-初速度を $v_0$ とすると、$t$ 秒後の変位 $x$ は次のようになります。
-
-$$
-\frac{dx}{dt} = v_0
-$$
-
-この微分方程式は解析的に解けますが、差分化してみましょう。
-
-$$
-\begin{align*}
-    \frac{x_{n+1} - x_n}{\Delta t} &= v_0 \\
-    x_{n + 1} - x_n                &= v_0 \Delta t \\
-    x_{n + 1}                      &= x_n + v_0 \Delta t
-\end{align*}
-$$
-
-よって、$\Delta t$ を十分小さくとって $x_1,x_2,x_3 \cdots$ を順に求めていけば、$x_n$ が求まります。実際に、これを使ったプログラムを見てみましょう。
-
-<ViewSource path="/simulation/uniform_linear_motion.ipynb" />
-
-:::note
-この微分方程式は、次のようにすれば簡単に解けます。確かにこの結果を用いれば、簡単にプログラムを書けるので、差分方程式を使う必要性があまり感じられないかもしれません。しかし、世の中には解析的に解けない微分方程式も多いので、差分方程式を使って近似解を求めることも時には重要になってきます。
-
-$$
-\begin{align*}
-    \frac{dx}{dt} &= v_0 \\
-    dx            &= v_0 dt \\
-    \int dx       &= \int v_0 dt \\
-    x             &= v_0t+C
-\end{align*}
-$$
-
-初期条件 $t = 0$ で $x = x_0$ を代入して、
-
-$$
-C = x_0
-$$
-
-よって、
-
-$$
-x = x_0 + v_0t
-$$
-
-<ViewSource path="/simulation/uniform_linear_motion_analytical.ipynb" />
-
-:::
-
-## 可視化
-
-実際にプログラムができたので、次は可視化してみましょう。
-
-今のままでは最終的な変位のみで途中の経過が分からないので、まずは、`uniform_linear_motion` 関数を少し変えて途中経過も含めた変位の配列を返すように書き換えましょう。次のようになります。
-
-<ViewSource path="/simulation/uniform_linear_motion_return_array.ipynb" />
-
-次に以前に作った `draw_circle` 関数を使って可視化していきましょう。
-
-`draw_circle` 関数は次のようになっています。
-
-<ViewSource path="/simulation/draw_circle.ipynb" />
-
-可視化すると、次のようになります。
-
-<ViewSource path="/simulation/uniform_linear_motion_view.ipynb" />
-
-:::note
-解析解を使うと次のようになります。
-
-<ViewSource path="/simulation/uniform_linear_motion_view_analytical.ipynb" />
-:::
+<DocCardList />

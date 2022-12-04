@@ -1,0 +1,119 @@
+---
+sidebar_position: 2
+---
+
+import ViewSource from "@site/src/components/ViewSource/ViewSource";
+import Answer from "@site/src/components/Answer";
+
+# 放物運動
+
+## 差分方程式
+
+次は、もう少し複雑な放物運動を考えましょう。
+
+初速度を $v_0$ 、$x$ 軸方向の速度を $v_x$ 、$y$ 軸方向の速度も $v_y$ 、重力加速度を $g$ 、 $t$ 秒後の変位を $x,y$ として、仰角 $\theta$ で物体を投げたとします。
+
+これらの関係は、次のようになります。
+
+$$
+\begin{align*}
+    \frac{dx}{dt}   &= v_x \\
+    \frac{dy}{dt}   &= v_y \\
+    \frac{dv_x}{dt} &= 0 \\
+    \frac{dv_y}{dt} &= -g
+\end{align*}
+$$
+
+これを差分化してみましょう。
+
+$$
+\begin{align*}
+    \frac{x_{n + 1} - x_n}{\Delta t}              &= {v_x}_n \\
+    \therefore x_{n + 1} - x_n                    &= {v_x}_n \Delta t \\
+    \therefore x_{n + 1}                          &= x_n + {v_x}_n \Delta t
+\end{align*}
+$$
+
+他も同様にすると、次のようになります。
+
+$$
+\begin{align*}
+    x_{n + 1}     &= x_n + {v_x}_n \Delta t \\
+    y_{n + 1}     &= y_n + {v_y}_n \Delta t \\
+    {v_x}_{n + 1} &= {v_x}_n \\
+    {v_y}_{n + 1} &= {v_y}_n - g\Delta t
+\end{align*}
+$$
+
+## プログラムの作成
+
+これを使って $t$ 秒後の変位 $x,y$ を求めるプログラムを作ってみましょう。
+
+<ViewSource path="/simulation/parabolic_motion.ipynb" />
+
+## 可視化
+
+先程と同じように途中経過の変位の配列を返すように書き換えましょう。次のようになります。
+
+<ViewSource path="/simulation/parabolic_motion_return_array.ipynb" />
+
+これを使って可視化すると次のようになります。
+
+<ViewSource path="/simulation/parabolic_motion_view.ipynb" />
+
+:::note
+この微分方程式も次のようにすれば簡単に解けます。
+
+$x$ 軸方向は次のように解けます。
+
+$$
+\begin{align*}
+    \frac{d^2x}{dt^2}        &= 0 \\
+    \therefore \frac{dx}{dt} &= C \\
+\end{align*}
+$$
+
+初期条件 $t = 0$ で $\frac{dx}{dt} = v_0 \cos \theta$ を代入して、
+
+$$
+\begin{align*}
+    \frac{dx}{dt} &=v_0 \cos \theta \\
+    \therefore x  &= v_0 t \cos \theta + D \\
+\end{align*}
+$$
+
+初期条件 $t = 0$ で $x = 0$ を代入して、
+
+$$
+x = v_0 t \cos \theta
+$$
+
+$y$ 軸方向は次のように解けます。
+
+$$
+\begin{align*}
+    \frac{d^2y}{dt^2}        &= -g \\
+    \therefore \frac{dy}{dt} &= -gt + C \\
+\end{align*}
+$$
+
+初期条件 $t = 0$ で $\frac{dy}{dt} = v_0 \sin \theta$ を代入して、
+
+$$
+\begin{align*}
+    \frac{dy}{dt} &= -gt + v_0 \sin \theta \\
+    \therefore y  &= -\frac{1}{2}gt^2 + v_0 t \sin \theta + D \\
+\end{align*}
+$$
+
+初期条件 $t = 0$ で $y = 0$ を代入して、
+
+$$
+y = -\frac{1}{2}gt^2 + v_0 t \sin \theta
+$$
+
+これを使えば、次のようになります。
+
+<ViewSource path="/simulation/parabolic_motion_analytical.ipynb" />
+
+:::
