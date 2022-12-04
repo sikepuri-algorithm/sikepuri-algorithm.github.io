@@ -6,22 +6,15 @@ import styles from "./styles.module.css";
 
 const convert = new Convert({ newline: true });
 type MarkdownCell = { cell_type: "markdown"; source: string };
-type CodeCell = { cell_type: "code"; source: string; outputs: JSX.Element[] };
+type CodeCell = {
+  cell_type: "code";
+  source: string;
+  outputs: string;
+  cellColor: string;
+};
 type NotebookData = [...(MarkdownCell | CodeCell)[]];
 
-function toIframe(key, input, error = false) {
-  return (
-    <div
-      className={styles.iframeWrapper}
-      style={{ backgroundColor: error ? "red" : "#eee" }}
-      key={key}
-    >
-      <iframe width="100%" srcDoc={input} title="Code Output" />
-    </div>
-  );
-}
-
-function toHTML(type: "text" | "html" | "png" | "js", input) {
+function toHTML(type: "text" | "html" | "png" | "js", input): string {
   switch (type) {
     case "text":
       return convert.toHtml(input);
@@ -34,26 +27,26 @@ function toHTML(type: "text" | "html" | "png" | "js", input) {
   }
 }
 
-function getOutput(outputs): JSX.Element[] {
-  const result: JSX.Element[] = [];
-  outputs.forEach((output, i) => {
+function getOutput(outputs): { result: string; isError: boolean } {
+  const results: string[] = [];
+  let isError = false;
+  for (const output of outputs) {
     switch (output.output_type) {
       case "stream":
-        result.push(toIframe(i, toHTML("text", output.text.join(""))));
+        results.push(toHTML("text", output.text.join("")));
         break;
       case "execute_result": {
-        const item = [];
+        const data = [];
         if (output.data["text/plain"] != null)
-          item.push(toHTML("text", output.data["text/plain"].join("")));
+          data.push(toHTML("text", output.data["text/plain"].join("")));
         if (output.data["text/html"] != null)
-          item.push(toHTML("html", output.data["text/html"].join("")));
-        result.push(toIframe(i, item.join("")));
+          data.push(toHTML("html", output.data["text/html"].join("")));
+        results.push(data.join(""));
         break;
       }
       case "error":
-        result.push(
-          toIframe(i, toHTML("text", output.traceback.join("")), true),
-        );
+        results.push(toHTML("text", output.traceback.join("")));
+        isError = true;
         break;
       case "display_data": {
         const item = [];
@@ -65,12 +58,13 @@ function getOutput(outputs): JSX.Element[] {
           item.push(toHTML("js", output.data["application/javascript"]));
         if (output.data["image/png"] != null)
           item.push(toHTML("png", output.data["image/png"]));
-        result.push(toIframe(i, item.join("")));
+        results.push(item.join(""));
         break;
       }
     }
-  });
-  return result;
+  }
+  const result = results.join("");
+  return { result, isError };
 }
 
 function getNotebookData(notebook): NotebookData {
@@ -83,13 +77,16 @@ function getNotebookData(notebook): NotebookData {
           source: cell.source.length === 0 ? null : cell.source.join(""),
         });
         break;
-      case "code":
+      case "code": {
+        const { result, isError } = getOutput(cell.outputs);
         notebookData.push({
           cell_type: "code",
           source: cell.source.length === 0 ? null : cell.source.join(""),
-          outputs: cell.outputs.length === 0 ? null : getOutput(cell.outputs),
+          outputs: cell.outputs.length === 0 ? null : result,
+          cellColor: isError ? "#ffdddc" : "#eee",
         });
         break;
+      }
     }
   }
   return notebookData;
@@ -127,7 +124,29 @@ export default function ViewSource({
               {cell.source != null && (
                 <CodeBlock language="python">{cell.source}</CodeBlock>
               )}
-              {!noOutput && cell.outputs != null && cell.outputs}
+              {!noOutput && cell.outputs != null && (
+                <div
+                  className={styles.iframeWrapper}
+                  style={{ backgroundColor: cell.cellColor }}
+                >
+                  <iframe
+                    id={`${path}${i}`}
+                    height="40px"
+                    width="100%"
+                    srcDoc={cell.outputs}
+                    onLoad={() => {
+                      const iframe = document.getElementById(
+                        `${path}${i}`,
+                      ) as HTMLIFrameElement;
+                      if (iframe !== null)
+                        iframe.style.height =
+                          iframe.contentDocument.documentElement.scrollHeight +
+                          "px";
+                    }}
+                    title="Code Output"
+                  />
+                </div>
+              )}
             </>
           )}
         </React.Fragment>
