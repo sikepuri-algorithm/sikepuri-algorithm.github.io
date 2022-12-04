@@ -146,18 +146,15 @@ export default function ViewSource({
                   style={{ backgroundColor: cell.cellColor }}
                 >
                   <iframe
-                    id={`${path}${i}`}
                     height="40px"
                     width="100%"
+                    style={{ minHeight: "40px" }}
                     srcDoc={cell.outputs}
-                    onLoad={() => {
-                      const iframe = document.getElementById(
-                        `${path}${i}`,
-                      ) as HTMLIFrameElement;
-                      if (iframe !== null)
-                        iframe.style.height =
-                          iframe.contentDocument.documentElement.scrollHeight +
-                          "px";
+                    onLoad={(e) => {
+                      const iframe = e.target as HTMLIFrameElement;
+                      iframe.height =
+                        iframe.contentDocument.documentElement.scrollHeight +
+                        "px";
                     }}
                     title="Code Output"
                   />
