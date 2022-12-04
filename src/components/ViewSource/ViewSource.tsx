@@ -4,7 +4,6 @@ import CodeBlock from "@theme/CodeBlock";
 import OpenInColab from "../OpenInColab/OpenInColab";
 import styles from "./styles.module.css";
 
-const convert = new Convert({ newline: true });
 type MarkdownCell = { cell_type: "markdown"; source: string };
 type CodeCell = {
   cell_type: "code";
@@ -14,7 +13,14 @@ type CodeCell = {
 };
 type NotebookData = [...(MarkdownCell | CodeCell)[]];
 
-function toHTML(type: "text" | "html" | "png" | "js", input): string {
+/**
+ * 各種データをHTMLに変換
+ * @param type 変換するデータの種類
+ * @param input 入力
+ * @returns HTML形式の出力
+ */
+function toHTML(type: "text" | "html" | "js" | "png", input: string): string {
+  const convert = new Convert({ newline: true });
   switch (type) {
     case "text":
       return convert.toHtml(input);
@@ -27,9 +33,15 @@ function toHTML(type: "text" | "html" | "png" | "js", input): string {
   }
 }
 
-function getOutput(outputs): { result: string; isError: boolean } {
+/**
+ * ipynbのoutputsオブジェクトをHTML形式に変換
+ * @param outputs ipynbのoutputsオブジェクト
+ * @returns HTML形式の出力とセルの種類
+ */
+type CellType = "normal" | "error";
+function getOutput(outputs): { result: string; cellType: CellType } {
   const results: string[] = [];
-  let isError = false;
+  let cellType: CellType = "normal";
   for (const output of outputs) {
     switch (output.output_type) {
       case "stream":
@@ -46,7 +58,7 @@ function getOutput(outputs): { result: string; isError: boolean } {
       }
       case "error":
         results.push(toHTML("text", output.traceback.join("")));
-        isError = true;
+        cellType = "error";
         break;
       case "display_data": {
         const item = [];
@@ -64,9 +76,14 @@ function getOutput(outputs): { result: string; isError: boolean } {
     }
   }
   const result = results.join("");
-  return { result, isError };
+  return { result, cellType };
 }
 
+/**
+ * Notebookのデータを読み取る
+ * @param notebook Notebookのオブジェクト
+ * @returns 読み取った情報
+ */
 function getNotebookData(notebook): NotebookData {
   const notebookData: NotebookData = [];
   for (const cell of notebook.cells) {
@@ -78,12 +95,12 @@ function getNotebookData(notebook): NotebookData {
         });
         break;
       case "code": {
-        const { result, isError } = getOutput(cell.outputs);
+        const { result, cellType } = getOutput(cell.outputs);
         notebookData.push({
           cell_type: "code",
           source: cell.source.length === 0 ? null : cell.source.join(""),
           outputs: cell.outputs.length === 0 ? null : result,
-          cellColor: isError ? "#ffdddc" : "#eee",
+          cellColor: cellType === "normal" ? "#eee" : "#ffdddc",
         });
         break;
       }
@@ -94,11 +111,10 @@ function getNotebookData(notebook): NotebookData {
 
 /**
  * ipynbファイルからソースコードと出力、OpenInColabへのリンクを生成
- * @param param0 現在ファイルからのipynbへの相対パス
+ * @param param0 ipynbへのパス
  * @param param1 Pythonの出力を表示するか
  * @returns ソースコードと出力、OpenInColabへのリンク
  */
-
 export default function ViewSource({
   path,
   noOutput = false,
