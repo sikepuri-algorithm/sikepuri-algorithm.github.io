@@ -13,7 +13,7 @@ import Answer from "@site/src/components/Answer";
 
 まずは、比較的簡単な等速直線運動から考えていきましょう。
 
-初速度を $v_0$ とすると、$t$ 秒後の変位 $x$ は次のようになります。
+初速度 $v_0$ と $t$ 秒後の変位 $x$ の関係は次のようになります。
 
 $$
 \frac{dx}{dt} = v_0
@@ -29,7 +29,7 @@ $$
 \end{align*}
 $$
 
-よって、$\Delta t$ を十分小さくとって $x_1,x_2,x_3 \cdots$ を順に求めていけば、$x_n$ が求まります。実際に、これを使ったプログラムを見てみましょう。
+よって、$\Delta t$ を十分小さくとって $x_1,x_2,x_3 \cdots$ を順に求めていけば、$x$ が求まります。実際に、これを使って $t$ 秒後の変位 $x$ を求めるプログラムを作ってみましょう。
 
 <ViewSource path="/simulation/uniform_linear_motion.ipynb" />
 
@@ -57,6 +57,8 @@ $$
 x = x_0 + v_0t
 $$
 
+この結果を使えば、次のようにより簡単に書けます。
+
 <ViewSource path="/simulation/uniform_linear_motion_analytical.ipynb" />
 
 :::
@@ -75,7 +77,7 @@ $$
 
 <ViewSource path="/simulation/draw_circle.ipynb" />
 
-可視化すると、次のようになります。
+これを使って、可視化すると、次のようになります。
 
 <ViewSource path="/simulation/uniform_linear_motion_view.ipynb" />
 
