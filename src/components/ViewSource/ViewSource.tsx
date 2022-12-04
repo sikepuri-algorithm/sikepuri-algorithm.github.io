@@ -110,6 +110,43 @@ function getNotebookData(notebook): NotebookData {
 }
 
 /**
+ * セルをiframeで出力
+ * @param param0 出力するもの
+ * @param param1 セルの色
+ * @param param2 セルのタイトル
+ * @returns iframe
+ */
+function OutputCell({
+  children: output,
+  cellColor,
+  title,
+}: {
+  children: string;
+  cellColor: string;
+  title: string;
+}): JSX.Element {
+  return (
+    <div
+      className={styles.iframeWrapper}
+      style={{ backgroundColor: cellColor }}
+    >
+      <iframe
+        height="40px"
+        width="100%"
+        style={{ minHeight: "40px" }}
+        srcDoc={output}
+        onLoad={(e) => {
+          const iframe = e.target as HTMLIFrameElement;
+          iframe.height =
+            iframe.contentDocument.documentElement.scrollHeight + "px";
+        }}
+        title={title}
+      />
+    </div>
+  );
+}
+
+/**
  * ipynbファイルからソースコードと出力、OpenInColabへのリンクを生成
  * @param param0 ipynbへのパス
  * @param param1 Pythonの出力を表示するか
@@ -141,24 +178,9 @@ export default function ViewSource({
                 <CodeBlock language="python">{cell.source}</CodeBlock>
               )}
               {!noOutput && cell.outputs != null && (
-                <div
-                  className={styles.iframeWrapper}
-                  style={{ backgroundColor: cell.cellColor }}
-                >
-                  <iframe
-                    height="40px"
-                    width="100%"
-                    style={{ minHeight: "40px" }}
-                    srcDoc={cell.outputs}
-                    onLoad={(e) => {
-                      const iframe = e.target as HTMLIFrameElement;
-                      iframe.height =
-                        iframe.contentDocument.documentElement.scrollHeight +
-                        "px";
-                    }}
-                    title="Code Output"
-                  />
-                </div>
+                <OutputCell cellColor={cell.cellColor} title="Code Output">
+                  {cell.outputs}
+                </OutputCell>
               )}
             </>
           )}
