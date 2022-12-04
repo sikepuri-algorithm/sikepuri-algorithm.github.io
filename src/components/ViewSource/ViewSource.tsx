@@ -128,7 +128,7 @@ function OutputCell({
 }): JSX.Element {
   return (
     <div
-      className={styles.iframeWrapper}
+      className={styles["iframe-wrapper"]}
       style={{ backgroundColor: cellColor }}
     >
       <iframe
