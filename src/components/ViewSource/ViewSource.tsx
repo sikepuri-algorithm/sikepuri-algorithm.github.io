@@ -8,7 +8,7 @@ type MarkdownCell = { cell_type: "markdown"; source: string };
 type CodeCell = {
   cell_type: "code";
   source: string;
-  outputs: string;
+  output: string;
   cellColor: string;
 };
 type NotebookData = [...(MarkdownCell | CodeCell)[]];
@@ -99,7 +99,7 @@ function getNotebookData(notebook): NotebookData {
         notebookData.push({
           cell_type: "code",
           source: cell.source.length === 0 ? null : cell.source.join(""),
-          outputs: cell.outputs.length === 0 ? null : result,
+          output: cell.outputs.length === 0 ? null : result,
           cellColor: cellType === "normal" ? "#eee" : "#ffdddc",
         });
         break;
@@ -177,9 +177,9 @@ export default function ViewSource({
               {cell.source != null && (
                 <CodeBlock language="python">{cell.source}</CodeBlock>
               )}
-              {!noOutput && cell.outputs != null && (
+              {!noOutput && cell.output != null && (
                 <OutputCell cellColor={cell.cellColor} title="Code Output">
-                  {cell.outputs}
+                  {cell.output}
                 </OutputCell>
               )}
             </>
