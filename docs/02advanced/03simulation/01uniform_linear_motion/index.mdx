@@ -1,0 +1,88 @@
+---
+sidebar_position: 1
+---
+
+import ViewSource from "@site/src/components/ViewSource/ViewSource";
+import Answer from "@site/src/components/Answer";
+
+# 等速直線運動
+
+## 差分方程式
+
+まずは、比較的簡単な等速直線運動から考えていきましょう。
+
+初速度 $v_0$ と $t$ 秒後の変位 $x$ の関係は次のようになります。
+
+$$
+\frac{dx}{dt} = v_0
+$$
+
+この微分方程式は解析的に解けますが、差分化して差分方程式を作ってみましょう。
+
+$$
+\begin{align*}
+    \frac{x_{n+1} - x_n}{\Delta t} &= v_0 \\
+    \therefore x_{n + 1} - x_n     &= v_0 \Delta t \\
+    \therefore x_{n + 1}           &= x_n + v_0 \Delta t
+\end{align*}
+$$
+
+## プログラムの作成
+
+よって、$\Delta t$ を十分小さくとって $x_1,x_2,x_3 \cdots$ を順に求めていけば、$x$ が求まります。実際に、これを使って $t$ 秒後の変位 $x$ を求めるプログラムを作ってみましょう。
+
+<ViewSource path="/simulation/uniform_linear_motion.ipynb" />
+
+:::note
+この微分方程式は、次のようにすれば簡単に解けます。確かにこの結果を用いれば、簡単にプログラムを書けるので、差分方程式を使う必要性があまり感じられないかもしれません。しかし、世の中には解析的に解けない微分方程式も多いので、差分方程式を使って近似解を求めることも時には重要になってきます。
+
+$$
+\begin{align*}
+    \frac{dx}{dt}      &= v_0 \\
+    \therefore dx      &= v_0 dt \\
+    \therefore \int dx &= \int v_0 dt \\
+    \therefore x       &= v_0t+C
+\end{align*}
+$$
+
+初期条件 $t = 0$ で $x = x_0$ を代入して、
+
+$$
+C = x_0
+$$
+
+よって、
+
+$$
+x = x_0 + v_0t
+$$
+
+この結果を使えば、次のようにより簡単に書けます。
+
+<ViewSource path="/simulation/uniform_linear_motion_analytical.ipynb" />
+
+:::
+
+## 可視化
+
+実際にプログラムができたので、次は可視化してみましょう。
+
+今のままでは最終的な変位のみで途中の経過が分からないので、まずは、`uniform_linear_motion` 関数を少し変えて途中経過も含めた変位の配列を返すように書き換えましょう。次のようになります。
+
+<ViewSource path="/simulation/uniform_linear_motion_return_array.ipynb" />
+
+物体のあるセルを白く塗る関数を作って、可視化してみましょう。
+
+物体のある $x$ 座標と $y$ 座標を取得して、そこのセルだけ白く塗る関数を作ってみましょう。次のようになります。
+
+<ViewSource path="/simulation/draw_cell.ipynb" />
+
+これを使って、可視化すると、次のようになります。
+
+<ViewSource path="/simulation/uniform_linear_motion_view.ipynb" />
+
+:::note
+解析解を使うと次のようになります。
+
+<ViewSource path="/simulation/uniform_linear_motion_view_analytical.ipynb" />
+:::

@@ -1,0 +1,93 @@
+---
+sidebar_position: 3
+---
+
+import ViewSource from "@site/src/components/ViewSource/ViewSource";
+import Answer from "@site/src/components/Answer";
+
+# 速度に比例した抵抗がある投げ上げ運動
+
+## 差分方程式
+
+次は、さらに複雑な運動について考えましょう。
+
+鉛直上向きの初速度を $v_0$ 、鉛直上向きの速度を $v$ 、重力加速度を $g$ 、 $t$ 秒後の変位を $y$ 、比例定数 $k$ に対して速度に比例した抵抗 $kv$ があるとします。
+
+運動方程式は次のようになります。
+
+$$
+\begin{align*}
+    m\frac{d^2y}{dt^2}           &= -mg - kv \\
+    \therefore \frac{d^2y}{dt^2} &= -g - \frac{k}{m}v
+\end{align*}
+$$
+
+よって、これらの関係は次のようになります。
+
+$$
+\begin{align*}
+    \frac{dy}{dt} &= v \\
+    \frac{dv}{dt} &= -g - \frac{k}{m}v
+\end{align*}
+$$
+
+これを差分化して、差分方程式を作ると次のようになります。
+
+$$
+\begin{align*}
+    y_{n + 1} &= y_n + v_n\Delta t \\
+    v_{n + 1} &= v_n - g\Delta t - \frac{k}{m}v_n \Delta t
+\end{align*}
+$$
+
+## プログラムの作成
+
+これを用いて、$t$ 秒後の変位 $y$ を求めて可視化するプログラムを作ってみましょう。
+
+次のようになります。領域外に出てしまうとエラーが出てしまうので、初期位置の $y$ 座標を 100 にしました。
+
+<ViewSource path="/simulation/resisted_motion.ipynb" />
+
+これは可視化しても正しく動いているか、あまりよくわかりませんね（笑）
+
+:::note
+この微分方程式も少し大変ですが、解析的に解くことができます。
+
+$$
+\begin{align*}
+    \frac{d^2y}{dt^2}                             &= -g - \frac{k}{m}v \\
+    \therefore \frac{dv}{dt}                      &= -g - \frac{k}{m}v \\
+    \therefore dv                                 &= \left(-g - \frac{k}{m}v\right) dt \\
+    \therefore dv                                 &= -\frac{k}{m}\left(\frac{m}{k}g + v\right) dt \\
+    \therefore \frac{dv}{\frac{m}{k}g + v}        &= -\frac{k}{m} dt \\
+    \therefore \log \left(\frac{m}{k}g + v\right) &= -\frac{k}{m}t + C \\
+    \therefore v + \frac{m}{k}g                   &= e^{-\frac{k}{m}t + C} \\
+    \therefore v                                  &= -\frac{m}{k}g + Ce^{-\frac{k}{m}t}
+\end{align*}
+$$
+
+初期条件 $t = 0$ で $v = 0$ を代入して、
+
+$$
+\begin{align*}
+    C            &= \frac{mg}{k}\\
+    \therefore v &= \frac{mg}{k}\left(e^{-\frac{k}{m}t} - 1\right) \\
+    \therefore x &= \frac{mg}{k}\left(-\frac{m}{k}e^{-\frac{k}{m}t} - t\right) + D \\
+\end{align*}
+$$
+
+初期条件 $t = 0$ で $x = 0$ を代入して、
+
+$$
+\begin{align*}
+    D            &= \frac{m^2g}{k^2} \\
+    \therefore x &= \frac{mg}{k}\left(-\frac{m}{k}e^{-\frac{k}{m}t}-t\right) + \frac{m^2g}{k^2} \\
+    \therefore x &= \frac{m^2g}{k^2}\left(1 - e^{-\frac{k}{m}t}\right) - \frac{mg}{k}t
+\end{align*}
+$$
+
+これを使って、プログラムを作ると次のようになります。
+
+<ViewSource path="/simulation/resisted_motion_analytical.ipynb" />
+
+:::
