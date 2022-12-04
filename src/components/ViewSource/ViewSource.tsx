@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Convert from "ansi-to-html";
 import CodeBlock from "@theme/CodeBlock";
-import OpenInColab from "../OpenInColab/OpenInColab";
+import mdToHTML from "@site/src/components/mdToHTML";
+import OpenInColab from "@site/src/components/OpenInColab/OpenInColab";
 import styles from "./styles.module.css";
 
 type MarkdownCell = { cell_type: "markdown"; source: string };
@@ -171,7 +172,11 @@ export default function ViewSource({
     <>
       {notebookData.map((cell, i) => (
         <React.Fragment key={i}>
-          {cell.cell_type === "markdown" && cell.source != null && cell.source}
+          {cell.cell_type === "markdown" && cell.source != null && (
+            <OutputCell cellColor="#f8f8f8" title="Markdown Code">
+              {mdToHTML(cell.source)}
+            </OutputCell>
+          )}
           {cell.cell_type === "code" && (
             <>
               {cell.source != null && (
