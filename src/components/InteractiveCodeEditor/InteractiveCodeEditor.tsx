@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Editor from "@monaco-editor/react";
-import MarkdownIt from "markdown-it";
-import mk from "markdown-it-katex";
 import BrowserWindow from "@site/src/components/BrowserWindow";
+import mdToHTML from "@site/src/components/mdToHTML";
 import styles from "./styles.module.css";
 
 export default function InteractiveCodeEditor({
@@ -24,41 +23,6 @@ export default function InteractiveCodeEditor({
   const [html, setHTML] = useState<string>(defaultHTML);
   const [css, setCSS] = useState<string>(defaultCSS);
   const [js, setJS] = useState<string>(defaultJavaScript);
-  const md = new MarkdownIt({ html: true, linkify: true, typographer: true });
-  md.use(mk);
-  const markdownDefaultValue = `
-<style>
-  blockquote {
-    margin: 0;
-  }
-
-  blockquote p {
-    padding: 15px;
-    background: #eee;
-    border-radius: 5px;
-  }
-
-  blockquote p::before {
-    content: '\\201C';
-  }
-
-  blockquote p::after {
-    content: '\\201D';
-  }
-
-  code {
-    background-color: #eee;
-    border-radius: 3px;
-    font-family: courier, monospace;
-    padding: 0 3px;
-  }
-  pre code {
-    padding: 20px 5px;
-  }
-</style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css"/>
-`;
 
   function latexRender(value: string) {
     const header = `\
@@ -140,7 +104,7 @@ export default function InteractiveCodeEditor({
                 language === "html"
                   ? code
                   : language === "markdown"
-                  ? markdownDefaultValue + md.render(code)
+                  ? mdToHTML(code)
                   : language === "latex"
                   ? latexRender(code)
                   : `<style>${css}</style>${html}<script>${js}</script>`
