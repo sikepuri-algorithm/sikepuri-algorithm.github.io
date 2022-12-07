@@ -14,6 +14,8 @@
 npm ci
 ```
 
+以下は、コミット時に自動でFormattetやLinterを実行させるためのスクリプトです。実行しなくても構いません。
+
 ```shell
 pip install pipenv
 ```
