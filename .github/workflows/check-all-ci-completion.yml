@@ -1,0 +1,13 @@
+name: check-all-ci-result
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-another-ci:
+    name: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lirlia/check-all-ci-completion-action@v1.0.0
