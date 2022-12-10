@@ -22,7 +22,7 @@ jobs:
   black:
     name: Black
     needs: changes
-    if: needs.changes.outputs.eslint == 'true'
+    if: needs.changes.outputs.black == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
