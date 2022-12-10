@@ -7,8 +7,22 @@ on:
     branches: [main, master]
 
 jobs:
+  changes:
+    name: Check Changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Changes
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            black:
+              - '**.py,**.ipynb'
+
   black:
     name: Black
+    needs: changes
+    if: needs.changes.outputs.eslint == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
