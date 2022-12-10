@@ -1,17 +1,21 @@
+---
 name: Black
 
 on:
-  pull_request:
   push:
-    branches:
-      - main
+  pull_request:
+    branches: [main, master]
 
 jobs:
-  lint:
+  black:
+    name: Black
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: psf/black@stable
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run Black
+        uses: psf/black@stable
         with:
           options: '--exclude="docs/01python/07for/_samples/sum_1to100.ipynb"'
           jupyter: true
