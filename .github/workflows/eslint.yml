@@ -1,15 +1,21 @@
 name: ESLint
+
 on:
-  pull_request:
   push:
+  pull_request:
     branches:
-      - main
+      - [main, master]
+
 jobs:
-  build:
+  eslint:
+    name: ESLint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Code
+      - uses: actions/checkout@v3
+
       - name: Install modules
         run: npm ci
+
       - name: Run ESLint
         run: npx eslint . --ext .js,.jsx,.ts,.tsx
