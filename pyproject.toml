@@ -9,6 +9,7 @@ packages = [{include = "sikepuri_of_algorithm"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pre-commit = "^2.20.0"
 
 
 [build-system]
