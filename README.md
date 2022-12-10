@@ -17,15 +17,15 @@ npm ci
 以下は、コミット時に自動で Formatter や Linter を実行させるためのスクリプトです。実行しなくても構いません。
 
 ```shell
-pip install pipenv
+curl -sSL https://install.python-poetry.org | python3 -
 ```
 
 ```shell
-pipenv sync --dev
+poetry install
 ```
 
 ```shell
-pipenv run pre-commit install
+poetry run pre-commit install
 ```
 
 ## 開発
