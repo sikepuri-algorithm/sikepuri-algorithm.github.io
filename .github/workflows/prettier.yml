@@ -3,8 +3,8 @@ name: Prettier
 
 on:
   push:
-  # pull_request:
-  #   branches: [master, main]
+  pull_request:
+    branches: [master, main]
 
 jobs:
   prettier:
@@ -16,7 +16,22 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Run Prettier
-        uses: creyD/prettier_action@v4.2
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        id: node_modules_cache_id
         with:
-          prettier_options: --write .
+          path: "**/node_modules"
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Node Mudules
+        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
+        run: npm ci
+        shell: bash
+
+      - name: Run Prettier
+        run: npx prettier --write .
+
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Formatted!

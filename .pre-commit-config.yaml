@@ -1,3 +1,4 @@
+---
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 exclude: my-website/
@@ -15,7 +16,6 @@ repos:
     hooks:
       - id: black
       - id: black-jupyter
-        exclude: .*sum_1to100.ipynb
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v8.26.0
     hooks:
@@ -36,7 +36,7 @@ repos:
     rev: v0.12.0
     hooks:
       - id: markdownlint
-        args: [-r, ~MD033]
+        args: [-r, "~MD033, ~MD013"]
   - repo: https://github.com/nbQA-dev/nbQA
     rev: 1.5.3
     hooks:

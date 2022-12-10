@@ -13,21 +13,5 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: latest
-
-      - name: Cache Node Modules
-        uses: actions/cache@v3
-        id: node_modules_cache_id
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Install Node Modules
-        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
-        run: npm ci
-
-      - name: Build Test
-        run: npm run build
+      - name: Build
+        uses: ./.github/actions/build

@@ -1,3 +1,5 @@
+[![Build and Deploy](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml) [![Super Linter](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/super_linter.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/super_linter.yml) [![Black](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/black.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/black.yml) [![Prettier](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/prettier.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/prettier.yml) [![ESLint](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/eslint.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/eslint.yml)
+
 <div style="text-align: center">
 <img src="./static/img/logo-black.svg" alt="logo" height="200px" >
 </div>
@@ -17,15 +19,15 @@ npm ci
 以下は、コミット時に自動で Formatter や Linter を実行させるためのスクリプトです。実行しなくても構いません。
 
 ```shell
-pip install pipenv
+curl -sSL https://install.python-poetry.org | python3 -
 ```
 
 ```shell
-pipenv sync --dev
+poetry install
 ```
 
 ```shell
-pipenv run pre-commit install
+poetry run pre-commit install
 ```
 
 ## 開発

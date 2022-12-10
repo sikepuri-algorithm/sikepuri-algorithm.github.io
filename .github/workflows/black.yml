@@ -7,8 +7,22 @@ on:
     branches: [main, master]
 
 jobs:
+  changes:
+    name: Check Changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Changes
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            black:
+              - '**.py,**.ipynb'
+
   black:
     name: Black
+    needs: changes
+    if: needs.changes.outputs.black == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -17,5 +31,4 @@ jobs:
       - name: Run Black
         uses: psf/black@stable
         with:
-          options: '--exclude="docs/01python/07for/_samples/sum_1to100.ipynb"'
           jupyter: true
