@@ -18,7 +18,16 @@ jobs:
         with:
           node-version: latest
 
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        id: node_modules_cache_id
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Node Modules
+        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
+        run: npm ci
+
       - name: Build Test
-        run: |
-          npm ci
-          npm run build
+        run: npm run build
