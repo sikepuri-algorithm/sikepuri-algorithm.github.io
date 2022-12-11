@@ -48,7 +48,7 @@ repos:
       # - id: nbqa-mypy
       # - id: nbqa-pylint
       - id: nbqa-pyupgrade
-        # - id: nbqa-yapf
+      # - id: nbqa-yapf
       # - id: nbqa-autopep8
       #   exclude: .*sum_1to(20|100).ipynb
       # - id: nbqa-pydocstyle
