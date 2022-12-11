@@ -7,6 +7,21 @@ on:
     branches: [master, main]
 
 jobs:
+  changes:
+    name: Check Changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Check Changes
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            black:
+              - '**.py,**.pyi,**.ipynb'
+
   prettier:
     name: Prettier
     runs-on: ubuntu-latest
@@ -19,6 +34,21 @@ jobs:
 
       - name: Run Prettier
         run: npx prettier --write .
+
+  black:
+    name: Black
+    needs: changes
+    if: needs.changes.outputs.black == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Python Modules
+        uses: ./.github/actions/install_python_modules
+
+      - name: Run Black
+        run: poetry run black .
 
   commit:
     name: Commit
