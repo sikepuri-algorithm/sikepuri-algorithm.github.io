@@ -31,6 +31,10 @@ const config = {
     locales: ["ja"],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
   presets: [
     [
       "classic",
@@ -144,7 +148,7 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-  themes: ["@docusaurus/theme-live-codeblock"],
+  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
 };
 
 module.exports = config;
