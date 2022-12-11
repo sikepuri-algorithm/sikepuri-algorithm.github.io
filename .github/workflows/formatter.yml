@@ -52,7 +52,7 @@ jobs:
 
   black:
     name: Black
-    needs: changes
+    needs: databooks
     if: needs.changes.outputs.python-files == 'true'
     runs-on: ubuntu-latest
     steps:
@@ -67,7 +67,7 @@ jobs:
 
   nbqa-isort:
     name: nqQA-isort
-    needs: changes
+    needs: black
     if: needs.changes.outputs.python-files == 'true'
     runs-on: ubuntu-latest
     steps:
@@ -79,6 +79,21 @@ jobs:
 
       - name: Run nqQA isort
         run: poetry run nbqa isort .
+
+  nbqa-pyupgrade:
+    name: nqQA-pyupgrade
+    needs: black
+    if: needs.changes.outputs.python-files == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Python Modules
+        uses: ./.github/actions/install_python_modules
+
+      - name: Run nqQA pyupgrade
+        run: poetry run nbqa pyupgrade .
 
   commit:
     name: Commit
