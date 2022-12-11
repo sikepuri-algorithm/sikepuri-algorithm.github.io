@@ -16,6 +16,7 @@ repos:
     hooks:
       - id: black
       - id: black-jupyter
+        exclude: .*sum_1to100.ipynb
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v8.26.0
     hooks:
