@@ -95,6 +95,36 @@ jobs:
       - name: Run nqQA pyupgrade
         run: poetry run nbqa pyupgrade .
 
+  pre-commit:
+    name: pre-commit
+    needs: black
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: latest
+
+      - name: Install Python Modules
+        uses: ./.github/actions/install_python_modules
+
+      - name: Cache pre-commit
+        uses: actions/cache@v3
+        id: pre-commit_cache_id
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-cache-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('.pre-commit-config.yaml') }}
+
+      - name: Install pre-commit environment
+        if: steps.pre-commit_cache_id.outputs.cache-hit != 'true'
+        run: pre-commit run --all-files
+
+      - name: Run pre-commit
+        run: pre-commit run --all-files
+
   commit:
     name: Commit
     needs: prettier
