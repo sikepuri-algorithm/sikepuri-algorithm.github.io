@@ -10,6 +10,7 @@ packages = [{include = "sikepuri_of_algorithm"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 black = {extras = ["jupyter"], version = "^22.12.0"}
+databooks = "^1.3.7"
 
 
 [tool.poetry.group.dev.dependencies]
