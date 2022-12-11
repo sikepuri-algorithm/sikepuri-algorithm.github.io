@@ -20,4 +20,15 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]
-exclude=".*sum_1to100.ipynb"
+exclude='''
+(
+    /(
+        \.git |
+        node_modules |
+        build |
+        \.docusaurus |
+    )/ |
+    /my-website |
+    .*sum_1to100.ipynb
+)
+'''
