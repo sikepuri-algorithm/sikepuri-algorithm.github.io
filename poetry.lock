@@ -340,6 +340,26 @@ files = [
 ]
 
 [[package]]
+name = "nbqa"
+version = "1.5.3"
+description = "Run any standard Python code quality tool on a Jupyter Notebook"
+category = "dev"
+optional = false
+python-versions = ">=3.7.0"
+files = [
+    {file = "nbqa-1.5.3-py3-none-any.whl", hash = "sha256:5594450b77ece3e76f27528c569afa6fd8747a9301413ca7fba37829968861be"},
+    {file = "nbqa-1.5.3.tar.gz", hash = "sha256:b33629f353d3d1bff21982f65a1a03f22a532854719db222eaa5d3bff28bc9a0"},
+]
+
+[package.dependencies]
+ipython = ">=7.8.0"
+tokenize-rt = ">=3.2.0"
+tomli = "*"
+
+[package.extras]
+toolchain = ["black", "blacken-docs", "flake8", "isort", "jupytext", "mypy", "pylint", "pyupgrade"]
+
+[[package]]
 name = "nodeenv"
 version = "1.7.0"
 description = "Node.js virtual environment builder"
@@ -808,4 +828,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "7d9cca39165b7e8e41b8800c05bb216d25926835c9da5bfc9bf1d70162f9218e"
+content-hash = "9cd236c5789c5bab9402f2f65c5e8a3bb46205de4515c51e314fa28d9927dfcd"
