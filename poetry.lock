@@ -858,7 +858,24 @@ files = [
     {file = "wcwidth-0.2.5.tar.gz", hash = "sha256:c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83"},
 ]
 
+[[package]]
+name = "yamllint"
+version = "1.28.0"
+description = "A linter for YAML files."
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "yamllint-1.28.0-py2.py3-none-any.whl", hash = "sha256:89bb5b5ac33b1ade059743cf227de73daa34d5e5a474b06a5e17fc16583b0cf2"},
+    {file = "yamllint-1.28.0.tar.gz", hash = "sha256:9e3d8ddd16d0583214c5fdffe806c9344086721f107435f68bad990e5a88826b"},
+]
+
+[package.dependencies]
+pathspec = ">=0.5.3"
+pyyaml = "*"
+setuptools = "*"
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "3a826971acaaf9b2b0caa30f62b328757085fe23e74d80653bc4f437e4dcfd37"
+content-hash = "c2439e4bd37ab604aa8586e901f637911fe9cf05b6031891962feb3659f54bad"
