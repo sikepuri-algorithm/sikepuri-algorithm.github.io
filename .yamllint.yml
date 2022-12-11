@@ -4,6 +4,13 @@ yaml-files:
   - "*.yml"
   - ".yamllint"
 
+ignore: |
+  .git
+  node_modules
+  build
+  .docusaurus
+  /my-website
+
 rules:
   braces: enable
   brackets: enable
