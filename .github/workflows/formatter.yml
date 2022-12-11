@@ -19,8 +19,23 @@ jobs:
         id: changes
         with:
           filters: |
-            black:
+            python-files:
               - '**.py,**.pyi,**.ipynb'
+
+  databooks:
+    name: Databooks
+    needs: changes
+    if: needs.changes.outputs.python-files == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Python Modules
+        uses: ./.github/actions/install_python_modules
+
+      - name: Run Databooks
+        run: poetry run databooks meta --no-rm-outs --rm-exec --yes .
 
   prettier:
     name: Prettier
@@ -38,7 +53,7 @@ jobs:
   black:
     name: Black
     needs: changes
-    if: needs.changes.outputs.black == 'true'
+    if: needs.changes.outputs.python-files == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
