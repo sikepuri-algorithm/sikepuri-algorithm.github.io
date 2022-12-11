@@ -48,8 +48,8 @@ repos:
       # - id: nbqa-pylint
       - id: nbqa-pyupgrade
         # - id: nbqa-yapf
-        # - id: nbqa-autopep8
-        exclude: .*sum_1to(20|100).ipynb
+      # - id: nbqa-autopep8
+      #   exclude: .*sum_1to(20|100).ipynb
       # - id: nbqa-pydocstyle
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
