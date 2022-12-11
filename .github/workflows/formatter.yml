@@ -1,5 +1,5 @@
 ---
-name: Prettier
+name: Formatter
 
 on:
   push:
@@ -20,6 +20,11 @@ jobs:
       - name: Run Prettier
         run: npx prettier --write .
 
+  commit:
+    name: Commit
+    needs: prettier
+    runs-on: ubuntu-latest
+    steps:
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
