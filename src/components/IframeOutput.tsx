@@ -10,6 +10,17 @@ export default function IframeOutput({ children }: { children: string }) {
           height="100%"
           srcDoc={children}
           title="Live Code"
+          onLoad={(e) => {
+            setInterval(
+              (e) => {
+                const iframe = e.target as HTMLIFrameElement;
+                iframe.height =
+                  iframe.contentDocument.documentElement.scrollHeight + "px";
+              },
+              1000,
+              e
+            );
+          }}
         ></iframe>
       </BrowserWindow>
     </>
