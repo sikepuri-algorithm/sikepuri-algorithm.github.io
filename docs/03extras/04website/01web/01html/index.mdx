@@ -3,6 +3,8 @@ sidebar_position: 1
 ---
 
 import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/InteractiveCodeEditor";
+import Answer from "@site/src/components/Answer";
+import IframeOutput from "@site/src/components/IframeOutput";
 
 # HTML
 
@@ -457,3 +459,288 @@ HTML では、普通に改行しただけでは改行が出力されないよう
 他にも様々な記法があるので、自分で調べてみてください。HTML に関する情報は非常に豊富にあるので、すぐに見つかるはずです。
 
 しかし、インターネット上には間違った情報や古い情報が非常に多いので、目的に合ったタグを見つけたら、詳細については[MDN](https://developer.mozilla.org/ja/)という Web サイトで確認することをおすすめします。このサイトには、すべてのタグの定義が詳細に書いてあります。
+
+## 練習問題
+
+### 練習問題 1
+
+次のように夏目漱石の『吾輩は猫である』を表示する Web サイトを作ってみましょう。
+
+<IframeOutput>{`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>吾輩は猫である</h1>
+    <h2>夏目漱石</h2>
+    <p>吾輩は猫である。名前はまだ無い。</p>
+    <p>どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。その後猫にもだいぶ逢ったがこんな片輪には一度も出会わした事がない。のみならず顔の真中があまりに突起している。そうしてその穴の中から時々ぷうぷうと煙を吹く。どうも咽せぽくて実に弱った。これが人間の飲む煙草というものである事はようやくこの頃知った。</p>
+  </body>
+</html>\
+`}</IframeOutput>
+
+<Answer>
+
+次のようになります。
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>吾輩は猫である</h1>
+    <h2>夏目漱石</h2>
+    <p>吾輩は猫である。名前はまだ無い。</p>
+    <p>
+      どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。その後猫にもだいぶ逢ったがこんな片輪には一度も出会わした事がない。のみならず顔の真中があまりに突起している。そうしてその穴の中から時々ぷうぷうと煙を吹く。どうも咽せぽくて実に弱った。これが人間の飲む煙草というものである事はようやくこの頃知った。
+    </p>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+</Answer>
+
+### 練習問題 2
+
+次のような Web サイトを作ってみましょう。
+
+<IframeOutput>{`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>国語（文科）</li>
+      <li>国語（理科）</li>
+      <li>数学（文科）</li>
+      <li>数学（理科）</li>
+      <li>
+        理科
+        <ul>
+          <li>物理</li>
+          <li>化学</li>
+          <li>生物</li>
+          <li>地学</li>
+        </ul>
+      </li>
+      <li>
+        地理・歴史
+        <ul>
+          <li>日本史</li>
+          <li>世界史</li>
+          <li>地理</li>
+          <li>地学</li>
+        </ul>
+      </li>
+      <li>外国語（英語）</li>
+    </ul>
+  </body>
+</html>\
+`}</IframeOutput>
+
+<Answer>
+
+次のようになります。
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>国語（文科）</li>
+      <li>国語（理科）</li>
+      <li>数学（文科）</li>
+      <li>数学（理科）</li>
+      <li>
+        理科
+        <ul>
+          <li>物理</li>
+          <li>化学</li>
+          <li>生物</li>
+          <li>地学</li>
+        </ul>
+      </li>
+      <li>
+        地理・歴史
+        <ul>
+          <li>日本史</li>
+          <li>世界史</li>
+          <li>地理</li>
+          <li>地学</li>
+        </ul>
+      </li>
+      <li>外国語（英語）</li>
+    </ul>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+</Answer>
+
+### 練習問題 3
+
+次のように、表を作ってみましょう。
+これは、今までの内容だけでは作れません。`<th>` タグについて[MDN](https://developer.mozilla.org/ja/)などで調べてみましょう。
+
+<IframeOutput>{`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>国</th>
+        <th>首都</th>
+      </tr>
+      <tr>
+        <td>アメリカ合衆国</td>
+        <td>ワシントンD.C.</td>
+      </tr>
+      <tr>
+        <td>中国</td>
+        <td>北京</td>
+      </tr>
+      <tr>
+        <td>日本</td>
+        <td>東京</td>
+      </tr>
+    </table>
+  </body>
+</html>\
+`}</IframeOutput>
+
+<Answer>
+
+次のようになります。
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>国</th>
+        <th>首都</th>
+      </tr>
+      <tr>
+        <td>アメリカ合衆国</td>
+        <td>ワシントンD.C.</td>
+      </tr>
+      <tr>
+        <td>中国</td>
+        <td>北京</td>
+      </tr>
+      <tr>
+        <td>日本</td>
+        <td>東京</td>
+      </tr>
+    </table>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+</Answer>
+
+### 練習問題 4
+
+以下のようなお問い合わせフォームを作ってみましょう。これも今までの内容だけではできないので、調べてみましょう。
+
+<IframeOutput>{`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>お問い合わせフォーム</h1>
+    お問い合わせは、下記の入力フォームから送信してください。
+    <table>
+      <tr>
+        <td>お名前</td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td>お問い合わせ内容</td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button type="button">送信</button>
+  </body>
+</html>\
+`}</IframeOutput>
+
+<Answer>
+
+次のようになります。`input` タグと `button` タグについて[MDN](https://developer.mozilla.org/ja/)などで調べてみましょう。
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>お問い合わせフォーム</h1>
+    お問い合わせは、下記の入力フォームから送信してください。
+    <table>
+      <tr>
+        <td>お名前</td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td>お問い合わせ内容</td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button type="button">送信</button>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+</Answer>
