@@ -54,7 +54,7 @@ export default function InteractiveCodeEditor({
             <Tabs groupId="editor">
               <TabItem value="html" label="HTML">
                 <Editor
-                  height="200px"
+                  height="400px"
                   defaultLanguage="html"
                   defaultValue={defaultHTML}
                   onChange={(value) => {
@@ -64,7 +64,7 @@ export default function InteractiveCodeEditor({
               </TabItem>
               <TabItem value="css" label="CSS">
                 <Editor
-                  height="200px"
+                  height="400px"
                   defaultLanguage="css"
                   defaultValue={defaultCSS}
                   onChange={(value) => {
@@ -74,7 +74,7 @@ export default function InteractiveCodeEditor({
               </TabItem>
               <TabItem value="js" label="JavaScript">
                 <Editor
-                  height="200px"
+                  height="400px"
                   defaultLanguage="javascript"
                   defaultValue={defaultJavaScript}
                   onChange={(value) => {
@@ -85,7 +85,7 @@ export default function InteractiveCodeEditor({
             </Tabs>
           ) : (
             <Editor
-              height="200px"
+              height="400px"
               defaultLanguage={language}
               defaultValue={children}
               onChange={(value) => {
