@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Editor from "@monaco-editor/react";
-import BrowserWindow from "@site/src/components/BrowserWindow";
+import IframeOutput from "../IframeOutput";
 import mdToHTML from "@site/src/components/mdToHTML";
 import styles from "./styles.module.css";
 
@@ -96,22 +96,15 @@ export default function InteractiveCodeEditor({
         </div>
         <div className={styles.playgroundHeader}>結果</div>
         <div className={styles.playgroundPreview}>
-          <BrowserWindow minHeight={200}>
-            <iframe
-              width="100%"
-              height="100%"
-              srcDoc={
-                language === "html"
-                  ? code
-                  : language === "markdown"
-                  ? mdToHTML(code)
-                  : language === "latex"
-                  ? latexRender(code)
-                  : `<style>${css}</style>${html}<script>${js}</script>`
-              }
-              title="Live Code"
-            ></iframe>
-          </BrowserWindow>
+          <IframeOutput>
+            {language === "html"
+              ? code
+              : language === "markdown"
+              ? mdToHTML(code)
+              : language === "latex"
+              ? latexRender(code)
+              : `<style>${css}</style>${html}<script>${js}</script>`}
+          </IframeOutput>
         </div>
       </div>
     </>
