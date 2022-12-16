@@ -8,18 +8,18 @@ import styles from "./styles.module.css";
 
 export default function InteractiveCodeEditor({
   language,
-  defaultValue,
+  children,
   defaultHTML,
   defaultCSS,
   defaultJavaScript,
 }: {
   language: "html" | "markdown" | "HTML-CSS-JavaScript" | "latex";
-  defaultValue?: string;
+  children?: string;
   defaultHTML?: string;
   defaultCSS?: string;
   defaultJavaScript?: string;
 }) {
-  const [code, setCode] = useState<string>(defaultValue);
+  const [code, setCode] = useState<string>(children);
   const [html, setHTML] = useState<string>(defaultHTML);
   const [css, setCSS] = useState<string>(defaultCSS);
   const [js, setJS] = useState<string>(defaultJavaScript);
@@ -87,7 +87,7 @@ export default function InteractiveCodeEditor({
             <Editor
               height="200px"
               defaultLanguage={language}
-              defaultValue={defaultValue}
+              defaultValue={children}
               onChange={(value) => {
                 setCode(value);
               }}

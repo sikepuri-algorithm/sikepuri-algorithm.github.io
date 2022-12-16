@@ -30,9 +30,8 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
 
 自分のパソコン上に `index.html` という名前のファイルを作って上のコードを保存してください。そうしたら、そのファイルをブラウザで開いてください。画面上に `Hello World!` と表示されるはずです。もしくは、このサイトでは HTML をブラウザ上で実行できるようにしているので、以下のコードを編集することで実行される内容をリアルタイムで見ることもできます。
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -45,7 +44,7 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 `Hello World!` と表示されましたか。
 
@@ -106,9 +105,8 @@ flowchart TB
 </p>
 ```
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -123,7 +121,7 @@ flowchart TB
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 ### 見出し要素
 
@@ -133,9 +131,8 @@ flowchart TB
 <h1>見出し</h1>
 ```
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -148,13 +145,12 @@ flowchart TB
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 `<h2>` タグは、`<h1>` タグの一つ下の見出しを表します。同じように `<h3>` タグ、`<h4>` タグ、`<h5>` タグ、`<h6>` タグがあります。
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -172,15 +168,14 @@ flowchart TB
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 ### 改行
 
 HTML では、普通に改行しただけでは改行が出力されないようになっています。その代わりに、`<br>` タグを作って改行を出力します。
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -195,7 +190,7 @@ HTML では、普通に改行しただけでは改行が出力されないよう
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 ### 強調
 
@@ -205,9 +200,8 @@ HTML では、普通に改行しただけでは改行が出力されないよう
 <em>強調</em>
 ```
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -220,7 +214,7 @@ HTML では、普通に改行しただけでは改行が出力されないよう
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 :::note
 イタリック体になっていて違和感を覚えるかもしれませんが、HTML では論理的な構造のみを表して見た目は CSS という別の言語で表現するのが一般的です。CSS については、後で触れます。HTML で、見た目は表さないということは覚えておいてください。見た目を変えるためだけに、別のタグを使うことなどはしないでください。
@@ -234,9 +228,8 @@ HTML では、普通に改行しただけでは改行が出力されないよう
 <strong>さらに強い強調</strong>
 ```
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -249,7 +242,7 @@ HTML では、普通に改行しただけでは改行が出力されないよう
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 ### 番号なし箇条書き
 
@@ -263,9 +256,8 @@ HTML では、普通に改行しただけでは改行が出力されないよう
 </ul>
 ```
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -282,7 +274,7 @@ HTML では、普通に改行しただけでは改行が出力されないよう
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 さらに、次のように入れ子にすることもできます。
 
@@ -299,9 +291,8 @@ HTML では、普通に改行しただけでは改行が出力されないよう
 </ul>
 ```
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -323,7 +314,7 @@ HTML では、普通に改行しただけでは改行が出力されないよう
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 ### 番号付き箇条書き
 
@@ -337,9 +328,8 @@ HTML では、普通に改行しただけでは改行が出力されないよう
 </ol>
 ```
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -356,7 +346,7 @@ HTML では、普通に改行しただけでは改行が出力されないよう
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 ### 表
 
@@ -375,9 +365,8 @@ HTML では、普通に改行しただけでは改行が出力されないよう
 </table>
 ```
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -399,7 +388,7 @@ HTML では、普通に改行しただけでは改行が出力されないよう
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 :::note
 罫線などが表示されませんが、ちゃんと表は作れています。先程も触れたように、HTML では論理的な構造のみを表して見た目は CSS という別の言語で表現します。
@@ -419,9 +408,8 @@ HTML では、普通に改行しただけでは改行が出力されないよう
 <a href="https://sikepuri-algorithm.github.io/">Introduction to Algorithms</a>
 ```
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -434,7 +422,7 @@ HTML では、普通に改行しただけでは改行が出力されないよう
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 ### 画像
 
@@ -447,9 +435,8 @@ HTML では、普通に改行しただけでは改行が出力されないよう
 />
 ```
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
+<InteractiveCodeEditor language="html">
+  {`\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -465,7 +452,7 @@ HTML では、普通に改行しただけでは改行が出力されないよう
   </body>
 </html>\
 `}
-/>
+</InteractiveCodeEditor>
 
 他にも様々な記法があるので、自分で調べてみてください。HTML に関する情報は非常に豊富にあるので、すぐに見つかるはずです。
 
