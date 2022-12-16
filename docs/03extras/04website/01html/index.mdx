@@ -8,7 +8,25 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
 
 ## HTML とは
 
-通常の Web サイトは、HTML を用いて作るのが一般的です。以下に HTML を用いた Hello World! の例を載せます。
+通常の Web サイトは、HTML を用いて作るのが一般的です。HTML(HyperText Markup Language) は、ウェブページを作成するために作られた言語で、様々なコンテンツを表現することができます。
+
+## はじめての HTML
+
+以下が HTML を用いた Hello World の例です。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Hello World!</p>
+  </body>
+</html>
+```
 
 <InteractiveCodeEditor
   language="html"
@@ -27,13 +45,43 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
 `}
 />
 
-様々なことが書いてあり非常にわかりにくいですが、重要なのは `<body>` と `</body>` の間に挟まれた部分です。HTML は、タグと呼ばれるもので内容を囲うことで要素を作ります。今回の場合は、`<body>` と `</body>` で囲まれた部分が内容になっていて、`<p>` と `</p>` で囲まれたところが段落という意味になっています。つまり、`<` と `>` で囲まれる開始タグと `</` と `>` で囲まれる終了タグで内容を挟むことで要素を作ります。終了タグのはじめには、`/` があることに注意してください。
+様々なことが書いてあり非常にわかりにくいですが、重要なのは `<body>` と `</body>` の間に挟まれた部分です。HTML は、タグと呼ばれるもので内容を囲うことで要素を作ります。今回の場合は、`<p>` と `</p>` で囲まれたところが段落になっています。つまり、`<` と `>` で囲まれる開始タグと `</` と `>` で囲まれる終了タグで内容を挟むことで要素を作ることができます。終了タグのはじめには、`/` があることに注意してください。
+
+HTML は、タグを用いてどのように構造を表すのかがわかっていれば、後は様々なタグを覚えるだけで簡単に扱えます。
+
+:::info
+`<body>` 要素の中身だけがわかっていれば十分ですが、それ以外のコードについても簡単に解説しておきます。
+
+はじめの行の `<!DOCTYPE html>` は、ファイルの先頭に書くことでここから HTML を書くということを明示的に宣言するものです。
+
+`<html lang="ja">` と `</html>` で囲まれたところが、HTML の内容になっています。その中で、`<head>` と `</head>` で囲まれたところがヘッダーで、`<body>` と `</body>` で囲まれたところは、実際にブラウザ上に表示される内容になっています。
+
+`<meta charset="UTF-8" />` は、文字コードに UTF-8 を使うという意味です。`<meta name="viewport" content="width=device-width, initial-scale=1.0" />` は、パソコンやスマートフォンそれぞれに合わせた表示にするために、後々必要になるものです。`<title>Document</title>` はタイトルを定義するもので、ここに書かれた内容はブラウザのタイトルバーに表示されます。
+
+これらの内容は、わかっていなくても構いません。コピペして、使ってください。
+
+```mermaid
+flowchart TB
+  A["&lt;html&gt;"] --> B["&lt;head&gt;"]
+  A --> C["&lt;body&gt;"]
+  B --> D["&lt;meta&gt;"]
+  B --> E["&lt;title&gt;"]
+  C --> F["&lt;p&gt;"]
+```
+
+:::
+
+## 様々なタグ
 
 それでは、他のタグも見てみましょう。HTML には、非常に豊富なタグが用意されているので、大抵のことはできます。
 
 ### 見出し要素
 
-`<h1>` タグは、見出しを表します。`<h1>Head</h1>` のようにすることで、Head という見出しになります。
+`<h1>` タグは、見出しを表します。`body` タグの中に以下のように書くことで、Head という見出しを作ることができます。
+
+```html
+<h1>見出し</h1>
+```
 
 <InteractiveCodeEditor
   language="html"
@@ -46,7 +94,7 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
     <title>Document</title>
   </head>
   <body>
-    <h1>Head</h1>
+    <h1>見出し</h1>
   </body>
 </html>\
 `}
@@ -65,12 +113,66 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
     <title>Document</title>
   </head>
   <body>
-    <h1>Heading level 1</h1>
-    <h2>Heading level 2</h2>
-    <h3>Heading level 3</h3>
-    <h4>Heading level 4</h4>
-    <h5>Heading level 5</h5>
-    <h6>Heading level 6</h6>
+    <h1>見出し 1</h1>
+    <h2>見出し 2</h2>
+    <h3>見出し 3</h3>
+    <h4>見出し 4</h4>
+    <h5>見出し 5</h5>
+    <h6>見出し 6</h6>
+  </body>
+</html>\
+`}
+/>
+
+### 強調
+
+強調は、次のようにします。
+
+```html
+<em>強調</em>
+```
+
+:::note
+イタリック体になっていて違和感を覚えるかもしれませんが、HTML では論理的な構造のみを表して見た目は CSS という別の言語で表現するのが一般的です。CSS については、後で触れます。HTML で、見た目は表さないということは覚えておいてください。見た目を変えるためだけに、別のタグを使うことなどはしないでください。
+:::
+
+<InteractiveCodeEditor
+  language="html"
+  defaultValue={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <em>強調</em>
+  </body>
+</html>\
+`}
+/>
+
+### 強い強調
+
+さらに強い強調は、次のようにします。
+
+```html
+<strong>さらに強い強調</strong>
+```
+
+<InteractiveCodeEditor
+  language="html"
+  defaultValue={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <strong>さらに強い強調</strong>
   </body>
 </html>\
 `}
@@ -82,9 +184,9 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
 
 ```html
 <ul>
-  <li>First Item</li>
-  <li>Second Item</li>
-  <li>Third Item</li>
+  <li>アイテム1</li>
+  <li>アイテム2</li>
+  <li>アイテム3</li>
 </ul>
 ```
 
@@ -100,9 +202,9 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
   </head>
   <body>
     <ul>
-      <li>First Item</li>
-      <li>Second Item</li>
-      <li>Third Item</li>
+      <li>アイテム1</li>
+      <li>アイテム2</li>
+      <li>アイテム3</li>
     </ul>
   </body>
 </html>\
@@ -113,12 +215,12 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
 
 ```html
 <ul>
-  <li>First Item</li>
+  <li>アイテム1</li>
   <li>
-    Second Item
+    アイテム2
     <ul>
-      <li>First Sub Item</li>
-      <li>Second Sub Item</li>
+      <li>サブアイテム1</li>
+      <li>サブアイテム2</li>
     </ul>
   </li>
 </ul>
@@ -136,12 +238,12 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
   </head>
   <body>
     <ul>
-      <li>First Item</li>
+      <li>アイテム1</li>
       <li>
-        Second Item
+        アイテム2
         <ul>
-          <li>First Sub Item</li>
-          <li>Second Sub Item</li>
+          <li>サブアイテム1</li>
+          <li>サブアイテム2</li>
         </ul>
       </li>
     </ul>
@@ -156,9 +258,9 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
 
 ```html
 <ol>
-  <li>First Item</li>
-  <li>Second Item</li>
-  <li>Third Item</li>
+  <li>アイテム1</li>
+  <li>アイテム2</li>
+  <li>アイテム3</li>
 </ol>
 ```
 
@@ -174,10 +276,57 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
   </head>
   <body>
     <ol>
-      <li>First Item</li>
-      <li>Second Item</li>
-      <li>Third Item</li>
+      <li>アイテム1</li>
+      <li>アイテム2</li>
+      <li>アイテム3</li>
     </ol>
+  </body>
+</html>\
+`}
+/>
+
+### 表
+
+表も書くことができます。`<tr>` タグで行を表し、`<td>` タグで列を表します。
+
+:::note
+罫線などが表示されませんが、ちゃんと表は作れています。先程も触れたように、HTML では論理的な構造のみを表して見た目は CSS という別の言語で表現します。
+:::
+
+```html
+<table>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>4</td>
+  </tr>
+</table>
+```
+
+<InteractiveCodeEditor
+  language="html"
+  defaultValue={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+    </table>
   </body>
 </html>\
 `}
@@ -238,3 +387,7 @@ import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/In
 </html>\
 `}
 />
+
+他にも様々な記法があるので、自分で調べてみてください。HTML に関する情報は非常に豊富にあるので、すぐに見つかるはずです。
+
+しかし、インターネット上には間違った情報や古い情報が非常に多いので、目的に合ったタグを見つけたら、詳細については[MDN](https://developer.mozilla.org/ja/)という Web サイトで確認することをおすすめします。このサイトには、すべてのタグの定義が詳細に書いてあります。
