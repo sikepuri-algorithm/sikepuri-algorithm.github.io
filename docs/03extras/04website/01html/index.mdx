@@ -1,0 +1,240 @@
+---
+sidebar_position: 1
+---
+
+import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/InteractiveCodeEditor";
+
+# 一般的な Web サイトの作り方
+
+## HTML とは
+
+通常の Web サイトは、HTML を用いて作るのが一般的です。以下に HTML を用いた Hello World! の例を載せます。
+
+<InteractiveCodeEditor
+  language="html"
+  defaultValue={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Hello World!</p>
+  </body>
+</html>\
+`}
+/>
+
+様々なことが書いてあり非常にわかりにくいですが、重要なのは `<body>` と `</body>` の間に挟まれた部分です。HTML は、タグと呼ばれるもので内容を囲うことで要素を作ります。今回の場合は、`<body>` と `</body>` で囲まれた部分が内容になっていて、`<p>` と `</p>` で囲まれたところが段落という意味になっています。つまり、`<` と `>` で囲まれる開始タグと `</` と `>` で囲まれる終了タグで内容を挟むことで要素を作ります。終了タグのはじめには、`/` があることに注意してください。
+
+それでは、他のタグも見てみましょう。HTML には、非常に豊富なタグが用意されているので、大抵のことはできます。
+
+### 見出し要素
+
+`<h1>` タグは、見出しを表します。`<h1>Head</h1>` のようにすることで、Head という見出しになります。
+
+<InteractiveCodeEditor
+  language="html"
+  defaultValue={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Head</h1>
+  </body>
+</html>\
+`}
+/>
+
+`<h2>` タグは、`<h1>` タグの一つ下の見出しを表します。同じように `<h3>` タグ、`<h4>` タグ、`<h5>` タグ、`<h6>` タグがあります。
+
+<InteractiveCodeEditor
+  language="html"
+  defaultValue={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Heading level 1</h1>
+    <h2>Heading level 2</h2>
+    <h3>Heading level 3</h3>
+    <h4>Heading level 4</h4>
+    <h5>Heading level 5</h5>
+    <h6>Heading level 6</h6>
+  </body>
+</html>\
+`}
+/>
+
+### 番号なし箇条書き
+
+箇条書きもできます。次のように書けば、箇条書きができます。
+
+```html
+<ul>
+  <li>First Item</li>
+  <li>Second Item</li>
+  <li>Third Item</li>
+</ul>
+```
+
+<InteractiveCodeEditor
+  language="html"
+  defaultValue={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>First Item</li>
+      <li>Second Item</li>
+      <li>Third Item</li>
+    </ul>
+  </body>
+</html>\
+`}
+/>
+
+さらに、次のように入れ子にすることもできます。
+
+```html
+<ul>
+  <li>First Item</li>
+  <li>
+    Second Item
+    <ul>
+      <li>First Sub Item</li>
+      <li>Second Sub Item</li>
+    </ul>
+  </li>
+</ul>
+```
+
+<InteractiveCodeEditor
+  language="html"
+  defaultValue={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>First Item</li>
+      <li>
+        Second Item
+        <ul>
+          <li>First Sub Item</li>
+          <li>Second Sub Item</li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>\
+`}
+/>
+
+### 番号付き箇条書き
+
+番号付きの箇条書きもできます。次のように書けば、番号付きの箇条書きができます。
+
+```html
+<ol>
+  <li>First Item</li>
+  <li>Second Item</li>
+  <li>Third Item</li>
+</ol>
+```
+
+<InteractiveCodeEditor
+  language="html"
+  defaultValue={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ol>
+      <li>First Item</li>
+      <li>Second Item</li>
+      <li>Third Item</li>
+    </ol>
+  </body>
+</html>\
+`}
+/>
+
+### リンク
+
+リンクは次のように作れます。開始タグと終了タグの間に表示する文字を書いて、href 属性の中にリンク先の URL を記載します。
+
+```html
+<a href="https://sikepuri-algorithm.github.io/">Introduction to Algorithms</a>
+```
+
+<InteractiveCodeEditor
+  language="html"
+  defaultValue={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="https://sikepuri-algorithm.github.io/">Introduction to Algorithms</a>
+  </body>
+</html>\
+`}
+/>
+
+### 画像
+
+画像は、次のようにして表示することができます。src 属性に、画像のパスを書き、alt 属性にその画像の説明を書きます。
+
+```html
+<img
+  src="https://sikepuri-algorithm.github.io/img/favicon.ico"
+  alt="Introduction to Algorithms"
+/>
+```
+
+<InteractiveCodeEditor
+  language="html"
+  defaultValue={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img
+      src="https://sikepuri-algorithm.github.io/img/favicon.ico"
+      alt="Introduction to Algorithms"
+    />
+  </body>
+</html>\
+`}
+/>
