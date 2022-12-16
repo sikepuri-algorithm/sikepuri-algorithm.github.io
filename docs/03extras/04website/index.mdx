@@ -5,127 +5,21 @@ sidebar_position: 4
 import DocCardList from "@theme/DocCardList";
 import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/InteractiveCodeEditor";
 
-# このシケプリの作られ方
+# このシケプリの作り方
 
+:::caution
 [Visual Studio Code をインストールの項](/docs/03extras/02vscode/)を参考に VSCode をインストールしておいてください。
 
 Windows を使っている場合は、[WSL をインストールの項](/docs/03extras/01wsl/)を参考に WSL もインストールしておいてください。
+:::
 
 ここでは、このシケプリの作り方を紹介しておきます。
 
-## HTML
+Web サイトは、HTML を用いて作るのが一般的です。まずはじめに HTML について解説します。
 
-Web サイトは、HTML を用いて作るのが一般的です。以下に HTML を用いた `Hello World!` の例を載せます。
+HTML を使えば大抵のものを作ることができますが、複雑なものを作るのはあまりにも大変なので、このシケプリではより簡単にドキュメントを作成できる Docusaurus を使いました。そのため、Docusaurus を使った Web サイトの作り方についてその後解説します。HTML についての項とその後の項は独立になっているので、すでに知っている人は読み飛ばしてください。
 
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <p>Hello World!</p>
-  </body>
-</html>\
-`}
-/>
-
-もう少しおまじないを唱えれば、数式も表示できます。
-
-<InteractiveCodeEditor
-  language="html"
-  defaultValue={`\
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css" integrity="sha384-Juol1FqnotbkyZUT5Z7gUPjQ9gzlwCENvUZTpQBAPxtusdwFLRy382PSDx5UUJ4/" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js" integrity="sha384-97gW6UIJxnlKemYavrqDHSX3SiygeOwIZhwyOKRfSaf0JWKRVj9hLASHgFTzT+0O" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-  </head>
-  <body>
-    <p> \\(a^2 + b^2 = c^2\\) </p>
-    <p>
-      $$
-      \\frac{\\pi}{2} =
-        \\left( \\int_{0}^{\\infty} \\frac{\\sin x}{\\sqrt{x}} dx \\right)^2 =
-        \\sum_{k=0}^{\\infty} \\frac{(2k)!}{2^{2k}(k!)^2} \\frac{1}{2k+1} =
-        \\prod_{k=1}^{\\infty} \\frac{4k^2}{4k^2 - 1}
-      $$
-    </p>
-  </body>
-</html>\
-`}
-/>
-
-さらに、見た目を整えることのできる CSS と動きを与えることのできる JavaScript を使うと次のような表現も可能です。
-
-<InteractiveCodeEditor
-  language="HTML-CSS-JavaScript"
-  defaultHTML={`\
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <div id="container">
-      <div id="minus-button">-</div>
-      <div id="counter">0</div>
-      <div id="plus-button">+</div>
-    </div>
-  </body>
-  <script src="./script.js"></script>
-</html>\
-`}
-  defaultCSS={`\
-#container {
-  display: flex;
-}
-#plus-button,
-#minus-button,
-#counter {
-  height: 100px;
-  width: 150px;
-  font-size: 50px;
-  text-align: center;
-  line-height: 100px;
-  border: 2px solid #aaa;
-  margin: 0px 1px;
-}\
-`}
-  defaultJavaScript={`\
-let count = 0;
-const plusButton = document.getElementById("plus-button");
-const minusButton = document.getElementById("minus-button");
-const counter = document.getElementById("counter");
-plusButton.onclick = () => {
-    count++;
-    counter.textContent = count;
-};
-minusButton.onclick = () => {
-    count--;
-    counter.textContent = count;
-};\
-`}
-/>
-
-## このシケプリの作られ方
-
-先程のようにすれば作ることができますが、あまりにも大変なのでこのシケプリではより簡単に Web サイトを作れる Docusaurus を使いました。
-
-以降の手順に沿うことで、このシケプリと全く同じようなものを作成することができます。
-
-<DocCardList />
+以降の手順に沿うことで、このシケプリと全く同じようなものを作成することができます。実は、もっと簡単に Web サイトを作成できるサービスはたくさんありアカウント登録だけでできたりしますが、せっかくなので Web 開発者が通常行う方法で解説します。そのため、少し面倒な設定が多いかもしれません。
 
 完成品は以下のようになります。
 
@@ -134,3 +28,7 @@ minusButton.onclick = () => {
   height="400vw"
   src="https://docusaurus-sample.onrender.com/docs/intro"
 ></iframe>
+
+それでは、実際に Web サイトを作っていきましょう。
+
+<DocCardList />
