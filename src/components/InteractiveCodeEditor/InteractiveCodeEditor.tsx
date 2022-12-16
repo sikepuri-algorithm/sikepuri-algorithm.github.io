@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Editor from "@monaco-editor/react";
-import IframeOutput from "../IframeOutput";
+import IframeOutput from "@site/src/components/IframeOutput";
 import mdToHTML from "@site/src/components/mdToHTML";
 import styles from "./styles.module.css";
 
