@@ -14,10 +14,11 @@ export default function IframeOutput({ children }: { children: string }) {
             setInterval(
               (e) => {
                 const iframe = e.target as HTMLIFrameElement;
+                iframe.height = "100%";
                 iframe.height =
                   iframe.contentDocument.documentElement.scrollHeight + "px";
               },
-              1000,
+              3000,
               e
             );
           }}
