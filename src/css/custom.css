@@ -38,4 +38,6 @@ cases環境でうまく動かないため、コメントアウト
 .katex-display { margin: 0.5em 0; }
 */
 
-.katex-display { overflow: auto hidden }
+.katex-display {
+  overflow: auto hidden;
+}
