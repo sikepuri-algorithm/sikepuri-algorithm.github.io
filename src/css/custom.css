@@ -28,3 +28,16 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0 0 0 30%);
 }
+
+/*
+cases環境でうまく動かないため、コメントアウト
+.katex-display > .katex { white-space:normal }
+
+.katex-display > .base { margin: 0.25em 0 }
+
+.katex-display { margin: 0.5em 0; }
+*/
+
+.katex-display {
+  overflow: auto hidden;
+}
