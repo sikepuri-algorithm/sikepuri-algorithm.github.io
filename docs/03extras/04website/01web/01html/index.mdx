@@ -1,0 +1,746 @@
+---
+sidebar_position: 1
+---
+
+import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/InteractiveCodeEditor";
+import Answer from "@site/src/components/Answer";
+import IframeOutput from "@site/src/components/IframeOutput";
+
+# HTML
+
+## HTML とは
+
+通常の Web サイトは、HTML を用いて作るのが一般的です。HTML(HyperText Markup Language) は、ウェブページを作成するために作られた言語で、様々なコンテンツを表現することができます。
+
+## はじめての HTML
+
+以下が HTML を用いた Hello World の例です。
+
+```html title=index.html
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Hello World!</p>
+  </body>
+</html>
+```
+
+自分のパソコン上に `index.html` という名前のファイルを作って上のコードを保存してください。そうしたら、そのファイルをブラウザで開いてください。画面上に `Hello World!` と表示されるはずです。もしくは、このサイトには HTML をブラウザ上で実行できるプレイグラウンドがあるので、それを編集することで実行される内容をリアルタイムで見ることもできます。プレイグラウンドの URL はこちらです。[https://sikepuri-algorithm.github.io/HTMLPlayground](https://sikepuri-algorithm.github.io/HTMLPlayground)
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Hello World!</p>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+`Hello World!` と表示されましたか。
+
+様々なことが書いてあり非常にわかりにくいですが、重要なのは `<body>` と `</body>` の間に挟まれた部分です。HTML は、タグと呼ばれるもので内容を囲うことで要素を作ります。今回の場合は、`<p>` と `</p>` で囲まれたところが段落になっています。つまり、`<` と `>` で囲まれる開始タグと `</` と `>` で囲まれる終了タグで内容を挟むことで要素を作ることができます。終了タグのはじめには、`/` があることに注意してください。
+
+HTML は、タグを用いてどのように構造を表すのかさえわかっていれば、後は様々なタグを覚えるだけで簡単に扱えます。
+
+:::info その他の要素
+
+`<body>` 要素の中身だけがわかっていれば十分ですが、それ以外のコードについても簡単に解説しておきます。
+
+先程のコードは次のようになっていました。
+
+```html title=index.html
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Hello World!</p>
+  </body>
+</html>
+```
+
+はじめの行の `<!DOCTYPE html>` は、ファイルの先頭に書くことでここから HTML を書くということを明示的に宣言するものです。
+
+`<html lang="ja">` と `</html>` で囲まれたところが、HTML の内容になっています。その中で、`<head>` と `</head>` で囲まれたところがヘッダーで、`<body>` と `</body>` で囲まれたところは、実際にブラウザ上に表示される内容になっています。
+
+`<meta charset="UTF-8" />` は、文字コードに UTF-8 を使うという意味です。`<meta name="viewport" content="width=device-width, initial-scale=1.0" />` は、パソコンやスマートフォンそれぞれに合わせた表示をするために、必要になるものです。`<title>Document</title>` はタイトルを定義するもので、ここに書かれた内容はブラウザのタイトルバーに表示されます。
+
+色々と説明しましたが、これらの内容はわかっていなくても構いません。とりあえず、コピペして、使ってください。
+
+```mermaid
+flowchart TB
+  A["&lt;html&gt;"] --> B["&lt;head&gt;"]
+  A --> C["&lt;body&gt;"]
+  B --> D["&lt;meta&gt;"]
+  B --> E["&lt;title&gt;"]
+  C --> F["&lt;p&gt;"]
+```
+
+:::
+
+## 様々なタグ
+
+それでは、他のタグも見てみましょう。後は、タグを覚えて使うだけです。そして、HTML には、非常に豊富なタグが用意されているので、タグを使うことで大抵のことはできます。
+
+### 段落
+
+段落は、`<p>` を用いて表すことができます。`body` タグの中に以下のように書くことで、段落を作ることができます。
+
+```html title=index.html
+<p>
+  あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+</p>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+    </p>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### 見出し要素
+
+`<h1>` タグは、見出しを表します。
+
+```html title=index.html
+<h1>見出し</h1>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>見出し</h1>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+`<h2>` タグは、`<h1>` タグの一つ下の見出しを表します。同じように `<h3>` タグ、`<h4>` タグ、`<h5>` タグ、`<h6>` タグがあります。
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>見出し 1</h1>
+    <h2>見出し 2</h2>
+    <h3>見出し 3</h3>
+    <h4>見出し 4</h4>
+    <h5>見出し 5</h5>
+    <h6>見出し 6</h6>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### 改行
+
+HTML では、普通に改行しただけでは改行が出力されないようになっています。その代わりに、`<br>` タグを作って改行を出力します。
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Hello World!
+    <br>
+    Hello World!
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### 強調
+
+強調は、次のようにします。
+
+```html title=index.html
+<em>強調</em>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <em>強調</em>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+:::note
+イタリック体になっていて違和感を覚えるかもしれませんが、HTML では論理的な構造のみを表して見た目は CSS という別の言語で表現するのが一般的です。CSS については、後で触れます。HTML で、見た目は表さないということは覚えておいてください。見た目を変えるためだけに、別のタグを使うことなどはしないでください。
+:::
+
+### 強い強調
+
+さらに強い強調は、次のようにします。
+
+```html title=index.html
+<strong>さらに強い強調</strong>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <strong>さらに強い強調</strong>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### 番号なし箇条書き
+
+次のように書けば、箇条書きができます。
+
+```html title=index.html
+<ul>
+  <li>アイテム1</li>
+  <li>アイテム2</li>
+  <li>アイテム3</li>
+</ul>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>アイテム1</li>
+      <li>アイテム2</li>
+      <li>アイテム3</li>
+    </ul>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+さらに、次のように入れ子にすることもできます。
+
+```html title=index.html
+<ul>
+  <li>アイテム1</li>
+  <li>
+    アイテム2
+    <ul>
+      <li>サブアイテム1</li>
+      <li>サブアイテム2</li>
+    </ul>
+  </li>
+</ul>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>アイテム1</li>
+      <li>
+        アイテム2
+        <ul>
+          <li>サブアイテム1</li>
+          <li>サブアイテム2</li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### 番号付き箇条書き
+
+番号付きの箇条書きもできます。次のように書けば、番号付きの箇条書きができます。
+
+```html title=index.html
+<ol>
+  <li>アイテム1</li>
+  <li>アイテム2</li>
+  <li>アイテム3</li>
+</ol>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ol>
+      <li>アイテム1</li>
+      <li>アイテム2</li>
+      <li>アイテム3</li>
+    </ol>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### 表
+
+表も書くことができます。`<tr>` タグで行を表し、`<td>` タグで列を表します。
+
+```html title=index.html
+<table>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>4</td>
+  </tr>
+</table>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+    </table>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+:::note
+罫線などが表示されませんが、ちゃんと表は作れています。先程も触れたように、HTML では論理的な構造のみを表して見た目は CSS という別の言語で表現します。
+:::
+
+### リンク
+
+リンクは次のように作れます。開始タグと終了タグの間に表示する文字を書いて、`href` 属性の中にリンク先の URL を記載します。`<a>` タグは、リンクを表すタグです。
+
+:::tip 属性
+属性は、要素の特徴を表すものです。
+
+今回の `<a>` タグでは、`<a>` で囲まれた部分の文字に対して、`href` 属性で指定した URL などの情報が付加されます。
+:::
+
+```html title=index.html
+<a href="https://sikepuri-algorithm.github.io/">Introduction to Algorithms</a>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="https://sikepuri-algorithm.github.io/">Introduction to Algorithms</a>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### 画像
+
+画像は、次のようにして表示することができます。src 属性に、画像のパスを書き、alt 属性にその画像の代わりとなるテキスト情報を書きます。
+
+```html title=index.html
+<img
+  src="https://sikepuri-algorithm.github.io/img/favicon.ico"
+  alt="Introduction to Algorithms"
+/>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img
+      src="https://sikepuri-algorithm.github.io/img/favicon.ico"
+      alt="Introduction to Algorithms"
+    />
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+他にも様々な記法があるので、自分で調べてみてください。HTML に関する情報は非常に豊富にあるので、すぐに見つかるはずです。
+
+しかし、インターネット上には間違った情報や古い情報が非常に多いので、目的に合ったタグを見つけたら、詳細については[MDN](https://developer.mozilla.org/ja/)という Web サイトで確認することをおすすめします。このサイトには、すべてのタグの定義が詳細に書いてあります。
+
+## 練習問題
+
+### 練習問題 1
+
+次のように夏目漱石の『吾輩は猫である』を表示する Web サイトを作ってみましょう。
+
+<IframeOutput>{`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>吾輩は猫である</h1>
+    <h2>夏目漱石</h2>
+    <p>吾輩は猫である。名前はまだ無い。</p>
+    <p>どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。その後猫にもだいぶ逢ったがこんな片輪には一度も出会わした事がない。のみならず顔の真中があまりに突起している。そうしてその穴の中から時々ぷうぷうと煙を吹く。どうも咽せぽくて実に弱った。これが人間の飲む煙草というものである事はようやくこの頃知った。</p>
+  </body>
+</html>\
+`}</IframeOutput>
+
+<Answer>
+
+次のようになります。
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>吾輩は猫である</h1>
+    <h2>夏目漱石</h2>
+    <p>吾輩は猫である。名前はまだ無い。</p>
+    <p>
+      どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。この書生というのは時々我々を捕えて煮て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。ただ彼の掌に載せられてスーと持ち上げられた時何だかフワフワした感じがあったばかりである。掌の上で少し落ちついて書生の顔を見たのがいわゆる人間というものの見始であろう。この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるしてまるで薬缶だ。その後猫にもだいぶ逢ったがこんな片輪には一度も出会わした事がない。のみならず顔の真中があまりに突起している。そうしてその穴の中から時々ぷうぷうと煙を吹く。どうも咽せぽくて実に弱った。これが人間の飲む煙草というものである事はようやくこの頃知った。
+    </p>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+</Answer>
+
+### 練習問題 2
+
+次のような Web サイトを作ってみましょう。
+
+<IframeOutput>{`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>国語（文科）</li>
+      <li>国語（理科）</li>
+      <li>数学（文科）</li>
+      <li>数学（理科）</li>
+      <li>
+        理科
+        <ul>
+          <li>物理</li>
+          <li>化学</li>
+          <li>生物</li>
+          <li>地学</li>
+        </ul>
+      </li>
+      <li>
+        地理・歴史
+        <ul>
+          <li>日本史</li>
+          <li>世界史</li>
+          <li>地理</li>
+          <li>地学</li>
+        </ul>
+      </li>
+      <li>外国語（英語）</li>
+    </ul>
+  </body>
+</html>\
+`}</IframeOutput>
+
+<Answer>
+
+次のようになります。
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>国語（文科）</li>
+      <li>国語（理科）</li>
+      <li>数学（文科）</li>
+      <li>数学（理科）</li>
+      <li>
+        理科
+        <ul>
+          <li>物理</li>
+          <li>化学</li>
+          <li>生物</li>
+          <li>地学</li>
+        </ul>
+      </li>
+      <li>
+        地理・歴史
+        <ul>
+          <li>日本史</li>
+          <li>世界史</li>
+          <li>地理</li>
+          <li>地学</li>
+        </ul>
+      </li>
+      <li>外国語（英語）</li>
+    </ul>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+</Answer>
+
+### 練習問題 3
+
+次のように、表を作ってみましょう。
+これは、今までの内容だけでは作れません。`<th>` タグについて[MDN](https://developer.mozilla.org/ja/)などで調べてみましょう。
+
+<IframeOutput>{`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>国</th>
+        <th>首都</th>
+      </tr>
+      <tr>
+        <td>アメリカ合衆国</td>
+        <td>ワシントンD.C.</td>
+      </tr>
+      <tr>
+        <td>中国</td>
+        <td>北京</td>
+      </tr>
+      <tr>
+        <td>日本</td>
+        <td>東京</td>
+      </tr>
+    </table>
+  </body>
+</html>\
+`}</IframeOutput>
+
+<Answer>
+
+次のようになります。
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>国</th>
+        <th>首都</th>
+      </tr>
+      <tr>
+        <td>アメリカ合衆国</td>
+        <td>ワシントンD.C.</td>
+      </tr>
+      <tr>
+        <td>中国</td>
+        <td>北京</td>
+      </tr>
+      <tr>
+        <td>日本</td>
+        <td>東京</td>
+      </tr>
+    </table>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+</Answer>
+
+### 練習問題 4
+
+以下のようなお問い合わせフォームを作ってみましょう。これも今までの内容だけではできないので、調べてみましょう。
+
+<IframeOutput>{`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>お問い合わせフォーム</h1>
+    お問い合わせは、下記の入力フォームから送信してください。
+    <table>
+      <tr>
+        <td>お名前</td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td>お問い合わせ内容</td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button type="button">送信</button>
+  </body>
+</html>\
+`}</IframeOutput>
+
+<Answer>
+
+次のようになります。`input` タグと `button` タグについて[MDN](https://developer.mozilla.org/ja/)などで調べてみましょう。
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>お問い合わせフォーム</h1>
+    お問い合わせは、下記の入力フォームから送信してください。
+    <table>
+      <tr>
+        <td>お名前</td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><input type="text"></td>
+      </tr>
+      <tr>
+        <td>お問い合わせ内容</td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+    <button type="button">送信</button>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+</Answer>

@@ -2,24 +2,24 @@ import React, { useState } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Editor from "@monaco-editor/react";
-import BrowserWindow from "@site/src/components/BrowserWindow";
+import IframeOutput from "@site/src/components/IframeOutput";
 import mdToHTML from "@site/src/components/mdToHTML";
 import styles from "./styles.module.css";
 
 export default function InteractiveCodeEditor({
   language,
-  defaultValue,
+  children,
   defaultHTML,
   defaultCSS,
   defaultJavaScript,
 }: {
   language: "html" | "markdown" | "HTML-CSS-JavaScript" | "latex";
-  defaultValue?: string;
+  children?: string;
   defaultHTML?: string;
   defaultCSS?: string;
   defaultJavaScript?: string;
 }) {
-  const [code, setCode] = useState<string>(defaultValue);
+  const [code, setCode] = useState<string>(children);
   const [html, setHTML] = useState<string>(defaultHTML);
   const [css, setCSS] = useState<string>(defaultCSS);
   const [js, setJS] = useState<string>(defaultJavaScript);
@@ -54,7 +54,7 @@ export default function InteractiveCodeEditor({
             <Tabs groupId="editor">
               <TabItem value="html" label="HTML">
                 <Editor
-                  height="200px"
+                  height="400px"
                   defaultLanguage="html"
                   defaultValue={defaultHTML}
                   onChange={(value) => {
@@ -64,7 +64,7 @@ export default function InteractiveCodeEditor({
               </TabItem>
               <TabItem value="css" label="CSS">
                 <Editor
-                  height="200px"
+                  height="400px"
                   defaultLanguage="css"
                   defaultValue={defaultCSS}
                   onChange={(value) => {
@@ -74,7 +74,7 @@ export default function InteractiveCodeEditor({
               </TabItem>
               <TabItem value="js" label="JavaScript">
                 <Editor
-                  height="200px"
+                  height="400px"
                   defaultLanguage="javascript"
                   defaultValue={defaultJavaScript}
                   onChange={(value) => {
@@ -85,9 +85,9 @@ export default function InteractiveCodeEditor({
             </Tabs>
           ) : (
             <Editor
-              height="200px"
+              height="400px"
               defaultLanguage={language}
-              defaultValue={defaultValue}
+              defaultValue={children}
               onChange={(value) => {
                 setCode(value);
               }}
@@ -96,22 +96,15 @@ export default function InteractiveCodeEditor({
         </div>
         <div className={styles.playgroundHeader}>結果</div>
         <div className={styles.playgroundPreview}>
-          <BrowserWindow minHeight={200}>
-            <iframe
-              width="100%"
-              height="100%"
-              srcDoc={
-                language === "html"
-                  ? code
-                  : language === "markdown"
-                  ? mdToHTML(code)
-                  : language === "latex"
-                  ? latexRender(code)
-                  : `<style>${css}</style>${html}<script>${js}</script>`
-              }
-              title="Live Code"
-            ></iframe>
-          </BrowserWindow>
+          <IframeOutput>
+            {language === "html"
+              ? code
+              : language === "markdown"
+              ? mdToHTML(code)
+              : language === "latex"
+              ? latexRender(code)
+              : `<style>${css}</style>${html}<script>${js}</script>`}
+          </IframeOutput>
         </div>
       </div>
     </>
