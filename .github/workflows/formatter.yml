@@ -4,7 +4,7 @@ name: Formatter
 on:
   push:
   pull_request:
-    branches: [master, main]
+    branches: [main, master]
 
 jobs:
   changes:
