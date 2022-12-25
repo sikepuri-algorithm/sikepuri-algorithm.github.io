@@ -103,7 +103,7 @@ students = [
 
 中央の値を見て中央の値が目的の値よりも大きかったら、その値よりも小さい領域を探し、目的の値よりも小さかったら、その値よりも大きい領域を探すといったようにします。
 
-![binary_search](./binary-search.drawio.svg)
+![Binary search](./binary-search.drawio.svg)
 
 この方法は整列されている場合にしか使えませんが、時間計算量は $O(\log_2 n)$ となり線型探索よりも非常に速く解を求めることができます。
 
@@ -162,6 +162,8 @@ sequenceDiagram
 1. `center` の値よりも求める値が大きかったら、`start` を `center` で置き換える。逆の場合、`end` を `center` で置き換える。
 1. 2,3 を繰り返すと、`start` と `end` が近づいていき `end` の値が求める値になるので、`end` の値を出力する。
 
+![Binary search](binary-search-algorithm.drawio.svg)
+
 ### 実装
 
 今までの内容を基に二分探索を使ったプログラムを作ってみましょう。
@@ -169,6 +171,8 @@ sequenceDiagram
 次のようになります。
 
 <ViewSource path="/search-algorithm/binary_search.ipynb" />
+
+### 二分探索のライブラリ
 
 実は、二分探索を行うには [`bisect`](https://docs.python.org/ja/3/library/bisect.html) というライブラリがあります。
 
@@ -198,7 +202,7 @@ sequenceDiagram
 
 降べきの順に整列された数列の中から、N 以上である最小の数字のインデックスを見つける関数を作ってみてください。
 
-例えば、数列が `[1, 2, 3, 4, 5,5, 7, 8, 10]` で $N = 5$ ならば、4 となります。
+例えば、数列が `[1, 2, 3, 4, 5, 5, 7, 8, 10]` で $N = 5$ ならば、4 となります。
 
 <Answer>
   <ViewSource path="/search-algorithm/binary_left_practice.ipynb" />
@@ -208,7 +212,7 @@ sequenceDiagram
 
 降べきの順に整列された数列の中から、N 以下である最大の数字のインデックスを見つける関数を作ってみてください。
 
-例えば、数列が `[1, 2, 3, 4, 5,5, 7, 8, 10]` で $N = 5$ ならば、5 となります。
+例えば、数列が `[1, 2, 3, 4, 5, 5, 7, 8, 10]` で $N = 5$ ならば、5 となります。
 
 <Answer>
   <ViewSource path="/search-algorithm/binary_right_practice.ipynb" />
