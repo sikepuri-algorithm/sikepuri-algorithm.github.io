@@ -160,10 +160,22 @@ sequenceDiagram
 
 <ViewSource path="/search-algorithm/binary_search.ipynb" />
 
+実は、二分探索を行うには [`bisect`](https://docs.python.org/ja/3/library/bisect.html) というライブラリがあります。
+
+`bisect_left` 関数は、ある数を配列に挿入しようとした時、すでに配列に同じ数がある場合それらの数の中で最**小**の要素の左側に挿入した時のインデックスを返します。つまり、次のようになります。
+
+<ViewSource path="/search-algorithm/bisect_left.ipynb" />
+
+`bisect_right` 関数は、ある数を配列に挿入しようとした時、すでに配列に同じ数がある場合それらの数の中で最**大**の要素の左側に挿入した時のインデックスを返します。つまり、次のようになります。
+
+<ViewSource path="/search-algorithm/bisect_right.ipynb" />
+
 :::info
 二分探索のアイディアは非常に簡単ですが、正確に実装することはとても難しいことで知られています。
 
 次の論文によれば、書籍 20 冊のうち 15 冊が間違えていたようです。
+
+実際に使うときは、ライブラリを使った方が良いかもしれません。
 
 <cite>
   Richard E. Pattis. Textbook errors in binary searching. SIGCSE Bull.,
