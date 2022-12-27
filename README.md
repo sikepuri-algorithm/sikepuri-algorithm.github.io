@@ -1,7 +1,7 @@
-[![Build and Deploy](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml) [![Super Linter](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/super_linter.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/super_linter.yml) [![Formatter](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/formatter.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/formatter.yml) [![ESLint](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/eslint.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/eslint.yml)
+[![Build and Deploy](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml) [![Super Linter](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/super_linter.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/super_linter.yml) [![Formatter](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/formatter.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/formatter.yml) [![Linter](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/linter.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/linter.yml)
 
 <div style="text-align: center">
-<img src="./static/img/logo-black.svg" alt="logo" height="200px" >
+    <img src="./static/img/logo-black.svg" alt="logo" height="200px" >
 </div>
 
 # Introduction to Algorithms
@@ -12,11 +12,15 @@
 
 ## 環境構築
 
+Node.js のインストール
+
 ```shell
 npm ci
 ```
 
 以下は、コミット時に自動で Formatter や Linter を実行させるためのスクリプトです。実行しなくても構いません。
+
+次は、Poetry のインストール
 
 ```shell
 curl -sSL https://install.python-poetry.org | python3 -
@@ -36,14 +40,6 @@ poetry run pre-commit install
 npm start
 ```
 
-## ビルド
-
-```shell
-npm run build
-```
-
-このコマンドは、`build` ディレクトリに静的コンテンツを出力します。
-
 ## その他
 
-間違いなどがありましたら、Issues や PR などで教えてください。
+間違いなどがありましたら、Issue や PR などで教えてください。
