@@ -1,0 +1,103 @@
+---
+sidebar_position: 5
+---
+
+import { MdModeEdit } from "react-icons/md";
+import prInGUI from "./pr_in_gui.mp4";
+import pr from "./pr.mp4";
+import deleteBranch from "./delete_branch.mp4";
+
+# 共同開発に参加
+
+ここでは、他のプロジェクトに参加する方法について解説します。
+
+他のプロジェクトに参加するのはとても難しそうに感じるかもしれませんが、実は非常に簡単にできます。GitHub のアカウントがあれば、誤植の訂正程度なら 2、3 分で行うことができます。
+
+ここでは、このシケプリのリポジトリを例として使います。
+実はこのシケプリのソースコードは公開していて誰でも編集リクエストが出せます。ソースコードは、はじめての人でもすぐに理解できるようになっているので、是非、誤植の訂正や記事の追加などをして共同開発の仕方を学ぶ教材として使ってください。
+
+## ブラウザだけで Pull request をする
+
+ここでは、ブラウザだけを使って Pull request を出す方法について解説します。Pull request は GitHub の機能で、誰でも修正や機能追加を提案できるような機能です。編集権限を持っていないプロジェクトに対しても、修正内容を簡単に送ることができます。
+
+次の動画のようにするだけで修正内容を送ることができます。
+
+<video src={prInGUI} controls width="100%" />
+
+Pull request を出すリポジトリをブラウザで開いてください。このリポジトリの URL はこれです。[https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io)
+
+次にリポジトリをコピーするために Fork します。`Fork` と書いてあるボタンを押して、`Create fork` を押してください。
+
+その後、編集するファイルを探します。今回は、ライフゲームの項のファイルを編集するのでライフゲームの項の `index.mdx` というファイルを開きます。このリポジトリでは、基本的に記事は `index.mdx` というファイルに書かれています。
+
+編集するファイルを開いたら、編集ボタンを押します。<MdModeEdit/>のようなボタンです。
+
+ファイルを編集します。今回は、「ライフゲームとは。」を「ライフゲームとは」に直しました。
+
+コミットメッセージを入力します。変更内容がわかるようなメッセージを入力してください。
+
+`Create a new branch for this commit and start a pull request.` というボタンをクリックして、`Propose changes` を押してください。
+
+`compare across forks` を押して、`base repository` を Pull request を提案するリポジトリにしてください。画面下に変更内容の差分が表示されているので、確認してから `Create pull request` を押してください。次の画面で、Pull request のメッセージを入力し、`Create pull request` をクリックしてください。
+
+これで、完成です。後は、変更内容が取り込まれるのを待つだけです。
+
+## ローカル環境から Pull request をする
+
+ブラウザだけで Pull Request をする方法では動作確認などができないので、大きな変更をすることはできません。そのため、ローカル環境で編集して実際に動作確認をすることが必要になります。ここでは、そのやり方について解説します。
+
+次の動画を参考にしてください。
+
+<video src={pr} controls width="100%" />
+
+リポジトリを Fork していなかったら、さきほどのようにして Fork します。
+
+`Code` をクリックして、`SSH` をクリックして、`git@github.com:...` で始まる文字列をコピーしましょう。
+
+ターミナルで次のコマンドを実行します。
+
+```shell
+git clone さきほどコピーした文字列
+```
+
+すると、リポジトリのコピーをローカルにダウンロードすることができるので、VSCode でそれを開きます。
+
+ターミナルでそのディレクトリに移動して、開発環境を構築します。方法は、基本的には各々のリポジトリの一番上の階層の `README.md` というファイルに書いてあります。このリポジトリの場合は、`npm ci` とターミナルで入力してパッケージをインストールして、`npm start` と入力すれば、開発環境を立ち上げられます。
+
+実際に編集しましょう。今回は、`LaTeX` を `$\LaTeX$` としました。これで、LaTeX が $\LaTeX$ に変わりました。
+
+`Ctrl` と `C` を同時に押して開発用サーバーを終了させてください。
+
+次のコマンドを実行してください。これは、新しく branch を作るコマンドです。
+
+```shell
+git checkout -b 任意のブランチ名
+```
+
+次のコマンドを実行して、変更内容をステージングしてください。
+
+```shell
+git add -A
+```
+
+次にコミットしてください。
+
+```shell
+git commit -m "コミットメッセージ"
+```
+
+次に変更内容を保存した branch をプッシュしてください。
+
+```shell
+git push origin 任意のブランチ名
+```
+
+GitHub を開くと、`... had recent pushes ...` のようなメッセージが表示されるので、`Compare & pull request` をクリックしてください。出ない場合は、`Pull requests` タブから Pull request を作ってください。
+
+メッセージを入力して、`Create pull request` を押せば、完了です。
+
+:::note
+Pull request が merge されたら、不要な branch を削除しておきましょう。
+
+<video src={deleteBranch} controls width="100%" />
+:::
