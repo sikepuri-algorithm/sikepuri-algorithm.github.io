@@ -4,17 +4,19 @@ sidebar_position: 1
 
 import installWsl from "./install_wsl.mov";
 
-# WSL のインストール（Windows のみ必要）
+# WSL のインストール（Windows のみ）
 
-macOS は、Linux という OS と源流を同じくするので、非常に簡単にプログラミングの開発環境を整えることができます。
+macOS は Linux と同じく UNIX を源流とするので、非常に簡単にプログラミングの開発環境を整えることができます。
 
 しかし、Windows では多くの場合プログラミングの開発環境を構築するのはとても難しく大変です。そこで、プログラミング環境を簡単に構築できるように Linux という OS を Windows 上で動かす必要が出てきます。
 
-実は、昔は Windows 上に Linux 環境を構築するのはとても難しかったのですが、最近 Microsoft 社 が Windows 上に簡単に Linux 環境を構築できる WSL(Windows Subsystem for Linux) という機能を開発して非常に簡単になりました。
+実は、昔は Windows 上に Linux 環境を構築するのはとても大変だったのですが、最近 Microsoft 社 が Windows 上に簡単に Linux 環境を構築できる WSL(Windows Subsystem for Linux) という機能を開発したので非常に簡単に Linux 環境を構築できるようになりました。
 
 ## WSL のインストール方法
 
-詳しくは、下記の動画を参考にしてください。
+<video src={installWsl} controls width="100%" />
+
+詳しくは、動画を参考にしてください。
 簡単な流れを説明します。
 
 - コマンドプロンプトを `管理者として実行` します。
@@ -30,7 +32,5 @@ macOS は、Linux という OS と源流を同じくするので、非常に簡�
 :::tip
 `new password` を求められたときに、入力しても画面上は何も変化しませんが正しく入力されています。そのまま入力して `Enterキー` を押してください。
 :::
-
-<video src={installWsl} controls width="100%" />
 
 WSL の具体的な使い方に関しては、[Visual Studio Code をインストールの項](/docs/03extras/02vscode/)で述べます。

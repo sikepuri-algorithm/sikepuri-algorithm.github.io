@@ -1,26 +1,17 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/InteractiveCodeEditor";
 import installDocusaurus from "./install_docusaurus.mp4";
 import editDocusaurus from "./edit_docusaurus.mp4";
-import LifeGame from "@site/src/components/LifeGame/LifeGame";
-export const defaultMathValue = `\
-$a^2 + b^2 = c^2$
-$$
-  \\frac{\\pi}{2} =
-  \\left( \\int_{0}^{\\infty} \\frac{\\sin x}{\\sqrt{x}} dx \\right)^2 =
-  \\sum_{k=0}^{\\infty} \\frac{(2k)!}{2^{2k}(k!)^2} \\frac{1}{2k+1} =
-  \\prod_{k=1}^{\\infty} \\frac{4k^2}{4k^2 - 1}
-$$\
-`;
 
 # Docusaurus のプロジェクトの作成方法
 
 ## Docusaurus のプロジェクトの作成方法
 
-ここでは、Docusaurus という静的サイトジェネレーターを使って実際にウェブサイトを作ってみます。Docusaurus は、さきほどインストールした npm を使うとコマンド一つで使うことができます。実は、npm を使えば、Docusaurus 以外にも様々なものをコマンド一つで簡単にインストールできます。下の動画を見ながら、Docusaurus のプロジェクトを作成してください。以下に概要を記しておきます。
+ここでは、Docusaurus という静的サイトジェネレーターを使って実際にウェブサイトを作ってみます。Docusaurus のプロジェクトは、npm を使うとコマンド一つで作ることができます。実は、npm を使えば、Docusaurus 以外のものをインストールするのもコマンド一つで簡単にできます。下の動画を見ながら、Docusaurus のプロジェクトを作成してください。以下に概要を記しておきます。
+
+<video src={installDocusaurus} controls width="100%" />
 
 - まず、適当なフォルダ例えば `projects` フォルダを作成して、ターミナルを起動してください。
 
@@ -32,7 +23,7 @@ $$\
 
 - `Ok to proceed? (y)` と聞かれるので、`y` と入力して `Enterキー` を押します。
 
-- 次のコマンドを順に実行します。すると、ブラウザが自動的に開き、デフォルトのウェブサイトが現れます。
+- コンソールに表示された通りに次のコマンドを順に実行します。すると、ブラウザが自動的に開き、デフォルトのテンプレートが現れます。
 
   ```shell
   cd my-website
@@ -42,130 +33,23 @@ $$\
   npm start
   ```
 
-<video src={installDocusaurus} controls width="100%" />
+## 編集方法
 
-## Docusaurus の編集方法
+ここでは、Docusaurus のプロジェクトを実際に編集してみます。
 
-ここでは、Docusaurus を実際に編集してみます。
-
-- まず、ターミナル上で `Ctrlキー` と `C` を同時に押して、先程起動した Docusaurus のサーバーを終了してください。
-
-- 次に、先程作成した Docusaurus のプロジェクトフォルダを VSCode で開きます。
+- 先程作成した Docusaurus のプロジェクトフォルダを VSCode で開きます。
 
 - ターミナルを起動します。
 
-- もう一度次のコマンドを実行して、Docusaurus のサーバーを起動します。先程のようにブラウザが自動的に開きます。
+- 次のコマンドを実行して、Docusaurus のサーバーを起動します。ブラウザが自動的に開きます。
 
   ```shell
   npm start
   ```
 
-- では、実際に編集してみましょう。今回は、チュートリアルのはじめのページを編集してみます。`docs` ファルダの中の `intro.md` というフォルダを開いて、上から 5 行目の `# Tutorial Intro` というところを `# Hello from Docusaurus` と書き換えてみましょう。（先頭に `#` と書いてあるのは、ここは見出しだという命令です。実は、Docusaurus は Markdown という非常に簡単な形式で書くことができます。）ブラウザを見ると、自動で編集した内容がプレビューされているはずです。
+- では、実際に編集してみましょう。今回は、チュートリアルのはじめのページを編集してみます。`docs` ファルダの中の `intro.md` というフォルダを開いて、上から 5 行目の `# Tutorial Intro` というところを `# Hello from Docusaurus` と書き換えてみましょう。ブラウザを見ると、編集後の内容が自動でプレビューに反映されているはずです。
 
 <video src={editDocusaurus} controls width="100%" />
-
-:::info
-先程、Docusaurus は Markdown という形式で書くことができると書きました。ここで、Markdown 記法について少し紹介しておきます。より詳しいことは、自分で調べてみてください。
-
-1.  `#` と書くことで見出しを書くことができます。
-
-    <InteractiveCodeEditor language="markdown">
-      {"# レベル 1 の見出し"}
-    </InteractiveCodeEditor>
-
-1.  `##` は `#` の一個下の見出しです。
-
-    <InteractiveCodeEditor language="markdown">
-      {"## レベル 2 の見出し"}
-    </InteractiveCodeEditor>
-
-1.  `**` で強調することができます。
-
-    <InteractiveCodeEditor language="markdown">
-      {"**強調**"}
-    </InteractiveCodeEditor>
-
-1.  `>` とすることで引用することができます。
-
-    <InteractiveCodeEditor language="markdown">
-      {"> 引用"}
-    </InteractiveCodeEditor>
-
-1.  箇条書きは次のようにして書けます。
-
-    <InteractiveCodeEditor language="markdown">
-      {"- アイテム 1\n- アイテム 2\n- アイテム 3"}
-    </InteractiveCodeEditor>
-
-1.  番号付き箇条書きは次のようにして書けます。
-
-    <InteractiveCodeEditor language="markdown">
-      {"1.  アイテム 1\n1.  アイテム 2\n1.  アイテム 3"}
-    </InteractiveCodeEditor>
-
-1.  バッククォート（ `` ` `` ）で囲むことでインラインコードを表示することができます。
-
-    <InteractiveCodeEditor language="markdown">
-      {"`コードテキスト`"}
-    </InteractiveCodeEditor>
-
-1.  バッククォート 3 つで、コードブロックを表示することができます。
-
-    <InteractiveCodeEditor language="markdown">
-      {'```python\nprint("Hello World!")\n```'}
-    </InteractiveCodeEditor>
-
-1.  リンクは次のようにして表すことができます。
-
-    <InteractiveCodeEditor language="markdown">
-      {"[Introduction to Algorithms](https://sikepuri-algorithm.github.io/)"}
-    </InteractiveCodeEditor>
-
-1.  画像は次のようにして表示することができます。もちろんローカル上のファイルも扱えます。
-
-    <InteractiveCodeEditor language="markdown">
-      {
-        "![Introduction to Algorithms](https://sikepuri-algorithm.github.io/img/favicon.ico)"
-      }
-    </InteractiveCodeEditor>
-
-1.  実は、Markdown の中には HTML も書くことができます。
-
-    <InteractiveCodeEditor language="markdown">
-      {'<button type="button">ボタン</button>'}
-    </InteractiveCodeEditor>
-
-1.  多くの場合、数式を書くこともできます。
-
-    <InteractiveCodeEditor language="markdown">
-      {defaultMathValue}
-    </InteractiveCodeEditor>
-
-:::
-
-:::info
-実は、Docusaurus は Markdown だけでなく MDX でも書くことができます。MDX は、Markdown の中で JSX 記法 を使えるものです。JSX 記法 は、JavaScript の中に HTML を書くことができるものですが、JavaScript や HTML の知識が必要になるので、自分で調べてみてください。
-
-JavaScript を文書の中に書くことができるので、例えば次のような表現が可能です。
-
-```mdx live
-<>{2 * Math.PI}</>
-```
-
-ちなみに、このシケプリではライフゲームのコンポーネントを作ったので、それを使うときはファイルの先頭で次のようにインポートしてから、次のように書くだけでライフゲームを表示できます（笑）
-
-```markdown
-import LifeGame from "@site/src/components/LifeGame/LifeGame";
-```
-
-```mdx live
-<>
-  <LifeGame />
-  <LifeGame />
-</>
-```
-
-:::
 
 :::tip
 Docusaurus で数式を表示するには、以下のようにします。（2022 年 12 月時点）[Docusaurus の公式サイトの説明](https://docusaurus.io/docs/markdown-features/math-equations)を参考にしてください。
