@@ -7,7 +7,7 @@ import deploy from "./deploy.mp4";
 
 # Render にデプロイ
 
-Render は様々な Web アプリを簡単にデプロイできるプラットフォームです。実は、このシケプリは Render ではなく GitHub Pages を使っているのですが、GitHub Pages はソースコードを公開しないと使えないので、こちらを紹介しておきます。
+Render は様々な Web アプリを簡単にデプロイできるプラットフォームです。実は、このシケプリは Render ではなく GitHub Pages を使ってデプロイしているのですが、GitHub Pages はソースコードを公開しないと使えないので、代わりに Render を紹介しておきます。
 
 ## Render の登録
 
@@ -17,12 +17,12 @@ Render は様々な Web アプリを簡単にデプロイできるプラット�
 
 ## Render にデプロイ
 
-初めて使うときは、次の動画のように GitHub の連携をしないといけません。
+<video src={deploy} controls width="100%" />
 
-連携ができたら、次のように入力してください。
+初めて使うときは、次の動画のように GitHub との連携をしないといけません。
+
+連携ができたら、Docusaurus の場合は次のように入力してください。
 
 `Name` に好きな名前、`Build Command` に `npm ci && npm run build`、`Publish directory` に `build` と入力してください。
 
-成功すると、用意された URL に作成した Web ページが表示されます。これは、世界中の人が URL を知っていればアクセスできます。
-
-<video src={deploy} controls width="100%" />
+成功して `Live` と表示されると、用意された URL から作成した Web ページにアクセスすることができます。この URL にアクセスすることで、世界中の人が作った Web サイトを見ることができます。

@@ -5,7 +5,7 @@ sidebar_position: 3
 import installDocusaurus from "./install_docusaurus.mp4";
 import editDocusaurus from "./edit_docusaurus.mp4";
 
-# Docusaurus のプロジェクトの作成方法
+# Docusaurus
 
 ## Docusaurus のプロジェクトの作成方法
 
@@ -52,43 +52,43 @@ import editDocusaurus from "./edit_docusaurus.mp4";
 <video src={editDocusaurus} controls width="100%" />
 
 :::tip
-Docusaurus で数式を表示するには、以下のようにします。（2022 年 12 月時点）[Docusaurus の公式サイトの説明](https://docusaurus.io/docs/markdown-features/math-equations)を参考にしてください。
+Docusaurus で数式を表示できるようにするには、以下のようにします。（2022 年 12 月時点）[Docusaurus の公式サイトの説明](https://docusaurus.io/docs/markdown-features/math-equations)を参考にしてください。
 
-1.  ターミナルで以下を実行して、プラグインをインストールします。
+1. ターミナルで以下を実行して、プラグインをインストールします。
 
-    ```shell
-    npm install --save remark-math@3 rehype-katex@5 hast-util-is-element@1.1.0
-    ```
+   ```shell
+   npm install --save remark-math@3 rehype-katex@5 hast-util-is-element@1.1.0
+   ```
 
-1.  `docusaurus.config.js` の先頭に以下を追記します。これで、数式のプラグインがインポートできます。
+1. `docusaurus.config.js` の先頭に以下を追記します。これで、数式のプラグインがインポートできます。
 
-    ```javascript title="docusaurus.config.js"
-    const math = require("remark-math");
-    const katex = require("rehype-katex");
-    ```
+   ```javascript title="docusaurus.config.js"
+   const math = require("remark-math");
+   const katex = require("rehype-katex");
+   ```
 
-1.  `presets` オプションに以下を追記します。`docs` の中などに書くと良いでしょう。これで、`docs` の中でプラグインを使えます。
+1. `presets` オプションに以下を追記します。`docs` の中などに書くと良いでしょう。これで、`docs` の中でプラグインを使えます。
 
-    ```javascript title="docusaurus.config.js"
-    remarkPlugins: [math],
-    rehypePlugins: [katex],
-    ```
+   ```javascript title="docusaurus.config.js"
+   remarkPlugins: [math],
+   rehypePlugins: [katex],
+   ```
 
-1.  以下のようにスタイルシートの設定を追記します。
+1. 以下のようにスタイルシートの設定を追記します。
 
-    ```javascript title="docusaurus.config.js"
-    stylesheets: [
-      {
-        href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-        type: 'text/css',
-        integrity:
-          'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-        crossorigin: 'anonymous',
-      },
-    ],
-    ```
+   ```javascript title="docusaurus.config.js"
+   stylesheets: [
+     {
+       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+       type: 'text/css',
+       integrity:
+         'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+       crossorigin: 'anonymous',
+     },
+   ],
+   ```
 
-以上のようにすると、次のようになります。よく分からなければ、以下を自分の `docusaurus.config.js` に貼り付けると良いでしょう。
+以上の設定をすると、次のようになります。よく分からなければ、以下を自分の `docusaurus.config.js` に貼り付けると良いでしょう。
 
 ```javascript title="docusaurus.config.js"
 // @ts-check

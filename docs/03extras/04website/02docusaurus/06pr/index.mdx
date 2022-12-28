@@ -14,7 +14,7 @@ import deleteBranch from "./delete_branch.mp4";
 他のプロジェクトに参加するのはとても難しそうに感じるかもしれませんが、実は非常に簡単にできます。GitHub のアカウントがあれば、誤植の訂正程度なら 2、3 分で行うことができます。
 
 ここでは、このシケプリのリポジトリを例として使います。
-実はこのシケプリのソースコードは公開していて誰でも編集リクエストが出せます。ソースコードは、はじめての人でもすぐに理解できるようになっているので、是非、誤植の訂正や記事の追加などをして共同開発の仕方を学ぶ教材として使ってください。
+実はこのシケプリのソースコードは公開していて誰でも編集リクエストが出せます。ソースコードは、Markdown で書かれているのではじめての人でもすぐに理解できるようになっています。是非、気軽に誤植の訂正や記事の追加などをして共同開発の仕方を学ぶ教材として使ってください。GitHub では、編集権限を持っている人が編集リクエストの内容を確認して merge しないと変更が反映されないため、間違えた内容を送ってしまっても大丈夫です。
 
 ## ブラウザだけで Pull request をする
 
@@ -22,23 +22,25 @@ import deleteBranch from "./delete_branch.mp4";
 
 次の動画のようにするだけで修正内容を送ることができます。
 
+このシケプリで誤植などを探して、実際に Pull request をしてみてください。
+
 <video src={prInGUI} controls width="100%" />
 
-Pull request を出すリポジトリをブラウザで開いてください。このリポジトリの URL はこれです。[https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io)
+- Pull request を出すリポジトリをブラウザで開いてください。このシケプリのリポジトリにはここからアクセスできます。[https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io)
 
-次にリポジトリをコピーするために Fork します。`Fork` と書いてあるボタンを押して、`Create fork` を押してください。
+- リポジトリを編集するためのコピーを作成するために Fork します。`Fork` と書いてあるボタンを押して、`Create fork` を押してください。
 
-その後、編集するファイルを探します。今回は、ライフゲームの項のファイルを編集するのでライフゲームの項の `index.mdx` というファイルを開きます。このリポジトリでは、基本的に記事は `index.mdx` というファイルに書かれています。
+- 編集するファイルを探します。動画では、ライフゲームの項のファイルを編集するのでライフゲームの項の `index.mdx` というファイルを開いています。このリポジトリでは、基本的に記事は `index.mdx` というファイルに書かれています。
 
-編集するファイルを開いたら、編集ボタンを押します。<MdModeEdit/>のようなボタンです。
+- 編集するファイルを開いたら、編集ボタンを押します。<MdModeEdit/>のようなボタンです。
 
-ファイルを編集します。今回は、「ライフゲームとは。」を「ライフゲームとは」に直しました。
+- ファイルを編集します。動画では、「ライフゲームとは。」を「ライフゲームとは」に直しました。
 
-コミットメッセージを入力します。変更内容がわかるようなメッセージを入力してください。
+- コミットメッセージを入力します。変更内容がわかるようなメッセージを入力してください。
 
-`Create a new branch for this commit and start a pull request.` というボタンをクリックして、`Propose changes` を押してください。
+- `Create a new branch for this commit and start a pull request.` というボタンをクリックして、`Propose changes` を押してください。
 
-`compare across forks` を押して、`base repository` を Pull request を提案するリポジトリにしてください。画面下に変更内容の差分が表示されているので、確認してから `Create pull request` を押してください。次の画面で、Pull request のメッセージを入力し、`Create pull request` をクリックしてください。
+- `compare across forks` を押して、`base repository` を Pull request を提案するリポジトリにしてください。画面下に変更内容の差分が表示されているので、確認してから `Create pull request` を押してください。次の画面で、Pull request のメッセージを入力し、`Create pull request` をクリックしてください。
 
 これで、完成です。後は、変更内容が取り込まれるのを待つだけです。
 
@@ -50,54 +52,52 @@ Pull request を出すリポジトリをブラウザで開いてください。�
 
 <video src={pr} controls width="100%" />
 
-リポジトリを Fork していなかったら、さきほどのようにして Fork します。
+- リポジトリを Fork していなかったら、さきほどのようにして Fork します。
 
-`Code` をクリックして、`SSH` をクリックして、`git@github.com:...` で始まる文字列をコピーしましょう。
+- `Code` をクリックして、`SSH` をクリックして、`git@github.com:...` で始まる文字列をコピーしましょう。
 
-ターミナルで次のコマンドを実行します。
+- ターミナルで次のコマンドを実行します。リポジトリのコピーをローカルにダウンロードすることができます。
 
-```shell
-git clone さきほどコピーした文字列
-```
+  ```shell
+  git clone さきほどコピーした文字列
+  ```
 
-すると、リポジトリのコピーをローカルにダウンロードすることができるので、VSCode でそれを開きます。
+- ターミナルでさきほど clone したディレクトリに移動して、開発環境を構築します。開発環境の構築方法は、基本的には各々のリポジトリの一番上の階層の `README.md` というファイルに書いてあります。このリポジトリの場合は、`npm ci` とターミナルで入力してパッケージをインストールしてから `npm start` と入力すれば、開発環境を立ち上げられます。
 
-ターミナルでそのディレクトリに移動して、開発環境を構築します。方法は、基本的には各々のリポジトリの一番上の階層の `README.md` というファイルに書いてあります。このリポジトリの場合は、`npm ci` とターミナルで入力してパッケージをインストールして、`npm start` と入力すれば、開発環境を立ち上げられます。
+- 実際に編集しましょう。動画では、`LaTeX` を `$\LaTeX$` としました。これで、LaTeX が $\LaTeX$ に変わりました。
 
-実際に編集しましょう。今回は、`LaTeX` を `$\LaTeX$` としました。これで、LaTeX が $\LaTeX$ に変わりました。
+- `Ctrl` と `C` を同時に押して開発用サーバーを終了させてください。
 
-`Ctrl` と `C` を同時に押して開発用サーバーを終了させてください。
+- 次のコマンドを実行してください。これは、新しく branch を作るコマンドです。
 
-次のコマンドを実行してください。これは、新しく branch を作るコマンドです。
+  ```shell
+  git checkout -b 任意のブランチ名
+  ```
 
-```shell
-git checkout -b 任意のブランチ名
-```
+- 次のコマンドを実行して、変更内容をステージングしてください。
 
-次のコマンドを実行して、変更内容をステージングしてください。
+  ```shell
+  git add -A
+  ```
 
-```shell
-git add -A
-```
+- 次にコミットしてください。
 
-次にコミットしてください。
+  ```shell
+  git commit -m "コミットメッセージ"
+  ```
 
-```shell
-git commit -m "コミットメッセージ"
-```
+- 次に変更内容を保存した branch をリモートリポジトリにプッシュしてください。
 
-次に変更内容を保存した branch をプッシュしてください。
+  ```shell
+  git push origin 任意のブランチ名
+  ```
 
-```shell
-git push origin 任意のブランチ名
-```
+- GitHub を開くと、`... had recent pushes ...` のようなメッセージが表示されるので、`Compare & pull request` をクリックしてください。出ない場合は、`Pull requests` タブから Pull request を作ってください。
 
-GitHub を開くと、`... had recent pushes ...` のようなメッセージが表示されるので、`Compare & pull request` をクリックしてください。出ない場合は、`Pull requests` タブから Pull request を作ってください。
-
-メッセージを入力して、`Create pull request` を押せば、完了です。
+- Pull request のメッセージを入力して、`Create pull request` を押せば、完了です。
 
 :::note
-Pull request が merge されたら、不要な branch を削除しておきましょう。
+Pull request が merge されたら、不要な branch は削除しておきましょう。
 
 <video src={deleteBranch} controls width="100%" />
 :::
