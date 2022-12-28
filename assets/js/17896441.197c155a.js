@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksikepuri_of_algorithm=self.webpackChunksikepuri_of_algorithm||[]).push([[7918],{6922:(e,t,a)=>{a.d(t,{Z:()=>r});var l=a(7294),n=a(3272);const r={React:l,...l,LifeGame:function(){return l.createElement(l.Fragment,null,l.createElement("div",{style:{maxWidth:"200px"}},l.createElement(n.Z,null)))}}}}]);
