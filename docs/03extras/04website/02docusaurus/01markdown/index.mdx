@@ -7,7 +7,7 @@ import LifeGame from "@site/src/components/LifeGame/LifeGame";
 export const defaultMathValue = `\
 $a^2 + b^2 = c^2$
 $$
-  x = \frac{-b\pm \sqrt{b^2 - 4ac}}{2a}
+  x = \\frac{-b\pm \\sqrt{b^2 - 4ac}}{2a}
 $$\
 `;
 
@@ -18,7 +18,6 @@ $$\
 Markdown は、文書の書き方です。
 
 非常に簡単な文法なので、Markdown を知らない人でもだいたいの意味が理解できます。
-
 最近では、多くのドキュメントが HTML ではなく、Markdown で書かれるようになってきています。
 
 例えば、箇条書きは次のように入力するだけです。非常に簡単ですね。
@@ -29,10 +28,6 @@ Markdown は、文書の書き方です。
 - アイテム 3
 ```
 
-- アイテム 1
-- アイテム 2
-- アイテム 3
-
 ## はじめての Markdown
 
 Markdown で文章を書いてみましょう。
@@ -40,10 +35,12 @@ Markdown で文章を書いてみましょう。
 `index.md` というファイルを作成して VSCode で開いてください。その中に次のコードを書いてみてください。`Ctrl` と `K` を同時に押してから、`V` を押すと、右側にプレビューが表示されます。
 
 ```markdown
-Hello **World**
+**Hello** World!
 ```
 
 ## Markdown の記法
+
+ここでは、Markdown の記法をいくつか紹介します。
 
 1.  `#` と書くことで見出しを書くことができます。
 
@@ -120,7 +117,7 @@ Hello **World**
     </InteractiveCodeEditor>
 
 :::info
-実は、Docusaurus は Markdown だけでなく MDX でも書くことができます。MDX は、Markdown の中で JSX 記法 を使えるものです。JSX 記法 は、JavaScript の中に HTML を書くことができるものですが、JavaScript や HTML の知識が必要になるので、詳しいことは自分で調べてみてください。
+Markdown を拡張した MDX というものもあります。実は、Docusaurus で使うことができるのは Markdown ではなく MDX です。MDX は、Markdown の中で JSX 記法 を使えるものです。JSX 記法 は、JavaScript の中に HTML を書くことができるものですが、詳しいことは自分で調べてみてください。ここでは、簡単に例を紹介します。
 
 JavaScript を文書の中に書くことができるので、例えば次のような表現が可能です。
 
