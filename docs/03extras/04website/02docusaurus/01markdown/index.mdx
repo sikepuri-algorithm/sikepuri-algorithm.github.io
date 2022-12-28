@@ -1,0 +1,144 @@
+---
+sidebar_position: 1
+---
+
+import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor/InteractiveCodeEditor";
+import LifeGame from "@site/src/components/LifeGame/LifeGame";
+export const defaultMathValue = `\
+$a^2 + b^2 = c^2$
+$$
+  x = \frac{-b\pm \sqrt{b^2 - 4ac}}{2a}
+$$\
+`;
+
+# Markdown
+
+## Markdown とは
+
+Markdown は、文書の書き方です。
+
+非常に簡単な文法なので、Markdown を知らない人でもだいたいの意味が理解できます。
+
+最近では、多くのドキュメントが HTML ではなく、Markdown で書かれるようになってきています。
+
+例えば、箇条書きは次のように入力するだけです。非常に簡単ですね。
+
+```markdown
+- アイテム 1
+- アイテム 2
+- アイテム 3
+```
+
+- アイテム 1
+- アイテム 2
+- アイテム 3
+
+## はじめての Markdown
+
+Markdown で文章を書いてみましょう。
+
+`index.md` というファイルを作成して VSCode で開いてください。その中に次のコードを書いてみてください。`Ctrl` と `K` を同時に押してから、`V` を押すと、右側にプレビューが表示されます。
+
+```markdown
+Hello **World**
+```
+
+## Markdown の記法
+
+1.  `#` と書くことで見出しを書くことができます。
+
+    <InteractiveCodeEditor language="markdown">
+      {"# レベル 1 の見出し"}
+    </InteractiveCodeEditor>
+
+1.  `##` は `#` の一個下の見出しです。
+
+    <InteractiveCodeEditor language="markdown">
+      {"## レベル 2 の見出し"}
+    </InteractiveCodeEditor>
+
+1.  `**` で強調することができます。
+
+    <InteractiveCodeEditor language="markdown">
+      {"**強調**"}
+    </InteractiveCodeEditor>
+
+1.  `>` とすることで引用することができます。
+
+    <InteractiveCodeEditor language="markdown">
+      {"> 引用"}
+    </InteractiveCodeEditor>
+
+1.  箇条書きは次のようにして書けます。
+
+    <InteractiveCodeEditor language="markdown">
+      {"- アイテム 1\n- アイテム 2\n- アイテム 3"}
+    </InteractiveCodeEditor>
+
+1.  番号付き箇条書きは次のようにして書けます。
+
+    <InteractiveCodeEditor language="markdown">
+      {"1.  アイテム 1\n1.  アイテム 2\n1.  アイテム 3"}
+    </InteractiveCodeEditor>
+
+1.  バッククォート（ `` ` `` ）で囲むことでインラインコードを表示することができます。
+
+    <InteractiveCodeEditor language="markdown">
+      {"`コードテキスト`"}
+    </InteractiveCodeEditor>
+
+1.  バッククォート 3 つで、コードブロックを表示することができます。
+
+    <InteractiveCodeEditor language="markdown">
+      {'```python\nprint("Hello World!")\n```'}
+    </InteractiveCodeEditor>
+
+1.  リンクは次のようにして表すことができます。
+
+    <InteractiveCodeEditor language="markdown">
+      {"[Introduction to Algorithms](https://sikepuri-algorithm.github.io/)"}
+    </InteractiveCodeEditor>
+
+1.  画像は次のようにして表示することができます。もちろんローカル上のファイルも扱えます。
+
+    <InteractiveCodeEditor language="markdown">
+      {
+        "![Introduction to Algorithms](https://sikepuri-algorithm.github.io/img/favicon.ico)"
+      }
+    </InteractiveCodeEditor>
+
+1.  実は、Markdown の中には HTML も書くことができます。
+
+    <InteractiveCodeEditor language="markdown">
+      {'<button type="button">ボタン</button>'}
+    </InteractiveCodeEditor>
+
+1.  多くの場合、LaTeX の記法で数式を書くこともできます。
+
+    <InteractiveCodeEditor language="markdown">
+      {defaultMathValue}
+    </InteractiveCodeEditor>
+
+:::info
+実は、Docusaurus は Markdown だけでなく MDX でも書くことができます。MDX は、Markdown の中で JSX 記法 を使えるものです。JSX 記法 は、JavaScript の中に HTML を書くことができるものですが、JavaScript や HTML の知識が必要になるので、詳しいことは自分で調べてみてください。
+
+JavaScript を文書の中に書くことができるので、例えば次のような表現が可能です。
+
+```mdx live
+<>{2 * Math.PI}</>
+```
+
+ちなみに、このシケプリではライフゲームのコンポーネントを作ったので、それを使うときはファイルの先頭で次のようにインポートしてから、次のように書くだけでライフゲームを表示できます（笑）
+
+```markdown
+import LifeGame from "@site/src/components/LifeGame/LifeGame";
+```
+
+```mdx live
+<>
+  <LifeGame />
+  <LifeGame />
+</>
+```
+
+:::
