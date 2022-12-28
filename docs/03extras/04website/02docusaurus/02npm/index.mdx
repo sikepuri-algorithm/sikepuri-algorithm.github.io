@@ -15,16 +15,18 @@ Windows を使っている場合は、[WSL をインストールの項](/docs/03
 
 ## npm のインストール方法
 
-このシケプリは、Docusaurus という静的サイトジェネレーターを使っています。Docusaurus を使うには npm(Node Package Manager)というパッケージ管理ツールが必要です。また、他に必要なパッケージをインストールする時にも必須となります。npm は JavaScript の開発者によく使われています。
+npm(Node Package Manager)は Node.js のパッケージ管理ツールです。様々なパッケージを簡単に管理することができます。
 
-下の動画を見ながら、インストールしてください。以下に概要を記しておきます。
+次の動画を見ながら、インストールしてください。以下にインストール方法の概要を記しておきます。
+
+<video src={installNpm} controls width="100%" />
 
 まず、はじめに nvm(Node Version Manager) という Node.js のバージョン管理ツールをインストールします。
 
-- [nvm のウェブサイトの Install & Update Script の項](https://github.com/nvm-sh/nvm#install--update-script)に書かれているスクリプトをターミナル上で実行しましょう。次のようなスクリプトが書いてあるはずです。2022 年 11 月現在
+- [nvm のウェブサイトの Install & Update Script の項](https://github.com/nvm-sh/nvm#install--update-script)に書かれているスクリプトをターミナル上で実行しましょう。2022 年 12 月現在では、次のようなスクリプトが書いてあります。
 
   ```shell
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
   ```
 
 - ターミナルを再起動しましょう。ターミナル上で `exit` と入力して、ターミナルをもう一度開くことで再起動ができます。※ターミナルを再起動させないと次のコマンドを実行したときにエラーが出ます。
@@ -35,10 +37,10 @@ Windows を使っている場合は、[WSL をインストールの項](/docs/03
   nvm -v
   ```
 
-- 次のように表示されたら、成功です。※2022 年 11 月現在
+- 次のように表示されたら、成功です。
 
   ```shell
-  0.39.2
+  0.39.3
   ```
 
 次に、nvm を用いて Node.js の安定版（LTS）をインストールします。
@@ -61,10 +63,8 @@ Windows を使っている場合は、[WSL をインストールの項](/docs/03
   v18.12.1
   ```
 
-<video src={installNpm} controls width="100%" />
-
 :::tip
-一番はじめのスクリプトを実行する時に `Command 'curl' not found ...` のようにエラーが出た場合は、curl がインストールされていない可能性があります。エラーメッセージにあるように、WSL や Ubuntu 系の Linux では次のスクリプトを実行して curl をインストールすればうまく動きます。
+一番はじめのスクリプトを実行する時に `Command 'curl' not found ...` のようにエラーが出た場合は、curl がインストールされていない可能性があります。エラーメッセージにあるように、WSL 上の Ubuntu 系の Linux では次のスクリプトを実行して curl をインストールすればうまく動きます。
 
 ```shell
 sudo apt -y install curl
