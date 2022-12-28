@@ -15,7 +15,7 @@ import openTerminal from "./open_terminal.mp4";
 
 ## Visual Studio Code のインストール方法
 
-Visual Studio Code は、Microsoft 社 が開発しているフリーかつオープンソースなソースコードエディタです。様々な便利な拡張機能があり、多くの開発者に使われています。
+Visual Studio Code(VS Code) は、Microsoft 社 が開発しているフリーかつオープンソースなソースコードエディタです。様々な便利な拡張機能があり、多くの開発者に使われています。
 
 ここでは、Visual Studio Code のインストール方法について簡単に説明します。
 
@@ -32,33 +32,31 @@ Visual Studio Code は、Microsoft 社 が開発しているフリーかつオ�
   {/* <TabItem value="ubuntu" label="Ubuntu"></TabItem> */}
 </Tabs>
 
-## Remote WSL のインストール方法（Windows のみ）
+## WSL 拡張機能のインストール方法（Windows のみ）
 
-ここでは、VSCode で WSL 上のファイルに簡単にアクセスできる Remote WSL 拡張機能のインストール方法を紹介します。
+ここでは、VSCode から WSL 上のファイルに簡単にアクセスできる WSL 拡張機能のインストール方法を紹介します。
 
 [WSL をインストールの項](/docs/03extras/01wsl/)を参考に WSL をインストールしておいてください。
 
-下記の動画を参考に VSCode に Remote WSL 拡張機能をインストールしてください。
-
-- VSCode で拡張機能を検索して、インストールします。
+下記の動画を参考に VSCode で拡張機能を検索して、 Remote WSL 拡張機能をインストールしてください。
 
 <video src={installRemoteWsl} controls width="100%" />
 
 ## プロジェクトフォルダの開き方
 
-VSCode ではプロジェクトフォルダは次の動画のようにして開きます。プロジェクトフォルダに様々なファイルを置いて開発をしていきます。
+VSCode ではプロジェクトフォルダは次の動画のようにして開きます。プロジェクトフォルダに様々なファイルを作って開発をしていくことになります。
 
 <video src={openFolder} controls width="100%" />
 
-## WSL 上でのプロジェクトフォルダの開き方（Windows のみ）
+## WSL 上のプロジェクトフォルダの開き方（Windows のみ）
 
 WSL の起動は、次の動画のようにします。
 
-左下の緑のボタンを押して、`New WSL Window` をクリックすれば、WSL にアクセスすることができます。
+左下の緑のボタンを押して、`New WSL Window` をクリックすれば、WSL 上のファイルにアクセスすることができます。
 
 <video src={startWsl} controls width="100%" />
 
-次の動画のようにして、新しくプロジェクトフォルダを作成して、それを VSCode で開くことができます。
+次の動画のようにすることで、新しくプロジェクトフォルダを作成して、それを VSCode で開くことができます。
 
 エクスプローラーのアドレスバーに `¥¥wsl$` と入力すると、WSL 上のファイルを表示することができます。さらに、`Ubuntu`、`home`、`ユーザー名` の順にクリックしていくことでホームフォルダに移動することができます。
 
@@ -68,6 +66,6 @@ WSL の起動は、次の動画のようにします。
 
 ## ターミナルの起動方法
 
-ターミナルは、次の動画のようにして開くことができます。
+ターミナルは、次の動画のようにして開くことができます。これで UNIX コマンドを使うことができます。
 
 <video src={openTerminal} controls width="100%" />
