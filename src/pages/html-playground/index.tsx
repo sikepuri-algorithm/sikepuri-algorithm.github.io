@@ -5,21 +5,7 @@ import Editor from "@monaco-editor/react";
 import IframeOutput from "@site/src/components/IframeOutput";
 import { Grid, Box } from "@mui/material";
 
-export default function Home(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
-  const [html, setHTML] = useState<string>("");
-  return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="This is a playground of HTML"
-    >
-      <Box p={2} mt={2}>
-        <Grid container direction="row" spacing={2}>
-          <Grid item xs={6}>
-            <Editor
-              height="80vh"
-              defaultLanguage="html"
-              defaultValue={`\
+const defaultHTML = `\
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -31,7 +17,23 @@ export default function Home(): JSX.Element {
     <p>Hello World!</p>
   </body>
 </html>\
-`}
+`;
+
+export default function Home(): JSX.Element {
+  const { siteConfig } = useDocusaurusContext();
+  const [html, setHTML] = useState<string>(defaultHTML);
+  return (
+    <Layout
+      title={`Hello from ${siteConfig.title}`}
+      description="This is a playground of HTML"
+    >
+      <Box p={2} mt={2}>
+        <Grid container direction="row" spacing={2}>
+          <Grid item xs={6}>
+            <Editor
+              height="80vh"
+              defaultLanguage="html"
+              defaultValue={defaultHTML}
               onChange={(value) => {
                 setHTML(value);
               }}
