@@ -134,7 +134,7 @@ function OutputCell({
       <iframe
         height="40px"
         width="100%"
-        style={{ minHeight: "40px" }}
+        style={{ minHeight: "40px", maxHeight: "620px" }}
         srcDoc={output}
         onLoad={(e) => {
           const iframe = e.target as HTMLIFrameElement;
