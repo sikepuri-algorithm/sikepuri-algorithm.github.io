@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Convert from "ansi-to-html";
 import CodeBlock from "@theme/CodeBlock";
 import mdToHTML from "@site/src/components/mdToHTML";
-import OpenInColab from "@site/src/components/OpenInColab/OpenInColab";
+import OpenInColab from "@site/src/components/OpenInColab";
 import styles from "./styles.module.css";
 
 type MarkdownCell = { cell_type: "markdown"; source: string };
