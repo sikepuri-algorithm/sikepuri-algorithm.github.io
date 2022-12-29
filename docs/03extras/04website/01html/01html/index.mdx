@@ -456,6 +456,58 @@ HTML では、普通に改行しただけでは改行が出力されないよう
 `}
 </InteractiveCodeEditor>
 
+### span タグ
+
+`span` タグは特に意味を持たないタグです。`span` タグで囲った部分をインライン要素としてグループ化することができます。
+インライン要素は、文章の一部として扱われます。
+
+```html title=index.html
+<span>アイテム1</span><span>アイテム2</span>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span>アイテム1</span><span>アイテム2</span>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### div タグ
+
+`div` タグも `span` タグと同様に特に意味を持たないタグです。`div` タグで囲った部分をブロック要素としてグループ化することができます。
+ブロック要素は、コンテンツをまとめる箱のようなものです。
+
+```html title=index.html
+<div>アイテム1</div>
+<div>アイテム2</div>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>アイテム1</div>
+    <div>アイテム2</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
 他にも様々な記法があるので、自分で調べてみてください。HTML に関する情報は非常に豊富にあるので、すぐに見つかるはずです。
 
 しかし、インターネット上には間違った情報や古い情報が非常に多いので、目的に合ったタグを見つけたら、詳細については[MDN](https://developer.mozilla.org/ja/)という Web サイトで確認することをおすすめします。このサイトには、すべてのタグの定義が詳細に書いてあります。
