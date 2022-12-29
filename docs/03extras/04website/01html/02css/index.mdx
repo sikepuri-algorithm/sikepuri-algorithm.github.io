@@ -1,0 +1,1004 @@
+---
+sidebar_position: 2
+---
+
+import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor";
+import Answer from "@site/src/components/Answer";
+import IframeOutput from "@site/src/components/IframeOutput";
+
+# CSS
+
+## CSS とは
+
+HTML を使って様々なコンテンツを表現することができましたが、色や文字の大きさなどの細かいスタイルの調整はできませんでした。
+これを行うのが、CSS(Cascading Style Sheets) です。CSS は、HTML の要素をどのように表示するかを決めることができます。
+
+## はじめての CSS
+
+実際に CSS を使ってみましょう。以下では、`Hello CSS!` という文字を赤くしています。
+
+```html title=index.html
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <p>Hello CSS!</p>
+  </body>
+</html>
+```
+
+```css title=style.css
+p {
+  color: red;
+}
+```
+
+上のようなコードを `index.html` というファイルと `style.css` というファイルに貼り付けてください。2 つのファイルは、フォルダの同じ階層に入れてください。もしくは、このサイトの [CSS のプレイグラウンド](/css-playground)から編集することもできます。
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+p {
+  color: red;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <p>Hello CSS!</p>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+`index.html` で変わったところは、`<link rel="stylesheet" href="./style.css" />` というところだけです。これは、同じ階層にある `style.css` というファイルをスタイルーシートとして読み込むという命令です。
+
+次に、`style.css` ファイルを見ておきましょう。次のようなコードが書いてありますね。
+
+```css
+p {
+  color: red;
+}
+```
+
+これは、p タグの `color` プロパティを `red` にするという命令です。
+
+CSS は、**セレクタ**、**プロパティ**、**プロパティ値**の 3 つからなります。
+
+`p` と書いてあるところがセレクタで、これはすべての `p` タグを表します。`{` と `}` とで囲まれたところがセレクタで指定されたタグに対して、適用されます。
+
+`color` と書いてあるところがプロパティで、`color` プロパティは要素のテキストの色を指定するプロパティです。プロパティ値に `red` を指定したことで要素のテキストの色を赤くすることができました。
+
+:::tip
+
+実は、次のように CSS は HTML の属性としても書くことができます。
+
+```html
+<div style="color: red;">Hello World!</div>
+```
+
+<InteractiveCodeEditor language="html">
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div style="color: red;">Hello World!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+:::
+
+## セレクタ
+
+ここでは、様々なセレクタの指定方法について見ていきます。
+
+### `hoge`
+
+`hoge` とすると、タグ名が `hoge` である要素を指定することができます。
+
+```css title=style.css
+h1 {
+  color: red;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+h1 {
+  color: red;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>タイトル1</h1>
+    <h1>タイトル2</h1>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `#hoge`
+
+`#hoge` とすると、id が `hoge` である要素を指定することができます。
+
+実は、HTML のタグには次のように id をつけることができます。
+
+```html
+<div id="greeting">Hello World!</div>
+```
+
+id をつけることで特定の要素に対して、スタイルを適用することができます。また、同じ id 属性を複数のタグで使うことはできません。
+
+```css title=style.css
+#greeting {
+  color: blue;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+#greeting {
+  color: blue;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="greeting">Hello World!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `.hoge`
+
+`.hoge` とすると、class が `hoge` である要素を指定することができます。
+
+実は、HTML のタグには次のように class をつけることもできます。
+
+```html
+<div class="greeting">Hello World!</div>
+<div class="greeting">Hello CSS!</div>
+```
+
+class をつけることで特定の要素に対して、スタイルを適用することができます。
+id と違うことは、class は同じ属性を複数のタグで使うことができることです。このため、同じような働きを持つものに対して、一括でスタイルを適用することができます。
+
+```css title=style.css
+.greeting {
+  color: blue;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+.greeting {
+  color: blue;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="greeting">Hello World!</div>
+    <div class="greeting">Hello CSS!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `hoge, fuga, piyo`
+
+カンマ区切りで並べることで複数のセレクタを書くことができます。
+
+```css title=style.css
+h1,
+#greeting {
+  color: blue;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+h1,
+#greeting {
+  color: blue;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>タイトル</h1>
+    <div id="greeting">Hello World!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `hoge fuga`
+
+スペースで区切ることで、`hoge` の要素の子孫の `fuga` の要素を指定するといったことができます。
+
+他にも様々なセレクタがあるので、[MDN](https://developer.mozilla.org/ja/) などで自分で調べてみてください。
+
+## プロパティ
+
+ここでは、様々なプロパティについて紹介していきます。
+
+### `color` プロパティ
+
+`color` プロパティは要素のテキストの色を指定することができます。
+色の指定方法には、様々な方法があります。ここでは、いくつか紹介します。
+
+#### 色を直接指定する
+
+`black`、`white`、`red`、`blue`、`green` などのようにして色の名前を直接指定することができます。
+
+#### カラーコードで指定する
+
+`#` の後に 16 進数で `red`、`green`、`blue` の値をそれぞれ指定することで色を指定することもできます。
+`#ffffff` や `#ff0000` のようにします。
+
+```css title=style.css
+#greeting {
+  color: #ff0000;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+#greeting {
+  color: #ff0000;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="greeting">Hello World!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `font-size` プロパティ
+
+`font-size` プロパティは文字の大きさを指定することができます。
+
+大きさの指定方法には、様々な方法があります。ここでは、いくつか紹介します。他にも、いろいろあります。
+
+| 単位 | 説明                               | 例      |
+| ---- | ---------------------------------- | ------- |
+| px   | サイズを絶対的な大きさで指定       | `100px` |
+| %    | 親要素の大きさに対しての割合で指定 | `60%`   |
+
+```css title=style.css
+#greeting {
+  font-size: 100px;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+#greeting {
+  font-size: 100px;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="greeting">Hello World!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `font-weight` プロパティ
+
+`font-weight` プロパティは文字の太さを指定することができます。
+
+```css title=style.css
+#greeting {
+  font-weight: bold;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+#greeting {
+  font-weight: bold;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="greeting">Hello World!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `text-align` プロパティ
+
+`text-align` プロパティを使うことで水平方向の配置を指定することができます。
+
+```css title=style.css
+#greeting {
+  text-align: center;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+#greeting {
+  text-align: center;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="greeting">Hello World!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `background-color` プロパティ
+
+`background-color` プロパティを使うことで背景の色を指定することができます。
+
+```css title=style.css
+#greeting {
+  background-color: skyblue;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+#greeting {
+  background-color: skyblue;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="greeting">Hello World!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `border` プロパティ
+
+`border` プロパティを使うことで要素の枠線を指定することができます。枠線の太さ、枠線のスタイル、枠線の色を一括で指定できます。他のプロパティを使うことで個別に指定することもできます。
+
+```css title=style.css
+#greeting {
+  border: 2px solid black;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+#greeting {
+  border: 2px solid black;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="greeting">Hello World!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `height` プロパティ
+
+`height` プロパティを使うことで要素の高さを指定することができます。
+
+```css title=style.css
+#greeting {
+  height: 100px;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+#greeting {
+  height: 100px;
+  background-color: red;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="greeting">Hello World!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `width` プロパティ
+
+`width` プロパティを使うことで要素の横幅を指定することもできます。
+
+```css title=style.css
+#greeting {
+  width: 100px;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+#greeting {
+  width: 100px;
+  background-color: red;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="greeting">Hello World!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `margin` プロパティ
+
+`margin` プロパティを使うことで要素の外側の余白を指定することができます。上、右、下、左の順に指定できます。
+
+```css title=style.css
+.greeting {
+  margin: 10px 10px 10px 10px;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+.greeting {
+  margin: 10px 10px 10px 10px;
+  background-color: red;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="greeting">Hello World!</div>
+    <div class="greeting">Hello CSS!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### `padding` プロパティ
+
+`padding` プロパティを使うことで要素の内側の余白を指定することができます。上、右、下、左の順に指定できます。
+
+```css title=style.css
+#greeting {
+  padding: 10px 10px 10px 10px;
+}
+```
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+#greeting {
+  padding: 10px 10px 10px 10px;
+  background-color: red;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="greeting">Hello World!</div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+他にも CSS にはたくさんのプロパティがあるので、[MDN](https://developer.mozilla.org/ja/)などで様々なプロパティを調べてみてください。
+
+:::tip ボックスモデル
+
+HTML のすべての要素は、ボックスと考えることができます。
+ボックスモデルは、4 つの領域で構成されています。内側から content、padding、border、margin となっています。
+![box model](./box_model.drawio.png)
+
+:::
+
+:::tip
+
+CSS を用いた場合、HTML では文書の論理的な構造のみを表して、CSS で文書のスタイルを表現するというように、文書の構造と体裁を別ファイルに分離して書くことができます。
+
+このようにすることで、CSS を切り替えるだけでメディアごとに表示を変化させるといったことができるようになり、文書を再利用しやすくなっています。
+そのため、HTML を書くときは文書の内容のみに集中して、文書のスタイルは必要な CSS を後から適用するといった使い方をすることができます。
+
+実は、昔は HTML のタグで `font` タグというのがあり、次のようにして使うことができました。これを使うことで文字色や文字サイズなどを簡単に指定することができました。
+
+```html
+<font color="red">Hello World!</font>
+```
+
+しかし、`font` タグを使って文書を書くと文書の構造と体裁を同じファイルで管理することになってしまい、文書の構造と体裁を分けて書くことができません。そのため、現在ではこの `font` タグは非推奨になっています。
+
+文書の構造と体裁を分けることは保守性の観点からも大事になってきます。
+
+例えば、次のような文書があるとします。
+
+> **HTML**(HyperText Markup Language)は、ウェブページを作成するために作られた言語で、様々なコンテンツを定義することができます。
+> HTML に隣接した技術としては、ウェブページのスタイルを記述する **CSS** やウェブページに動きを与える **JavaScript** があります。
+
+このような文章を表現する時に、太字にすればよいからと次のようにただ太字にしたとします。
+
+```html
+<span style="font-weight:bold;">HTML</span>(HyperText Markup
+Language)は、ウェブページを作成するために作られた言語で、様々なコンテンツを定義することができます。
+HTML に隣接した技術としては、ウェブページのスタイルを記述する
+<span style="font-weight:bold;">CSS</span> やウェブページに動きを与える
+<span style="font-weight:bold;">JavaScript</span> があります。
+```
+
+例えば次のように強調する文字を太字でさらに赤色にしたいと思ったときは、どうでしょう。
+
+> <span style={{ color: "red", fontWeight: "bold" }}>HTML</span>
+> (HyperText Markup Language) は、ウェブページを作成するために作られた言語で、様々なコンテンツを定義することができます。HTML
+> に隣接した技術としては、ウェブページのスタイルを記述する
+> <span style={{ color: "red", fontWeight: "bold" }}>CSS</span>
+> やウェブページに動きを与える
+> <span style={{ color: "red", fontWeight: "bold" }}>JavaScript</span>
+> があります。
+
+ただ太字にしてしまうと、つぎのようにひとつずつスタイルを変えないといけなくなります。もし文字色を変えようと思った時に、すでに何十ページも文章を書いたあとだったら、気の遠くなる作業になります。
+
+```html
+<span style="font-weight:bold;color:red;">HTML</span>(HyperText Markup
+Language)は、ウェブページを作成するために作られた言語で、様々なコンテンツを定義することができます。
+HTML に隣接した技術としては、ウェブページのスタイルを記述する
+<span style="font-weight:bold;color:red;">CSS</span>
+やウェブページに動きを与える
+<span style="font-weight:bold;color:red;">JavaScript</span> があります。
+```
+
+しかし、もし文書の構造とスタイルを次のように分けて書いていたら、どうでしょう。
+
+```html
+<strong>HTML</strong>(HyperText Markup
+Language)は、ウェブページを作成するために作られた言語で、様々なコンテンツを定義することができます。
+HTML に隣接した技術としては、ウェブページのスタイルを記述する
+<strong>CSS</strong> やウェブページに動きを与える
+<strong>JavaScript</strong> があります。
+```
+
+```css
+strong {
+  font-weight: bold;
+}
+```
+
+次のように CSS を一行加えるだけで文書のスタイルを変えることができます。
+
+```css
+strong {
+  font-weight: bold;
+  color: red;
+}
+```
+
+このように保守性の観点からも文書の構造とスタイルを分けることは重要になっています。
+
+ちなみに、これは LaTeX で文書を書く時の考えと同じです。
+LaTeX での有名な例では、内積を書く時に $(A, B)$ と表示するためにそのまま `(A, B)` と打つのではなく `\ip{A}{B}` といったマクロを定義するということがあります。
+このようにすると、例えば内積をやはり $\langle A, B \rangle$ と表現したいなどとなった時にマクロを変更するだけでよくなります。
+
+:::
+
+## 練習問題
+
+### 練習問題 1
+
+次のように CSS の文字だけを強調するページを作ってみましょう。
+
+<IframeOutput>{`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      em {
+        color: red;
+        font-weight: bold;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Hello <em>CSS</em></p>
+  </body>
+</html>\
+`}</IframeOutput>
+
+<Answer>
+
+次のようになります。
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+em {
+  color: red;
+  font-weight: bold;
+  font-style: normal;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <p>Hello <em>CSS</em></p>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+</Answer>
+
+### 練習問題 2
+
+次のようなボタンを作ってみましょう。今までに説明したプロパティだけでは作れないので、調べながら作ってみてください。
+
+<IframeOutput>{`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #button {
+        font-size: 40px;
+        display: block;
+        margin: 0 auto;
+        padding: 10px 40px;
+        background-color: white;
+        border-radius: 10px;
+        border: 2px solid #2a4;
+        color: #2a4;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" id="button">ボタン</button>
+  </body>
+</html>\
+`}</IframeOutput>
+
+<Answer>
+
+次のようになります。
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+#button {
+  font-size: 40px;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 40px;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid #2a4;
+  color: #2a4;
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <button type="button" id="button">ボタン</button>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+</Answer>
+
+### 練習問題 3
+
+次のようにログインページを作ってみましょう。
+
+<IframeOutput>{`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      .form {
+        width: 350px;
+        padding: 10px;
+        border: 1px solid skyblue;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px skyblue;
+      }
+      .title {
+        font-size: 30px;
+        text-align: center;
+        margin: 5px;
+      }
+      .user-name,
+      .password {
+        font-size: 20px;
+      }
+      .save-password {
+        font-size: 15px;
+      }
+      .login-button {
+        font-size: 20px;
+        display: block;
+        margin: 5px auto;
+        padding: 0 10px;
+        background-color: #08f;
+        border-radius: 5px;
+        border: 1px solid #08f;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form">
+      <div class="title">ログイン</div>
+      <div class="user-name">
+        <div>ユーザー名</div>
+        <input type="text" />
+      </div>
+      <div class="password">
+        <div>パスワード</div>
+        <input type="password" />
+      </div>
+      <div class="save-password">
+        <input type="checkbox" checked />
+        <label>パスワードを保存</label>
+      </div>
+      <button class="login-button">ログイン</button>
+    </div>
+  </body>
+</html>\
+`}</IframeOutput>
+
+<Answer>
+
+次のようになります。
+
+<InteractiveCodeEditor
+  language="html-css"
+  defaultCSS={`\
+.form {
+  width: 350px;
+  padding: 10px;
+  border: 1px solid skyblue;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px skyblue;
+}
+.title {
+  font-size: 30px;
+  text-align: center;
+  margin: 5px;
+}
+.user-name,
+.password {
+  font-size: 20px;
+}
+.save-password {
+  font-size: 15px;
+}
+.login-button {
+  font-size: 20px;
+  display: block;
+  margin: 5px auto;
+  padding: 0 10px;
+  background-color: #08f;
+  border-radius: 5px;
+  border: 1px solid #08f;
+  color: white;
+}
+\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="form">
+      <div class="title">ログイン</div>
+      <div class="user-name">
+        <div>ユーザー名</div>
+        <input type="text" />
+      </div>
+      <div class="password">
+        <div>パスワード</div>
+        <input type="password" />
+      </div>
+      <div class="save-password">
+        <input type="checkbox" checked />
+        <label>パスワードを保存</label>
+      </div>
+      <button class="login-button">ログイン</button>
+    </div>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+</Answer>
