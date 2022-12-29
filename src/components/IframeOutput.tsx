@@ -13,7 +13,7 @@ export default function IframeOutput({
       <BrowserWindow minHeight={height === undefined ? 200 : height}>
         <iframe
           width="100%"
-          height={height === undefined ? "100%" : height - 100 + "px"}
+          height={height === undefined ? "100%" : height * 0.7 + "px"}
           srcDoc={children}
           title="Live Code"
           onLoad={(e) => {
