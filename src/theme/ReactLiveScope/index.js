@@ -1,5 +1,5 @@
 import React from "react";
-import LifeGameTmp from "@site/src/components/LifeGame/LifeGame";
+import LifeGameTmp from "@site/src/components/LifeGame";
 // Add react-live imports you need here
 
 function LifeGame() {
