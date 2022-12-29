@@ -1,10 +1,16 @@
 import React from "react";
 import BrowserWindow from "@site/src/components/BrowserWindow";
 
-export default function IframeOutput({ children }: { children: string }) {
+export default function IframeOutput({
+  children,
+  height,
+}: {
+  children: string;
+  height?: string;
+}) {
   return (
     <>
-      <BrowserWindow minHeight={200}>
+      <BrowserWindow height={height === undefined ? "200px" : height}>
         <iframe
           width="100%"
           height="100%"
@@ -13,10 +19,12 @@ export default function IframeOutput({ children }: { children: string }) {
           onLoad={(e) => {
             setInterval(
               (e) => {
-                const iframe = e.target as HTMLIFrameElement;
-                iframe.height = "100%";
-                iframe.height =
-                  iframe.contentDocument.documentElement.scrollHeight + "px";
+                if (height == undefined) {
+                  const iframe = e.target as HTMLIFrameElement;
+                  iframe.height = "100%";
+                  iframe.height =
+                    iframe.contentDocument.documentElement.scrollHeight + "px";
+                }
               },
               3000,
               e
