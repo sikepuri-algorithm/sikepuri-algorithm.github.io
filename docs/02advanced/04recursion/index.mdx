@@ -214,19 +214,51 @@ $$
 
 <Answer>
 
-ユークリッドの互除法を用いれば簡単にできます。
+ユークリッドの互除法を用いれば簡単にできます。$\mathrm{gcd}(a, b)$ を $a$ と $b$ の最大公約数とします。
 
 例：$30$ と $18$ の最大公約数を求める。
 
-- $30$ を $18$ で割った余りは、$12$
-- $18$ を $12$ で割った余りは、$6$
-- $12$ を $6$ で割った余りは、$0$
+$$
+\begin{align*}
+    \mathrm{gcd}(30, 18) &= \mathrm{gcd}(18, 30 - 18\times 1) \\
+                         &= \mathrm{gcd}(18, 12) \\
+                         &= \mathrm{gcd}(12, 18 - 12\times 1) \\
+                         &= \mathrm{gcd}(12, 6) \\
+                         &= \mathrm{gcd}(6, 12 - 6\times 2) \\
+                         &= \mathrm{gcd}(6, 0) \\
+                         &= 6
+\end{align*}
+$$
 
 よって、最大公約数は $6$
 
 これを使うと、最大公約数を求めるプログラムは次のようになります。
 
 <ViewSource path="/recursion/gcd.ipynb" />
+
+:::note
+
+このプログラムは、はじめの引数が $a < b$ の場合でも動きます。一度目の再帰で、`gcd(b, a % b)` = `gcd(b, a)` が返されるからです。
+
+つまり、$18$ と $30$ の最大公約数を求めるとき、
+
+$$
+\begin{align*}
+    \mathrm{gcd}(18, 30) &= \mathrm{gcd}(30, 18 - 30\times 0) \\
+                         &= \mathrm{gcd}(30, 18) \\
+                         &= \mathrm{gcd}(18, 30 - 18\times 1) \\
+                         &= \mathrm{gcd}(18, 12) \\
+                         &= \mathrm{gcd}(12, 18 - 12\times 1) \\
+                         &= \mathrm{gcd}(12, 6) \\
+                         &= \mathrm{gcd}(6, 12 - 6\times 2) \\
+                         &= \mathrm{gcd}(6, 0) \\
+                         &= 6
+\end{align*}
+$$
+
+となります。
+
+:::
 
 また、最大公約数 $\mathrm{gcd}(a, b)$ と最小公倍数 $\mathrm{lcm}(a, b)$ の間には次のような関係があります。
 
