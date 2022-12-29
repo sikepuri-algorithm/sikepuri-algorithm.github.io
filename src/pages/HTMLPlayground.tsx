@@ -11,22 +11,36 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      description="This is a playground of HTML"
     >
       <Box p={2} mt={2}>
         <Grid container direction="row" spacing={2}>
           <Grid item xs={6}>
             <Editor
-              height="400px"
+              height="80vh"
               defaultLanguage="html"
-              defaultValue={"aouesa"}
+              defaultValue={`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Hello World!</p>
+  </body>
+</html>\
+`}
               onChange={(value) => {
                 setHTML(value);
               }}
             />
           </Grid>
           <Grid item xs={6}>
-            <IframeOutput>{html}</IframeOutput>
+            <IframeOutput height={document.documentElement.clientHeight * 0.8}>
+              {html}
+            </IframeOutput>
           </Grid>
         </Grid>
       </Box>
