@@ -6,14 +6,14 @@ export default function IframeOutput({
   height,
 }: {
   children: string;
-  height?: number;
+  height?: string;
 }) {
   return (
     <>
-      <BrowserWindow minHeight={height === undefined ? 200 : height}>
+      <BrowserWindow height={height === undefined ? "200px" : height}>
         <iframe
           width="100%"
-          height={height === undefined ? "100%" : height * 0.7 + "px"}
+          height="100%"
           srcDoc={children}
           title="Live Code"
           onLoad={(e) => {

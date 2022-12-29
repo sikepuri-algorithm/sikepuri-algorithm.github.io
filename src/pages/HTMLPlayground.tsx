@@ -38,9 +38,7 @@ export default function Home(): JSX.Element {
             />
           </Grid>
           <Grid item xs={6}>
-            <IframeOutput height={window.innerHeight * 0.8}>
-              {html}
-            </IframeOutput>
+            <IframeOutput height="80vh">{html}</IframeOutput>
           </Grid>
         </Grid>
       </Box>
