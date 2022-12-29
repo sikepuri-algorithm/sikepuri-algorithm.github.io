@@ -11,16 +11,16 @@ import Answer from "@site/src/components/Answer";
 
 次は、もう少し複雑な放物運動を考えましょう。
 
-初速度を $v_0$ 、$x$ 軸方向の速度を $v_x$ 、$y$ 軸方向の速度を $v_y$ 、重力加速度を $g$ 、 $t$ 秒後の変位を $x,y$ として、仰角 $\theta$ で物体を投げたとします。
+初速度を $v_0$ 、$x$ 軸方向の速度を $u$ 、$y$ 軸方向の速度を $v$ 、重力加速度を $g$ 、 $t$ 秒後の変位を $x,y$ として、仰角 $\theta$ で物体を投げたとします。
 
 これらの関係は、次のようになります。
 
 $$
 \begin{align*}
-    \frac{dx}{dt}   &= v_x \\
-    \frac{dy}{dt}   &= v_y \\
-    \frac{dv_x}{dt} &= 0 \\
-    \frac{dv_y}{dt} &= -g
+    \frac{dx}{dt}   &= u \\
+    \frac{dy}{dt}   &= v \\
+    \frac{du}{dt} &= 0 \\
+    \frac{dv}{dt} &= -g
 \end{align*}
 $$
 
@@ -28,9 +28,9 @@ $$
 
 $$
 \begin{align*}
-    \frac{x_{n + 1} - x_n}{\Delta t}              &= {v_x}_n \\
-    \therefore x_{n + 1} - x_n                    &= {v_x}_n \Delta t \\
-    \therefore x_{n + 1}                          &= x_n + {v_x}_n \Delta t
+    \frac{x_{n + 1} - x_n}{\Delta t}              &= u_n \\
+    \therefore x_{n + 1} - x_n                    &= u_n \Delta t \\
+    \therefore x_{n + 1}                          &= x_n + u_n \Delta t
 \end{align*}
 $$
 
@@ -38,10 +38,10 @@ $$
 
 $$
 \begin{align*}
-    x_{n + 1}     &= x_n + {v_x}_n \Delta t \\
-    y_{n + 1}     &= y_n + {v_y}_n \Delta t \\
-    {v_x}_{n + 1} &= {v_x}_n \\
-    {v_y}_{n + 1} &= {v_y}_n - g\Delta t
+    x_{n + 1}     &= x_n + u_n \Delta t \\
+    y_{n + 1}     &= y_n + v_n \Delta t \\
+    u_{n + 1} &= u_n \\
+    v_{n + 1} &= v_n - g\Delta t
 \end{align*}
 $$
 
