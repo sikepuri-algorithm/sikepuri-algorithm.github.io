@@ -20,7 +20,7 @@ npm ci
 
 以下は、コミット時に自動で Formatter や Linter を実行させるためのスクリプトです。実行しなくても構いません。
 
-次は、Poetry のインストール
+Poetry をインストールしていなかったら、次を実行
 
 ```shell
 curl -sSL https://install.python-poetry.org | python3 -
