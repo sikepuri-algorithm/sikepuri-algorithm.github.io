@@ -4,29 +4,8 @@ import TabItem from "@theme/TabItem";
 import Editor from "@monaco-editor/react";
 import IframeOutput from "@site/src/components/IframeOutput";
 import mdToHTML from "@site/src/components/mdToHTML";
+import latexToHTML from "@site/src/components/latexToHTML";
 import styles from "./styles.module.css";
-
-function latexRenderer(value: string): string {
-  const header = `\
-  <!DOCTYPE html>
-  <html lang="ja">
-    <head>
-      <meta charset="UTF-8" />
-      <script type="module">
-        import { LaTeXJSComponent } from "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs";
-        customElements.define("latex-js", LaTeXJSComponent);
-      </script>
-    </head>
-    <body>
-      <latex-js baseURL="https://cdn.jsdelivr.net/npm/latex.js/dist/">\
-`;
-  const footer = `\
-      </latex-js>
-    </body>
-  </html>\
-`;
-  return header + value + footer;
-}
 
 function HtmlCssJavascriptEditor({
   defaultHTML,
@@ -175,7 +154,7 @@ export default function InteractiveCodeEditor({
               : language === "markdown"
               ? mdToHTML(code)
               : language === "latex"
-              ? latexRenderer(code)
+              ? latexToHTML(code)
               : language === "html-css"
               ? `<style>${css}</style>${code}`
               : `<style>${css}</style>${code}<script>${js}</script>`}
