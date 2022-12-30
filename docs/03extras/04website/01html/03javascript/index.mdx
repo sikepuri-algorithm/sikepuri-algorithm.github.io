@@ -1,0 +1,420 @@
+---
+sidebar_position: 3
+---
+
+import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor";
+import Answer from "@site/src/components/Answer";
+
+# JavaScript
+
+## JavaScript とは
+
+HTML や CSS を使って様々なコンテンツを表現することができました。しかし、動きを持った表現をすることはできませんでした。
+プログラミング言語である JavaScript を用いることで、Web サイトで動きのある表現をすることができるようになります。
+
+## はじめての JavaScript
+
+実際に JavaScript を使ってみましょう。以下が JavaScript の `Hello World!` です。
+
+```html title=index.html
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./script.js"></script>
+  </body>
+</html>
+```
+
+```javascript title=script.js
+document.write("Hello World!");
+```
+
+上のようなコードを `index.html` というファイルと `script.js` というファイルに貼り付けてください。2 つのファイルは、フォルダの同じ階層に入れてください。もしくは、このサイトの [JavaScript のプレイグラウンド](/javascript-playground)から編集することもできます。
+
+<InteractiveCodeEditor
+  language="html-javascript"
+  defaultCSS=""
+  defaultJavaScript={`\
+document.write("Hello World!");\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./script.js"></script>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+`index.html` で変わったところは、`<script src="./script.js"></script>` というところだけです。これは、同じ階層にある `script.js` というファイルを読み込むという命令です。
+
+次に、`script.js` ファイルを見ておきましょう。次のようなコードが書いてありますね。
+
+```javascript title=script.js
+document.write("Hello World!");
+```
+
+これは、画面上に `Hello World!` と表示するという命令です。
+
+では、JavaScript の基本文法を簡単に見ていきましょう。プログラミング言語は、どれも基本的な考え方は同じなので Python を勉強していれば、すぐに理解できます。
+
+## JavaScript の基本文法
+
+では、JavaScript の基本文法を見ていきましょう。
+
+JavaScript はなかなか奥が深くここで説明しきれないので、紹介するのは概要だけにします。
+Web の技術について詳しいことは、[こちら](https://learn.utcode.net/)にまとまっています。
+
+### `document.write`
+
+`document.write("hoge");` とすることで、画面上に任意の文字を表示することができます。一つ注意点としては、これはすでに書かれている HTML タグなどをすべて消してしまいます。そのため、この命令は実際にはあまり使われません。
+
+```javascript title=script.js
+document.write("Hello World!");
+```
+
+<InteractiveCodeEditor
+  language="html-javascript"
+  defaultCSS=""
+  defaultJavaScript={`\
+document.write("Hello World!");\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./script.js"></script>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### コメント
+
+コメントは、次のようにします。
+
+```javascript title=script.js
+// コメントを書けます。
+```
+
+<InteractiveCodeEditor
+  language="html-javascript"
+  defaultCSS=""
+  defaultJavaScript={`\
+// コメントを書けます。\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./script.js"></script>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### 演算
+
+様々な計算をすることができます。
+
+```javascript title=script.js
+document.write((1 + 1) * 2);
+```
+
+<InteractiveCodeEditor
+  language="html-javascript"
+  defaultCSS=""
+  defaultJavaScript={`\
+document.write((1 + 1) * 2);\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./script.js"></script>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### 変数
+
+変数も使えます。
+
+```javascript title=script.js
+let a = 1;
+document.write(a);
+```
+
+<InteractiveCodeEditor
+  language="html-javascript"
+  defaultCSS=""
+  defaultJavaScript={`\
+let a = 1;
+document.write(a);\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./script.js"></script>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### 条件分岐
+
+条件分岐もできます。
+
+```javascript title=script.js
+let age = 19;
+if (age >= 20) {
+  document.write("飲酒可能です。");
+} else {
+  document.write("お酒は二十歳になってから！");
+}
+```
+
+<InteractiveCodeEditor
+  language="html-javascript"
+  defaultCSS=""
+  defaultJavaScript={`\
+let age = 19;
+if (age >= 20) {
+  document.write("飲酒可能です。");
+} else {
+  document.write("お酒は二十歳になってから！");
+}\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./script.js"></script>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### 繰り返し
+
+繰り返し処理もできます。
+
+```javascript title=script.js
+let sum = 0;
+for (let i = 1; i <= 10; i++) {
+  sum += i;
+}
+document.write(sum);
+```
+
+<InteractiveCodeEditor
+  language="html-javascript"
+  defaultCSS=""
+  defaultJavaScript={`\
+let sum = 0;
+for (let i = 1; i <= 10; i++) {
+  sum += i;
+}
+document.write(sum);\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./script.js"></script>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### 関数
+
+関数も使えます。
+
+```javascript title=script.js
+function factorial(n) {
+  product = 1;
+  for (let i = 1; i <= n; i++) {
+    product *= i;
+  }
+  return product;
+}
+document.write(factorial(6));
+```
+
+<InteractiveCodeEditor
+  language="html-javascript"
+  defaultCSS=""
+  defaultJavaScript={`\
+function factorial(n) {
+  product = 1;
+  for (let i = 1; i <= n; i++) {
+    product *= i;
+  }
+  return product;
+}
+document.write(factorial(6));\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./script.js"></script>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+### DOM
+
+JavaScript には HTML を制御する仕組みがあります。
+
+`document.getElementById("hoge")` のようにして、`hoge` という id を持つ要素のオブジェクトを取得することができます。これを使うと次のようなことができます。
+
+```html title=index.html
+<div id="greeting"></div>
+```
+
+```javascript title=script.js
+const greeting = document.getElementById("greeting");
+greeting.textContent = "Hello Dom";
+```
+
+<InteractiveCodeEditor
+  language="html-javascript"
+  defaultCSS=""
+  defaultJavaScript={`\
+const greeting = document.getElementById("greeting");
+greeting.textContent = "Hello Dom";\
+`}
+>
+  {`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="greeting"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>\
+`}
+</InteractiveCodeEditor>
+
+## JavaScript を使った例
+
+JavaScript を使うと次のようなカウンタを作ることも簡単にできます。
+
+<InteractiveCodeEditor
+  language="html-css-javascript"
+  defaultCSS={`\
+#container {
+  display: flex;
+}
+#plus-button,
+#minus-button,
+#counter {
+  height: 100px;
+  width: 150px;
+  font-size: 50px;
+  text-align: center;
+  line-height: 100px;
+  border: 2px solid #aaa;
+  border-radius: 10px;
+  margin: 0px 1px;
+}\
+`}
+  defaultJavaScript={`\
+let count = 0;
+const plusButton = document.getElementById("plus-button");
+const minusButton = document.getElementById("minus-button");
+const counter = document.getElementById("counter");
+plusButton.onclick = () => {
+    count++;
+    counter.textContent = count;
+};
+minusButton.onclick = () => {
+    count--;
+    counter.textContent = count;
+};\
+`}
+>{`\
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div id="minus-button">-</div>
+      <div id="counter">0</div>
+      <div id="plus-button">+</div>
+    </div>
+  </body>
+  <script src="./script.js"></script>
+</html>\
+`}</InteractiveCodeEditor>
+
+JavaScript についてさらに詳しいことは、[こちら](https://learn.utcode.net/)で学んでください。
