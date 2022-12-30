@@ -10,7 +10,10 @@ export default function IframeOutput({
 }) {
   return (
     <>
-      <BrowserWindow height={height === undefined ? "200px" : height}>
+      <BrowserWindow
+        height={height !== undefined && height}
+        minHeight={height === undefined && "200px"}
+      >
         <iframe
           width="100%"
           height="100%"
