@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Editor from "@monaco-editor/react";
-import IframeOutput from "@site/src/components/IframeOutput";
+import CustomIframe from "@site/src/components/CustomIframe";
 import mdToHTML from "@site/src/components/mdToHTML";
 import latexToHTML from "@site/src/components/latexToHTML";
 import styles from "./styles.module.css";
@@ -148,7 +148,7 @@ export default function InteractiveCodeEditor({
         </div>
         <div className={styles.playgroundHeader}>結果</div>
         <div className={styles.playgroundPreview}>
-          <IframeOutput>
+          <CustomIframe>
             {language === "html"
               ? code
               : language === "markdown"
@@ -158,7 +158,7 @@ export default function InteractiveCodeEditor({
               : language === "html-css"
               ? `<style>${css}</style>${code}`
               : `<style>${css}</style>${code}<script>${js}</script>`}
-          </IframeOutput>
+          </CustomIframe>
         </div>
       </div>
     </>

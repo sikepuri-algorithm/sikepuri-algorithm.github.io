@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import Editor from "@monaco-editor/react";
-import IframeOutput from "@site/src/components/IframeOutput";
+import CustomIframe from "@site/src/components/CustomIframe";
 import { Grid, Box } from "@mui/material";
 import latexToHTML from "@site/src/components/latexToHTML";
 
@@ -38,7 +38,7 @@ export default function Home(): JSX.Element {
             />
           </Grid>
           <Grid item xs={6}>
-            <IframeOutput height="80vh">{latexToHTML(latex)}</IframeOutput>
+            <CustomIframe height="80vh">{latexToHTML(latex)}</CustomIframe>
           </Grid>
         </Grid>
       </Box>

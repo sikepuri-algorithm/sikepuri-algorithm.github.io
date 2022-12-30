@@ -1,7 +1,7 @@
 import React from "react";
 import BrowserWindow from "@site/src/components/BrowserWindow";
 
-export default function IframeOutput({
+export default function CustomIframe({
   children,
   height,
 }: {

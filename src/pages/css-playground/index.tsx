@@ -4,7 +4,7 @@ import Layout from "@theme/Layout";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Editor from "@monaco-editor/react";
-import IframeOutput from "@site/src/components/IframeOutput";
+import CustomIframe from "@site/src/components/CustomIframe";
 import { Grid, Box } from "@mui/material";
 
 const defaultHTML = `\
@@ -63,9 +63,9 @@ export default function Home(): JSX.Element {
             </Tabs>
           </Grid>
           <Grid item xs={6}>
-            <IframeOutput height="80vh">
+            <CustomIframe height="80vh">
               {"<style>" + css + "</style>" + html}
-            </IframeOutput>
+            </CustomIframe>
           </Grid>
         </Grid>
       </Box>
