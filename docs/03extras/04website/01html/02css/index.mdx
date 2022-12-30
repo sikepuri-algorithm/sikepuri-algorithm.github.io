@@ -734,9 +734,9 @@ strong {
 
 このように保守性の観点からも文書の構造とスタイルを分けることは重要になっています。
 
-ちなみに、これは LaTeX で文書を書く時の考えと同じです。
-LaTeX での有名な例では、内積を書く時に $(A, B)$ と表示するためにそのまま `(A, B)` と打つのではなく `\ip{A}{B}` といったマクロを定義するということがあります。
-このようにすると、例えば内積をやはり $\langle A, B \rangle$ と表現したいなどとなった時にマクロを変更するだけでよくなります。
+ちなみに、これは $\LaTeX$ で文書を書く時の考えと同じです。
+$\LaTeX$ での有名な例では、内積を書く時に $(A, B)$ と表示するためにそのまま `(A, B)` と打つのではなく `\ip{A}{B}` といったマクロを定義します。このようにすることは、手間に感じるかもしれませんが、ただの順序対の意味なのか内積の意味なのかを文書中に明示しておかないと保守性の観点からよくありません。
+文書中に順序対の意味だと明示することで、例えば内積をやはり $\langle A, B \rangle$ と表現したいなどとなった時にマクロの定義を変更するだけでよくなります。
 
 :::
 
@@ -958,16 +958,15 @@ em {
   font-size: 15px;
 }
 .login-button {
-  font-size: 20px;
+  font-size: 17px;
   display: block;
   margin: 5px auto;
-  padding: 0 10px;
+  padding: 5px 15px;
   background-color: #08f;
   border-radius: 5px;
   border: 1px solid #08f;
   color: white;
-}
-\
+}\
 `}
 >
   {`\
@@ -992,7 +991,7 @@ em {
       </div>
       <div class="save-password">
         <input type="checkbox" checked />
-        <label>パスワードを保存</label>
+        <label>パスワードを保存する</label>
       </div>
       <button class="login-button">ログイン</button>
     </div>
