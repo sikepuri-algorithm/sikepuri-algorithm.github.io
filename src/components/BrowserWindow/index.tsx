@@ -12,17 +12,19 @@ import styles from "./styles.module.css";
 
 interface Props {
   children: ReactNode;
-  height: string;
+  minHeight?: string;
+  height?: string;
   url?: string;
 }
 
 export default function BrowserWindow({
   children,
+  minHeight,
   height,
   url = "http://localhost:3000",
 }: Props): JSX.Element {
   return (
-    <div className={styles.browserWindow} style={{ height }}>
+    <div className={styles.browserWindow} style={{ minHeight, height }}>
       <div className={styles.browserWindowHeader}>
         <div className={styles.buttons}>
           <span className={styles.dot} style={{ background: "#f25f58" }} />
