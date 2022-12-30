@@ -17,15 +17,13 @@ const defaultHTML = `\
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div id="greeting">Hello World!</div>
     <script src="./script.js"></script>
   </body>
 </html>\
 `;
 const defaultCSS = "";
 const defaultJS = `\
-const greeting = document.getElementById("greeting");
-greeting.textContent = "Hello JavaScript!";\
+document.write("Hello World!");\
 `;
 
 export default function Home(): JSX.Element {
