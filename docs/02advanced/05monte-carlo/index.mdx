@@ -8,3 +8,73 @@ import Answer from "@site/src/components/Answer";
 # モンテカルロ法
 
 ここでは、モンテカルロ法について学んでいきます。
+
+## モンテカルロ法とは
+
+世の中の現象は複雑なものが多いため、多くの問題は実際に厳密な解を求めることができません。そのため、コンピューターを用いて近似解を求める必要が出てきます。
+
+近似解を求める方法はいくつもありますがその一つに、大量のランダムな値を与えてそれで実際に計算してみてその結果から確率を求めるというものがあります。このシミュレーションがモンテカルロ法です。
+
+## 乱数
+
+ここで、Python で乱数を扱う方法を学んでいきましょう。ただし、ここで扱う乱数は真乱数ではなく擬似乱数であることに注意が必要です。
+
+### `random` 関数
+
+`random` ライブラリの `random` 関数は、0 以上 1 未満の一様乱数を生成します。
+
+<ViewSource path="/monte-carlo/random.ipynb" />
+
+### `uniform` 関数
+
+`random` ライブラリの `uniform` 関数は、任意の範囲の一様乱数を生成します。
+
+`uniform(a, b)` とすると、`a` 以上 `b` 以下の範囲の一様乱数を生成します。
+
+<ViewSource path="/monte-carlo/uniform.ipynb" />
+
+### `randrange` 関数
+
+`random` ライブラリの `randrange` 関数は、任意の範囲のランダムな整数を生成します。
+
+`randrange(start, stop, step)` とすると、`start` 以上 `stop` 未満の範囲でランダムな整数を生成します。`step` でステップを指定できます。
+
+<ViewSource path="/monte-carlo/randrange.ipynb" />
+
+### `randint` 関数
+
+`random` ライブラリの `randint` 関数は、任意の範囲のランダムな整数を生成します。
+
+`randint(a, b)` とすると、`a` 以上 `b` 以下の範囲のランダムな整数を生成します。
+
+<ViewSource path="/monte-carlo/randint.ipynb" />
+
+## モンテカルロ法でコイン投げ
+
+モンテカルロ法を用いてコイン投げで表が出る確率を求めてみましょう。表が出る確率が $\frac{1}{2}$ なのは、すでに知っていると思いますが、モンテカルロ法の練習としてみてみましょう。
+
+<ViewSource path="/monte-carlo/coin_toss.ipynb" />
+
+実行回数を増やせば、精度がよくなります。
+
+## モンテカルロ法で円周率
+
+モンテカルロ法で円周率を求めてみましょう。
+次のように第一象限上で半径が 1 の扇形を考えます。
+$x$ 座標、$y$ 座標がともに $[0,1)$ の範囲にランダムに点をプロットしましょう。
+扇形上の面積は、$\frac{1}{2} r^2 \frac{\pi}{2}$ なので、扇形の上に点が乗る確率は、$\frac{1}{2} r^2 \frac{\pi}{2} = \frac{1}{4}\pi$ となります。
+
+これを使って、円周率を求めてみましょう。
+
+<ViewSource path="/monte-carlo/calc_pi.ipynb" />
+
+## 練習問題
+
+モンテカルロ法を用いて、サイコロ投げで 1 が出る確率を求めてみましょう。
+
+<Answer>
+
+$\frac{1}{6} = 0.166\cdots$ になるはずです。
+
+<ViewSource path="/monte-carlo/dice.ipynb" />
+</Answer>
