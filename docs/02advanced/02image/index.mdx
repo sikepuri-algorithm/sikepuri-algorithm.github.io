@@ -1,0 +1,109 @@
+---
+sidebar_position: 2
+---
+
+import ViewSource from "@site/src/components/ViewSource";
+import Answer from "@site/src/components/Answer";
+
+# 画像の表現
+
+Python で画像を表現してみましょう。
+
+## 白黒の表現
+
+東京大学がアルゴリズム入門の授業用に作った `ita` ライブラリを使えば、簡単に画像を表現できます。
+
+次のように、0 と 1 が格納された二次元配列を作って、それを `ita` ライブラリの `image_show` 関数に与えれば、白黒の画像を表現できます。0 が黒、1 が白となります。
+
+<ViewSource path="/image/black_and_white.ipynb" />
+
+### 練習問題
+
+`ita` ライブラリを使って次のような画像を作ってみましょう。
+
+![lattice patter](lattice_pattern.drawio.svg)
+
+<Answer>
+  <ViewSource path="/image/lattice_pattern.ipynb" />
+</Answer>
+
+## グレースケール
+
+0 から 1 の間で数値を変化させることで、グレースケールを表現することもできます。
+
+<ViewSource path="/image/grayscale.ipynb" />
+
+## カラー画像
+
+赤、緑、青の順に 0 から 1 の範囲で指定することで、カラー画像を表現することもできます。
+
+<ViewSource path="/image/color.ipynb" />
+
+:::tip 光の三原色
+
+光の三原色は、赤、緑、青です。この 3 つを混ぜることで、すべての色を表現することが可能です。
+
+これを使ったのが、RGB です。これは、赤(<span style={{color: "red"}}><span style={{fontWeight: "bold"}}>R</span>ed</span>)、緑(<span style={{color: "green"}}><span style={{fontWeight: "bold"}}>G</span>reen</span>)、青(<span style={{color: "blue"}}><span style={{fontWeight: "bold"}}>B</span>lue</span>)の頭文字です。
+
+コンピューターでは、0 から 255 の 256 段階でそれぞれの色を表すので、$256^3 = 16777216$ 通りの表現が可能です。
+
+:::
+
+:::tip 色の三原色
+
+色にも三原色があります。
+色の三原色は、シアン、マゼンタ、イエローです。
+
+これを使ったのが、CMYK です。インクなどに使われます。これは、シアン(<span style={{color: "#00ffff"}}><span style={{fontWeight: "bold"}}>C</span>yan</span>)、マゼンタ(<span style={{color: "#ff00ff"}}><span style={{fontWeight: "bold"}}>M</span>agenta</span>)、イエロー(<span style={{color: "#ffff00"}}><span style={{fontWeight: "bold"}}>Y</span>ellow</span>)の頭文字です。K は Blac**K**からだと言われますが、キープレート(**K**ey plate)からだそうです。K が入っているのは、インク代を節約するためと綺麗な黒を表現するためです。
+
+:::
+
+### 練習問題
+
+次のような画像を作ってみましょう。
+
+![black to red](black_to_red.drawio.png)
+
+<Answer>
+  <ViewSource path="/image/black_to_red.ipynb" />
+</Answer>
+
+## 練習問題
+
+### 練習問題 1
+
+左から右にかけて、黒色から緑色に色が変化するグラデーション画像を作ってみましょう。
+
+![black to green](black_to_green.png)
+
+<Answer>
+  <ViewSource path="/image/black_to_green.ipynb" />
+</Answer>
+
+### 練習問題 2
+
+左から右にかけて、白色から青色に色が変化するグラデーション画像を作ってみましょう。
+
+![white to blue](white_to_blue.png)
+
+<Answer>
+
+加重平均をとると、うまくできます。
+
+<ViewSource path="/image/white_to_blue.ipynb" />
+
+</Answer>
+
+### 練習問題 3
+
+左上が白、右上が赤、左下が緑、右下が青となるようなグラデーション画像を作ってみましょう。
+
+![gradation](gradation.png)
+
+<Answer>
+
+二次元で加重平均をとると、うまくできます。
+
+<ViewSource path="/image/gradation.ipynb" />
+
+</Answer>
