@@ -6,7 +6,7 @@
 
 # Introduction to Algorithms
 
-これは、アルゴリズム入門のシケプリです。
+これは、アルゴリズム入門のシケプリです。デプロイ先は[こちら](https://sikepuri-algorithm.github.io/)
 
 [Docusaurus](https://docusaurus.io/) を使って作っています。
 
