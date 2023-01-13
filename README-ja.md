@@ -4,40 +4,44 @@
     <img src="./static/img/logo-black.svg" alt="logo" height="200px" >
 </div>
 
-[日本語版 README はこちら](./README-ja.md)
+[English README is here.](./README.md)
 
 # Introduction to Algorithms
 
-This is a document that summarizes the Introduction to Algorithms class. To see the content, visit [here](https://sikepuri-algorithm.github.io/).
+これは、アルゴリズム入門のシケプリです。[こちら](https://sikepuri-algorithm.github.io/)から見ることができます。
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+[Docusaurus](https://docusaurus.io/) を使って作っています。
 
-## Installation
+## 環境構築
+
+Node.js がインストールされていることを前提とします。
+
+次のコマンドで必要なパッケージをインストールできます。
 
 ```shell
 npm ci
 ```
 
-To run formatter or linter before committing, run the script below. You don't have to run this script.
+以下は、コミット時に自動で Formatter や Linter を実行させるためのスクリプトです。実行しなくて構いません。
 
 ```shell
-# Install Poetry
+# Poetry のインストール
 curl -sSL https://install.python-poetry.org | python3 -
 
-# Install Poetry packages
+# Poetry のパッケージのインストール
 poetry install
-# Install pre-commit packages
+# pre-commit のパッケージのインストール
 poetry run pre-commit install
 ```
 
-## Local Development
+## 開発
 
-This command starts a local development server and opens up a browser window.
+次を実行すると、ローカルサーバーが立ち上がり、プレビューが表示されます。
 
 ```shell
 npm start
 ```
 
-## Contributions
+## コントリビューション
 
-Issue or PR is always welcome.
+誤植などがありましたら、Issue や PR などで気軽に教えてください。
