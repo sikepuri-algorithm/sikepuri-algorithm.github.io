@@ -69,7 +69,7 @@ students = [
 
 次のようにして、簡単に計算することができますね。
 
-<ViewSource path="/search-algorithm/linear_search.ipynb" />
+<ViewSource path="/search/linear_search.ipynb" />
 
 このプログラムは、配列の先頭から順に目的の値と一致するかを調べていくようになっています。このようなデータの探索アルゴリズムは、線型探索と呼ばれます。
 このプログラムの時間計算量は、$O(n)$ です。
@@ -81,7 +81,7 @@ students = [
 例えば、数列が `[1, 2, 3, 4, 5, 5, 7, 8, 10]` で $N = 5$ ならば、4 となります。
 
 <Answer>
-  <ViewSource path="/search-algorithm/linear_practice.ipynb" />
+  <ViewSource path="/search/linear_practice.ipynb" />
 </Answer>
 
 ## 二分探索
@@ -171,7 +171,7 @@ sequenceDiagram
 
 次のようになります。
 
-<ViewSource path="/search-algorithm/binary_search.ipynb" />
+<ViewSource path="/search/binary_search.ipynb" />
 
 ### 二分探索のライブラリ
 
@@ -179,11 +179,11 @@ sequenceDiagram
 
 `bisect_left` 関数は、ある数を配列に挿入しようとした時、すでに配列に同じ数がある場合それらの数の中で最**小**の要素の左側に挿入した時のインデックスを返します。つまり、次のようになります。
 
-<ViewSource path="/search-algorithm/bisect_left.ipynb" />
+<ViewSource path="/search/bisect_left.ipynb" />
 
 `bisect_right` 関数は、ある数を配列に挿入しようとした時、すでに配列に同じ数がある場合それらの数の中で最**大**の要素の左側に挿入した時のインデックスを返します。つまり、次のようになります。
 
-<ViewSource path="/search-algorithm/bisect_right.ipynb" />
+<ViewSource path="/search/bisect_right.ipynb" />
 
 :::info
 二分探索のアイディアは非常に簡単ですが、正確に実装することはとても難しいことで知られています。
@@ -206,7 +206,7 @@ sequenceDiagram
 例えば、数列が `[1, 2, 3, 4, 5, 5, 7, 8, 10]` で $N = 5$ ならば、4 となります。
 
 <Answer>
-  <ViewSource path="/search-algorithm/binary_left_practice.ipynb" />
+  <ViewSource path="/search/binary_left_practice.ipynb" />
 </Answer>
 
 ### 練習問題 2
@@ -216,5 +216,5 @@ sequenceDiagram
 例えば、数列が `[1, 2, 3, 4, 5, 5, 7, 8, 10]` で $N = 5$ ならば、5 となります。
 
 <Answer>
-  <ViewSource path="/search-algorithm/binary_right_practice.ipynb" />
+  <ViewSource path="/search/binary_right_practice.ipynb" />
 </Answer>
