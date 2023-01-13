@@ -5,6 +5,7 @@ sidebar_position: 1
 import ViewSource from "@site/src/components/ViewSource";
 import Answer from "@site/src/components/Answer";
 import LifeGame from "@site/src/components/LifeGame";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 # ライフゲーム
 
@@ -86,7 +87,7 @@ import LifeGame from "@site/src/components/LifeGame";
 
 ## ライフゲームのプログラム
 
-早速、ライフゲームの Python でのプログラムを見てみましょう。この後、詳しく解説するので、分からなくても構いません。`Open in Colab` と書いてあるボタンを押してから実行して、実際に動く様子を確認してみてください。
+早速、ライフゲームの Python でのプログラムを見てみましょう。この後、詳しく解説するので、分からなくても構いません。ブラウザ上で動かせるようにしたので、<PlayArrowIcon/>ボタンを押して実際に動く様子を確認してみてください。
 
 <ViewSource path="/life-game/life_game.ipynb" />
 
@@ -120,8 +121,10 @@ board = [[1, 1, 0],
 
 <ViewSource path="/life-game/is_alive.ipynb" />
 
+`neighbors_cnt in [2, 3]` は `neighbors_cnt == 2 or neighbors_cnt == 3` と同じです。
+
 次に、次の世代の盤面を計算する関数を考えます。
-引数は `board` として、次の世代の様子を格納する配列を作ってそこに結果を格納していきましょう。配列の作り方はいろいろありますが、ここでは大学が用意した ita ライブラリを使いましょう。ita ライブラリを使うには、プログラムの冒頭に次のように書いてライブラリをインポートする必要があります。
+引数は `board` として、次の世代の様子を格納する配列を作ってそこに結果を格納していきましょう。配列の作り方はいろいろありますが、ここでは大学が用意した ita ライブラリを使いましょう。ita ライブラリを使うには、パッケージのインストールの項で述べたようにプログラムの冒頭に次のように書いてライブラリをインポートする必要があります。
 
 ```python
 !pip install ita
@@ -158,7 +161,7 @@ ita.array.make1d(要素数)
 まず、次のようなコードを書いておきましょう。これは、おまじないだと思ってください。Google Colaboratory 上でうまく表示するために、必要です。
 
 ```python
-%matplotlib notebook
+%matplotlib inline
 ```
 
 次に、次のように書くことでサンプルデータを取得することができます。これはライフゲームにおいて有名なデータで、グライダーが移動していくように見えるものです。
@@ -167,7 +170,7 @@ ita.array.make1d(要素数)
 data = ita.lifegame_glider()
 ```
 
-画像を作るのは、ita を使えば簡単です。三次元配列を次のように渡してあげれば、1 のところは黒で 0 のところは白にしてアニメーションをつくってくれます。
+画像を作るのは、ita ライブラリを使えば簡単です。三次元配列を次のように渡してあげれば、1 のところは黒で 0 のところは白にしてアニメーションをつくってくれます。
 
 ```python
 ita.plot.animation_show(三次元配列)
