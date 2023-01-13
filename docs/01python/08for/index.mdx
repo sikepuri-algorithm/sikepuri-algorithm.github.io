@@ -35,7 +35,7 @@ for 文を用いると、このように簡単に書くことができます。�
 
 <ViewSource path="/for/for_sum_1to1000.ipynb" />
 
-:::info
+:::tip
 `sum += i` は、`sum = sum + i` と同じ意味です。累算代入演算子と呼ばれます。
 次のように、様々なものがあります。
 
@@ -65,10 +65,12 @@ for 文は同じ処理をただ繰り返したいときにも用いることが�
 
 <ViewSource path="/for/for_hello.ipynb" />
 
-:::note
-上記のプログラムは、次のようにしても実行できます。
+:::tip
+上記のプログラムは、次と同じです。
 
 <ViewSource path="/for/for_hello2.ipynb" />
+
+Python では、変数を使わないときは、アンダーバー(`_`)を使用します。
 
 次のプログラムを見れば分かるように、 `range` 関数に引数を一つだけ渡すと、`i` には $[0, a)$ （$a$ を引数とする）となるような整数が順番に渡されます。
 
@@ -109,7 +111,7 @@ $n$ の階乗を求める関数を作って、実際に 10 の階乗を求めて
 <Answer>
 <ViewSource path="/for/factorial.ipynb" />
 
-ちなみに、`math` ライブラリに階乗を計算するプログラムが入っているようです。[公式ドキュメントはこちら](https://docs.python.org/ja/3/library/math.html#math.factorial)
+ちなみに、`math` ライブラリに階乗を計算するプログラムが入っているようです。公式ドキュメントは[こちら](https://docs.python.org/ja/3/library/math.html#math.factorial)
 
 これを使えば、次のようになります。
 
