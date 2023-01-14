@@ -18,7 +18,7 @@ This site is built using [Docusaurus](https://docusaurus.io/), a modern static s
 npm ci
 ```
 
-To run formatter or linter before committing, run the script below. (You don't have to run this script.)
+To run formatter or linter before committing, run the script below. (You don't have to run these scripts.)
 
 ```shell
 # Install Poetry
