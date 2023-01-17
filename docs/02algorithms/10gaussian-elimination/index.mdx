@@ -469,6 +469,8 @@ $x_n = d_n$ になります。求まった $x_n$ をそれよりも上の式す�
 
 <ViewSource path="/gaussian-elimination/gaussian_elimination.ipynb" />
 
+冒頭の `x = [0 for _ in range(len(a[0]) - 1)]` は、リストの内包表記と呼ばれ、配列 `x` を `0` で埋める操作です。この操作で `x` は `[0, 0, ..., 0]` となっています。
+
 `reversed` 関数は配列の要素を反転します。
 
 ## 部分ピボット選択
