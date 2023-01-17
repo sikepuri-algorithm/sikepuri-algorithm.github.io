@@ -41,9 +41,9 @@ Python で画像を表現してみましょう。
 
 :::tip 光の三原色
 
-光の三原色は、赤、緑、青です。この 3 つを混ぜることで、すべての色を表現することが可能です。
+光の三原色は、赤、緑、青です。この 3 つを混ぜることで、すべての色を表現することが可能です。加法混色なので、赤、緑、青をすべて合わせると白になります。
 
-これを使ったのが、RGB です。これは、赤(<span style={{color: "red"}}><span style={{fontWeight: "bold"}}>R</span>ed</span>)、緑(<span style={{color: "green"}}><span style={{fontWeight: "bold"}}>G</span>reen</span>)、青(<span style={{color: "blue"}}><span style={{fontWeight: "bold"}}>B</span>lue</span>)の頭文字です。
+これを使った色の表現法が、RGB です。これは、赤(<span style={{color: "red"}}><span style={{fontWeight: "bold"}}>R</span>ed</span>)、緑(<span style={{color: "green"}}><span style={{fontWeight: "bold"}}>G</span>reen</span>)、青(<span style={{color: "blue"}}><span style={{fontWeight: "bold"}}>B</span>lue</span>)の頭文字となっています。
 
 コンピューターでは、0 から 255 の 256 段階でそれぞれの色を表すので、$256^3 = 16777216$ 通りの表現が可能です。
 
@@ -52,7 +52,7 @@ Python で画像を表現してみましょう。
 :::tip 色の三原色
 
 色にも三原色があります。
-色の三原色は、シアン、マゼンタ、イエローです。
+色の三原色は、シアン、マゼンタ、イエローです。減法混色なので、シアン、マゼンタ、イエローをすべて合わせると黒になります。
 
 これを使ったのが、CMYK です。インクなどに使われます。これは、シアン(<span style={{color: "#00ffff"}}><span style={{fontWeight: "bold"}}>C</span>yan</span>)、マゼンタ(<span style={{color: "#ff00ff"}}><span style={{fontWeight: "bold"}}>M</span>agenta</span>)、イエロー(<span style={{color: "#ffff00"}}><span style={{fontWeight: "bold"}}>Y</span>ellow</span>)の頭文字です。K は Blac**K**からだと言われますが、キープレート(**K**ey plate)からだそうです。K が入っているのは、インク代を節約するためと綺麗な黒を表現するためです。
 
