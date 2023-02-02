@@ -2,20 +2,34 @@
 sidebar_position: 1
 ---
 
+import helloWorldOnColab from "./google-colaboratory.mp4";
+
 # 環境構築（Google Colaboratory）
 
-Google アカウントを用意してログインしておいてください。
+昔はプログラミングの開発環境を整えることはとても大変な作業でしたが、今は Google の開発した Google Colaboratory を使うとブラウザ上で簡単に Python を実行することができます。
 
-ログインした状態でウェブブラウザで <https://colab.research.google.com/> にアクセスすると、次のような画面が表示されるはずです。
+次の動画のようにすることでプログラムを簡単に実行できるので、一度やってみてください。
 
-`ノートブックを新規作成` をクリックします。
+<video src={helloWorldOnColab} controls width="100%" />
 
-![Google Colaboratory へようこそ](./getting-started.jpg)
+1. Google アカウントを用意してログインしておいてください。
 
-新しいファイルが開いたら、コードを書くことができます。
+2. ログインした状態でウェブブラウザで [https://colab.research.google.com/](https://colab.research.google.com/) にアクセスします。すると、次のような画面が表示されます。
 
-![新規ファイル](./new-file.jpg)
+   ![Google Colaboratory へようこそ](./getting-started.jpg)
 
-セルの中に `print("Hello World!")` のように書いて、Windows では `Ctrlキー` と `Enterキー` を同時に押すと、Mac では `Cmdキー` と `Enterキー` を同時に押すと、Linux では `Ctrl キー` と `Enterキー` を同時に押すと、任意の Python のコードを実行させることができます。
+3. `ノートブックを新規作成` をクリックします。
 
-![実行後](./run.jpg)
+   ![新規ファイル](./new-file.jpg)
+
+4. 新しいファイルが開いたら、コードを書くことができます。セルの中に `print("Hello World!")` のように書いて、Windows や Linux では `Ctrl + Enter`、Mac では `Command + Enter` で任意の Python のコードを実行させることができます。
+
+   ![実行後](./run-script.jpg)
+
+:::tip キーボード・ショートカット
+
+`Ctrl + Enter` は、`Ctrl` キーと `Enter` キーを同時に押すということです。`Command + Enter` も同じで、`Command` キーと `Enter` キーを同時に押すということです。
+
+これらは、キーボード・ショートカットと呼ばれ、使いこなすことで高速にパソコンを操作できるようになります。
+
+:::
