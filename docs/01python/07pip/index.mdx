@@ -29,16 +29,17 @@ Google Colaboratory で pip を使ってパッケージをインストールす�
 
 <ViewSource path="/pip/pandas.ipynb" />
 
-:::info
-Google Colaboratory などの Jupyter Notebook を使った方法ではなく、直接 `.py` ファイルを使った方法の場合は、pip の使い方が異なります。
+:::note
 
-ターミナルなどで次のコマンドを実行すると、パッケージをインストールできます。
+Google Colaboratory を使わない場合は少しやり方が異なります。`.py` ファイルを使う場合は、次のようにします。
+
+ターミナルなどで次のコマンドを実行することで、パッケージをインストールできます。一度インストールすれば、その後はインストールし直す必要はありません。
 
 ```shell
 pip install pandas
 ```
 
-その後、次のようなコードを実行すると、パッケージを使用することができます。
+その後、次のようにすることで、パッケージを使用することができます。
 
 ```python title=hello_pandas.py
 import pandas as pd
