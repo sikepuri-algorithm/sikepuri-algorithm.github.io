@@ -3,7 +3,7 @@ runs:
   using: "Composite"
   steps:
     - name: Install Python Modules
-      uses: ./.github/actions/install_python_mudules
+      uses: ./.github/actions/install_python_modules
 
     - name: Execute Notebooks
       run: npm run execute_notebooks
