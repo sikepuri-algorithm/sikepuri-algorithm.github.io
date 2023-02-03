@@ -12,7 +12,8 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "execute_notebooks": "jupyter nbconvert --inplace --to notebook --execute --allow-errors static/**/*"
   },
   "dependencies": {
     "@docusaurus/core": "^2.3.0",

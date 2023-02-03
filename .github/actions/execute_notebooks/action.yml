@@ -1,0 +1,10 @@
+---
+runs:
+  using: "Composite"
+  steps:
+    - name: Install Python Modules
+      uses: ./.github/actions/install_python_mudules
+
+    - name: Execute Notebooks
+      run: npm run execute_notebooks
+      shell: bash
