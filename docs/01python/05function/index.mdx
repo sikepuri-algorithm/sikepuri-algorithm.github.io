@@ -11,13 +11,13 @@ import Answer from "@site/src/components/Answer";
 
 $f(x) = x^2$ としたときの、$f(2) + f(3)$ を求めてみましょう。
 
-<ViewSource path="/function/x2.ipynb" />
+<ViewSource path="/function/calc_x^2.ipynb" />
 
-一応できましたが、このようにつくると関数値を求めるときに毎回 $f(x)$ の定義を見て書かなければなりません。今回のように、単純な関数では良いですがもっと複雑な関数では大変です。このようなときに、Python では関数を使用できます。
+一応できましたが、このようにつくると関数値を求めるときに毎回 $f(x)$ の定義を見て書かなければなりません。今回のように、単純な関数では良いですがもっと複雑な関数では大変です。ここで、関数が活躍します。
 
 関数を用いると、次のように簡単にプログラムを書くことができます。
 
-<ViewSource path="/function/x2_function.ipynb" />
+<ViewSource path="/function/calc_x^2_revised.ipynb" />
 
 関数は、次のようにして定義することができます。引数は「ひきすう」と読みます。
 
@@ -48,21 +48,15 @@ Python では、きちんとインデント（字下げ）をしないとエラ�
 
 <ViewSource path="/function/introduce_self.ipynb" />
 
-:::info
-上のプログラムでも問題ないのですが、実際には次のプログラムのように `f-string` を使った表記の方が可読性が高くなって良さそうです。
+:::note
+上のプログラムでも問題ないのですが、実際には次のプログラムのように `f-string` を使った表記の方が可読性が高くなって実際の開発では好まれてたりします。しかし、あまり気にしなくて良いでしょう。ちなみに、`"` の前に `f` と書くことで、`"` 内の `{` で囲まれた変数の中身を表示できます。
 
-<ViewSource path="/function/introduce_self2.ipynb" />
+<ViewSource path="/function/introduce_self_fstring.ipynb" />
 :::
 
 戻り値を使うと、次のようにも表現できます。
 
-<ViewSource path="/function/introduce_self3.ipynb" />
-
-:::info
-`f-string` を使うと、次のようになります。
-
-<ViewSource path="/function/introduce_self4.ipynb" />
-:::
+<ViewSource path="/function/introduce_self_return_value.ipynb" />
 
 ### 練習問題 1
 
@@ -87,11 +81,15 @@ $G=6.7\times 10^{-11}$、$r=2$、$M=60$、$m=20$ とします。
 `私の名前は、東大太郎です。中国語選択です。` のように自分の名前と第２外国語を紹介する関数を作ってみましょう。
 
 <Answer>
+
 <ViewSource path="/function/introduce_language.ipynb" />
 
-:::info
+:::note
+
 `f-string` を使うと次のようになります。
 
-<ViewSource path="/function/introduce_language2.ipynb" />
+<ViewSource path="/function/introduce_language_fstring.ipynb" />
+
 :::
+
 </Answer>
