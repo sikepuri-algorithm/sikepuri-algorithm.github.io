@@ -10,6 +10,7 @@ packages = [{include = "sikepuri_of_algorithm"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 nbconvert = "^7.2.9"
+ipykernel = "^6.21.1"
 
 
 [tool.poetry.group.dev.dependencies]
