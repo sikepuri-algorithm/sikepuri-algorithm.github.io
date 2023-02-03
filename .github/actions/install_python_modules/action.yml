@@ -28,5 +28,5 @@ runs:
 
     - name: Install Poetry Packages
       if: steps.poetry_packages_cache_id.outputs.cache-hit != 'true'
-      run: poetry install
+      run: poetry install --no-root
       shell: bash
