@@ -9,6 +9,7 @@ packages = [{include = "sikepuri_of_algorithm"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+nbconvert = "^7.2.9"
 
 
 [tool.poetry.group.dev.dependencies]
