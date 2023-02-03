@@ -15,23 +15,23 @@ $$
 V=331.5+0.6t
 $$
 
-<ViewSource path="/variable/sound-velocity.ipynb" />
+<ViewSource path="/variables/sound-velocity.ipynb" />
 
 一応できましたが、 $t$ を変えようとすると、(これぐらいならすぐできますが)いちいちプログラムを全て読み直して、温度を書き換えなければなりません。これが、複雑な計算式だったら、どの値を変えればいいのかわからなくなってしまいそうです。
 
 ここで、変数が活躍します。変数は数値や文字列を入れられる箱のようなもので、任意の数値や文字列を格納することができます。そのため、変数を使うと、次のようにより変更しやすいようなプログラムを書くことができます。
 
-<ViewSource path="/variable/sound-velocity-revised.ipynb" />
+<ViewSource path="/variables/sound-velocity-revised.ipynb" />
 
 このようにすれば、例えば 10℃ ではなく 20℃ のときの音速を求めたくなったときに次のように `t = 20` とするだけでよくなり、より簡単にプログラムを変更することができます。
 
-<ViewSource path="/variable/sound-velocity-revised-20degree.ipynb" />
+<ViewSource path="/variables/sound-velocity-revised-20degree.ipynb" />
 
 :::tip
 Python では、数学とは違い `=` は右の結果を左の変数に代入するという意味です。
 そのため、次のようなプログラムを実行すると 2 が出力されます。
 
-<ViewSource path="/variable/substitution.ipynb" />
+<ViewSource path="/variables/substitution.ipynb" />
 :::
 
 :::note 命名規則
@@ -62,7 +62,7 @@ F=\frac{9}{5}C+32
 $$
 
 <Answer>
-  <ViewSource path="/variable/to-fahrenheit.ipynb" />
+  <ViewSource path="/variables/to-fahrenheit.ipynb" />
 </Answer>
 
 ### 練習問題 2
@@ -80,5 +80,5 @@ y
 
 3 行目では、`x + y` の値が評価されてその結果が `y` に代入されます。そのため、$2+3=5$ が `y` に代入され `5` が出力されます。
 
-  <ViewSource path="/variable/substitution-practice.ipynb"/>
+  <ViewSource path="/variables/substitution-practice.ipynb"/>
 </Answer>
