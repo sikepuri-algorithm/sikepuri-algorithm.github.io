@@ -74,11 +74,38 @@ $n$ 番目まで Fizz Buzz での正しい解を表示するプログラムを�
 
 最大公約数を求めるプログラムを作ってみましょう。最大公約数（greatest common divisor）は、GCD とよく略されます。
 
+<Hint>
+
+ユークリッドの互除法を用いれば簡単にできます。
+
+ユークリッドの互除法を用いると、次のように最大公約数が計算できるのでした。
+$\mathrm{gcd}(a, b)$ を $a$ と $b$ の最大公約数とします。
+
+例：$30$ と $18$ の最大公約数を求める。
+
+$$
+\begin{align*}
+    \mathrm{gcd}(30, 18) &= \mathrm{gcd}(18, 30 - 18\times 1) \\
+                         &= \mathrm{gcd}(18, 12) \\
+                         &= \mathrm{gcd}(12, 18 - 12\times 1) \\
+                         &= \mathrm{gcd}(12, 6) \\
+                         &= \mathrm{gcd}(6, 12 - 6\times 2) \\
+                         &= \mathrm{gcd}(6, 0) \\
+                         &= 6
+\end{align*}
+$$
+
+よって、最大公約数は $6$
+
+</Hint>
+
 <Answer>
+
+ユークリッドの互除法を使うと、最大公約数を求めるプログラムは次のようになります。
 
 <ViewSource path="/practice/gcd.ipynb" />
 
-再帰を使うと次のようにもできます。再帰は後の項で説明します。
+再帰を使うと次のようにもできます。再帰を使ったプログラムは、後の項で紹介します。
 
 <ViewSource path="/practice/gcd_recursive.ipynb" />
 
