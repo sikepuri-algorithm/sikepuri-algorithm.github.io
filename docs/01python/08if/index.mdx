@@ -3,6 +3,7 @@ sidebar_position: 8
 ---
 
 import ViewSource from "@site/src/components/ViewSource";
+import Hint from "@site/src/components/Hint";
 import Answer from "@site/src/components/Answer";
 
 # 条件分岐
@@ -142,6 +143,20 @@ else:
 ### 練習問題 3
 
 絶対値を求めるプログラムを作ってみましょう。
+
+<Hint>
+
+次の式を思い起こせば、作れそうです。
+
+$$
+|x|=
+\begin{dcases}
+    x  & \text{if $x\geq 0$,} \\
+    -x & \text{else.}
+\end{dcases}
+$$
+
+</Hint>
 
 <Answer>
 <ViewSource path="/if/abs.ipynb" />
