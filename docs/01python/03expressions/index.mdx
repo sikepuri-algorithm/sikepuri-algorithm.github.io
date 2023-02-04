@@ -7,19 +7,21 @@ import Answer from "@site/src/components/Answer";
 
 # 算術演算子
 
+ここでは、Python で様々な計算を行っていきます。
+
 ## 算術演算子
 
-Python を使って計算をしてみましょう。次のように書くと、$1+1$ を Python に計算させて、その結果を表示することができます。
+Python を使って演算をしてみましょう。次のように書くと、$1+1$ を Python に計算させて、その結果を表示することができます。
 
 <ViewSource path="/expressions/sum.ipynb" />
 
 :::tip
-Python では、多くの場合半角スペースは無視されます。（ただし、単語の途中などに入れてはいけません。）そのため、読みやすくするために半角スペースを入れていますがなくても同じように動きます。
+Python では、多くの場合半角スペースは無視されます。(ただし、単語の途中などに入れてはいけません。)そのため、読みやすくするために半角スペースを入れていますがなくても同じように動きます。
 
 ただし、全角スペースが入っているとエラーが出てしまうのでプログラムを書くときには絶対に全角スペースを入れないように気をつけましょう。
 :::
 
-:::info
+:::note
 上のプログラムは、次のようにしても実行できます。それぞれには、少し違いがあるようですが気にしなくて大丈夫でしょう。
 
 Google Colaboratory 以外で実行するときなど上のようなプログラムでうまく動かないときは、下のように書いてみてください。
@@ -27,7 +29,7 @@ Google Colaboratory 以外で実行するときなど上のようなプログラ
 <ViewSource path="/expressions/sum2.ipynb" />
 :::
 
-Python では足し算以外にも次のように様々な計算をすることができます。
+Python では足し算以外にも次のように様々な演算をすることができます。
 
 | 演算子 | 説明   | 例                                                 |
 | ------ | ------ | -------------------------------------------------- |
@@ -39,10 +41,10 @@ Python では足し算以外にも次のように様々な計算をすること�
 | `//`   | 商     | <ViewSource path="/expressions/quotient.ipynb" />  |
 | `%`    | 剰余   | <ViewSource path="/expressions/remainder.ipynb" /> |
 
-括弧`(`、`)` を用いることで、複雑な計算をすることもできます。
+括弧 `(`、`)` を用いることで、複雑な計算をすることもできます。
 黄金比を計算してみましょう。黄金比は、$\frac{1+\sqrt{5}}{2}$ で与えられます。
 
-<ViewSource path="/expressions/golden-ratio.ipynb" />
+<ViewSource path="/expressions/golden_ratio.ipynb" />
 
 :::tip
 平方根は 0.5 乗とすることで計算できます。
@@ -57,5 +59,5 @@ F=\frac{9}{5}C+32
 $$
 
 <Answer>
-  <ViewSource path="/expressions/fahrenheit.ipynb" />
+  <ViewSource path="/expressions/to_fahrenheit.ipynb" />
 </Answer>

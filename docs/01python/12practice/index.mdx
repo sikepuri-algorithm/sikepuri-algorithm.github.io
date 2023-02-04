@@ -7,7 +7,7 @@ import Answer from "@site/src/components/Answer";
 
 # 練習問題
 
-これまでの項で、Python についての基本的なことは学び終わったので、実際に様々な練習問題を解いていきましょう。
+これまでの項で、Python の基本的なことは学び終わったので、実際に様々な練習問題を解いてみましょう。
 
 ## 練習問題 1
 
@@ -17,7 +17,27 @@ Fizz Buzz 問題を解くプログラムを作ってみましょう。
 Fizz Buzz のルールは、次のようになっています。
 
 > プレイヤーは円状に座る。最初のプレイヤーは「1」と数字を発言する。次のプレイヤーは直前のプレイヤーの発言した数字に 1 を足した数字を発言していく。ただし、3 の倍数の場合は「Fizz」（Bizz Buzz の場合は「Bizz」）、5 の倍数の場合は「Buzz」、3 の倍数かつ 5 の倍数の場合（すなわち 15 の倍数の場合）は「Fizz Buzz」（Bizz Buzz の場合は「Bizz Buzz」）を数の代わりに発言しなければならない。発言を間違えた者や、ためらった者は脱落となる。
-> Wikipedia フリー百科事典 より
+> -- <cite>[フリー百科事典『ウィキペディア（Wikipedia）』](https://ja.wikipedia.org/wiki/Fizz_Buzz)</cite>
+
+要するに、次のように出力するプログラムを作れば良いです。
+
+```plaintext
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+```
 
 $n$ 番目まで Fizz Buzz での正しい解を表示するプログラムを作ってみましょう。
 
@@ -55,6 +75,7 @@ $n$ 番目まで Fizz Buzz での正しい解を表示するプログラムを�
 最大公約数を求めるプログラムを作ってみましょう。最大公約数（greatest common divisor）は、GCD とよく略されます。
 
 <Answer>
+
 <ViewSource path="/practice/gcd.ipynb" />
 
 再帰を使うと次のようにもできます。再帰は後の項で説明します。

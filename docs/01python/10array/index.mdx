@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 10
 ---
 
 import ViewSource from "@site/src/components/ViewSource";
@@ -17,7 +17,9 @@ import Answer from "@site/src/components/Answer";
 
 ここで、配列を使います。配列は、複数のデータを順番に並べたもので、大量のデータを扱うことができます。数学におけるベクトルと同じようなものです。
 
-配列を用いると、先程のプログラムは、次のように書くことができます。
+![配列の説明](array.drawio.svg)
+
+配列を用いると、先程のプログラムは、次のように書くことができます。※詳しい説明は後でします。
 
 <ViewSource path="/array/average2.ipynb" />
 
@@ -30,13 +32,13 @@ import Answer from "@site/src/components/Answer";
 配列は、次のような構文で作ることができます。
 
 ```python
-配列名 = [一つ目のデータ, 二つ目のデータ, 三つ目のデータ, … , nつ目のデータ]
+配列名 = [一つ目のデータ, 二つ目のデータ, 三つ目のデータ, ..., nつ目のデータ]
 ```
 
-配列から、i 番目のデータを取り出すときは次のようにして取り出すことができます。ここで、i-1 となっているのは、配列の添字は **0 から始まっている**からです。
+配列から、`i` 番目のデータを取り出すときは次のようにして取り出すことができます。ここで、`i - 1` となっているのは、配列の添字は **0 から始まっている**からです。
 
 ```python
-配列名[i-1]
+配列名[i - 1]
 ```
 
 配列の長さは、次のようにして取得することができます。
@@ -45,11 +47,11 @@ import Answer from "@site/src/components/Answer";
 len(配列名)
 ```
 
-次の問題を解いてみてください。
+次の例題を解いてみてください。
 
-### 問題
+### 例題
 
-先程の一人目の点数を 96 点から 37 点に書き換えてみましょう。
+一人目の点数を 96 点から 37 点に書き換えてみましょう。5 人の点数は、`scores = [96, 56, 42, 74, 86]` のように与えられます。
 
 <Answer>
 <ViewSource path="/array/change.ipynb" />
@@ -61,7 +63,7 @@ len(配列名)
 
 配列の添字には、変数を使うこともできます。これを用いて、さきほどの問題をさらに一般化した問題を解いてみましょう。
 
-### 問題
+### 例題
 
 `i` 人目の点数を `laterScore` に書き換えるプログラムを作って、実際に `i` に 1、`laterScore` に 37 を入力して、先程と同じようになるか試してみましょう。
 
@@ -72,7 +74,7 @@ len(配列名)
 <ViewSource path="/array/change3.ipynb" />
 </Answer>
 
-:::info
+:::note
 実は for 文を書くときに出てきた range は、配列のようなものを作る関数です。ここで、配列のようなものと言ったのは厳密には配列ではないからですが、ひとまず配列と考えて問題ないでしょう。そのため、例えば `range(1, 11)` は `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]` を生成します。list 関数は range 関数の返り値を配列にしています。
 
 <ViewSource path="/array/range.ipynb" />
@@ -91,7 +93,7 @@ len(配列名)
 実際に、点数をそれぞれ 26 点、78 点、83 点、20 点、10 点、11 点、22 点、16 点、41 点、95 点として計算してみましょう。
 
 <Answer>
-<ViewSource path="/array/average10.ipynb" />
+<ViewSource path="/array/average4.ipynb" />
 
 実は、平均点を求めるライブラリもあります。[statistics ライブラリの mean 関数](https://docs.python.org/ja/3/library/statistics.html#statistics.mean)や[NumPy ライブラリの mean 関数](https://numpy.org/doc/stable/reference/generated/numpy.mean.html)があります。
 
@@ -104,10 +106,10 @@ len(配列名)
 
 今度は、分散を求めるプログラムを書いてみましょう。
 
-$n$ 個の観測データを $x_1,x_2,\cdots,x_n$ 、平均を $\bar{x}$ とすると、分散 $s^2$ は次のように与えられるとします。
+$n$ 個の観測データを $x_1,x_2,\cdots,x_n$、平均を $\bar{x}$ とすると、分散 $s^2$ は次のように与えられるとします。
 
 $$
-s^2=\frac{\sum\limits_{i=1}^n(x_i-\bar{x})^2}{n}
+s^2=\frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n}
 $$
 
 練習問題 1 と同じように具体的な値を入れて確かめてみましょう。
@@ -115,7 +117,7 @@ $$
 <Answer>
 <ViewSource path="/array/variance.ipynb" />
 
-次のようにしても計算できますが（ `variance` 関数の中が少し変わっています。）、for 文の中が実行される度に `average` 関数が実行されて計算量が多くなってしまうので、上のようにした方が良いでしょう。
+次のようにしても計算できますが(`variance` 関数の中が少し変わっています。)、for 文の中が実行される度に `average` 関数が実行されて計算量が多くなってしまうので、上のようにした方が良いでしょう。
 
 <ViewSource path="/array/variance2.ipynb" />
 
@@ -125,4 +127,12 @@ $$
 
 <ViewSource path="/array/variance_numpy.ipynb" />
 
+</Answer>
+
+### 練習問題 3
+
+最高点を求めるプログラムを作ってみましょう。
+
+<Answer>
+  <ViewSource path="/if/max.ipynb" />
 </Answer>
