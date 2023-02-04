@@ -11,7 +11,14 @@ Python で画像を表現してみましょう。
 
 ## 白黒の表現
 
-大学がアルゴリズム入門の授業用に作った `ita` ライブラリを使えば、簡単に画像を表現できます。
+東京大学がアルゴリズム入門の授業用に作った `ita` ライブラリを使えば、簡単に画像を表現できます。(`ita` って、Introduction to Algorithms の略なんですかね？)
+`ita` ライブラリは、インストールして使う必要があります。ライブラリをインストールするには、先頭で `!pip install ita` と書けば良いのでした。
+
+`ita` ライブラリで画像を扱う場合は、次のようなコードをはじめの方に書いておく必要があります。これに関しては、おまじないだと思ってください。Google Colaboratory 上でうまく表示するために、必要になっています。
+
+```python
+%matplotlib inline
+```
 
 次のように、0 と 1 が格納された二次元配列を作って、それを `ita` ライブラリの `image_show` 関数に与えれば、白黒の画像を表現できます。0 が黒、1 が白となります。
 
@@ -21,7 +28,7 @@ Python で画像を表現してみましょう。
 
 `ita` ライブラリを使って次のような画像を作ってみましょう。
 
-![lattice patter](lattice_pattern.drawio.svg)
+![市松模様](lattice_pattern.png)
 
 <Answer>
   <ViewSource path="/image/lattice_pattern.ipynb" />
@@ -62,7 +69,7 @@ Python で画像を表現してみましょう。
 
 次のような画像を作ってみましょう。
 
-![black to red](black_to_red.drawio.png)
+![黒から赤へのグラデーション](black_to_red.png)
 
 <Answer>
   <ViewSource path="/image/black_to_red.ipynb" />
@@ -74,29 +81,54 @@ Python で画像を表現してみましょう。
 
 左から右にかけて、黒色から緑色に色が変化するグラデーション画像を作ってみましょう。
 
-![black to green](black_to_green.png)
+![黒から赤へのグラデーション](black_to_green.png)
+
+`配列.append(要素)` とすることで、配列の末尾に要素を追加できます。
+
+<ViewSource path="/image/append.ipynb" />
+
+<Hint>
+
+左側が黒で右側に行くにつれてだんだん緑になるように、数値を少しずつ変化させていけば良さそうです。
+
+二次元配列の作り方としては、まず空の配列を作り、それに `append` を使って値を入れていき一次元配列を作ります。
+さらに、これを空の配列に入れていけば、二次元配列になります。
+
+</Hint>
 
 <Answer>
 
 <ViewSource path="/image/black_to_green.ipynb" />
 
-`配列.append(要素)` とすることで、配列の末尾に要素を追加できます。
-
-この問題ならそれぞれの行がすべて同じなので、`row` を使いまわすこともできます。
-
-<ViewSource path="/image/black_to_green_another_solution.ipynb" />
-
 </Answer>
 
 ### 練習問題 2
 
-左から右にかけて、白色から青色に色が変化するグラデーション画像を作ってみましょう。
+左から右にかけて、白色から青色に色が変化するグラデーション画像を作ってみましょう。これは、少し難しいです。分からなかったら、ヒントを見てください。
 
-![white to blue](white_to_blue.png)
+![白から青へのグラデーション](white_to_blue.png)
+
+<Hint>
+
+次のように、加重平均をとると、うまくできます。
+
+![加重平均の説明](weighted_mean.drawio.svg)
+
+$$
+\left\{
+  \begin{align*}
+    R&=(1-t)R_1+tR_2 \\
+    G&=(1-t)G_1+tG_2 \\
+    B&=(1-t)B_1+tB_2
+  \end{align*}
+\right.
+$$
+
+右側の色と左の色を定義して、その加重平均をとるという流れになるかと思います。
+
+</Hint>
 
 <Answer>
-
-加重平均をとると、うまくできます。
 
 <ViewSource path="/image/white_to_blue.ipynb" />
 
@@ -106,11 +138,27 @@ Python で画像を表現してみましょう。
 
 左上が白、右上が赤、左下が緑、右下が青となるようなグラデーション画像を作ってみましょう。
 
-![gradation](gradation.png)
+![グラデーション](gradation.png)
+
+<Hint>
+
+次のように、二次元で加重平均をとると、うまくできます。
+
+![加重平均の説明](weighted_mean_2d.drawio.svg)
+
+$$
+\left\{
+  \begin{align*}
+    R&=s\{(1-t)R_1+tR_2\}+(1-s)\{(1-t)R_3+tR_4\} \\
+    G&=s\{(1-t)G_1+tG_2\}+(1-s)\{(1-t)G_3+tG_4\} \\
+    B&=s\{(1-t)B_1+tB_2\}+(1-s)\{(1-t)B_3+tB_4\}
+  \end{align*}
+\right.
+$$
+
+</Hint>
 
 <Answer>
-
-二次元で加重平均をとると、うまくできます。
 
 <ViewSource path="/image/gradation.ipynb" />
 
