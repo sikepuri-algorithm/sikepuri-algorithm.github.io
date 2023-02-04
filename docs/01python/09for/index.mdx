@@ -33,7 +33,7 @@ import Answer from "@site/src/components/Answer";
 
 for 文を用いると、このように簡単に書くことができます。また、問題が少し変わっても、すぐにそれに合わせたプログラムを作ることができ拡張性があります。例えば、1 から 1000 の和はこのプログラムの `101` を `1001` にするだけで簡単に作ることができます。※この後、詳しく説明します。
 
-<ViewSource path="/for/for_sum_1to1000_revised.ipynb" />
+<ViewSource path="/for/sum_1to1000_revised.ipynb" />
 
 :::tip
 `sum += i` は、`sum = sum + i` と同じ意味です。累算代入演算子と呼ばれます。
@@ -100,11 +100,13 @@ while 条件式:
 $1$ から $n$ までの和を求める関数を作って、実際に 1 から 10 までの和を求めてみましょう。
 
 <Answer>
-<ViewSource path="/for/upto.ipynb" />
+
+<ViewSource path="/for/up_to.ipynb" />
 
 実は、このプログラムは次のようにしてもっと簡単に書くことができます。しかし、次項の配列の内容がわかっていないと理解できないため、次項で詳しく紹介します。
 
-<ViewSource path="/for/upto_sum.ipynb" />
+<ViewSource path="/for/up_to_sum.ipynb" />
+
 </Answer>
 
 ### 練習問題 2
@@ -112,6 +114,7 @@ $1$ から $n$ までの和を求める関数を作って、実際に 1 から 1
 $n$ の階乗を求める関数を作って、実際に 10 の階乗を求めてみましょう。
 
 <Answer>
+
 <ViewSource path="/for/factorial.ipynb" />
 
 ちなみに、`math` ライブラリに階乗を計算するプログラムが入っているようです。公式ドキュメントは[こちら](https://docs.python.org/ja/3/library/math.html#math.factorial)
@@ -119,4 +122,5 @@ $n$ の階乗を求める関数を作って、実際に 10 の階乗を求めて
 これを使えば、次のようになります。
 
 <ViewSource path="/for/factorial_math.ipynb" />
+
 </Answer>
