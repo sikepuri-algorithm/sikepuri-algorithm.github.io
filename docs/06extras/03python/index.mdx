@@ -1,0 +1,27 @@
+---
+sidebar_position: 3
+---
+
+import installPython from "./install_python.mp4";
+
+# Python の環境構築
+
+## ローカル環境への Python のインストール方法
+
+Windows を使っている場合は、[WSL をインストールの項](../01wsl/)を参考に WSL をインストールしておいてください。
+
+[Visual Studio Code をインストールの項](../02vscode/)を参考に VSCode をインストールしておいてください。
+
+VSCode で `samples` プロジェクトフォルダを開いている状態にしておいてください。
+
+macOS や WSL 上の Linux には、Python がはじめからインストールされているので、下の動画のようにするだけで、簡単に Python をローカル環境上で実行することができます。
+
+<video src={installPython} controls width="100%" />
+
+- `sample.py` という名前でファイルを作成します。
+
+- `sample.py` の中に `print("Hello World!)` と入力します。
+
+- 保存します。
+
+- ターミナル上で、`python3 sample.py` と入力して、`Enterキー` を押します。コンソール上に `Hello World!` と表示されたら、成功です。

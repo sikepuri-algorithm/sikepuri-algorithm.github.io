@@ -1,0 +1,71 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import installVscode from "./install_vscode.mov";
+import openFolder from "./open_folder.mp4";
+import installRemoteWsl from "./install_remote_wsl.mov";
+import startWsl from "./start_wsl.mov";
+import openFolderWSL from "./open_folder_wsl.mov";
+import openTerminal from "./open_terminal.mp4";
+
+# Visual Studio Code のインストール
+
+## Visual Studio Code のインストール方法
+
+Visual Studio Code(VS Code) は、Microsoft 社 が開発しているフリーかつオープンソースなソースコードエディタです。様々な便利な拡張機能があり、多くの開発者に使われています。
+
+ここでは、Visual Studio Code のインストール方法について簡単に説明します。
+
+次の動画を見ながら、インストールしてください。
+
+<Tabs groupId="os">
+  {/* <TabItem value="win11" label="Windows 11"></TabItem> */}
+  <TabItem value="win10" label="Windows 10">
+    <video src={installVscode} controls width="100%" />
+  </TabItem>
+  <TabItem value="mac" label="macOS">
+    macOSでも、Windowsと同じようにすればできます。macOSを持っていないので、動画は撮れませんでした…。申し訳ありません。
+  </TabItem>
+  {/* <TabItem value="ubuntu" label="Ubuntu"></TabItem> */}
+</Tabs>
+
+## WSL 拡張機能のインストール方法（Windows のみ）
+
+ここでは、VSCode から WSL 上のファイルに簡単にアクセスできる WSL 拡張機能のインストール方法を紹介します。
+
+[WSL をインストールの項](../01wsl/)を参考に WSL をインストールしておいてください。
+
+下記の動画を参考に VSCode で拡張機能を検索して、 Remote WSL 拡張機能をインストールしてください。
+
+<video src={installRemoteWsl} controls width="100%" />
+
+## プロジェクトフォルダの開き方
+
+VSCode ではプロジェクトフォルダは次の動画のようにして開きます。プロジェクトフォルダに様々なファイルを作って開発をしていくことになります。
+
+<video src={openFolder} controls width="100%" />
+
+## WSL 上のプロジェクトフォルダの開き方（Windows のみ）
+
+WSL の起動は、次の動画のようにします。
+
+左下の緑のボタンを押して、`New WSL Window` をクリックすれば、WSL 上のファイルにアクセスすることができます。
+
+<video src={startWsl} controls width="100%" />
+
+次の動画のようにすることで、新しくプロジェクトフォルダを作成して、それを VSCode で開くことができます。
+
+エクスプローラーのアドレスバーに `¥¥wsl$` と入力すると、WSL 上のファイルを表示することができます。さらに、`Ubuntu`、`home`、`ユーザー名` の順にクリックしていくことでホームフォルダに移動することができます。
+
+その後、VSCode でそのフォルダを開きます。
+
+<video src={openFolderWSL} controls width="100%" />
+
+## ターミナルの起動方法
+
+ターミナルは、次の動画のようにして開くことができます。これで UNIX コマンドを使うことができます。
+
+<video src={openTerminal} controls width="100%" />

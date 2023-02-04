@@ -1,0 +1,162 @@
+---
+sidebar_position: 5
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import installTexLive from "./install_texlive.mov";
+import typesetTex from "./typeset_tex.mp4";
+import InteractiveCodeEditor from "@site/src/components/InteractiveCodeEditor";
+
+# $\LaTeX$ の導入
+
+なぜか周りに $\LaTeX$ を使っている人が多いので、$\LaTeX$ 環境の構築方法を解説しておきます。
+
+## $\LaTeX$ のプレイグラウンド
+
+$\LaTeX$ のプレイグラウンドを作ってみました。機能には制限がありますが、雰囲気は味わえるかと思います。
+
+<InteractiveCodeEditor language="latex">
+  {`\
+\\documentclass{article}
+\\begin{document}
+  Hello World!
+  \\[
+    a^2 + b^2 = c^2
+  \\]
+\\end{document}\
+`}
+</InteractiveCodeEditor>
+
+## $\TeX~\text{Live}$ のインストール
+
+[Visual Studio Code をインストールの項](../02vscode/)を参考に VSCode をインストールしておいてください。
+
+Windows を使っている場合は、[WSL をインストールの項](../01wsl/)を参考に WSL もインストールしておいてください。
+
+VSCode で `samples` プロジェクトフォルダを開いている状態にしておいてください。
+
+<Tabs groupId="os">
+  <TabItem value="win-and-ubuntu" label="Windows 及び Ubuntu">
+
+次の動画の通りにすれば、インストールできます。
+
+- ターミナルで次のように入力します。
+
+```shell
+sudo apt update && sudo apt -y install texlive-full
+```
+
+- パスワードを求められたら、WSL のパスワードを入力します。
+
+- 1 時間もすれば、インストールが自動で完了します。
+
+<video src={installTexLive} controls width="100%" />
+
+:::tip
+もし途中でエラーが出てしまったら、もう一度次のコマンドを実行してください。
+
+```shell
+sudo apt -y install texlive-full
+```
+
+このとき `dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem.` などと表示されたら、言われたとおりに次のコマンドを順に実行してみましょう。大体、これでうまくいきます。
+
+```shell
+sudo dpkg --configure -a
+```
+
+```shell
+sudo apt -y install texlive-full
+```
+
+![インストール時のエラー](./tex_error.png)
+:::
+
+  </TabItem>
+  <TabItem value="mac" label="macOS">
+macOSを持っていないので、動画は撮れませんでした…。申し訳ありません。
+
+試してはいませんが、おそらく次のようにすれば、インストールできるはずです。
+
+- ターミナルを開きます。
+
+- 次のコマンドを順に実行します。合計で 1 時間もすれば完了するはずです。
+
+```shell
+brew update
+```
+
+```shell
+brew install --cask mactex
+```
+
+```shell
+sudo tlmgr update --self --all
+```
+
+```shell
+sudo tlmgr paper a4
+```
+
+  </TabItem>
+</Tabs>
+
+## $\LaTeX$ を使ってみる
+
+次のようにして、$\LaTeX$ が動くことを確認しましょう。
+
+- `sample.tex` という名前のファイルを作ります。
+
+- `sample.tex` の中に次のように記述します。
+
+```tex
+\documentclass{jlreq}
+\begin{document}
+  サンプルテキスト
+  \[
+    a^2+b^2=c^2
+  \]
+\end{document}
+```
+
+- ターミナル上で次のコマンドを実行します。
+
+```shell
+lualatex sample.tex
+```
+
+- `sample.pdf` という名前のファイルができるので、それを開きます。
+
+<video src={typesetTex} controls width="100%" />
+
+:::tip
+Mac を使っている場合、バックスラッシュ（ `\` ）は、`Alt` を押しながら `¥` を押すことで、入力することができます。
+:::
+
+:::tip
+$\text{Lua}\LaTeX$ 以外も使うことができます。$\text{p}\LaTeX$ で jsarticle を使う例も載せておきます。
+
+`sample.tex` の中は次のようにします。
+
+```tex
+\documentclass{jsarticle}
+\begin{document}
+  サンプルテキスト
+  \[
+    a^2+b^2=c^2
+  \]
+\end{document}
+```
+
+- ターミナル上で次のコマンドを順に実行します。
+
+```shell
+platex sample.tex
+```
+
+```shell
+dvipdfmx sample.dvi
+```
+
+:::

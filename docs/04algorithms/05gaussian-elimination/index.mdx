@@ -1,0 +1,735 @@
+---
+sidebar_position: 5
+---
+
+import ViewSource from "@site/src/components/ViewSource";
+import Answer from "@site/src/components/Answer";
+
+# 連立一次方程式の解法
+
+$$
+\gdef\customtextcircled#1{\textcircled{\small#1}}
+\gdef\formulanumber#1{\,\cdot\cdot\cdot\cdot\cdot\cdot\,\customtextcircled{#1}}
+$$
+
+## 連立一次方程式の解き方
+
+次のような連立一次方程式は、以下のようにして解くと思います。
+
+$$
+\gdef\customtextcircled#1{\textcircled{\small#1}}
+\gdef\formulanumber#1{\,\cdot\cdot\cdot\cdot\cdot\cdot\,\customtextcircled{#1}}
+\left\{
+\begin{alignat*}{3.5}
+        & x_1 - {} & 2 & x_2 + {} & 3 & x_3 = 3  & \formulanumber{1} \\
+    -& x_1 + {} & 3 & x_2 - {} & 2 & x_3 = 1  & \formulanumber{2} \\
+        & x_1 - {} &   & x_2 + {} & 6 & x_3 = 11 & \formulanumber{3}
+\end{alignat*}
+\right.
+$$
+
+$
+\gdef\customtextcircled#1{\textcircled{\small#1}}
+\gdef\formulanumber#1{\,\cdot\cdot\cdot\cdot\cdot\cdot\,\customtextcircled{#1}}
+\customtextcircled{1} + \customtextcircled{2}$ より、
+
+$$
+\gdef\customtextcircled#1{\textcircled{\small#1}}
+\gdef\formulanumber#1{\,\cdot\cdot\cdot\cdot\cdot\cdot\,\customtextcircled{#1}}
+x_2 + x_3 = 4 \formulanumber{4}
+$$
+
+$
+\gdef\customtextcircled#1{\textcircled{\small#1}}
+\gdef\formulanumber#1{\,\cdot\cdot\cdot\cdot\cdot\cdot\,\customtextcircled{#1}}
+\customtextcircled{2} + \customtextcircled{3}$ より、
+
+$$
+\gdef\customtextcircled#1{\textcircled{\small#1}}
+\gdef\formulanumber#1{\,\cdot\cdot\cdot\cdot\cdot\cdot\,\customtextcircled{#1}}
+\begin{align*}
+               2x_2 + 4x_3 &= 12 \\
+    \therefore x_2 + 2x_3  &= 6 \formulanumber{5}
+\end{align*}
+$$
+
+$
+\gdef\customtextcircled#1{\textcircled{\small#1}}
+\gdef\formulanumber#1{\,\cdot\cdot\cdot\cdot\cdot\cdot\,\customtextcircled{#1}}
+\customtextcircled{4},\customtextcircled{5}$ より、
+
+$$
+\left\{
+\begin{align*}
+    x_2 &= 2 \\
+    x_3 &= 2
+\end{align*}
+\right.
+$$
+
+よって、
+
+$$
+\left\{
+\begin{align*}
+    x_1 &= 1 \\
+    x_2 &= 2 \\
+    x_3 &= 2
+\end{align*}
+\right.
+$$
+
+しかし、このようなアルゴリズムでプログラムを作るのは、難しそうです。
+
+## Gauss の消去法
+
+線型代数で習う Gauss の消去法を使えば、システマティックに連立一次方程式を解くことができます。そのため、このアルゴリズムを用いれば連立方程式を解くプログラムを簡単に作ることができます。Gauss の消去法は、掃き出し法とも呼ばれます。
+
+Gauss の消去法は、前進消去と後退代入の二段階から成ります。
+
+先に線型代数の復習として、簡単に Gauss の消去法を説明しておきます。
+
+次のように $n$ 個の未知数 $x_1, x_2, x_3, \dots , x_n$ に対して、$n$ 個の方程式を考えます。
+
+$$
+\left\{
+\begin{alignat*}{5}
+    a_{1, 1}   & x_1 + {} & a_{1, 2}   & x_2 + {} & a_{1, 3}   & x_3 + \dots + {} & a_{1, n}   & x_n = c_1     \\
+    a_{2, 1}   & x_1 + {} & a_{2, 2}   & x_2 + {} & a_{2, 3}   & x_3 + \dots + {} & a_{2, n}   & x_n = c_2     \\
+    a_{3, 1}   & x_1 + {} & a_{3, 2}   & x_2 + {} & a_{3, 3}   & x_3 + \dots + {} & a_{3, n}   & x_n = c_3     \\
+               & \cdots\cdot\cdot \\
+    a_{n-1, 1} & x_1 + {} & a_{n-1, 2} & x_2 + {} & a_{n-1, 3} & x_3 + \dots + {} & a_{n-1, n} & x_n = c_{n-1} \\
+    a_{n, 1}   & x_1 + {} & a_{n, 2}   & x_2 + {} & a_{n, 3}   & x_3 + \dots + {} & a_{n, n}   & x_n = c_n
+\end{alignat*}
+\right.
+$$
+
+この方程式系に対して、以下を行ったものは元の方程式系と同値です。
+
+- 二つの方程式を入れ替える
+- ある方程式に 0 でないスカラーを掛ける
+- ある方程式に他の方程式のスカラー倍を掛ける
+
+ここで、この方程式系の拡大係数行列を考えます。
+
+$$
+\tilde{A} = (A|\bm{c}) =
+\left(
+\begin{array}{ccccc|c}
+    a_{1, 1}   & a_{1, 2}   & a_{1, 3}   & \dots  & a_{1, n}   & c_1       \\
+    a_{2, 1}   & a_{2, 2}   & a_{2, 3}   & \dots  & a_{2, n}   & c_2       \\
+    a_{3, 1}   & a_{3, 2}   & a_{3, 3}   & \dots  & a_{3, n}   & c_3       \\
+    \vdots     & \vdots     & \vdots     & \ddots & \vdots     & \vdots    \\
+    a_{n-1, 1} & a_{n-1, 2} & a_{n-1, 3} & \dots  & a_{n-1, n} & c_{n-1,n} \\
+    a_{n, 1}   & a_{n, 2}   & a_{n, 3}   & \dots  & a_{n, n}   & c_n
+\end{array}
+\right)
+$$
+
+基本行列を次のように定義します。
+
+- $i$ 行と $j$ 行を入れ替える行列を $P_{i, j}$
+- $i$ 行を $\lambda$ 倍する行列を $Q_{i, \lambda}$
+- $i$ 行に $j$ 行の $\lambda$ 倍を加える行列を $R_{i, j, \lambda}$
+
+拡大係数行列に対して、基本行列を左から掛けて基本変形を繰り返すと、行階段行列 $\tilde{B}$ が作れます。
+
+$$
+\tilde{B} = (B|\bm{d}) =
+\left(
+\begin{array}{cccccc|c}
+    1               & b_{1,2} & b_{1,3} & \dots  & b_{1,n-1} & b_{1,n}   & d_1     \\
+                    & 1       & b_{2,3} & \dots  & b_{2,n-1} & b_{2,n}   & d_2     \\
+                    &         & 1       & \dots  & b_{3,n-1} & b_{3,n}   & d_3     \\
+                    &         &         & \ddots & \vdots    & \vdots    & \vdots  \\
+                    &         &         &        & 1         & b_{n-1,n} & d_{n-1} \\
+    \text{\huge{0}} &         &         &        &           & 1         & d_n
+\end{array}
+\right)
+$$
+
+これから、作られる方程式系は次のようになりこれははじめの方程式系と同値です。
+
+$$
+\left\{
+\begin{alignat*}{5}
+      & x_1 + {} & b_{1,2}    & x_2 + {} & b_{1,3} & x_3 + \dots + {} & b_{1,n-1} & x_{n-1} + {} & b_{1, n}  & x_n = d_1     \\
+      &          &            & x_2 + {} & b_{2,3} & x_3 + \dots + {} & b_{2,n-1} & x_{n-1} + {} & b_{2, n}  & x_n = d_2     \\
+      &          &            &          &         & x_3 + \dots + {} & b_{3,n-1} & x_{n-1} + {} & b_{3, n}  & x_n = d_3     \\
+      &\dots \\
+      &          &            &          &         &                  &           & x_{n-1} + {} & b_{n-1,n} & x_n = d_{n-1} \\
+      &          &            &          &         &                  &           &           {} &           & x_n = d_n     \\
+\end{alignat*}
+\right.
+$$
+
+これで $x_n$ はすぐに求めることができます。さらに、$x_n$ の解を代入すれば、$x_{n-1}$ もすぐに求まります。$x_n$ と $x_{n-1}$ の解を代入すれば、$x_{n-2}$ の解も求まります。これを繰り返していくことで、連立方程式を解くことができます。
+
+<!-- 次のように $n$ 個の未知数 $x_1, x_2, x_3, \dots , x_n$ に対して、$m$ 個の方程式を考えます。
+
+$$
+\left\{
+\begin{alignat*}{5}
+    a_{1, 1} & x_1 + {} & a_{1, 2} & x_2 + {} & a_{1, 3} & x_3 + \dots + {} & a_{1, n} & x_n = c_1 \\
+    a_{2, 1} & x_1 + {} & a_{2, 2} & x_2 + {} & a_{2, 3} & x_3 + \dots + {} & a_{2, n} & x_n = c_2 \\
+    a_{3, 1} & x_1 + {} & a_{3, 2} & x_2 + {} & a_{3, 3} & x_3 + \dots + {} & a_{3, n} & x_n = c_3 \\
+                & \cdots\cdot\cdot \\
+    a_{m, 1} & x_1 + {} & a_{m, 2} & x_2 + {} & a_{m, 3} & x_3 + \dots + {} & a_{m, n} & x_n = c_m
+\end{alignat*}
+\right.
+$$
+
+この方程式系に対して、以下を行ったものは元の方程式系と同値です。
+
+- 二つの方程式を入れ替える
+- ある方程式に 0 でないスカラーを掛ける
+- ある方程式に他の方程式のスカラー倍を掛ける
+
+ここで、この方程式系の拡大係数行列を考えます。
+
+$$
+\tilde{A} = (A|\bm{c}) =
+\left(
+\begin{array}{ccccc|c}
+    a_{1, 1} & a_{1, 2} & a_{1, 3} & \dots  & a_{1, n} & c_1    \\
+    a_{2, 1} & a_{2, 2} & a_{2, 3} & \dots  & a_{2, n} & c_2    \\
+    a_{3, 1} & a_{3, 2} & a_{3, 3} & \dots  & a_{3, n} & c_3    \\
+    \vdots   & \vdots   & \vdots   & \ddots & \vdots   & \vdots \\
+    a_{m, 1} & a_{m, 2} & a_{m, 3} & \dots  & a_{m, n} & c_m
+\end{array}
+\right)
+$$
+
+基本行列を次のように定義します。
+
+- $i$ 行と $j$ 行を入れ替える行列を $P_{i, j}$
+- $i$ 行を $\lambda$ 倍する行列を $Q_{i, \lambda}$
+- $i$ 行に $j$ 行の $\lambda$ 倍を加える行列を $R_{i, j, \lambda}$
+
+つまり、次のように定義します。
+
+$$
+\begin{align*}
+    P_{i, j} &=
+    \begin{pmatrix}
+        1 \\
+        & \ddots \\
+        &        & 1 \\
+        &        &   & 0 & & &  & 1 \\
+        &        &   &   & 1 \\
+        &        &   &   &   & \ddots \\
+        &        &   &   &   &        & 1 \\
+        &        &   & 1 &   &        &   & 0 \\
+        &        &   &   &   &        &   &   & 1 \\
+        &        &   &   &   &        &   &   &   & \ddots \\
+        &        &   &   &   &        &   &   &   &        & 1 \\
+    \end{pmatrix} \\
+    Q_{i, \lambda} &=
+    \begin{pmatrix}
+        1 \\
+        & \ddots \\
+        &        & 1 \\
+        &        &   & \lambda \\
+        &        &   &         & 1 \\
+        &        &   &         &   & \ddots \\
+        &        &   &         &   &        & 1 \\
+    \end{pmatrix} \\
+    R_{i, j, \lambda} &=
+    \begin{pmatrix}
+        1 \\
+        & \ddots \\
+        &        & 1 &        & \lambda \\
+        &        &   & \ddots \\
+        &        &   &        & 1       \\
+        &        &   &        &         & \ddots \\
+        &        &   &        &         &        & 1 \\
+    \end{pmatrix}
+\end{align*}
+$$
+
+拡大係数行列に対して、基本行列を左から掛けて基本変形を繰り返すと、行階段行列 $\tilde{B}$ が作れます。
+
+$$
+\tilde{B} = (B|\bm{d}) =
+\left(
+\begin{array}{cccccccc|c}
+    0      & 1      & *      & *      & *      & *      & \dots  & *      & *      \\
+    0      & 0      & 0      & 1      & *      & *      & \dots  & *      & *      \\
+    0      & 0      & 0      & 0      & 0      & 1      & \dots  & *      & *      \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0      & 0      & 0      & 0      & 0      & 0      & \dots  & 1      & *      \\
+    0      & 0      & 0      & 0      & 0      & 0      & \dots  & 0      & *      \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0      & 0      & 0      & 0      & 0      & 0      & \dots  & 0      & 0
+\end{array}
+\right)
+$$
+
+これから、作られる方程式系は次のようになりこれははじめの方程式系と同値です。
+
+$$
+\left\{
+\begin{alignat*}{4}
+        & x_{j_1} + \dots + {} & b_{1, j_2} & x_{j_2} + \dots + {} & b_{1, j_3} & x_{j_3} + \dots + {} & b_{1, n} & x_n = d_1       \\
+    0 & x_{j_1} + \dots + {} &            & x_{j_2} + \dots + {} & b_{2, j_3} & x_{j_3} + \dots + {} & b_{2, n} & x_n = d_2       \\
+    0 & x_{j_1} + \dots + {} & 0          & x_{j_2} + \dots + {} &            & x_{j_3} + \dots + {} & b_{3, n} & x_n = d_3       \\
+        & \dots                                                                                                   \\
+    0 & x_{j_1} + \dots + {} & 0          & x_{j_2} + \dots + {} & 0          & x_{j_3} + \dots + {} &          & x_n = d_l       \\
+    0 & x_{j_1} + \dots + {} & 0          & x_{j_2} + \dots + {} & 0          & x_{j_3} + \dots + {} & 0        & x_n = d_{l + 1} \\
+        & \dots                                                                                                   \\
+    0 & x_{j_1} + \dots + {} & 0          & x_{j_2} + \dots + {} & 0          & x_{j_3} + \dots + {} & 0        & x_n = d_m       \\
+\end{alignat*}
+\right.
+$$
+
+これで $x_n$ はすぐに求めることができます。さらに、$x_n$ の解を代入すれば、$x_{n-1}$ もすぐに求まります。これを繰り返していくことで、連立方程式を解くことができます。 -->
+
+実際に具体的な連立方程式を解いてみましょう。
+Gauss の消去法を次の方程式系について行ってみます。
+
+$$
+\left\{
+\begin{alignat*}{3.5}
+        & x_1 - {} & 2 & x_2 + {} & 3 & x_3 = 3  \\
+    -& x_1 + {} & 3 & x_2 - {} & 2 & x_3 = 1  \\
+        & x_1 - {} &   & x_2 + {} & 6 & x_3 = 11
+\end{alignat*}
+\right.
+$$
+
+まずは、前進消去を行います。基本変形を繰り返して、行階段行列を作っていきます。
+
+$$
+\begin{alignat*}{2}
+    \tilde{A}
+    & = &
+    & \left(
+    \begin{array}{ccc|c}
+        1  & -2 & 3  & 3 \\
+        -1 & 3  & -2 & 1 \\
+        1  & -1 & 6  & 11
+    \end{array}
+    \right) \\
+    & \overset{R_{2, 1, 1}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & -2 & 3 & 3 \\
+        0 & 1  & 1 & 4 \\
+        1 & -1 & 6 & 11
+    \end{array}
+    \right) \\
+    & \overset{R_{3, 1, -1}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & -2 & 3 & 3 \\
+        0 & 1  & 1 & 4 \\
+        0 & 1  & 3 & 8
+    \end{array}
+    \right) \\
+    & \overset{R_{3, 2, -1}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & -2 & 3 & 3 \\
+        0 & 1  & 1 & 4  \\
+        0 & 0  & 2 & 4
+    \end{array}
+    \right) \\
+    & \overset{Q_{3, \frac{1}{2}}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & -2 & 3 & 3 \\
+        0 & 1  & 1 & 4 \\
+        0 & 0  & 1 & 2
+    \end{array}
+    \right)
+\end{alignat*}
+$$
+
+次に、連立方程式に戻して後退代入を行っていきます。
+
+$$
+\left\{
+\begin{alignat*}{3}
+    x_1 - 2 & x_2 + {} & 3 & x_3 & {} = {} & 3 \\
+            & x_2 + {} &   & x_3 & {} = {} & 4 \\
+            &          &   & x_3 & {} = {} & 2
+\end{alignat*}
+\right. \\
+\therefore
+\left\{
+\begin{alignat*}{3}
+    x_1 - 2 & x_2 & &     & {} = {} & 3 - 3\times 2 = -3 \\
+            & x_2 & &     & {} = {} & 4 - 2 = 2          \\
+            &     & & x_3 & {} = {} & 2
+\end{alignat*}
+\right. \\
+\therefore
+\left\{
+\begin{alignat*}{3}
+    x_1 &     & &     & {} = {} & -3 + 2\times 2 = 1 \\
+        & x_2 & &     & {} = {} & 2                  \\
+        &     & & x_3 & {} = {} & 2
+\end{alignat*}
+\right. \\
+\therefore
+\left\{
+\begin{align*}
+    x_1 &= 1\\
+    x_2 &= 2\\
+    x_3 &= 2
+\end{align*}
+\right.
+$$
+
+:::info
+
+次のように、前進消去の段階で行簡約行列を作れば、後退代入を行う必要がなくなります。これは、Gauss-Jordan の消去法と呼ばれます。
+Gauss-Jordan の消去法の方が良さそうですが、実は先程のように行簡約行列まで計算しないで途中で止める Gauss の消去法の方が少し計算量が少なくなります。そのため、Gauss の消去法の方がよく使われます。
+
+Gauss-Jordan の消去法で先程の連立方程式を解いてみます。
+
+拡大係数行列に基本変形を繰り返すと、次のような行簡約行列が得られます。
+
+$$
+\tilde{B} = (B|\bm{d}) =
+\left(
+\begin{array}{cccccc|c}
+    1               &         &         &        &   & \text{\huge{0}} & d_1     \\
+                    & 1       &         &        &   &                 & d_2     \\
+                    &         & 1       &        &   &                 & d_3     \\
+                    &         &         & \ddots &   &                 & \vdots  \\
+                    &         &         &        & 1 &                 & d_{n-1} \\
+    \text{\huge{0}} &         &         &        &   & 1               & d_n
+\end{array}
+\right)
+$$
+
+<!-- $$
+\tilde{B} =
+\left(
+\begin{array}{cccccccc|c}
+    0      & 1      & *      & 0      & *      & 0      & \dots  & *      & *      \\
+    0      & 0      & 0      & 1      & *      & 0      & \dots  & *      & *      \\
+    0      & 0      & 0      & 0      & 0      & 1      & \dots  & *      & *      \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0      & 0      & 0      & 0      & 0      & 0      & \dots  & 1      & *      \\
+    0      & 0      & 0      & 0      & 0      & 0      & \dots  & 0      & *      \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0      & 0      & 0      & 0      & 0      & 0      & \dots  & 0      & 0
+\end{array}
+\right)
+$$ -->
+
+これから、作られる方程式系は次のようになりこれは元の方程式系と同値です。
+
+$$
+\left\{
+\begin{alignat*}{6}
+      & x_1 & &     & &      & &         & &     & & = d_1     \\
+      &     & & x_2 & &      & &         & &     & & = d_2     \\
+      &     & &     & & x_3  & &         & &     & & = d_3     \\
+      & \ldots \\
+      &     & &     & &      & & x_{n-1} & &     & & = d_{n-1} \\
+      &     & &     & &      & &         & & x_n & & = d_n     \\
+\end{alignat*}
+\right.
+$$
+
+<!-- $$
+\left\{
+\begin{alignat*}{4}
+        & x_{j_1} + \dots + {} & 0 & x_{j_2} + \dots + {} & 0 & x_{j_3} + \dots + {} & 0        & x_n = d_1       \\
+    0 & x_{j_1} + \dots + {} &   & x_{j_2} + \dots + {} & 0 & x_{j_3} + \dots + {} & 0        & x_n = d_2       \\
+    0 & x_{j_1} + \dots + {} & 0 & x_{j_2} + \dots + {} &   & x_{j_3} + \dots + {} & 0        & x_n = d_3       \\
+        & \dots                                                                                                   \\
+    0 & x_{j_1} + \dots + {} & 0 & x_{j_2} + \dots + {} & 0 & x_{j_3} + \dots + {} &          & x_n = d_l       \\
+    0 & x_{j_1} + \dots + {} & 0 & x_{j_2} + \dots + {} & 0 & x_{j_3} + \dots + {} & 0        & x_n = d_{l + 1} \\
+        & \dots                                                                                                   \\
+    0 & x_{j_1} + \dots + {} & 0 & x_{j_2} + \dots + {} & 0 & x_{j_3} + \dots + {} & 0        & x_n = d_m       \\
+\end{alignat*}
+\right.
+$$ -->
+
+これで連立方程式を解くことができました。
+
+実際に具体的な連立方程式を解いてみます。
+Gauss-Jordan の消去法を次の方程式系について行っていきます。
+
+$$
+\left\{
+\begin{alignat*}{3.5}
+        & x_1 - {} & 2 & x_2 + {} & 3 & x_3 = 3  \\
+    -& x_1 + {} & 3 & x_2 - {} & 2 & x_3 = 1  \\
+        & x_1 - {} &   & x_2 + {} & 6 & x_3 = 11
+\end{alignat*}
+\right.
+$$
+
+$$
+\begin{alignat*}{5}
+    \tilde{A}
+    & = &
+    & \left(
+    \begin{array}{ccc|c}
+        1  & -2 & 3  & 3 \\
+        -1 & 3  & -2 & 1 \\
+        1  & -1 & 6  & 11
+    \end{array}
+    \right) \\
+    & \overset{R_{2, 1, 1}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & -2  & 3  & 3 \\
+        0 & 1   & 1  & 4 \\
+        1 & -1  & 6 & 11
+    \end{array}
+    \right) \\
+    & \overset{R_{3, 1, -1}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & -2 & 3 & 3 \\
+        0 & 1  & 1 & 4 \\
+        0 & 1  & 3 & 8
+    \end{array}
+    \right) \\
+    & \overset{R_{1, 2, 2}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & 0 & 5 & 11 \\
+        0 & 1 & 1 & 4  \\
+        0 & 1 & 3 & 8
+    \end{array}
+    \right) \\
+    & \overset{R_{3, 2, -1}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & 0 & 5 & 11 \\
+        0 & 1 & 1 & 4  \\
+        0 & 0 & 2 & 4
+    \end{array}
+    \right) \\
+    & \overset{Q_{3, \frac{1}{2}}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & 0 & 5 & 11 \\
+        0 & 1 & 1 & 4  \\
+        0 & 0 & 1 & 2
+    \end{array}
+    \right) \\
+    & \overset{R_{1, 3, -5}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & 0 & 0 & 1 \\
+        0 & 1 & 1 & 4  \\
+        0 & 0 & 1 & 2
+    \end{array}
+    \right) \\
+    & \overset{R_{2, 3, -1}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & 0 & 0 & 1 \\
+        0 & 1 & 0 & 2  \\
+        0 & 0 & 1 & 2
+    \end{array}
+    \right) \\
+\end{alignat*}
+$$
+
+$$
+\left\{
+\begin{alignat*}{4}
+    & x_1 + {} & 0 & x_2 + {} & 0 & x_3 & & = 1 \\
+    0 & x_1 + {} &   & x_2 + {} & 0 & x_3 & & = 2 \\
+    0 & x_1 + {} & 0 & x_2 + {} &   & x_3 & & = 2
+\end{alignat*}
+\right. \\
+\therefore
+\left\{
+\begin{align*}
+    x_1 &= 1 \\
+    x_2 &= 2 \\
+    x_3 &= 2
+\end{align*}
+\right.
+$$
+
+:::
+
+## Gauss の消去法を使ったプログラム
+
+Gauss の消去法を使って連立一次方程式を解くプログラムを作ってみましょう。概要を説明します。
+
+まずは、前進消去を行います。
+
+$i$ 行、$i$ 列が pivot となるので、$i$ 行目を pivot の値で割って pivot を 1 にします。
+その後、その行で $i+1$ 行目以降を掃き出します。
+
+次は、後退代入を行います。
+
+$x_n = d_n$ になります。求まった $x_n$ をそれよりも上の式すべてに代入して、$b_{j, n}x_n(1\leq j\leq n-1)$ を右辺に移動させ、$d_j(1\leq j\leq n-1)$ の値を更新します。こうすると、$x_{n-1}$ が求まります。これを繰り返すと連立一次方程式が解けます。
+
+プログラムは次のようになります。計算量は、$O(n^3)$ です。
+
+<ViewSource path="/gaussian-elimination/gaussian_elimination.ipynb" />
+
+冒頭の `x = [0 for _ in range(len(a[0]) - 1)]` は、リストの内包表記と呼ばれ、配列 `x` を `0` で埋める操作です。この操作で `x` は `[0, 0, ..., 0]` となっています。
+
+`reversed` 関数は配列の要素を反転します。
+
+## 部分ピボット選択
+
+さきほどのプログラムを使えば、多くの様々な連立一次方程式が解けます。
+しかし、次の連立方程式を解くと、次のようにエラーが出てしまいます。
+
+$$
+\left\{
+\begin{alignat*}{3.5}
+        &          & -2 & x_2 + {} & 3 & x_3 = 2  \\
+    -& x_1 + {} & 3  & x_2 - {} & 2 & x_3 = 1  \\
+        & x_1 - {} &    & x_2 + {} & 6 & x_3 = 11
+\end{alignat*}
+\right.
+$$
+
+<ViewSource path="/gaussian-elimination/gaussian_elimination_error.ipynb" />
+
+これは、前進消去の際に 0 で割る操作が起こってしまったからです。
+これを解決するために、部分ピボット選択を行います。部分ピボット選択には、誤差を小さくする役割もあります。
+
+部分ピボット選択は、pivot 列の pivot 行以降の行で絶対値が最大になる行を pivot に使うように変形することです。
+
+先程の連立方程式なら、次のように計算していきます。1 つ目から、2 つ目への変形が部分ピボット選択によるものです。
+
+$$
+\begin{alignat*}{2}
+    & &
+    & \left(
+    \begin{array}{ccc|c}
+        0  & -2 & 3  & 2 \\
+        -1 & 3  & -2 & 1 \\
+        1  & -1 & 6  & 11
+    \end{array}
+    \right) \\
+    & \overset{P_{1, 2}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        -1 & 3  & -2 & 1 \\
+        0  & -2 & 3  & 2 \\
+        1  & -1 & 6  & 11
+    \end{array}
+    \right) \\
+    & \overset{Q_{2, -1}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & -3 & 2 & -1 \\
+        0 & -2 & 3 & 2  \\
+        1 & -1 & 6 & 11
+    \end{array}
+    \right) \\
+    & \overset{R_{3, 1, -1}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & -3 & 2 & -1 \\
+        0 & -2 & 3 & 2  \\
+        0 & 2  & 4 & 12
+    \end{array}
+    \right) \\
+    & \overset{Q_{2, -\frac{1}{2}}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & -3 & 2            & -1  \\
+        0 & 1  & -\frac{3}{2} & -1  \\
+        0 & 2  & 4            & 12
+    \end{array}
+    \right) \\
+    & \overset{R_{3, 2, -2}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & -3 & 2            & -1  \\
+        0 & 1  & -\frac{3}{2} & -1  \\
+        0 & 0  & 7            & 14
+    \end{array}
+    \right) \\
+    & \overset{Q_{3, \frac{1}{7}}}{\to} &
+    & \left(
+    \begin{array}{ccc|c}
+        1 & -3 & 2            & -1  \\
+        0 & 1  & -\frac{3}{2} & -1  \\
+        0 & 0  & 1            & 2
+    \end{array}
+    \right) \\
+\end{alignat*}
+$$
+
+部分ピボット選択を入れると、次のようなプログラムになります。
+
+<ViewSource path="/gaussian-elimination/gaussian_elimination_revised.ipynb" />
+
+## 練習問題
+
+Gauss-Jordan の消去法を使って行簡約行列を作ることで、連立方程式を解くプログラムを作ってください。
+
+<Answer>
+  <ViewSource path="/gaussian-elimination/gauss_jordan_elimination.ipynb" />
+</Answer>
+
+<!-- ## 練習問題 2
+
+逆行列を求めるプログラムを作ってください。
+
+正方行列 $A,B$ が $(A|E)\sim(E|B)$ ならば、$B$ は逆行列であることを利用します。
+
+つまり、
+
+$$
+A =
+\begin{pmatrix}
+    1 & 3 \\
+    1 & 2 \\
+\end{pmatrix}
+$$
+
+この逆行列は次のようにして求めます。
+
+$$
+\begin{alignat*}{2}
+    (A|E) & = &
+    & \left(
+    \begin{array}{cc|cc}
+        1 & 3 & 1 & 0 \\
+        1 & 2 & 0 & 1
+    \end{array}
+    \right) \\
+    & \overset{R_{2, 1, -1}}{\to} &
+    & \left(
+    \begin{array}{cc|cc}
+        1 & 3  & 1  & 0 \\
+        0 & -1 & -1 & 1
+    \end{array}
+    \right) \\
+    & \overset{Q_{2, -1}}{\to} &
+    & \left(
+    \begin{array}{cc|cc}
+        1 & 3 & 1 & 0 \\
+        0 & 1 & 1 & -1
+    \end{array}
+    \right) \\
+    & \overset{R_{1, 2, -3}}{\to} &
+    & \left(
+    \begin{array}{cc|cc}
+        1 & 0 & -2 & 3 \\
+        0 & 1 & 1 & -1
+    \end{array}
+    \right)
+\end{alignat*}
+$$
+
+よって、
+
+$$
+A^{-1} =
+\begin{pmatrix}
+    -2 & 3  \\
+    1  & -1 \\
+\end{pmatrix}
+$$ -->
