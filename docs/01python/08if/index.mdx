@@ -7,6 +7,8 @@ import Answer from "@site/src/components/Answer";
 
 # 条件分岐
 
+ここでは、Python で条件分岐をする方法について学んでいきます。
+
 ## 論理値
 
 Python では、文字列や数字以外にも論理値という真か偽かを表す値があります。真は `True`、偽は `False` と表せ、これは変数などにも代入できます。
@@ -23,7 +25,7 @@ Python では、次のように比較演算子を用いて真偽を判定する�
 
 <ViewSource path="/if/comparison_operator.ipynb" />
 
-他にも様々な比較演算子があります。
+他にも様々な比較演算子があります。なぜか `!=` の存在を忘れる人が続出するので、要注意！
 
 | 比較演算子 | 説明       | 例                                        |
 | ---------- | ---------- | ----------------------------------------- |
@@ -36,7 +38,7 @@ Python では、次のように比較演算子を用いて真偽を判定する�
 
 他の多くのプログラミング言語はできませんが、実は、Python では数学のように複数の比較演算子を使った条件も書くことができます。
 
-<ViewSource path="/if/comparison_operator2.ipynb" />
+<ViewSource path="/if/multi_comparison_operator.ipynb" />
 
 ## 論理演算子
 
@@ -46,7 +48,7 @@ Python では、次のように比較演算子を用いて真偽を判定する�
 
 このプログラムは、`>=` 一つを使って書き換えた次と同じです。
 
-<ViewSource path="/if/logical_operator2.ipynb" />
+<ViewSource path="/if/logical_operator_another.ipynb" />
 
 他にも様々な論理演算子があります。
 
@@ -111,6 +113,16 @@ else:
 
 ### 練習問題 1
 
+2 つの数のうち大きい方の数を返す関数を作りましょう。
+
+<Answer>
+
+<ViewSource path="/if/greater_val.ipynb" />
+
+</Answer>
+
+### 練習問題 2
+
 絶対値を求めるプログラムを作ってみましょう。
 
 <Answer>
@@ -120,19 +132,10 @@ else:
 
 <ViewSource path="/if/abs2.ipynb" />
 
-実は、組み込み関数で abs 関数があります。また、[math ライブラリの fabs 関数](https://docs.python.org/ja/3/library/math.html#math.fabs)もあります。
+実は、組み込み関数で abs 関数があります。また、前に出てきた[math ライブラリの fabs 関数](https://docs.python.org/ja/3/library/math.html#math.fabs)もあります。
 
 <ViewSource path="/if/abs_default.ipynb" />
 
 <ViewSource path="/if/abs_math.ipynb" />
 
-</Answer>
-
-### 練習問題 2
-
-数学の得点の配列が与えられた時、その配列中での最大値を求めるプログラムを作ってみましょう。
-与えられる配列を `[55, 32, 16, 51, 80, 19]` として実際に求めてみましょう。
-
-<Answer>
-  <ViewSource path="/if/max.ipynb" />
 </Answer>
