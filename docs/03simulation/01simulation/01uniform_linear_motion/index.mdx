@@ -11,6 +11,8 @@ import Answer from "@site/src/components/Answer";
 
 まずは、比較的簡単な等速直線運動から考えていきましょう。
 
+![等速直線運動](uniform_linear_motion.drawio.svg)
+
 初速度 $v_0$ と $t$ 秒後の変位 $x$ との関係は次のようになります。
 
 $$
@@ -29,7 +31,7 @@ $$
 
 ## プログラムの作成
 
-よって、$\Delta t$ を十分小さくとって $x_1,x_2,x_3 \cdots$ を順に求めていけば、$x$ が求まります。実際に、これを使って $t$ 秒後の変位 $x$ を求めるプログラムを作ってみましょう。
+$\Delta t$ を十分小さくとって $x_1,x_2,x_3 \dots$ を順に求めていけば、$x$ が求まります。実際に、これを使って $t$ 秒後の変位 $x$ を求めるプログラムを作ってみましょう。
 
 <ViewSource path="/simulation/uniform_linear_motion.ipynb" />
 
