@@ -4,6 +4,7 @@ sidebar_position: 3
 
 import ViewSource from "@site/src/components/ViewSource";
 import Answer from "@site/src/components/Answer";
+import Hint from "@site/src/components/Hint";
 
 # 再帰
 
@@ -17,7 +18,7 @@ $a_1 = 1$、$a_n = a_{n - 1} + 1$ とします。このとき、$a_n$ を求め�
 
 様々な方法が考えられます。
 
-<h3>解法 1</h3>
+**解法 1**
 
 この漸化式は、次のように数学的に解くことができます。
 
@@ -33,7 +34,7 @@ $$
 
 <ViewSource path="/recursion/recurrence_relation_analytical.ipynb" />
 
-<h3>解法 2</h3>
+**解法 2**
 
 他には、次のようにして $a_1,a_2,a_3,\cdots$ のように順番に求めていくこともできます。
 
@@ -49,7 +50,7 @@ $$
 
 このプログラムを見ると、漸化式の形そのままですね。何も考えずに簡単に作ることができます。
 
-さらに、このプログラムをよく見ると関数の中に関数が入っている形になっています。`a(n)` の値を求めるために `a(n - 1)` を使っています。さらに、`a(n - 1)` を求めるために `a(n - 2)` を使っています。これを繰り返していきますが、`a(1)` は `1` とわかっているので、そこで終了します。
+さらに、このプログラムをよく見ると関数の中で自身を呼び出しています。`a(n)` の値を求めるために `a(n - 1)` を使っています。さらに、`a(n - 1)` を求めるために `a(n - 2)` を使っています。これを繰り返していきますが、`a(1)` は `1` とわかっているので、そこで終了します。
 
 ```mermaid
 flowchart LR
@@ -72,7 +73,7 @@ flowchart RL
 1. 漸化式を立てて、自身を呼び出す。（例：$a_n = a_{n-1} + 1$ ）
 1. 初期条件の処理を別に作っておく。（例：$a_1 = 1$ ）
 
-:::info
+:::note 再帰の定義方法
 
 再帰の定義を普通に書けば次のようになります。
 
@@ -81,12 +82,17 @@ flowchart RL
 
 しかし、再帰の性質から次のように定義が書かれることもあります（笑）
 
-<iframe
+<!-- <iframe
   height="350px"
   src="https://m.ansaikuropedia.org/index.php?title=%E5%86%8D%E5%B8%B0&redirect=no"
-/>
+/> -->
 
-コンピューターの世界では、再帰を用いた命名もよくあります。再帰的接頭語と呼ばれます。例えば、PHP は「PHP: Hypertext Preprocessor」、GNU は「GNU's Not Unix」、WINE は「Wine Is Not an Emulator」、TikZ は「TikZ ist kein Zeichenprogramm」となっています。
+:::
+
+:::note 再帰的接頭語
+
+コンピューターの世界では、再帰を用いた命名もよくあります。再帰的接頭語と呼ばれます。例えば、プログラミング言語の PHP は「PHP: Hypertext Preprocessor」、GNU は「GNU's Not Unix」、WINE は「Wine Is Not an Emulator」、TikZ は「TikZ ist kein Zeichenprogramm」となっています。
+
 :::
 
 ## 再帰関数を使ったフィボナッチ数列
@@ -94,7 +100,7 @@ flowchart RL
 では、再帰を使ってもう少し難しいプログラムも作ってみましょう。
 
 フィボナッチ数を求めるプログラムを作ってみましょう。
-フィボナッチ数列（$F_n$）は、次のように定義されます。
+フィボナッチ数列($F_n$)は、次のように定義されます。
 
 $$
 \begin{align*}
@@ -135,13 +141,13 @@ flowchart
 ```
 
 :::info
-実は、フィボナッチ数列の一般項は求めることができます。ビネの公式と呼ばれます。
+高校数学でやるように、フィボナッチ数列の一般項は求めることができます。ビネの公式と呼ばれます。
 
 $$
 F_n = F_{n - 1} + F_{n - 2}
 $$
 
-$x^2 - x - 1 = 0$ の 2 解を $\alpha, \beta$ とする。すなわち、$\displaystyle \alpha = \frac{1 + \sqrt{5}}{2}$、$\displaystyle \beta = \frac{1 - \sqrt{5}}{2}$とすれば、
+$x^2 - x - 1 = 0$ の 2 解を $\alpha, \beta$ とします。すなわち、$\displaystyle \alpha = \frac{1 + \sqrt{5}}{2}$、$\displaystyle \beta = \frac{1 - \sqrt{5}}{2}$とすれば、
 
 $$
 \begin{dcases}
@@ -150,7 +156,7 @@ $$
 \end{dcases}
 $$
 
-であるから、
+です。よって、
 
 $$
 F_n - (\alpha + \beta)F_{n - 1} + \alpha \beta F_{n - 2} = 0
@@ -177,7 +183,7 @@ $$
 $$
 
 $$
-\therefore F_n = \frac{\alpha^n - \beta^n}{\alpha-\beta}
+\therefore F_n = \frac{\alpha^n - \beta^n}{\alpha-\beta} \quad (\because F_0=0, F_1=1)
 $$
 
 $$
@@ -190,7 +196,8 @@ $$
 
 再帰関数を使って、$1$ から $n$ までの和を求める関数を作ってみましょう。
 
-<Answer>
+<Hint>
+
 漸化式は、次のようになります。
 
 $$
@@ -199,6 +206,10 @@ $$
     &a_n=a_{n - 1} + n
 \end{align*}
 $$
+
+</Hint>
+
+<Answer>
 
 これを基にすると、次のようになります。
 
@@ -211,6 +222,12 @@ $$
 再帰関数を使って、最大公約数を求める関数を作ってみましょう。
 
 さらに、その結果を用いて、最小公倍数を求める関数も作ってみましょう。
+
+<Hint>
+
+ユークリッドの互除法を用いれば簡単にできます。
+
+</Hint>
 
 <Answer>
 
@@ -256,7 +273,7 @@ $$
 
 リュカ数を求めるプログラムを作ってみましょう。
 
-リュカ数列（ $L_n$ ）は次のように定義されます。
+リュカ数列($L_n$)は次のように定義されます。
 
 $$
 \begin{align*}
@@ -272,13 +289,8 @@ $$
 2, 1, 3, 4, 7, 11, 18, 29, 47, 76, 123, 199, 322, 521, 843, 1364, 2207, \cdots
 $$
 
-<Answer>
-
-フィボナッチ数列のプログラムから、`n == 0` の時と `n == 1` の時の値を変えるだけで簡単に作れます。
-
-<ViewSource path="/recursion/lucas.ipynb" />
-
 :::info
+
 リュカ数列の一般項は、フィボナッチ数列の時のように計算すると、次のようになります。
 
 $$
@@ -295,12 +307,18 @@ $$
 
 :::
 
+<Answer>
+
+フィボナッチ数列のプログラムから、`n == 0` の時と `n == 1` の時の値を変えるだけで簡単に作れます。
+
+<ViewSource path="/recursion/lucas.ipynb" />
+
 </Answer>
 
 ### 練習問題 4
 
 トリボナッチ数を求めるプログラムを作ってみましょう。
-トリボナッチ数列（ $T_n$ ）は次のように定義されます。
+トリボナッチ数列($T_n$)は次のように定義されます。
 
 $$
 \begin{align*}
@@ -317,7 +335,7 @@ $$
 0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274, 504, \cdots
 $$
 
-:::info
+:::note
 ちなみに、テトラナッチ数、ペンタナッチ数、…もあります。
 
 | $k$ | 名称             |
@@ -336,7 +354,7 @@ $$
 
 :::
 
-:::info
+:::note
 トリボナッチ数列の一般項は、次のようにして計算できます。
 
 $x^3 - x^2 - x - 1 = 0$ の 3 解を $\alpha, \beta, \gamma$ とすると、
@@ -364,7 +382,7 @@ $$
 \end{dcases}
 $$
 
-$U_n = T_{n + 1} - \alpha T_n, V_n = T_{n + 1} - \beta T_n$ とする。
+$U_n = T_{n + 1} - \alpha T_n, V_n = T_{n + 1} - \beta T_n$ とします。
 
 $$
 \begin{dcases}
