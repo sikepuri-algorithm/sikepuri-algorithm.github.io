@@ -22,11 +22,11 @@ $$
 この微分方程式は解析的に解けますが、差分化して差分方程式を作ってみましょう。
 
 $$
-\begin{align*}
+\begin{aligned}
     \frac{x_{n+1} - x_n}{\Delta t} &= v_0 \\
     \therefore x_{n + 1} - x_n     &= v_0 \Delta t \\
     \therefore x_{n + 1}           &= x_n + v_0 \Delta t
-\end{align*}
+\end{aligned}
 $$
 
 ## プログラムの作成
@@ -41,12 +41,12 @@ $\Delta t$ を十分小さくとって $x_1,x_2,x_3 \dots$ を順に求めてい
 この微分方程式は、次のようにすれば簡単に解けます。確かにこの結果を用いれば、簡単にプログラムを書けるので、差分方程式を使う必要性があまり感じられないかもしれません。しかし、世の中には解析的に解けない微分方程式も多いので、差分方程式を使って近似解を求めることも時には重要になってきます。
 
 $$
-\begin{align*}
+\begin{aligned}
     \frac{dx}{dt}      &= v_0 \\
     \therefore dx      &= v_0 dt \\
     \therefore \int dx &= \int v_0 dt \\
     \therefore x       &= v_0t+C
-\end{align*}
+\end{aligned}
 $$
 
 初期条件 $t = 0$ で $x = x_0$ を代入して、

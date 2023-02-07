@@ -18,33 +18,33 @@ import Answer from "@site/src/components/Answer";
 これらの関係は、次のようになります。
 
 $$
-\begin{align*}
+\begin{aligned}
     \frac{dx}{dt}   &= u \\
     \frac{dy}{dt}   &= v \\
     \frac{du}{dt} &= 0 \\
     \frac{dv}{dt} &= -g
-\end{align*}
+\end{aligned}
 $$
 
 これを差分化してみましょう。
 
 $$
-\begin{align*}
+\begin{aligned}
     \frac{x_{n + 1} - x_n}{\Delta t}              &= u_n \\
     \therefore x_{n + 1} - x_n                    &= u_n \Delta t \\
     \therefore x_{n + 1}                          &= x_n + u_n \Delta t
-\end{align*}
+\end{aligned}
 $$
 
 他も同様にすると、次のようになります。
 
 $$
-\begin{align*}
+\begin{aligned}
     x_{n + 1}     &= x_n + u_n \Delta t \\
     y_{n + 1}     &= y_n + v_n \Delta t \\
     u_{n + 1} &= u_n \\
     v_{n + 1} &= v_n - g\Delta t
-\end{align*}
+\end{aligned}
 $$
 
 ## プログラムの作成
@@ -69,19 +69,19 @@ $$
 $x$ 軸方向は次のように解けます。
 
 $$
-\begin{align*}
+\begin{aligned}
     \frac{d^2x}{dt^2}        &= 0 \\
     \therefore \frac{dx}{dt} &= C \\
-\end{align*}
+\end{aligned}
 $$
 
 初期条件 $t = 0$ で $\frac{dx}{dt} = v_0 \cos \theta$ を代入して、
 
 $$
-\begin{align*}
+\begin{aligned}
     \frac{dx}{dt} &=v_0 \cos \theta \\
     \therefore x  &= v_0 t \cos \theta + D \\
-\end{align*}
+\end{aligned}
 $$
 
 初期条件 $t = 0$ で $x = 0$ を代入して、
@@ -93,19 +93,19 @@ $$
 $y$ 軸方向は次のように解けます。
 
 $$
-\begin{align*}
+\begin{aligned}
     \frac{d^2y}{dt^2}        &= -g \\
     \therefore \frac{dy}{dt} &= -gt + C \\
-\end{align*}
+\end{aligned}
 $$
 
 初期条件 $t = 0$ で $\frac{dy}{dt} = v_0 \sin \theta$ を代入して、
 
 $$
-\begin{align*}
+\begin{aligned}
     \frac{dy}{dt} &= -gt + v_0 \sin \theta \\
     \therefore y  &= -\frac{1}{2}gt^2 + v_0 t \sin \theta + D \\
-\end{align*}
+\end{aligned}
 $$
 
 初期条件 $t = 0$ で $y = 0$ を代入して、

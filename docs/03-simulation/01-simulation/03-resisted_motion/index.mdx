@@ -18,28 +18,28 @@ import Answer from "@site/src/components/Answer";
 運動方程式は次のようになります。
 
 $$
-\begin{align*}
+\begin{aligned}
     m\frac{d^2y}{dt^2}           &= -mg - kv \\
     \therefore \frac{d^2y}{dt^2} &= -g - \frac{k}{m}v
-\end{align*}
+\end{aligned}
 $$
 
 よって、これらの関係は次のようになります。
 
 $$
-\begin{align*}
+\begin{aligned}
     \frac{dy}{dt} &= v \\
     \frac{dv}{dt} &= -g - \frac{k}{m}v
-\end{align*}
+\end{aligned}
 $$
 
 これを差分化して、差分方程式を作ると次のようになります。
 
 $$
-\begin{align*}
+\begin{aligned}
     y_{n + 1} &= y_n + v_n\Delta t \\
     v_{n + 1} &= v_n - g\Delta t - \frac{k}{m}v_n \Delta t
-\end{align*}
+\end{aligned}
 $$
 
 ## プログラムの作成
@@ -56,7 +56,7 @@ $$
 この微分方程式も少し大変ですが、解析的に解くことができます。
 
 $$
-\begin{align*}
+\begin{aligned}
     \frac{d^2y}{dt^2}                             &= -g - \frac{k}{m}v \\
     \therefore \frac{dv}{dt}                      &= -g - \frac{k}{m}v \\
     \therefore dv                                 &= \left(-g - \frac{k}{m}v\right) dt \\
@@ -65,27 +65,27 @@ $$
     \therefore \log \left(\frac{m}{k}g + v\right) &= -\frac{k}{m}t + C \\
     \therefore v + \frac{m}{k}g                   &= e^{-\frac{k}{m}t + C} \\
     \therefore v                                  &= -\frac{m}{k}g + Ce^{-\frac{k}{m}t}
-\end{align*}
+\end{aligned}
 $$
 
 初期条件 $t = 0$ で $v = 0$ を代入して、
 
 $$
-\begin{align*}
+\begin{aligned}
     C            &= \frac{mg}{k}\\
     \therefore v &= \frac{mg}{k}\left(e^{-\frac{k}{m}t} - 1\right) \\
     \therefore x &= \frac{mg}{k}\left(-\frac{m}{k}e^{-\frac{k}{m}t} - t\right) + D \\
-\end{align*}
+\end{aligned}
 $$
 
 初期条件 $t = 0$ で $x = 0$ を代入して、
 
 $$
-\begin{align*}
+\begin{aligned}
     D            &= \frac{m^2g}{k^2} \\
     \therefore x &= \frac{mg}{k}\left(-\frac{m}{k}e^{-\frac{k}{m}t}-t\right) + \frac{m^2g}{k^2} \\
     \therefore x &= \frac{m^2g}{k^2}\left(1 - e^{-\frac{k}{m}t}\right) - \frac{mg}{k}t
-\end{align*}
+\end{aligned}
 $$
 
 これを使って、プログラムを作ると次のようになります。
