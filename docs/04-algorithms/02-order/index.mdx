@@ -128,14 +128,14 @@ flowchart
 計算量を $T(n)$ とします。
 
 $$
-\begin{align*}
+\begin{aligned}
     T(n) &= T(n-1) + T(n-2) \\
          &<2T(n-1) \quad (\because T(n-2)<T(n-1)) \\
          &<2^2T(n-2) \\
          &<\cdots \\
          &<2^nT(0) \\
          &=2^n \\
-\end{align*}
+\end{aligned}
 $$
 
 これで、計算量が $O(2^n)$ よりも小さいことが証明できました。
@@ -145,14 +145,14 @@ $$
 ちなみに、次のようにすると計算量が $\left(\sqrt{2}\right)^n$ よりも大きいことが証明できます。
 
 $$
-\begin{align*}
+\begin{aligned}
     T(n) &= T(n-1) + T(n-2) \\
          &>2T(n-2) \quad (\because T(n-1)>T(n-2)) \\
          &>2^2T(n-4) \\
          &>\cdots \\
          &>2^{\frac{n}{2}}T(0) \\
          &=2^{\frac{n}{2}} = \left(\sqrt{2}\right)^n \\
-\end{align*}
+\end{aligned}
 $$
 
 :::
@@ -166,12 +166,12 @@ $$
 これは、漸化式を解けば求まります。この漸化式は、フィボナッチ数列と同じです。
 
 $$
-\begin{align*}
+\begin{aligned}
     T(n) &= T(n-1) + T(n-2) \\
     &\cdots \\
     \therefore T(n) &= \frac{1}{\sqrt{5}}\left\{\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{2}\right)^n\right\} \\
                     &= O\left(\left(\frac{1+\sqrt{5}}{2}\right)^n\right)
-\end{align*}
+\end{aligned}
 $$
 
 :::
