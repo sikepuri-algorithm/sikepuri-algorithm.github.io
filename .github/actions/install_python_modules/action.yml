@@ -14,17 +14,17 @@ runs:
         path: ~/.cache/pypoetry
         key: poetry-cache-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ env.POETRY_VERSION }}
 
+    - name: Setup Poetry
+      if: steps.poetry_cache_id.outputs.cache-hit != 'true'
+      run: curl -sSL https://install.python-poetry.org | python3 -
+      shell: bash
+
     - name: Cache Poetry Packages
       uses: actions/cache@v3
       id: poetry_packages_cache_id
       with:
         path: ~/.local
         key: poetry-packages-cache-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}
-
-    - name: Setup Poetry
-      if: steps.poetry_cache_id.outputs.cache-hit != 'true'
-      run: curl -sSL https://install.python-poetry.org | python3 -
-      shell: bash
 
     - name: Install Poetry Packages
       if: steps.poetry_packages_cache_id.outputs.cache-hit != 'true'
