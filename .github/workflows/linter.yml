@@ -35,7 +35,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Install npm Mudules
+      - name: Install npm Modules
         uses: ./.github/actions/install-npm-modules
 
       - name: Run ESLint
@@ -52,7 +52,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Install npm Mudules
+      - name: Install npm Modules
         uses: ./.github/actions/install-npm-modules
 
       - name: Run Stylelint

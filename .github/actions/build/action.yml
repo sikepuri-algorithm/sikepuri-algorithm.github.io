@@ -2,7 +2,7 @@
 runs:
   using: "Composite"
   steps:
-    - name: Install npm Mudules
+    - name: Install npm Modules
       uses: ./.github/actions/install-npm-modules
 
     - name: Build
