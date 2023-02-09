@@ -3,7 +3,7 @@ name: Build and Deploy
 
 on:
   push:
-    branches: main
+    branches: [main, master]
 
 permissions:
   contents: write
@@ -18,12 +18,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Execute Notebooks
-        uses: ./.github/actions/execute_notebooks
+        uses: ./.github/actions/execute-notebooks
 
       - name: Build
         uses: ./.github/actions/build
 
-      - name: Deploy 🚀
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           clean-exclude: pr-preview/

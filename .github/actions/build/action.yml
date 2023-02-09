@@ -2,8 +2,8 @@
 runs:
   using: "Composite"
   steps:
-    - name: Install Node Mudules
-      uses: ./.github/actions/install_node_modules
+    - name: Install npm Mudules
+      uses: ./.github/actions/install-npm-modules
 
     - name: Build
       run: npm run build
