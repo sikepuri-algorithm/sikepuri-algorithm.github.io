@@ -1,5 +1,5 @@
 ---
-name: Deploy PR previews
+name: Deploy PR Previews
 
 on:
   pull_request:
@@ -15,7 +15,7 @@ concurrency: preview-${{ github.ref }}
 
 jobs:
   deploy-preview:
-    name: Deploy PR previews
+    name: Deploy PR Previews
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code

@@ -22,114 +22,50 @@ jobs:
             python-files:
               - '**.py,**.pyi,**.ipynb'
 
-  databooks:
-    name: Databooks
+  formatter:
+    name: Formatter
     needs: changes
-    if: needs.changes.outputs.python-files == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+
+      - name: Install npm Modules
+        uses: ./.github/actions/install-npm-modules
 
       - name: Install Python Modules
-        uses: ./.github/actions/install_python_modules
-
-      - name: Run Databooks
-        run: poetry run databooks meta --no-rm-outs --rm-exec --yes .
-
-  prettier:
-    name: Prettier
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Install Node Mudules
-        uses: ./.github/actions/install_node_modules
+        uses: ./.github/actions/install-python-modules
 
       - name: Run Prettier
         run: npx prettier --write .
 
-  black:
-    name: Black
-    needs: databooks
-    if: needs.changes.outputs.python-files == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Install Python Modules
-        uses: ./.github/actions/install_python_modules
-
-      - name: Run Black
-        run: poetry run black .
-
-  nbqa-isort:
-    name: nqQA-isort
-    needs: black
-    if: needs.changes.outputs.python-files == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Install Python Modules
-        uses: ./.github/actions/install_python_modules
+      - name: Run Databooks
+        if: needs.changes.outputs.python-files == 'true'
+        run: poetry run databooks meta --rm-outs --rm-exec --yes .
 
       - name: Run nqQA isort
+        if: needs.changes.outputs.python-files == 'true'
         run: poetry run nbqa isort .
 
-  nbqa-pyupgrade:
-    name: nqQA-pyupgrade
-    needs: black
-    if: needs.changes.outputs.python-files == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Install Python Modules
-        uses: ./.github/actions/install_python_modules
-
       - name: Run nqQA pyupgrade
+        if: needs.changes.outputs.python-files == 'true'
         run: poetry run nbqa pyupgrade .
 
-  pre-commit:
-    name: pre-commit
-    needs: black
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: latest
-
-      - name: Install Python Modules
-        uses: ./.github/actions/install_python_modules
+      - name: Run Black
+        if: needs.changes.outputs.python-files == 'true'
+        run: poetry run black .
 
       - name: Cache pre-commit
         uses: actions/cache@v3
-        id: pre-commit_cache_id
+        id: precommit_cache_id
         with:
           path: ~/.cache/pre-commit
           key: pre-commit-cache-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('.pre-commit-config.yaml') }}
 
-      - name: Install pre-commit environment
-        if: steps.pre-commit_cache_id.outputs.cache-hit != 'true'
-        run: pre-commit run --all-files
-
       - name: Run pre-commit
-        run: pre-commit run --all-files
+        if: steps.precommit_cache_id.outputs.cache-hit != 'true'
+        run: poetry run pre-commit run --all-files
 
-  commit:
-    name: Commit
-    needs: prettier
-    runs-on: ubuntu-latest
-    steps:
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

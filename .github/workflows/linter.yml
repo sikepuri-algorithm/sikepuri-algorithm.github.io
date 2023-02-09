@@ -35,8 +35,8 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Install Node Mudules
-        uses: ./.github/actions/install_node_modules
+      - name: Install npm Modules
+        uses: ./.github/actions/install-npm-modules
 
       - name: Run ESLint
         run: npx eslint . --ext .js,.jsx,.ts,.tsx
@@ -52,8 +52,8 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Install Node Mudules
-        uses: ./.github/actions/install_node_modules
+      - name: Install npm Modules
+        uses: ./.github/actions/install-npm-modules
 
       - name: Run Stylelint
         run: npx stylelint "**/*.css"
