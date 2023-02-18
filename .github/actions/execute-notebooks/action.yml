@@ -1,6 +1,8 @@
 ---
+name: Execute Notebooks
+
 runs:
-  using: "Composite"
+  using: Composite
   steps:
     - name: Install Python Modules
       uses: ./.github/actions/install-python-modules
