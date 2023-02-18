@@ -1,5 +1,5 @@
 ---
-name: Deploy PR Previews
+name: Deploy PR Previewshogehoge
 
 on:
   pull_request:
@@ -15,7 +15,7 @@ on:
 concurrency: preview-${{ github.ref }}
 
 jobs:
-  deploy-preview:
+  deploy-preview-hoge:
     name: Deploy PR Previews
     runs-on: ubuntu-latest
     steps:
