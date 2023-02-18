@@ -1,0 +1,38 @@
+---
+name: Deploy PR Previews
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+    branches-ignore:
+      - "**"
+  workflow_dispatch:
+
+concurrency: preview-${{ github.ref }}
+
+jobs:
+  deploy-preview:
+    name: Deploy PR Previews
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Execute Notebooks
+        uses: ./.github/actions/execute_notebooks
+
+      - name: Build
+        uses: ./.github/actions/build
+        env:
+          BASE_URL: preview-${{ github.ref }}
+      
+      - run: echo preview-${{ github.ref }}
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./build/
