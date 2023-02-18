@@ -22,8 +22,13 @@ jobs:
       - name: Execute Notebooks
         uses: ./.github/actions/execute-notebooks
 
+      - name: Calculate BASE_URL
+        run: echo ${{ github.ref }} | sed "s/[^0-9]//g" | (v=$(cat); echo -e "BASE_URL=/pr-preview/pr-$v/" ) >> $GITHUB_ENV
+
       - name: Build
         uses: ./.github/actions/build
+        with:
+          base-url: $BASE_URL
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
