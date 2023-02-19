@@ -28,7 +28,7 @@ jobs:
       - name: Build
         uses: ./.github/actions/build
         with:
-          base-url: $BASE_URL
+          base-url: ${{ env.BASE_URL }}
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
