@@ -23,7 +23,7 @@ jobs:
         uses: ./.github/actions/execute-notebooks
 
       - name: Make BASE_URL
-        run: echo ${{ github.ref }} | sed "s/[^0-9]//g" | (v=$(cat); echo -e "BASE_URL=/pr-preview/pr-$v/" ) >> $GITHUB_ENV
+        run: echo ${{ github.ref }} | sed "s/[^0-9]//g" | (pr_preview=$(cat); echo -e "BASE_URL=/pr-preview/pr-$pr_preview/") >> $GITHUB_ENV
 
       - name: Build
         uses: ./.github/actions/build
