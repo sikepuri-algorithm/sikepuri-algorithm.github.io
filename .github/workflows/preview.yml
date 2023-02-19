@@ -23,12 +23,20 @@ jobs:
         uses: ./.github/actions/execute-notebooks
 
       - name: Make BASE_URL
-        run: echo ${{ github.ref }} | sed "s/[^0-9]//g" | (v=$(cat); echo -e "BASE_URL=/pr-preview/pr-$v/" ) >> $GITHUB_ENV
+        uses: actions/github-script@v6
+        id: base-url
+        with:
+          script: |
+            const refName = "${{ github.ref_name }}"; // PR_NUMBER/merge
+            const prNumber = refName.slice(0, refName.length - 6);
+            const baseUrl = `/pr-preview/pr-${prNumber}/`;
+            return baseUrl;
+          result-encoding: string
 
       - name: Build
         uses: ./.github/actions/build
         with:
-          base-url: $BASE_URL
+          base-url: ${{ steps.base-url.outputs.result }}
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1

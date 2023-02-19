@@ -13,7 +13,7 @@ const config = {
   title: "Introduction to Algorithms",
   // tagline: '',
   url: "https://sikepuri-algorithm.github.io",
-  baseUrl: process.env.NODE_ENV ? "/" : process.env.BASE_URL,
+  baseUrl: process.env.NODE_ENV === "development" ? "/" : process.env.BASE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
