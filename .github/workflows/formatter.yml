@@ -1,17 +1,16 @@
----
 name: Formatter
 
 on:
   push:
-  pull_request:
     branches: [main, master]
+  pull_request:
 
 jobs:
-  changes:
+  check-changes:
     name: Check Changes
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Check Changes
@@ -23,8 +22,8 @@ jobs:
               - '**.py,**.pyi,**.ipynb'
 
   formatter:
-    name: Formatter
-    needs: changes
+    name: Format
+    needs: check-changes
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
