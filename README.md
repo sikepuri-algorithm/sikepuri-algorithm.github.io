@@ -1,3 +1,5 @@
+# Introduction to Algorithms
+
 [![Build and Deploy](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml) [![Super Linter](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/super_linter.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/super_linter.yml) [![Formatter](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/formatter.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/formatter.yml) [![Linter](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/linter.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/linter.yml)
 
 <div style="text-align: center">
@@ -5,8 +7,6 @@
 </div>
 
 [日本語版 README はこちら](./README-ja.md)
-
-# Introduction to Algorithms
 
 This is a document that summarizes the Introduction to Algorithms class. To see the content, visit [here](https://sikepuri-algorithm.github.io/).
 
