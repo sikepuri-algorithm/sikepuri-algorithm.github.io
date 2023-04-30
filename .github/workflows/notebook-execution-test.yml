@@ -8,7 +8,7 @@ jobs:
     name: Notebook Execution Test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v3
 
       - name: Execute Notebooks
