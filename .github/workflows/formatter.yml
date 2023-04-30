@@ -3,8 +3,8 @@ name: Formatter
 
 on:
   push:
-  pull_request:
     branches: [main, master]
+  pull_request:
 
 jobs:
   changes:
