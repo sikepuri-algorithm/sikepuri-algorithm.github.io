@@ -7,10 +7,11 @@ on:
 permissions:
   contents: write
 
+concurrency: ci-${{ github.ref }}
+
 jobs:
   build-and-deploy:
     name: Build and Deploy
-    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
