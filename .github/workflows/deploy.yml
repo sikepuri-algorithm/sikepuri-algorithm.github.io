@@ -23,7 +23,7 @@ jobs:
       - name: Build
         uses: ./.github/actions/build
         with:
-          base-url: "/"
+          base-url: /
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
