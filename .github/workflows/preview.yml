@@ -36,7 +36,7 @@ jobs:
         with:
           base-url: ${{ steps.base-url.outputs.result }}
 
-      - name: Deploy preview
+      - name: Deploy Preview
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: build
