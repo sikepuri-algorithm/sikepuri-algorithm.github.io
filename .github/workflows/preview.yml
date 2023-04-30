@@ -12,7 +12,7 @@ concurrency: preview-${{ github.ref }}
 
 jobs:
   deploy-preview:
-    name: Deploy Preview
+    name: Deploy PR Preview
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
