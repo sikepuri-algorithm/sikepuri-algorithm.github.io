@@ -5,6 +5,7 @@ on:
 
 jobs:
   notebook-execution-test:
+    name: Notebook Execution Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
