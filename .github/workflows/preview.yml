@@ -1,4 +1,3 @@
----
 name: Deploy PR Previews
 
 on:
@@ -13,10 +12,9 @@ concurrency: preview-${{ github.ref }}
 
 jobs:
   deploy-preview:
-    name: Deploy PR Previews
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Execute Notebooks
