@@ -1,12 +1,16 @@
-[![Build and Deploy](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml) [![Super Linter](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/super_linter.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/super_linter.yml) [![Formatter](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/formatter.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/formatter.yml) [![Linter](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/linter.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/linter.yml)
+# Introduction to Algorithms
+
+[![MDX](https://img.shields.io/badge/MDX-1B1F24.svg?logo=mdx)](https://mdxjs.com/)
+[![Build and Deploy](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml)
+[![Release version badge](https://img.shields.io/github/v/release/sikepuri-algorithm/sikepuri-algorithm.github.io.svg?logo=github)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/releases)
+[![license](https://img.shields.io/badge/license-MIT-informational.svg)](LICENSE)
+![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 <div style="text-align: center">
     <img src="./static/img/logo-black.svg" alt="logo" height="200px" >
 </div>
 
 [English README is here.](./README.md)
-
-# Introduction to Algorithms
 
 これは、アルゴリズム入門のシケプリです。[こちら](https://sikepuri-algorithm.github.io/)から見ることができます。
 
