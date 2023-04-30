@@ -6,8 +6,8 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Install npm Modules
-      uses: ./.github/actions/install-npm-modules
+    - name: Install Node Packages
+      uses: ./.github/actions/install-node-packages
 
     - name: Build
       run: npm run build

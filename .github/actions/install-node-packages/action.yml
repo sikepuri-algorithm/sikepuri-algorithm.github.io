@@ -1,4 +1,4 @@
-name: Install Node Modules
+name: Install Node Packages
 
 runs:
   using: composite
@@ -9,6 +9,6 @@ runs:
         node-version: latest
         cache: npm
 
-    - name: Install Node Modules
+    - name: Install Node Packages
       run: npm ci
       shell: bash

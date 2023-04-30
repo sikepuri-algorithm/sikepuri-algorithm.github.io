@@ -32,8 +32,8 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Install npm Modules
-        uses: ./.github/actions/install-npm-modules
+      - name: Install Node Packages
+        uses: ./.github/actions/install-node-packages
 
       - name: Run ESLint
         run: npx eslint . --ext .js,.jsx,.ts,.tsx
