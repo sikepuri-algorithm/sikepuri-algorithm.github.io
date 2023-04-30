@@ -8,7 +8,7 @@ jobs:
     name: Check Changes
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v3
 
       - name: Check Changes
