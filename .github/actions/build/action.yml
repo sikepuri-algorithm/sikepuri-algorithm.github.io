@@ -1,11 +1,10 @@
----
 name: Build
 inputs:
   base-url:
     required: true
 
 runs:
-  using: Composite
+  using: composite
   steps:
     - name: Install npm Modules
       uses: ./.github/actions/install-npm-modules
