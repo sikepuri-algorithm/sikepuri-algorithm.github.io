@@ -1,14 +1,13 @@
----
 name: Build
 inputs:
   base-url:
     required: true
 
 runs:
-  using: Composite
+  using: composite
   steps:
-    - name: Install npm Modules
-      uses: ./.github/actions/install-npm-modules
+    - name: Install Node Packages
+      uses: ./.github/actions/install-node-packages
 
     - name: Build
       run: npm run build

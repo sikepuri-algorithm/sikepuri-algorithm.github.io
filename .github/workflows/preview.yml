@@ -26,10 +26,9 @@ jobs:
         id: base-url
         with:
           script: |
-            const refName = "${{ github.ref_name }}"; // PR_NUMBER/merge
-            const prNumber = refName.slice(0, refName.length - 6);
-            const baseUrl = `/pr-preview/pr-${prNumber}/`;
-            return baseUrl;
+            const prNumber = "${{ github.event.number }}"; // <pr-number>
+            const baseUrl = `/pr-preview/pr-${prNumber}`;
+            return baseUrl; // /pr-preview/pr-<pr-number>
           result-encoding: string
 
       - name: Build

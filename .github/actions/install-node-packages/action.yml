@@ -1,0 +1,14 @@
+name: Install Node Packages
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: latest
+        cache: npm
+
+    - name: Install Node Packages
+      run: npm ci
+      shell: bash

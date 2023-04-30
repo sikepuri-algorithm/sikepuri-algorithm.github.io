@@ -1,8 +1,7 @@
----
 name: Install Python Modules
 
 runs:
-  using: Composite
+  using: composite
   steps:
     - name: Setup Python
       uses: actions/setup-python@v4
