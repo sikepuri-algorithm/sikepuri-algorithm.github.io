@@ -1,17 +1,14 @@
----
 name: Linter
 
 on:
-  push:
   pull_request:
-    branches: [main, master]
 
 jobs:
-  changes:
+  check-changes:
     name: Check Changes
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Check Changes
@@ -26,7 +23,7 @@ jobs:
 
   eslint:
     name: ESLint
-    needs: changes
+    needs: check-changes
     if: needs.changes.outputs.eslint == 'true'
     runs-on: ubuntu-latest
     steps:
@@ -43,7 +40,7 @@ jobs:
 
   stylelint:
     name: Stylelint
-    needs: changes
+    needs: check-changes
     if: needs.changes.outputs.stylelint == 'true'
     runs-on: ubuntu-latest
     steps:
