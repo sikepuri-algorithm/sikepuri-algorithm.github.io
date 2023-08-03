@@ -9,6 +9,14 @@ services:
     command: npm start
     tty: true
 
+  prettier:
+    build:
+      context: .
+      dockerfile: Dockerfile-prettier
+    volumes:
+      - .:/app
+    command: npx prettier --check .
+
   black:
     build:
       context: .
