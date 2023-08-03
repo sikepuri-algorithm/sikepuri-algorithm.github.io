@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+      - node_modules_app:/app/node_modules
+    ports:
+      - 3000:3000
+    command: npm start
+    tty: true
+
+volumes:
+  node_modules_app:
