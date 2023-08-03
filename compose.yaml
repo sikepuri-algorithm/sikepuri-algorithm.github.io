@@ -9,5 +9,13 @@ services:
     command: npm start
     tty: true
 
+  black:
+    build:
+      context: .
+      dockerfile: Dockerfile-black
+    volumes:
+      - .:/app
+    command: black --check .
+
 volumes:
   node_modules_app:
