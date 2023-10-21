@@ -1,0 +1,3 @@
+FROM python:3.10
+WORKDIR /app
+RUN pip3 install black[jupyter]

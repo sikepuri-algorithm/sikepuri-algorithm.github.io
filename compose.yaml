@@ -1,0 +1,37 @@
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+      - node_modules_app:/app/node_modules
+    ports:
+      - 3000:3000
+    command: npm start
+    tty: true
+
+  prettier:
+    build:
+      context: .
+      dockerfile: Dockerfile-prettier
+    volumes:
+      - .:/app
+    command: npx prettier --check .
+
+  black:
+    build:
+      context: .
+      dockerfile: Dockerfile-black
+    volumes:
+      - .:/app
+    command: black --check .
+
+  databooks:
+    build:
+      context: .
+      dockerfile: Dockerfile-databooks
+    volumes:
+      - .:/app
+    command: databooks meta --rm-outs --rm-exec --yes .
+
+volumes:
+  node_modules_app:
