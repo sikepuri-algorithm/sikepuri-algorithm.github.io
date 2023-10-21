@@ -25,5 +25,13 @@ services:
       - .:/app
     command: black --check .
 
+  databooks:
+    build:
+      context: .
+      dockerfile: Dockerfile-databooks
+    volumes:
+      - .:/app
+    command: databooks meta --rm-outs --rm-exec --yes .
+
 volumes:
   node_modules_app:
