@@ -1,0 +1,126 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install Packages
+        run: npm ci
+        shell: bash
+
+      - name: Build
+        run: npm run build
+        shell: bash
+
+  prettier:
+    name: Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install Packages
+        run: npm ci
+        shell: bash
+
+      - name: Format
+        run: npx prettier --check .
+        shell: bash
+
+  black:
+    name: Black
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v5
+
+      - name: Setup Poetry
+        run: pipx install poetry==2.0.0
+        shell: bash
+
+      - name: Install Poetry Packages
+        run: poetry install --no-root
+        shell: bash
+
+      - name: Run Black
+        run: poetry run black --check .
+
+  notebooks:
+    name: Notebooks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v5
+
+      - name: Setup Poetry
+        run: pipx install poetry==2.0.0
+        shell: bash
+
+      - name: Install Poetry Packages
+        run: poetry install --no-root
+        shell: bash
+
+      - name: Execute Notebooks
+        run: |
+          poetry run jupyter nbconvert --inplace --to notebook --execute --allow-errors static/**/*.ipynb
+          poetry run databooks meta --rm-outs --rm-exec --yes .
+          git diff --exit-code
+        shell: bash
+
+  isort:
+    name: isort
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v5
+
+      - name: Setup Poetry
+        run: pipx install poetry==2.0.0
+        shell: bash
+
+      - name: Install Poetry Packages
+        run: poetry install --no-root
+        shell: bash
+
+      - name: Run nqQA isort
+        run: poetry run nbqa isort --nbqa-diff .
+
+  pyupgrade:
+    name: pyupgrade
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v5
+
+      - name: Setup Poetry
+        run: pipx install poetry==2.0.0
+        shell: bash
+
+      - name: Install Poetry Packages
+        run: poetry install --no-root
+        shell: bash
+
+      - name: Run nqQA pyupgrade
+        run: poetry run nbqa pyupgrade --nbqa-diff .

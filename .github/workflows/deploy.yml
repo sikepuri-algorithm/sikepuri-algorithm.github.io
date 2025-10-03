@@ -1,8 +1,9 @@
-name: Build and Deploy
+name: Deploy
 
 on:
   push:
-    branches: [main, master]
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -19,20 +20,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
-      - name: Execute Notebooks
-        uses: ./.github/actions/execute-notebooks
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install Packages
+        run: npm ci
+        shell: bash
 
       - name: Build
-        uses: ./.github/actions/build
-        with:
-          base-url: /
+        run: npm run build
+        shell: bash
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v4
         with:
           path: build
 
@@ -45,4 +52,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
