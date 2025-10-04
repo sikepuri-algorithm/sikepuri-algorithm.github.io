@@ -1,7 +1,8 @@
 # Introduction to Algorithms
 
 [![MDX](https://img.shields.io/badge/MDX-1B1F24.svg?logo=mdx)](https://mdxjs.com/)
-[![Build and Deploy](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml)
+[![Deploy](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/deploy.yml)
+[![CI](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/actions/workflows/ci.yml)
 [![Release version badge](https://img.shields.io/github/v/release/sikepuri-algorithm/sikepuri-algorithm.github.io.svg?logo=github)](https://github.com/sikepuri-algorithm/sikepuri-algorithm.github.io/releases)
 [![license](https://img.shields.io/badge/license-MIT-informational.svg)](LICENSE)
 ![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
@@ -10,38 +11,41 @@
     <img src="./static/img/logo-black.svg" alt="logo" height="200px" >
 </div>
 
-[日本語版 README はこちら](./README-ja.md)
+これは、アルゴリズム入門のシケプリです。[こちら](https://sikepuri-algorithm.github.io/)から見ることができます。
 
-This is a document that summarizes the Introduction to Algorithms class. To see the content, visit [here](https://sikepuri-algorithm.github.io/).
+[Docusaurus](https://docusaurus.io/) を使って作っています。
 
-This site is built using [Docusaurus](https://docusaurus.io/), a modern static site generator.
+## 環境構築
 
-## Installation
+Node.js がインストールされていることを前提とします。
+
+次のコマンドで必要なパッケージをインストールできます。
 
 ```shell
 npm ci
 ```
 
-To run a formatter or linter before committing, run the script below. (You don't have to run these scripts.)
+以下は、Formatter を実行させるためのスクリプトです。実行しなくて構いません。
 
 ```shell
-# Install Poetry
+# Poetry のインストール
 curl -sSL https://install.python-poetry.org | python3 -
 
-# Install Poetry packages
+# Poetry のパッケージのインストール
 poetry install
-# Install pre-commit packages
-poetry run pre-commit install
+
+# フォーマットの実行
+make format
 ```
 
-## Local Development
+## 開発
 
-This command starts a local development server and opens up a browser window.
+次を実行すると、ローカルサーバーが立ち上がり、プレビューが表示されます。
 
 ```shell
 npm start
 ```
 
-## Contributions
+## コントリビューション
 
-Issue or PR is always welcome.
+誤植などがありましたら、Issue や PR などで気軽に教えてください。
