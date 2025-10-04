@@ -24,6 +24,19 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup Poetry
+        run: pipx install poetry==2.0.0
+        shell: bash
+
+      - name: Install Poetry Packages
+        run: poetry install --no-root
+        shell: bash
+
+      - name: Execute Notebooks
+        run: |
+          poetry run jupyter nbconvert --inplace --to notebook --execute --allow-errors static/**/*.ipynb
+        shell: bash
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
